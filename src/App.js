@@ -1,50 +1,70 @@
 import React, { Component } from 'react';
 import './App.css';
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
 
-import * as script from './scripts';
-import * as Modal from './components/modal';
-
-const images = script.importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+// import * as script from './scripts';
+import Modal from "react-responsive-modal";
+import * as modalComp from './components/modal';
+import * as img from './components/images';
+// const images = script.importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
 
 class App extends Component {
+  state = {
+    open: false
+  };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
  
   render() {
+    // const { open } = this.state;
     return (
-           <div className="App">
+      
+      <div className="App">
        
         <header className="App-header">
+        <div className = "test" > </div>
         <div className="container" >
-                <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
-                <img className="slide" alt="henna" src={images['henna.jpg']} />
-                <img className="slide" alt="hair" src={images['hair.jpg']} />
-                <div>
-    <Popup trigger={<button className="signInBtn"> Sign In </button>} modal>
-    {close => (
-      <div className="modal">
-        <a className="close" onClick={close}>
-          &times;
-        </a> 
+            <img.imagesList/>
+            <input className = "search" type="text" placeholder="Search.." name="search"/>
+            <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
+            
+        <button className="signInBtn" onClick={()=>this.setState({ showModal1:true, showModal2:false, showModal3:false})}>Sign In</button>
+        <Modal open={this.state.showModal1} onClose={() => this.setState({ showModal1:false, showModal2:false, showModal3:false})} center className="modal">
+        <div className="modal">
         <div className="content">
-        <Modal.signInModal/> 
-        </div>    
-      </div>  
-    )}
-    </Popup>
-    <Popup trigger={<button className="signUpBtn"> Sign Up </button>} modal >
-        {close => (
-      <div className="modal">
-        <a className="close" onClick={close}>
-          &times;
-        </a> 
+          <modalComp.signInModal/>
+          <u onClick={()=>this.setState({ showModal1:false, showModal2:false, showModal3:true})}> Forgot Password?</u><br></br>
+                <p1>Don't have an account?</p1>
+                <u id="signUpTxt" onClick={()=>this.setState({ showModal1:false, showModal2:true, showModal3:false})}> Sign Up </u> 
+          </div>
+          </div>
+        </Modal>
+
+        <button className="signUpBtn" onClick={()=>this.setState({ showModal1:false, showModal2:true, showModal3:false})}>Sign Up</button>
+        <Modal open={this.state.showModal2} onClose={() => this.setState({ showModal2:false})} center>
+        <div className="modal">
         <div className="content">
-        <Modal.signUpModal/>
-         
-        </div>    
-      </div>  
-        )}
-    </Popup>
-    </div>
+          <modalComp.signUpModal/>
+          <p1>Already have an account?</p1>
+          <u id="signInTxt" onClick={()=>this.setState({ showModal1:true, showModal2:false})}> Sign In</u>
+          </div>
+          </div>
+        </Modal>
+
+        <Modal open={this.state.showModal3} onClose={() => this.setState({ showModal3:false})} center>
+        <div className="modal">
+        <div className="content">
+          <modalComp.forgotPwModal/>
+        </div>
+        </div>
+        </Modal>
         </div>
         </header>
       </div>
