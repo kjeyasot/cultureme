@@ -6,6 +6,7 @@ import './App.css';
 import Modal from "react-responsive-modal";
 import * as modalComp from './components/modal';
 import * as img from './components/images';
+import * as popServ from './components/popularServices';
 // const images = script.importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
 
 class App extends Component {
@@ -66,10 +67,11 @@ class App extends Component {
         </div>
         </Modal>
         </div>
+    
         </header>
+        <popServ.popServ/>
+    
       </div>
-
- 
     );
   }
 

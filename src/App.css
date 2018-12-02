@@ -134,7 +134,7 @@ p1{
   height:75vh;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.2;
+  opacity: 0.5;
   -webkit-appearance: none;
 }  
 
@@ -381,5 +381,13 @@ div[class='fields-group'] {
 
 .searchButton:hover {
   background: black;
+  -webkit-appearance: none;
+}
+
+/* Popular Services */
+.popularServ {
+  color: palevioletred;
+  font-size: 3vmax;
+  font-weight: bold;
   -webkit-appearance: none;
 }
