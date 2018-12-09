@@ -10,8 +10,8 @@ import {
 import Modal from "react-responsive-modal";
 import * as modalComp from './modal';
 import * as popServ from './popularServices';
-import "/Users/karthi/cultureme/node_modules/slick-carousel/slick/slick.css";
-import "/Users/karthi/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
+import "/Users/sanairfan/cultureme/node_modules/slick-carousel/slick/slick.css";
+import "/Users/sanairfan/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
   
@@ -63,9 +63,10 @@ export class mainPage extends Component {
       </Slider>
       <img className="logoCM" alt="logo" src={images['logoCM.png']} />
       
-      <div><Link to="/searchresults">
+      <div>
       <input className = "search" type="text" placeholder="Search.." name="search"/>
-       {/* Below link should be redirected to NEHAL's page */}
+       {/* Below link should be redirected to NEHAL's page */} 
+       <Link to="/searchresults">
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
        </Link>
        </div>
@@ -73,8 +74,8 @@ export class mainPage extends Component {
         <Link to="/signin">
         <button className="signInBtn" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}>Sign In</button>
         <Modal open={this.state.showSignIn} onClose={() => this.setState({ showSignIn:false, showSignUp:false, showForgotPw:false})} 
-        center className="modal">
-        <div className="modal">
+        center className="testModal">
+        <div className="testModal">
         <div className="content">
         <modalComp.signInModal/>
         <Link to="/forgotpassword">
@@ -91,7 +92,7 @@ export class mainPage extends Component {
         <Link to="/signup">
         <button className="signUpBtn" onClick={()=>this.setState({ showSignIn:false, showSignUp:true, showForgotPw:false})}>Sign Up</button>
         <Modal open={this.state.showSignUp} onClose={() => this.setState({ showSignUp:false, showSignIn:false, showForgotPw:false })} center>
-        <div className="modal">
+        <div className="testModal">
         <div className="content">
           <modalComp.signUpModal/>
           <p1>Already have an account?</p1>
@@ -104,7 +105,7 @@ export class mainPage extends Component {
         </Link>
         <Link to="/forgotpassword">
         <Modal open={this.state.showForgotPw} onClose={() => this.setState({ showForgotPw:false, showSignIn:false, showSignUp:false})} center>
-        <div className="modal">
+        <div className="testModal">
         <div className="content">
           <modalComp.forgotPwModal/>
         </div>

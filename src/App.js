@@ -13,7 +13,7 @@ class App extends Component {
     <Router>
       <div className="App">
         <header className="App-header">
-        <div className="container" >
+        <div className="containerM" >
             <Switch>
             <Route exact={true} path="/" component={mainPage.mainPage} />
             <Route path="/searchresults" component={searchRes.searchRes} /> 

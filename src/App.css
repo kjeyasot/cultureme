@@ -117,7 +117,7 @@ p1{
   text-align: center;
 }
 
-.container {
+.containerM {
   position: relative;
   width: 100vw;
 }
@@ -150,7 +150,7 @@ p1{
 } */
 
 
-.container .signInBtn {
+.containerM .signInBtn {
   float:right;
   /* position: absolute;
   top: 2vh;
@@ -169,11 +169,11 @@ p1{
   -webkit-appearance: none;
 }
 
-.container .signInBtn:hover {
+.containerM .signInBtn:hover {
   background-color: black;
 }
 
-.container .signUpBtn {
+.containerM .signUpBtn {
   float: right;
   transform: translate(-5vw, -72vh);
   /* -ms-transform: translate(-80%, -1400%); */
@@ -188,7 +188,7 @@ p1{
   -webkit-appearance: none;
 }
 
-.container .signUpBtn:hover {
+.containerM .signUpBtn:hover {
   background-color: black;
   -webkit-appearance: none;
 }
@@ -205,7 +205,7 @@ p1{
   -webkit-appearance: none;
 } */
 
-.container .logoCM {
+.containerM .logoCM {
   position: absolute;
   top: 25vh;
   right: 50vw;
@@ -254,28 +254,28 @@ p1{
 }  */
 
 /* temp modal stuff */
-.modal {
+.testModal {
   font-size: 1.2vmax;
 }
-.modal > .header {
+.testModal > .header {
   width: 40vw;
   border-bottom: 1px solid gray;
   font-size: 2vw;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+.testModal > .content {
   width: 40vw;
   padding: 1vh 1vw;
   text-align: center;
 }
-.modal > .actions {
+.testModal > .actions {
   width: 40vw;
   padding: 1vh 1vw;
   margin: auto;
   text-align: center;
 }
-.modal > .close {
+.testModal > .close {
     color: #aaa;
     padding: 1.5vmax 1.5vmax;
     float: right;
@@ -285,8 +285,8 @@ p1{
   
 }
 
-.modal > .close:hover,
-.modal > .close:focus {
+.testModal > .close:hover,
+.testModal > .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -399,7 +399,7 @@ div[class='fields-group'] {
   -webkit-appearance: none;
 }
 
-.break{
+.spacePop{
   display: block;
   margin-left: 8vmax;
   margin-right: 8vmax;
@@ -411,16 +411,17 @@ div[class='fields-group'] {
   display: inline-block;
   position: relative;
   width: 20vmax;
-  padding: 1vmin 1vmin;
+  /* padding: 1vmin 1vmin; */
 }
 
 .imagePop {
   display: inline-block;
   width: 20vmax;
   height: 20vmax;
+  padding: 1vmin 1vmin;
 }
 
-.overlay {
+.overlayPop {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -434,7 +435,7 @@ div[class='fields-group'] {
   padding: 1vmin 1vmin;
 }
 
-.container1:hover .overlay {
+.container1:hover .overlayPop {
   opacity: 0.9;
 }
 
@@ -450,6 +451,3 @@ div[class='fields-group'] {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
-
-
