@@ -129,18 +129,25 @@ p1{
   
 } */
 
-.container .slide {
+/* .container .slide {
   width:100vw;
   height:75vh;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.2;
   -webkit-appearance: none;
-}  
-
+}   */
 .slide {
-  display:none;
+  width:100vw;
+  height:75vh;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.5;
+  -webkit-appearance: none;
 }
+/* .slide {
+  display:none;
+} */
 
 
 .container .signInBtn {
