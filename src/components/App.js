@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CommentBox from './CommentBox';
 import Comments from './Comments';
 
+//comment box API
+
 class App extends Component {
   constructor(props) {
     super(props);
