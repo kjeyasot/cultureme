@@ -27,6 +27,7 @@ export class searchRes extends Component {
     render() {
       const { open } = this.state;
         return (
+          <div>
 <Navbar inverse collapseOnSelect>
   <Navbar.Header>
     <Navbar.Brand>
@@ -96,6 +97,10 @@ export class searchRes extends Component {
       </Nav>
   </Navbar.Collapse> 
 </Navbar>
+<Link to="/serviceprovider">
+       <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
+       </Link>
+       </div>
         );
     
     }}

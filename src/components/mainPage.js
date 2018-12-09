@@ -10,8 +10,8 @@ import {
 import Modal from "react-responsive-modal";
 import * as modalComp from './modal';
 import * as popServ from './popularServices';
-import "/Users/Nehal/Desktop/waterloo/FYDP/cultureme/node_modules/slick-carousel/slick/slick.css";
-import "/Users/Nehal/Desktop/waterloo/FYDP/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
+import "/users/karthi/cultureme/node_modules/slick-carousel/slick/slick.css";
+import "/users/karthi/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
   

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import CommentBox from './CommentBox';
 import Comments from './Comments';
+require('../ably');
 
 //comment box API
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
 
