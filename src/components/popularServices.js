@@ -9,17 +9,50 @@ export class popServ extends Component {
   render() {
       return (
         <div>
-        {/* <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
-        <img className="slide" alt="henna" src={images['henna.jpg']} />
-        <img className="slide" alt="hair" src={images['hair.jpg']} />
-        <img className="slide" alt="pic1" src={images['pic1.jpg']}/>
-        <img className="slide" alt="pic2" src={images['pic2.jpg']}/>
-        <img className="slide" alt="pic3" src={images['pic3.jpg']}/>
-        <img className="slide" alt="pic4" src={images['pic4.jpg']}/>
-        <img className="slide" alt="pic5" src={images['pic5.jpg']}/>
-        <img className="logoCM" alt="logo" src={images['logoCM.png']} /> */}
+  <br></br>
+  <br></br>
         <p className="popularServ">Popular Services</p>
-        </div>
+        <br></br>
+<div className="spacePop">
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['pic5.jpg']} />
+  <div className="overlayPop">
+    <div className="text1">Mehendi</div>
+  </div>
+</div>
+
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['pic2.jpg']} />
+  <div className="overlayPop">
+    <div className="text1">Bridal Makeup</div>
+  </div>
+</div>
+
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['pic4.jpg']} />
+  <div className="overlayPop">
+    <div className="text1">Saree Draping</div>
+  </div>
+</div>
+
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['hair.jpg']} />
+  <div className="overlayPop">
+    <div className="text1">Hair</div>
+  </div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
     );
   }
 }

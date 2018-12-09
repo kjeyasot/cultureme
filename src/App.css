@@ -117,7 +117,7 @@ p1{
   text-align: center;
 }
 
-.container {
+.containerM {
   position: relative;
   width: 100vw;
 }
@@ -129,21 +129,28 @@ p1{
   
 } */
 
-.container .slide {
+/* .container .slide {
   width:100vw;
   height:75vh;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.2;
   -webkit-appearance: none;
-}  
-
+}   */
 .slide {
-  display:none;
+  width:100vw;
+  height:75vh;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.5;
+  -webkit-appearance: none;
 }
+/* .slide {
+  display:none;
+} */
 
 
-.container .signInBtn {
+.containerM .signInBtn {
   float:right;
   /* position: absolute;
   top: 2vh;
@@ -162,11 +169,11 @@ p1{
   -webkit-appearance: none;
 }
 
-.container .signInBtn:hover {
+.containerM .signInBtn:hover {
   background-color: black;
 }
 
-.container .signUpBtn {
+.containerM .signUpBtn {
   float: right;
   transform: translate(-5vw, -72vh);
   /* -ms-transform: translate(-80%, -1400%); */
@@ -181,7 +188,7 @@ p1{
   -webkit-appearance: none;
 }
 
-.container .signUpBtn:hover {
+.containerM .signUpBtn:hover {
   background-color: black;
   -webkit-appearance: none;
 }
@@ -198,7 +205,7 @@ p1{
   -webkit-appearance: none;
 } */
 
-.container .logoCM {
+.containerM .logoCM {
   position: absolute;
   top: 25vh;
   right: 50vw;
@@ -247,28 +254,28 @@ p1{
 }  */
 
 /* temp modal stuff */
-.modal {
+.testModal {
   font-size: 1.2vmax;
 }
-.modal > .header {
+.testModal > .header {
   width: 40vw;
   border-bottom: 1px solid gray;
   font-size: 2vw;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+.testModal > .content {
   width: 40vw;
   padding: 1vh 1vw;
   text-align: center;
 }
-.modal > .actions {
+.testModal > .actions {
   width: 40vw;
   padding: 1vh 1vw;
   margin: auto;
   text-align: center;
 }
-.modal > .close {
+.testModal > .close {
     color: #aaa;
     padding: 1.5vmax 1.5vmax;
     float: right;
@@ -278,8 +285,8 @@ p1{
   
 }
 
-.modal > .close:hover,
-.modal > .close:focus {
+.testModal > .close:hover,
+.testModal > .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -391,3 +398,123 @@ div[class='fields-group'] {
   font-weight: bold;
   -webkit-appearance: none;
 }
+
+.spacePop{
+  display: block;
+  margin-left: 8vmax;
+  margin-right: 8vmax;
+  width: 92%;
+
+}
+
+.container1 {
+  display: inline-block;
+  position: relative;
+  width: 20vmax;
+  /* padding: 1vmin 1vmin; */
+}
+
+.imagePop {
+  display: inline-block;
+  width: 20vmax;
+  height: 20vmax;
+  padding: 1vmin 1vmin;
+}
+
+.overlayPop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vmax;
+  width: 20vmax;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: whitesmoke;
+  padding: 1vmin 1vmin;
+}
+
+.container1:hover .overlayPop {
+  opacity: 0.9;
+}
+
+.text1 {
+  color:black;
+  font-size: 3vmin;
+  position: absolute;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.searchbarNAV {
+  width: 60vw;
+  padding: 1vmin 1vmin;
+  margin: 6px 0;
+  display: inline-block;
+  border: 1px solid white;
+  
+  box-sizing: border-box; 
+  background-color: white;
+  font-size: 1.2vmax;
+  text-align: center;
+  position: absolute;
+  top: 0.5vh;
+  left:15vw;
+  height: 4.5vh;
+  /* right: 50vw; */
+  /* left:50%; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  -webkit-appearance: none;
+
+}
+.search input {
+  width: 80%;
+}
+
+.searchButtonNAV {
+  top: 0.5vh;
+  left: 75.2vw;
+  width:3.5vw;
+  height:4.6vh;
+  margin: 6px 0;
+  position: absolute;
+  
+  /* float:right; */
+   background-color: #555;
+  color: white;
+  font-size: 1.5vmax;
+   
+   position: absolute;
+  
+  border: none;
+  cursor: pointer;
+ 
+  -webkit-appearance: none;
+}
+
+.searchButtonNAV:hover {
+  background: rgb(65, 64, 64);
+  -webkit-appearance: none;
+}
+
+.logo {
+  position: absolute;
+  top: 3.4vh;
+  right: 4vw;
+  left:4vw;
+  height: 10.2vmin;
+  width: 10.2vmin;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-appearance: none;
+}
+
+
