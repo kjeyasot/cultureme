@@ -403,7 +403,7 @@ div[class='fields-group'] {
   display: block;
   margin-left: 8vmax;
   margin-right: 8vmax;
-  width: 92%;
+  width: 92vw;
 
 }
 
@@ -411,6 +411,8 @@ div[class='fields-group'] {
   display: inline-block;
   position: relative;
   width: 20vmax;
+  margin-right: 1vmin;
+  margin-left: 1vmin
   /* padding: 1vmin 1vmin; */
 }
 
@@ -418,7 +420,7 @@ div[class='fields-group'] {
   display: inline-block;
   width: 20vmax;
   height: 20vmax;
-  padding: 1vmin 1vmin;
+  /* padding: 1vmin 1vmin; */
 }
 
 .overlayPop {
