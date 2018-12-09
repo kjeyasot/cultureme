@@ -19,7 +19,47 @@ export class popServ extends Component {
         <img className="slide" alt="pic5" src={images['pic5.jpg']}/>
         <img className="logoCM" alt="logo" src={images['logoCM.png']} /> */}
         <p className="popularServ">Popular Services</p>
-        </div>
+
+<div className="break">
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['pic5.jpg']} />
+  <div className="overlay">
+    <div className="text1">Mehendi</div>
+  </div>
+</div>
+
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['pic2.jpg']} />
+  <div className="overlay">
+    <div className="text1">Bridal Makeup</div>
+  </div>
+</div>
+
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['pic4.jpg']} />
+  <div className="overlay">
+    <div className="text1">Saree Draping</div>
+  </div>
+</div>
+
+<div className="container1">
+<img className="imagePop" alt="Avatar" src={images['hair.jpg']} />
+  <div className="overlay">
+    <div className="text1">Hair</div>
+  </div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
     );
   }
 }
