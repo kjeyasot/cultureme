@@ -1,11 +1,13 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component } from 'react';
+
 import ReactDOM from 'react-dom';
 import Test2 from './Test2';
 import { render } from 'react-dom';
 import registerServiceWorker from './serviceWorker';
 
 //ReactDOM.render(<ClientCard/>, document.getElementById('root'));
-class Test3 extends React.Component {
+export class Test3 extends Component {
     render() {
         return (
         <div>
@@ -15,4 +17,4 @@ class Test3 extends React.Component {
         }
     }
 
-export default Test3;
+// export default Test3;

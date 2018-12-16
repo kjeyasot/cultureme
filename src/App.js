@@ -3,7 +3,7 @@ import './App.css';
 // import * as modalComp from './components/modal';
 import * as mainPage from './components/mainPage';
 import * as searchRes from './components/tempSearchRes';
-import Test3 from './Test3';
+import * as Test3 from './Test3';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
