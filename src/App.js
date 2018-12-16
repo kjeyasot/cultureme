@@ -3,7 +3,7 @@ import './App.css';
 // import * as modalComp from './components/modal';
 import * as mainPage from './components/mainPage';
 import * as searchRes from './components/tempSearchRes';
-import * as Test3 from './Test3';
+import * as serviceProvider from './components/serviceProvider';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ class App extends Component {
             <Route path="/signin" component={mainPage.mainPage} />
             <Route path="/signup" component={mainPage.mainPage} />
             <Route path="/forgotpassword" component={mainPage.mainPage} />
-            <Route path="/Test3" component={Test3.Test3} />
+            <Route path="/serviceProvider" component={serviceProvider.serviceProvider} />
           </Switch>
         </div>
         </header>
