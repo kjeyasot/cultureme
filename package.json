@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "latest",
     "@types/react": "^16.7.3",
+    "ably": "^1.0.20",
+    "prop-types": "latest",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
@@ -16,8 +19,6 @@
     "react-slick": "^0.23.2",
     "react-tooltip": "^3.9.0",
     "reactjs-popup": "^1.3.0",
-    "prop-types": "latest",
-    "@material-ui/core": "latest",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {

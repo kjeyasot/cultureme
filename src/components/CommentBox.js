@@ -42,18 +42,18 @@ class CommentBox extends Component {
       <div>
         <h3 className="title">Leave a review!</h3>
         <form onSubmit={this.addComment}>
-          <div className="field">
-            <div className="control">
+          <div className="field1">
+            <div className="control1">
               <input type="text" className="input" name="name" placeholder="Your name" />
             </div>
           </div>
-          <div className="field">
-            <div className="control">
+          <div className="field1">
+            <div className="control1">
               <textarea className="textarea" name="comment" placeholder="Add a comment"></textarea>
             </div>
           </div>
-          <div className="field">
-            <div className="control">
+          <div className="field1">
+            <div className="control1">
               <button className="button is-primary">Submit</button>
             </div>
           </div>
