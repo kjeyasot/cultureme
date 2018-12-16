@@ -21,9 +21,6 @@ const images = script.importAll(require.context('../images', false, /\.(png|jpe?
 let num = Object.keys(images).length-3;
 var y = Math.floor(num * Math.random());
 
-function move() {
-  window.location.pathname = "/"
- }
  
 export class mainPage extends Component {
     state = {

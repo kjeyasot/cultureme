@@ -44,27 +44,9 @@ export class searchRes extends Component {
 
 
 
-
-
   <Navbar.Collapse>
     <Nav pullRight>
-      <NavItem eventKey={1} onClick={()=>this.setState({ showModal1:true, showModal2:false, showModal3:false})} >
-    
-        <Modal open={this.state.showModal1} onClose={() => this.setState({ showModal1:false, showModal2:false, showModal3:false})} center className="modal">
-        <div className="testModal">
-        <div className="content">
-          <modalComp.signInModal/>
-          <u onClick={()=>this.setState({ showModal1:false, showModal2:false, showModal3:true})}> Forgot Password?</u><br></br>
-                <p1>Don't have an account?</p1>
-                <u id="signUpTxt" onClick={()=>this.setState({ showModal1:false, showModal2:true, showModal3:false})}> Sign Up </u> 
-          </div>
-          </div>
-        </Modal>
-
-  Sign In  
-
-
-      </NavItem>
+      
       <NavItem eventKey={2} onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}>
 
      
@@ -90,10 +72,38 @@ export class searchRes extends Component {
         </div>
         </div>
         </Modal>
-       Sign Up 
+        <Modal open={this.state.showForgotPw} onClose={() => this.setState({ showForgotPw:false, showSignIn:false, showSignUp:false})} center>
+        <div className="testModal">
+        <div className="content">
+          <modalComp.forgotPwModal/>
+        </div>
+        </div>
+        </Modal>
+       Sign In
        
       </NavItem>  
+<NavItem eventKey={1} onClick={()=>this.setState({ showModal1:true, showModal2:false, showModal3:false})} >
+    
+      <Modal open={this.state.showSignIn} onClose={() => this.setState({ showSignIn:false, showSignUp:false, showForgotPw:false})} 
+        center className="testModal">
+        <div className="testModal">
+        <div className="content">
+        <modalComp.signInModal/>
+        <Link to="/forgotpassword">
+          <u onClick={()=>this.setState({ showSignIn:false, showSignUp:false, showForgotPw:true})}> Forgot Password?</u><br></br>
+          </Link>
+          <p1>Don't have an account?</p1>
+          <Link to="/signup">
+          <u id="signUpTxt" onClick={()=>this.setState({ showSignIn:false, showSignUp:true, showForgotPw:false})}> Sign Up </u> 
+          </Link>
+          </div>
+          </div>
+        </Modal>
 
+  Sign Up  
+
+
+      </NavItem>
       </Nav>
   </Navbar.Collapse> 
 </Navbar>
