@@ -9,7 +9,7 @@ class Test3 extends React.Component {
     render() {
         return (
         <div>
-            <Test2></Test2>
+            <Test2>"TEST"</Test2>
         </div>
             );
         }
