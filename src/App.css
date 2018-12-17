@@ -86,6 +86,9 @@ p1{
   
 } 
 
+
+
+
 /* div[class='fields1-group'] {
   border-radius: 5px;
   padding: 5px;
@@ -172,6 +175,30 @@ p1{
 .containerM .signInBtn:hover {
   background-color: black;
 }
+
+.signInBtnN {
+  float:right;
+  /* position: absolute;
+  top: 2vh;
+  right: 1vw; */
+  transform: translate(-5vw, -72vh);
+
+  /* transform: translate(-50vw, -50vh); */
+  /* -ms-transform: translate(-80%, -1400%); */
+  background-color: #555;
+  color: white;
+  font-size: 1.2vmax;
+  padding: 1vmin 1.5vmin;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-appearance: none;
+}
+
+.signInBtnN:hover {
+  background-color: white;
+}
+
 
 .containerM .signUpBtn {
   float: right;
@@ -466,7 +493,7 @@ div[class='fields-group'] {
   background-color: white;
   font-size: 1.2vmax;
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   top: 0.5vh;
   left:15vw;
   height: 4.5vh;
@@ -478,7 +505,7 @@ div[class='fields-group'] {
 
 }
 .search input {
-  width: 80%;
+  width: 70%;
 }
 
 .searchButtonNAV {
@@ -487,14 +514,14 @@ div[class='fields-group'] {
   width:3.5vw;
   height:4.6vh;
   margin: 6px 0;
-  position: absolute;
+  /* position: absolute; */
   
   /* float:right; */
    background-color: #555;
   color: white;
   font-size: 1.5vmax;
    
-   position: absolute;
+   /* position: absolute; */
   
   border: none;
   cursor: pointer;
@@ -508,7 +535,7 @@ div[class='fields-group'] {
 }
 
 .logo {
-  position: absolute;
+  /* position: absolute; */
   top: 3.4vh;
   right: 4vw;
   left:4vw;
@@ -520,3 +547,95 @@ div[class='fields-group'] {
 }
 
 
+/* NAVBAR MODAL (SIGN IN, SIGN UP) */
+.SigninNAV{
+  color:rgb(168, 166, 166);
+  font-size: 1.5vmax;
+  font-family: Arial;
+   /* text-align: right; */
+   /* position: absolute; */
+  /* float: center; */
+  
+}
+
+.SigninNAV:hover,
+.SigninNAV:focus {
+  color:white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.SignupNAV{
+  /* top: 3.4vh;
+  right: 14vw;
+  left:4vw; */
+  color:rgb(168, 166, 166);
+  font-size: 1.5vmax;
+  font-family: Arial;
+  
+  
+  /* float: center; */
+  
+}
+
+.SignupNAV:hover,
+.SignupNAV:focus {
+  color:white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.Navbar .searchNAV {
+  width: 60vw;
+  padding: 1vmin 1vmin;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid white;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  background-color: white;
+  font-size: 1vmax;
+  text-align: center;
+  position: absolute;
+  top: 40vh;
+  left:20vw;
+  height: 4.5vh;
+  /* right: 50vw; */
+  /* left:50%; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  -webkit-appearance: none;
+
+}
+.Navbar .searchNAV input {
+  width: 80%;
+}
+
+.Navbar.searchButtonNAV {
+  top: 40vh;
+  left: 80vw;
+  width:4vw;
+  height:4.5vh;
+  margin: 8px 0;
+  /* left:20vw; */
+  position: absolute;
+  /* float:right; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-550%, -820%); */
+  background-color: #555;
+  color: white;
+  font-size: 1vmax;
+  text-align: center;
+  padding: 1vmin 1vmin;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-appearance: none;
+}
+
+.Navbar.searchButtonNAV:hover {
+  background: black;
+  -webkit-appearance: none;
+}

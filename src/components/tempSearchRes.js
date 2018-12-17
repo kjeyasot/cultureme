@@ -28,63 +28,39 @@ export class searchRes extends Component {
       const { open } = this.state;
         return (
           <div>
-<Navbar inverse collapseOnSelect>
+<Navbar inverse >
   <Navbar.Header>
     <Navbar.Brand>
+      <Link to = "/">
       <img className="logo" src={images['logoCM.png']}  />
+      </Link>
     </Navbar.Brand>
     <Navbar.Toggle />
   </Navbar.Header>
   
  <div>
- <input className = "searchbarNAV" type="text" placeholder="Search.." name="searchbarNAV"/>
+ {/* <input className = "searchbarNAV" type="text" placeholder="Search.." name="searchbarNAV"/>
         <button className = "searchButtonNAV"type="submit">{()=>this.setState({ showModal1:true, showModal2:false, showModal3:false})}<i className="fa fa-search"></i></button>
-        
- </div>
+         */}
 
+      {/* //    <FormGroup>
+      //   <FormControl type="text" placeholder="Search" />
+      // </FormGroup>{' '}
+      // <Button type="submit">Submit</Button> */}
 
-
-  <Navbar.Collapse>
-    <Nav pullRight>
+       <input className = "searchNAV" type="text" placeholder="Search.." name="search"/>
       
-      <NavItem eventKey={2} onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}>
-
-     
-      {/* <button className="signInBtn" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}>Sign In</button> */}
-        
-       <Modal open={this.state.showSignUp} onClose={() => this.setState({ showSignUp:false, showSignIn:false, showForgotPw:false })} center>
-        <div className="testModal">
-        <div className="content">
-          <modalComp.signUpModal/>
-          <p1>Already have an account?</p1>
-          <Link to="/signin1">
-          <u id="signInTxt" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}> Sign In</u>
-          </Link>
-          </div>
-          </div>
-        </Modal>
-        
-
-        <Modal open={this.state.showModal3} onClose={() => this.setState({ showModal3:false})} center>
-        <div className="testModal">
-        <div className="content">
-          <modalComp.forgotPwModal/>
-        </div>
-        </div>
-        </Modal>
-        <Modal open={this.state.showForgotPw} onClose={() => this.setState({ showForgotPw:false, showSignIn:false, showSignUp:false})} center>
-        <div className="testModal">
-        <div className="content">
-          <modalComp.forgotPwModal/>
-        </div>
-        </div>
-        </Modal>
-       Sign In
-       
-      </NavItem>  
-<NavItem eventKey={1} onClick={()=>this.setState({ showModal1:true, showModal2:false, showModal3:false})} >
+       <button className = "searchButtonNAV"type="submit"><i className="fa fa-search"></i></button>
+      
     
-      <Modal open={this.state.showSignIn} onClose={() => this.setState({ showSignIn:false, showSignUp:false, showForgotPw:false})} 
+ </div>
+ <Navbar.Collapse>
+ <Nav pullRight>
+ <Link to="/signin1">
+          <h4 className= "SigninNAV" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}> Sign In</h4><br></br>
+          </Link>
+ 
+        <Modal open={this.state.showSignIn} onClose={() => this.setState({ showSignIn:false, showSignUp:false, showForgotPw:false})} 
         center className="testModal">
         <div className="testModal">
         <div className="content">
@@ -99,12 +75,32 @@ export class searchRes extends Component {
           </div>
           </div>
         </Modal>
-
-  Sign Up  
-
-      </NavItem>
-      </Nav>
-  </Navbar.Collapse> 
+       
+        <Link to="/signup1">
+        <h4 className= "SignupNAV" onClick={()=>this.setState({showSignIn:false, showSignUp:true, showForgotPw:false})}>Sign Up</h4><br></br>
+        <Modal open={this.state.showSignUp} onClose={() => this.setState({ showSignUp:false, showSignIn:false, showForgotPw:false })} center>
+        <div className="testModal">
+        <div className="content">
+          <modalComp.signUpModal/>
+          <p1>Already have an account?</p1>
+          <Link to="/signin1">
+          <u id="signInTxt" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}> Sign In</u>
+          </Link>
+          </div>
+          </div>
+        </Modal>
+        </Link>
+        <Link to="/forgotpassword1">
+        <Modal open={this.state.showForgotPw} onClose={() => this.setState({ showForgotPw:false, showSignIn:false, showSignUp:false})} center>
+        <div className="testModal">
+        <div className="content">
+          <modalComp.forgotPwModal/>
+        </div>
+        </div>
+        </Modal>
+        </Link>
+</Nav>
+ </Navbar.Collapse>
 </Navbar>
 <Link to="/serviceProvider"> 
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
