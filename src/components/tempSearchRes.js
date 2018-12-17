@@ -57,7 +57,7 @@ export class searchRes extends Component {
         <div className="content">
           <modalComp.signUpModal/>
           <p1>Already have an account?</p1>
-          <Link to="/signin">
+          <Link to="/signin1">
           <u id="signInTxt" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}> Sign In</u>
           </Link>
           </div>
@@ -89,11 +89,11 @@ export class searchRes extends Component {
         <div className="testModal">
         <div className="content">
         <modalComp.signInModal/>
-        <Link to="/forgotpassword">
+        <Link to="/forgotpassword1">
           <u onClick={()=>this.setState({ showSignIn:false, showSignUp:false, showForgotPw:true})}> Forgot Password?</u><br></br>
           </Link>
           <p1>Don't have an account?</p1>
-          <Link to="/signup">
+          <Link to="/signup1">
           <u id="signUpTxt" onClick={()=>this.setState({ showSignIn:false, showSignUp:true, showForgotPw:false})}> Sign Up </u> 
           </Link>
           </div>
@@ -101,7 +101,6 @@ export class searchRes extends Component {
         </Modal>
 
   Sign Up  
-
 
       </NavItem>
       </Nav>
