@@ -114,6 +114,10 @@ export class mainPage extends Component {
         </Link>
         {/* Sana's stuff should come here */}
         <popServ.popServ/>
+        <br>
+        </br>
+        <br>
+        </br>
         <footer.footer/>
       </div>
 
