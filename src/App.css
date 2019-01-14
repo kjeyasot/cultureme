@@ -164,18 +164,26 @@ p1{
   /* -ms-transform: translate(-80%, -1400%); */
   background-color: Transparent;
   color: white;
-  font-size: 1.2vmax;
+  font-size: 1.5vmax;
+  font-weight: bold;
   padding: 1vmin 1.5vmin;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   -webkit-appearance: none;
 }
 
 .containerM .signInBtn:hover {
   background-color: Transparent;
+  border-bottom: 0.4vmin solid currentColor;
+  
+
 }
 
+.containerM .signInBtn:focus {
+  outline: 0;
+
+}
 .signInBtnN {
   float:right;
   /* position: absolute;
@@ -206,11 +214,12 @@ p1{
   /* -ms-transform: translate(-80%, -1400%); */
   background-color: Transparent;
   color: white;
-  font-size: 1.2vmax;
+  font-size: 1.5vmax;
+  font-weight: bold;
   padding: 1vmin 1.5vmin;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   margin-right: 0.5vw;
   -webkit-appearance: none;
 }
@@ -218,8 +227,17 @@ p1{
 .containerM .signUpBtn:hover {
   background-color:Transparent;
   -webkit-appearance: none;
+  /* text-decoration: underline;
+  text-underline-position: under */
+  border-bottom: 0.4vmin solid currentColor
+
+
 }
 
+.containerM .signUpBtn:focus {
+  outline: 0;
+
+}
 /* .container .logo1 {
   position: absolute;
   top: 25vh;
@@ -237,8 +255,8 @@ p1{
   top:3vw;
   right:70vw;
   left:5vw;
-  height: 20vmin;
-  width: 20vmin;
+  height: 15vmin;
+  width: 15vmin;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -webkit-appearance: none;
