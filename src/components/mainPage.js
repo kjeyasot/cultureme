@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import * as script from '../scripts';
 import {
@@ -15,7 +14,7 @@ import "../../node_modules/slick-carousel/slick/slick-theme.css"
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick.css";
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
+// import * as testimonials from './testimonials';
   
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 let num = Object.keys(images).length-3;
@@ -52,12 +51,8 @@ export class mainPage extends Component {
       <div> 
       <Slider autoplay="true"  {...properties}>
         <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
-        <img className="slide" alt="henna" src={images['henna.jpg']} />
-        <img className="slide" alt="hair" src={images['hair.jpg']} />
         <img className="slide" alt="pic1" src={images['pic1.jpg']}/>
-        <img className="slide" alt="pic2" src={images['pic2.jpg']}/>
         <img className="slide" alt="pic3" src={images['pic3.jpg']}/>
-        <img className="slide" alt="pic4" src={images['pic4.jpg']}/>
         <img className="slide" alt="pic5" src={images['pic5.jpg']}/>
       </Slider>
       <img className="logoCM" alt="logo" src={images['logoCM.png']} />
@@ -113,7 +108,7 @@ export class mainPage extends Component {
         </Link>
         {/* Sana's stuff should come here */}
         <popServ.popServ/>
-        
+        {/* <testimonials.testimonials/> */}
       </div>
 
       

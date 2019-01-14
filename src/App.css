@@ -145,7 +145,7 @@ p1{
   height:75vh;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.5;
+  /* opacity: 0.5; */
   -webkit-appearance: none;
 }
 /* .slide {
@@ -162,7 +162,7 @@ p1{
 
   /* transform: translate(-50vw, -50vh); */
   /* -ms-transform: translate(-80%, -1400%); */
-  background-color: #555;
+  background-color: Transparent;
   color: white;
   font-size: 1.2vmax;
   padding: 1vmin 1.5vmin;
@@ -173,7 +173,7 @@ p1{
 }
 
 .containerM .signInBtn:hover {
-  background-color: black;
+  background-color: Transparent;
 }
 
 .signInBtnN {
@@ -185,7 +185,7 @@ p1{
 
   /* transform: translate(-50vw, -50vh); */
   /* -ms-transform: translate(-80%, -1400%); */
-  background-color: #555;
+  background-color: Transparent;
   color: white;
   font-size: 1.2vmax;
   padding: 1vmin 1.5vmin;
@@ -204,7 +204,7 @@ p1{
   float: right;
   transform: translate(-5vw, -72vh);
   /* -ms-transform: translate(-80%, -1400%); */
-  background-color: #555;
+  background-color: Transparent;
   color: white;
   font-size: 1.2vmax;
   padding: 1vmin 1.5vmin;
@@ -216,7 +216,7 @@ p1{
 }
 
 .containerM .signUpBtn:hover {
-  background-color: black;
+  background-color:Transparent;
   -webkit-appearance: none;
 }
 
@@ -234,15 +234,16 @@ p1{
 
 .containerM .logoCM {
   position: absolute;
-  top: 25vh;
-  right: 50vw;
-  left:50vw;
-  height: 23vmin;
-  width: 23vmin;
+  top:3vw;
+  right:70vw;
+  left:5vw;
+  height: 20vmin;
+  width: 20vmin;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -webkit-appearance: none;
 }
+
 /* popup page */
 
 /* .modal {
