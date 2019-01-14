@@ -9,10 +9,12 @@ export class popServ extends Component {
   render() {
       return (
         <div>
-  <br></br>
-  <br></br>
+   
+  <div className="TestimonialBlock">
         <p className="popularServ">Popular Services</p>
-        <br></br>
+        </div>
+      
+       
 <div className="spacePop">
 <div className="container1">
 <img className="imagePop" alt="Avatar" src={images['henna7.png']} />

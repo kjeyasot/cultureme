@@ -447,9 +447,11 @@ div[class='fields-group'] {
 
 .spacePop{
   display: block;
-  margin-left: 8vmax;
-  margin-right: 8vmax;
-  width: 92vw;
+  /* margin-left: 8vmax;
+  margin-right: 8vmax; */
+  /* width: 92vw; */
+  
+  margin-left: 10vw;
 
 }
 
