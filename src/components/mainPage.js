@@ -15,7 +15,7 @@ import "../../node_modules/slick-carousel/slick/slick-theme.css"
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick.css";
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
+import * as testimonials from './testimonials';
   
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 let num = Object.keys(images).length-3;
@@ -113,7 +113,7 @@ export class mainPage extends Component {
         </Link>
         {/* Sana's stuff should come here */}
         <popServ.popServ/>
-        
+        <testimonials.testimonials/>
       </div>
 
       

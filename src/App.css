@@ -445,8 +445,8 @@ div[class='fields-group'] {
 
 .imagePop {
   display: inline-block;
-  width: 20vmax;
-  height: 20vmax;
+  width: 15vmax;
+  height: 15vmax;
   /* padding: 1vmin 1vmin; */
 }
 
@@ -639,3 +639,20 @@ div[class='fields-group'] {
   background: black;
   -webkit-appearance: none;
 }
+
+/* Testimonials */
+
+.img-circle {
+  height: 12vw;
+
+  /* transform: translateX(-50%);
+  margin-left: 50%; */
+}
+
+
+.TestimonialName {
+  font-size: 1vmax;
+  
+}
+/* <h6 className="TestimonialOccupation">Web Designer</h6>
+<h6 className="TestimonialCmt */
