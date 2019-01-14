@@ -466,17 +466,23 @@ div[class='fields-group'] {
   display: inline-block;
   width: 15vmax;
   height: 15vmax;
+  border-radius: 50%;
+border: 0px solid #000000;
+  box-sizing: border-box; 
+ overflow: hidden; 
+ 
   /* padding: 1vmin 1vmin; */
 }
 
 .overlayPop {
+  width: 15vmax;
+  height: 15vmax;
+  border-radius: 50%;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 20vmax;
-  width: 20vmax;
   opacity: 0;
   transition: .5s ease;
   background-color: whitesmoke;
@@ -494,6 +500,8 @@ div[class='fields-group'] {
   font-weight: bold;
   top: 50%;
   left: 50%;
+  width: 100%;
+    height: auto;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);

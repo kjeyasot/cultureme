@@ -9,6 +9,7 @@ import {
 import Modal from "react-responsive-modal";
 import * as modalComp from './modal';
 import * as popServ from './popularServices';
+import * as footer from './footer';
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css"
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick.css";
@@ -112,6 +113,7 @@ export class mainPage extends Component {
         {/* Sana's stuff should come here */}
         <popServ.popServ/>
         <testimonials.testimonials/>
+        <footer.footer/>
       </div>
 
       
