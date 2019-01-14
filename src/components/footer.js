@@ -6,52 +6,61 @@ export class footer extends Component {
    
   render() {
       return (
-      <div>
-        <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+        
+        <div>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
         {/*---- Include the above in your HEAD tag --------*/}
-        {/* Footer */}
-        <section id="footer">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+        {/*
+    instagram: www.instagram.com/programmingtutorial
+    site: programlamadersleri.net
+*/}
+        <footer>
+          <br></br>
           <div className="container">
-            <div className="row text-center text-xs-center text-sm-left text-md-left">
-              <div className="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
-                <ul className="list-unstyled quick-links">
-                  <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Home</a></li>
-                  <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />About</a></li>
-                  <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />FAQ</a></li>
-                </ul>
-              </div>
-              <div className="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
-                <ul className="list-unstyled quick-links">
-                  <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />Home</a></li>
-                  <li><a href="javascript:void();"><i className="fa fa-angle-double-right" />About</a></li>
-                  <li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i className="fa fa-angle-double-right" />Imprint</a></li>
-                </ul>
-              </div>
-            </div>
             <div className="row">
-              <div className="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-                <ul className="list-unstyled list-inline social text-center">
-                  <li className="list-inline-item"><a href="javascript:void();"><i className="fa fa-facebook" /></a></li>
-                  <li className="list-inline-item"><a href="javascript:void();"><i className="fa fa-twitter" /></a></li>
-                  <li className="list-inline-item"><a href="javascript:void();"><i className="fa fa-instagram" /></a></li>
-                  <li className="list-inline-item"><a href="javascript:void();"><i className="fa fa-google-plus" /></a></li>
-                  <li className="list-inline-item"><a href="javascript:void();" target="_blank"><i className="fa fa-envelope" /></a></li>
+              
+              <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <ul className="footer-list">
+
                 </ul>
               </div>
-            </div>	
+              <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <ul className="footer-list">
+                  <span>About</span>    
+                  
+                </ul>
+              </div>
+              <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <ul className="footer-list">
+                  <span>Contact</span>     
+                </ul>
+              </div>
+              <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <ul className="footer-list">
+                  <span>FAQ</span>     
+                </ul>
+              </div>
+              <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <ul className="social">   
+                  <li>
+                    <a href="#"><i className="fa fa-facebook fa-2x" /></a>
+                  </li>
+
+                  <li>
+                    <a href="#"><i className="fa fa-instagram fa-2x" /></a>
+                  </li>
+                  <li>
+                    <a href="#"><i className="fa fa-youtube fa-2x" /></a>
+                  </li>
+                </ul>
+              </div>
+            </div> 
           </div>
-        </section>
-        {/* ./Footer */}
+          <br></br>
+          <p>Copyright © 2019 CultureMe. All rights reserved.</p>
+        </footer>
       </div>
     );
   }};
