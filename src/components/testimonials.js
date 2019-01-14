@@ -16,7 +16,7 @@ export class testimonials extends Component {
     render() {
      
         return (
-            <div>
+            <div className="TestimonialBlock">
                <br></br>
   <br></br>
             <p className="popularServ">Testimonials</p>
@@ -61,9 +61,9 @@ export class testimonials extends Component {
                       <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="img-circle z-depth-1 img-fluid"/>
                     </div>
                     
-                    <h4 class="font-weight-bold dark-grey-text mt-4">John Doe</h4>
-                    <h6 class="font-weight-bold blue-text my-3">Web Developer</h6>
-                    <p class="font-weight-normal dark-grey-text">
+                    <h4 class="TestimonialName">John Doe</h4>
+                    <h6 class="TestimonialOccupation">Web Developer</h6>
+                    <p class="TestimonialCmt">
                       <i class="fa fa-quote-left"></i>Ut enim ad minima veniam, quis nostrum exercitationem ullam
                       corporis suscipit laboriosam, nisi ut aliquid commodi.</p>
                   
@@ -87,11 +87,11 @@ export class testimonials extends Component {
                     
                     </div>
                    
-                    <h4 class="font-weight-bold dark-grey-text mt-4">Maria Kate</h4>
-                    <h6 class="font-weight-bold blue-text my-3">Photographer</h6>
-                    <p class="font-weight-normal dark-grey-text">
+                    <h4 class="TestimonialName">Maria Kate</h4>
+                    <h6 class="TestimonialOccupation">Photographer</h6>
+                    <p class="TestimonialCmt">
                       <i class="fa fa-quote-left"></i>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                      blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+                      blanditiis</p>
                
                   </div>
             
