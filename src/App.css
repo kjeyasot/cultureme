@@ -464,8 +464,8 @@ div[class='fields-group'] {
 
 .imagePop {
   display: inline-block;
-  width: 20vmax;
-  height: 20vmax;
+  width: 15vmax;
+  height: 15vmax;
   /* padding: 1vmin 1vmin; */
 }
 
@@ -657,4 +657,55 @@ div[class='fields-group'] {
 .Navbar.searchButtonNAV:hover {
   background: black;
   -webkit-appearance: none;
+}
+
+/* Testimonials */
+
+.img-circle {
+  height: 12vw;
+  display: block;
+ 
+  margin: 1em auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 5px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);  
+
+  /* transform: translateX(-50%);
+  margin-left: 50%; */
+}
+
+.TestimonialBlock {
+  /* margin: 1vh auto; */
+  /* left:22vw;
+  right:22vw; */
+  padding: 10vmin 10vmin;
+  margin: 8px 0;
+}
+.TestimonialName {
+  font-size: 2vmax;
+  font-weight:bold;
+  left:15vw;
+  font-family: Arial;
+  color: rgb(70, 69, 69)
+}
+
+.TestimonialOccupation {
+  font-size: 1.5vmax;
+  font-weight:bold;
+  left:15vw;
+  font-family: Arial;
+  color: rgb(11, 154, 236);
+}
+
+.TestimonialCmt {
+  
+  font-size: 1.3vmax;
+  
+  font-family: Arial;
+  color: black;
 }
