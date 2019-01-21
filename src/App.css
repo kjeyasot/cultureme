@@ -394,7 +394,7 @@ div[class='fields-group'] {
   box-sizing: border-box; 
   background-color: white;
   font-size: 1vmax;
-  text-align: center;
+  text-align: left;
   position: absolute;
   top: 40vh;
   left:20vw;
@@ -466,9 +466,21 @@ div[class='fields-group'] {
 
 .imagePop {
   display: inline-block;
-  width: 15vmax;
-  height: 15vmax;
-  border-radius: 50%;
+  width: 20vmax;
+  /* height: 15vmax; */
+  height: 20vw;
+  display: block;
+ 
+  margin: 1em auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* -webkit-border-radius: 99em;
+  -moz-border-radius: 99em; */
+  /* border-radius: 99em; */
+  border: 5px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3); 
+  /* border-radius: 70%; */
 border: 0px solid #000000;
   box-sizing: border-box; 
  overflow: hidden; 
@@ -477,9 +489,8 @@ border: 0px solid #000000;
 }
 
 .overlayPop {
-  width: 15vmax;
-  height: 15vmax;
-  border-radius: 50%;
+  width: 20vmax;
+  height: 20vmax;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -489,10 +500,26 @@ border: 0px solid #000000;
   transition: .5s ease;
   background-color: whitesmoke;
   padding: 1vmin 1vmin;
+  display: block;
+ 
+  margin: 1em auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* -webkit-border-radius: 99em;
+  -moz-border-radius: 99em; */
+  /* border-radius: 99em; */
+  border: 5px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3); 
+  /* border-radius: 70%; */
+border: 0px solid #000000;
+  box-sizing: border-box; 
+ overflow: hidden; 
 }
 
 .container1:hover .overlayPop {
   opacity: 0.9;
+
 }
 
 .text1 {

@@ -51,18 +51,18 @@ export class mainPage extends Component {
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
-        <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
+        {/* <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
         <img className="slide" alt="pic1" src={images['pic1.jpg']}/>
         <img className="slide" alt="pic3" src={images['pic3.jpg']}/>
         <img className="slide" alt="pic5" src={images['pic5.jpg']}/>
         <img className="slide" alt="pic12" src={images['pic12.jpg']}/>
-        <img className="slide" alt="pic13" src={images['pic13.jpg']}/>
+        <img className="slide" alt="pic13" src={images['pic13.jpg']}/> */}
         <img className="slide" alt="pic13" src={images['pic14.png']}/>
       </Slider>
       <img className="logoCM" alt="logo" src={images['logoCM.png']} />
       
       <div>
-      <input className = "search" type="text" placeholder="Search.." name="search"/>
+      <input className = "search" type="text" placeholder="Search Henna, Bridal Makeup, Saree Draping.." name="search"/>
        {/* Below link should be redirected to NEHAL's page */} 
        <Link to="/searchresults">
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
