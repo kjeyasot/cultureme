@@ -16,9 +16,11 @@ import "../../node_modules/slick-carousel/slick/slick-theme.css"
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import * as testimonials from './testimonials';
+
+const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
   
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
-let num = Object.keys(images).length-3;
+let num = Object.keys(images).length-1;
 var y = Math.floor(num * Math.random());
 
  
@@ -51,15 +53,19 @@ export class mainPage extends Component {
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
-        {/* <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
-        <img className="slide" alt="pic1" src={images['pic1.jpg']}/>
-        <img className="slide" alt="pic3" src={images['pic3.jpg']}/>
-        <img className="slide" alt="pic5" src={images['pic5.jpg']}/>
+        <img className="slide" alt="bridal" src={images['bridal.jpg']}/>
         <img className="slide" alt="pic12" src={images['pic12.jpg']}/>
-        <img className="slide" alt="pic13" src={images['pic13.jpg']}/> */}
+        <img className="slide" alt="pic13" src={images['pic13.jpg']}/>
         <img className="slide" alt="pic13" src={images['pic14.png']}/>
+        <img className="slide" alt="wed1" src={images['wed1.png']}/>
+        <img className="slide" alt="wed2" src={images['wed2.png']}/>
+        <img className="slide" alt="wed3" src={images['wed3.png']}/>
+        <img className="slide" alt="wed4" src={images['wed4.png']}/>
+        <img className="slide" alt="wed5" src={images['wed5.png']}/>
+
+
       </Slider>
-      <img className="logoCM" alt="logo" src={images['logoCM.png']} />
+      <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
       
       <div>
       <input className = "search" type="text" placeholder="Search Henna, Bridal Makeup, Saree Draping.." name="search"/>

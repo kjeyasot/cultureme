@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import * as script from '../scripts';
 
-const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
+const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 export class popServ extends Component {
    
