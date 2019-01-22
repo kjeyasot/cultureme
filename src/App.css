@@ -231,7 +231,6 @@ p1{
   text-underline-position: under */
   border-bottom: 0.4vmin solid currentColor
 
-
 }
 
 .containerM .signUpBtn:focus {
@@ -384,13 +383,57 @@ div[class='fields-group'] {
 }
 
 /* search bar and search button */
-.search {
-  width: 60vw;
+.nearMe {
+  width: 20vw;
   padding: 1vmin 1vmin;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid white;
   border-radius: 4px;
+  box-sizing: border-box; 
+  background-color: white;
+  font-size: 1vmax;
+  text-align: left;
+  position: absolute;
+  top: 40vh;
+  left:60vw;
+  height: 4.5vh;
+  border-left: 1px solid gray;
+  /* right: 50vw; */
+  /* left:50%; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  -webkit-appearance: none;
+
+}
+
+.nearMe input {
+  width: 80%;
+}
+
+/* .pnearMe{
+  text-align: left;
+  position: absolute;
+  top: 40vh;
+  left:59vw;
+  height: 1000vh;
+  color: #000000;
+ font-weight: bolder;
+
+  
+  
+} */
+
+
+
+/* search bar and search button */
+.search {
+  width: 39.5vw;
+  padding: 1vmin 1vmin;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid white;
+  border-radius: px;
   box-sizing: border-box; 
   background-color: white;
   font-size: 1vmax;
