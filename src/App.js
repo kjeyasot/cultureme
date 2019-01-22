@@ -4,6 +4,7 @@ import './App.css';
 import * as mainPage from './components/mainPage';
 import * as searchRes from './components/tempSearchRes';
 import * as serviceProvider from './components/serviceProvider';
+import * as signup from './components/signUp';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ class App extends Component {
             <Route exact={true} path="/" component={mainPage.mainPage} />
             <Route path="/searchresults" component={searchRes.searchRes} /> 
             <Route path="/signin" component={mainPage.mainPage} />
-            <Route path="/signup" component={mainPage.mainPage} />
+            <Route path="/signup" component={signup.signUpPage} />
             <Route path="/forgotpassword" component={mainPage.mainPage} />
             <Route path="/serviceProvider" component={serviceProvider.serviceProvider} />
 
