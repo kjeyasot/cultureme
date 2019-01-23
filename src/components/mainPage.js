@@ -66,10 +66,13 @@ export class mainPage extends Component {
       <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
       
       <div>
-     <div id="borderleft"></div>
+      
+      <div className="BackSearch"></div>
       <input className = "search" type="text" placeholder="Search Henna, Bridal Makeup, Saree Draping.." name="search"/>
       <input className = "nearMe" type="text" placeholder="Near" name="nearMe"/>
-       
+      <label className="searchlabel">Search</label>
+      {/* <img className="line" alt="line" src={images1['line.png']}/> */}
+   
        {/* Below link should be redirected to NEHAL's page */} 
        <Link to="/searchresults">
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
