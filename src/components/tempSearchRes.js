@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+// import '../App.css';
 import * as script from '../scripts';
 import {
   BrowserRouter as Router,
@@ -10,7 +10,7 @@ import {
 import * as modalComp from './modal';
 import Modal from "react-responsive-modal";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button ,FormGroup, FormControl} from 'react-bootstrap';
-const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
+const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 export class searchRes extends Component {
     state = {
         open: false
@@ -28,7 +28,7 @@ export class searchRes extends Component {
       const { open } = this.state;
         return (
           <div>
-<Navbar inverse >
+{/* <Navbar inverse >
   <Navbar.Header>
     <Navbar.Brand>
       <Link to = "/">
@@ -39,14 +39,7 @@ export class searchRes extends Component {
   </Navbar.Header>
   
  <div>
- {/* <input className = "searchbarNAV" type="text" placeholder="Search.." name="searchbarNAV"/>
-        <button className = "searchButtonNAV"type="submit">{()=>this.setState({ showModal1:true, showModal2:false, showModal3:false})}<i className="fa fa-search"></i></button>
-         */}
-
-      {/* //    <FormGroup>
-      //   <FormControl type="text" placeholder="Search" />
-      // </FormGroup>{' '}
-      // <Button type="submit">Submit</Button> */}
+ 
 
        <input className = "searchNAV" type="text" placeholder="Search.." name="search"/>
       
@@ -101,7 +94,55 @@ export class searchRes extends Component {
         </Link>
 </Nav>
  </Navbar.Collapse>
+</Navbar> */}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<Navbar inverse collapseOnSelect>
+  <Navbar.Header>
+    <Navbar.Brand>
+    <Link to = "/">
+      <img className="logo" src={images['logoCM.png']}  />
+      </Link>
+    </Navbar.Brand>
+    <Navbar.Toggle />
+  </Navbar.Header>
+
+  <Navbar.Collapse>
+  <Navbar.Form pullLeft>
+      <FormGroup>
+        <FormControl type="text" placeholder="Search" />
+      </FormGroup>{' '}
+      <Button type="submit">Submit</Button>
+    </Navbar.Form>
+    <Nav>
+      <NavItem eventKey={1} href="#">
+        Link
+      </NavItem>
+      <NavItem eventKey={2} href="#">
+        Link
+      </NavItem>
+      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+        <MenuItem eventKey={3.1}>Action</MenuItem>
+        <MenuItem eventKey={3.2}>Another action</MenuItem>
+        <MenuItem eventKey={3.3}>Something else here</MenuItem>
+        <MenuItem divider />
+        <MenuItem eventKey={3.3}>Separated link</MenuItem>
+      </NavDropdown>
+    </Nav>
+    <Nav pullRight>
+      <NavItem eventKey={1} href="#">
+        Link Right
+      </NavItem>
+      <NavItem eventKey={2} href="#">
+        Link Right
+      </NavItem>
+    </Nav>
+  </Navbar.Collapse>
 </Navbar>
+
+
+
 <Link to="/serviceProvider"> 
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
         </Link>

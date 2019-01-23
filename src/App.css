@@ -61,6 +61,16 @@ p2{
   /* width: 50vmax; */
 }
 
+p{
+  color:black;
+  font-size: 2.5vmax;
+  font-family: Arial;
+  text-align: center;
+  float: center;
+  font-style: italic;
+  /* width: 50vmax; */
+}
+
 u{
   color:black;
   font-size: 1.2vmax;
@@ -777,6 +787,7 @@ border: 0px solid #000000;
   -webkit-appearance: none;
 }
 
+
 /* Testimonials */
 
 .img-circle {
@@ -840,29 +851,38 @@ border: 0px solid #000000;
 
 .signUpMainModal {
   position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: 25vw;
+  top: 50vh;
+  transform: translateY(-50%);
   overflow: auto;
-  /* background-color: rgb(0, 0, 0); */
-  /* background-color: rgba(0, 0, 0, 0.4); */
+
+
 }
 
 .signUpPageBg {
   /* background-color: #fefefe; */
   /* background-color: rgba(255, 255, 255, 0.5); */
-  background:rgb(255, 255, 255, 0.4);  
-  margin: 8% auto;
-  padding: 55px;
-  width: 45%;
+  background-color: rgba(255,255,255,0.4);
+  margin: 8vmin auto;
+  padding: 4vmax;
+  width: 45vw;
 }
 .signUpPageFields {
   border-radius: 5px;
   padding: 5px;
   text-align: center;
   margin: auto;
-  width: 80%;
+  /* width: 80%; */
+}
+
+.popupLogo {
+  /* position: absolute;
+  top:3vw;
+  right:70vw;
+  left:5vw; */
+  height: 15vmin;
+  width: 15vmin;
+  /* transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); */
+  -webkit-appearance: none;
 }
