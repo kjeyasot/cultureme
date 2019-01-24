@@ -458,12 +458,12 @@ div[class='fields-group'] {
   /* -ms-transform: translate(-50%, -50%); */
   -webkit-appearance: none;
 }
-input {
+.search input {
   width: 400px;
   padding: 0 20px;
 }
 
-input,
+.search input,
 input::-webkit-input-placeholder {
   font-size: 1vw;
   line-height: 3;
