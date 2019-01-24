@@ -394,7 +394,7 @@ div[class='fields-group'] {
 
 /* search bar and search button */
 .nearMe {
-  width: 20vw;
+  width: 15.5vw;
   padding: 1vmin 1vmin;
   margin: 8px 0;
   display: inline-block;
@@ -406,7 +406,7 @@ div[class='fields-group'] {
   text-align: left;
   position: absolute;
   top: 40vh;
-  left:59vw;
+  left:63.5vw;
   height: 4.5vh;
   /* border-left: 1px solid gray; */
   /* right: 50vw; */
@@ -438,7 +438,7 @@ div[class='fields-group'] {
 
 /* search bar and search button */
 .search {
-  width: 38vw;
+  width: 27vw;
   padding: 1vmin 1vmin;
   margin: 8px 0;
   display: inline-block;
@@ -450,38 +450,92 @@ div[class='fields-group'] {
   text-align: left;
   position: absolute;
   top: 40vh;
-  left:20vw;
+  left:31vw;
   height: 4.5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */
   /* -ms-transform: translate(-50%, -50%); */
   -webkit-appearance: none;
+}
+input {
+  width: 400px;
+  padding: 0 20px;
+}
 
+input,
+input::-webkit-input-placeholder {
+  font-size: 1vw;
+  line-height: 3;
 }
-.search input {
-  width: 80%;
-}
+
 
 .BackSearch{
   background:  rgba(184, 172, 157, 0.932);
   top: 38.5vh;
   height: 7.5vh;
-  width: 66.5vw;
-  left: 19vw;
+  width: 62vw;
+  left: 23vw;
   position: absolute;
   margin: 8px 0;
-opacity: 0.7;
+  opacity: 0.7;
 
 }
 
 .searchlabel{
-  background:  white;
-  top: 40vh;
-  height: 4.5vh;
-  left: 17vw;
+  width: 6.5vw;
+  padding: 1vmin 1vmin;
   margin: 8px 0;
+  display: inline-block;
+  border: 1px solid white;
+  border-radius: px;
+  box-sizing: border-box; 
+  background-color: white;
+  font-size: 1vw;
+  /* font-size-adjust: 0.58; */
+  text-align: center;
   position: absolute;
+  top: 40vh;
+  left:24.5vw;
+  height: 4.5vh;
+  /* right: 50vw; */
+  /* left:50%; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  -webkit-appearance: none;
+  font-weight: bold;
+}
+.searchlabel:focus {
+  outline: 0;
+
+}
+
+.nearMelabel{
+  width: 4.5vw;
+  padding: 1vmin 1vmin;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid white;
+  border-radius: px;
+  box-sizing: border-box; 
+  background-color: white;
+  font-size: 1vw;
+  /* font-size-adjust: 0.58; */
+  text-align: center;
+  position: absolute;
+  top: 40vh;
+  left: 59vw;
+  height: 4.5vh;
+  /* right: 50vw; */
+  /* left:50%; */
+  /* transform: translate(-50%, -50%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  -webkit-appearance: none;
+  font-weight: bold;
+}
+.nearMelabel:focus {
+  outline: 0;
+
 }
 .line{
   /* width: 5vw;

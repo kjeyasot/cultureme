@@ -68,9 +68,14 @@ export class mainPage extends Component {
       <div>
       
       <div className="BackSearch"></div>
-      <input className = "search" type="text" placeholder="Search Henna, Bridal Makeup, Saree Draping.." name="search"/>
-      <input className = "nearMe" type="text" placeholder="Near" name="nearMe"/>
-      <label className="searchlabel">Search</label>
+      <div className="SearchLabelCss"></div>
+      <input type="text" className = "searchlabel" value="Search"  readonly="readonly"/>
+      
+      <input className = "search" type="text" placeholder="Henna, Bridal Makeup.." name="search"/>
+      <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/>
+      <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
+      {/* <label className="searchlabel" >Search</label> */}
+
       {/* <img className="line" alt="line" src={images1['line.png']}/> */}
    
        {/* Below link should be redirected to NEHAL's page */} 
