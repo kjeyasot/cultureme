@@ -905,7 +905,7 @@ border: 0px solid #000000;
 
 .signUpMainModal {
   position: fixed;
-  left: 25vw;
+  left: 30vw;
   top: 50vh;
   transform: translateY(-50%);
   overflow: auto;
@@ -919,7 +919,7 @@ border: 0px solid #000000;
   background-color: rgba(255,255,255,0.4);
   margin: 8vmin auto;
   padding: 4vmax;
-  width: 45vw;
+  width: 40vw;
 }
 .signUpPageFields {
   border-radius: 5px;

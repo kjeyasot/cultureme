@@ -25,17 +25,6 @@ var y = Math.floor(num * Math.random());
 
  
 export class mainPage extends Component {
-    state = {
-        open: false
-      };
-    
-      onOpenModal = () => {
-        this.setState({ open: true });
-      };
-    
-      onCloseModal = () => {
-        this.setState({ open: false });
-      };
 
     render(){
         const properties = {
@@ -49,7 +38,6 @@ export class mainPage extends Component {
             initialSlide:y,
               
             };
-            const { open } = this.state;
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
@@ -74,56 +62,17 @@ export class mainPage extends Component {
       <input className = "search" type="text" placeholder="Henna, Bridal Makeup.." name="search"/>
       <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/>
       <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
-      {/* <label className="searchlabel" >Search</label> */}
-
-      {/* <img className="line" alt="line" src={images1['line.png']}/> */}
-   
-       {/* Below link should be redirected to NEHAL's page */} 
+     
        <Link to="/searchresults">
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
        </Link>
        </div>
        
         <Link to="/signin">
-        <button className="signInBtn" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}>Sign In</button>
-        <Modal open={this.state.showSignIn} onClose={() => this.setState({ showSignIn:false, showSignUp:false, showForgotPw:false})} 
-        center className="testModal">
-        <div className="testModal">
-        <div className="content">
-        <modalComp.signInModal/>
-        <Link to="/forgotpassword">
-          <u onClick={()=>this.setState({ showSignIn:false, showSignUp:false, showForgotPw:true})}> Forgot Password?</u><br></br>
-          </Link>
-          <p1>Don't have an account?</p1>
-          <Link to="/signup">
-          <u id="signUpTxt" onClick={()=>this.setState({ showSignIn:false, showSignUp:true, showForgotPw:false})}> Sign Up </u> 
-          </Link>
-          </div>
-          </div>
-        </Modal>
+        <button className="signInBtn">Sign In</button>
         </Link>
         <Link to="/signup">
-        <button className="signUpBtn" onClick={()=>this.setState({ showSignIn:false, showSignUp:true, showForgotPw:false})}>Sign Up</button>
-        <Modal open={this.state.showSignUp} onClose={() => this.setState({ showSignUp:false, showSignIn:false, showForgotPw:false })} center>
-        <div className="testModal">
-        <div className="content">
-          <modalComp.signUpModal/>
-          <p1>Already have an account?</p1>
-          <Link to="/signin">
-          <u id="signInTxt" onClick={()=>this.setState({ showSignIn:true, showSignUp:false, showForgotPw:false})}> Sign In</u>
-          </Link>
-          </div>
-          </div>
-        </Modal>
-        </Link>
-        <Link to="/forgotpassword">
-        <Modal open={this.state.showForgotPw} onClose={() => this.setState({ showForgotPw:false, showSignIn:false, showSignUp:false})} center>
-        <div className="testModal">
-        <div className="content">
-          <modalComp.forgotPwModal/>
-        </div>
-        </div>
-        </Modal>
+        <button className="signUpBtn">Sign Up</button>
         </Link>
         {/* Sana's stuff should come here */}
         <popServ.popServ/>

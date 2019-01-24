@@ -19,10 +19,14 @@ export class signUpPage extends Component {
                 <p2> Join CultureMe</p2><br></br>
                 <Link to="/signup-serviceprovider">
                 <input className = 'submitBtn' type= 'submit' value= 'Providing a Service?'/>
-                </Link>                
+                </Link>    
+                <Link to="/signup-client">           
                 <input className = 'submitBtn' type= 'submit' value= 'Looking for a Service?' onclick="span()"/><br></br>
+                </Link>  
                 <p1>Already have an account?</p1>
+                <Link to="/signin">      
                 <u id="signInTxt"> Sign In</u>
+                </Link>  
             </div>
             </div>
 

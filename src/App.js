@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 // import * as modalComp from './components/modal';
-import * as mainPage from './components/mainPage';
-import * as searchRes from './components/tempSearchRes';
+// import * as mainPage from './components/mainPage';
+// import * as searchRes from './components/tempSearchRes';
 import * as serviceProvider from './components/serviceProvider';
-import * as signup from './components/signUpMain';
+// import * as signup from './components/signUpMain';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { signUpSP } from './components/signUpSP';
+import { signUpClient } from './components/signUpClient';
+import { mainPage } from './components/mainPage';
+import { searchRes } from './components/tempSearchRes';
+import { signUpPage } from './components/signUpMain';
+import { signIn } from './components/signIn';
+import { forgotpassword } from './components/forgotPw';
 
 class App extends Component {
   
@@ -18,18 +24,21 @@ class App extends Component {
         <header className="App-header">
         <div className="containerM" >
             <Switch>
-            <Route exact={true} path="/" component={mainPage.mainPage} />
-            <Route path="/searchresults" component={searchRes.searchRes} /> 
-            <Route path="/signin" component={mainPage.mainPage} />
-            <Route path="/signup" component={signup.signUpPage} />
+            <Route exact={true} path="/" component={mainPage} />
+            <Route path="/searchresults" component={searchRes} /> 
+            <Route path="/signup" component={signUpPage} />
             <Route path="/signup-serviceprovider" component={signUpSP} />
+            <Route path="/signup-client" component={signUpClient} />
+            <Route path="/signin" component={signIn} />
 
-            <Route path="/forgotpassword" component={mainPage.mainPage} />
+
+
+            <Route path="/forgotpassword" component={forgotpassword} />
             <Route path="/serviceProvider" component={serviceProvider.serviceProvider} />
 
-            <Route path="/signin1" component={searchRes.searchRes} />
+            {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
-            <Route path="/forgotpassword1" component={searchRes.searchRes} />
+            <Route path="/forgotpassword1" component={searchRes.searchRes} /> */}
 
           </Switch>
         </div>
