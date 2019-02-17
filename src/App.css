@@ -392,6 +392,10 @@ div[class='fields-group'] {
   background-color: rgba(221, 64, 104, 0.945);
   -webkit-appearance: none;
 }
+.submitBtn:disabled{
+  background-color: rgba(223, 115, 142, 0.945);
+  -webkit-appearance: none;
+}
 
 /* search bar and search button */
 .nearMe {
