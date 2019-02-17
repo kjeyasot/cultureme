@@ -112,7 +112,7 @@ export class signUpSP extends Component {
             <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onChange={this.handleChange} value={this.state.userName}/><br></br>
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" /><br></br>
             { this.state.password ? <h3>Password must contain the following:</h3> : ()=>{ document.getElementById('submitBtn').disable=true;}}
-           <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword} onclick={script.click}/><br></br>
+           <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br>
             <input id='submitBtn' className = 'submitBtn' type= 'submit' value= 'Sign Up' 
             disabled={!this.state.firstName||!this.state.lastName||!this.state.companyName||!this.state.email||!this.state.mobile||!this.state.postalCode||!this.state.userName||!this.state.password|| this.state.password!==this.state.confirmPassword}/><br></br>
             </form>
