@@ -37,8 +37,6 @@ export class signUpSP extends Component {
         // const test = CryptoJS.AES.decrypt(tempPw.toString(), 'secret key 123');
         // const pw = test.toString(CryptoJS.enc.Utf8);
         const pw = tempPw.toString();
-
-
         const serviceProviders = {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
@@ -111,22 +109,29 @@ export class signUpSP extends Component {
             <input className='field' id = 'postalCode' type = 'text' name='postalCode' placeholder = 'Postal Code' onChange={this.handleChange} value={this.state.postalCode}/><br></br>
             <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onChange={this.handleChange} value={this.state.userName}/><br></br>
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" /><br></br>
-            { this.state.password ? <h3>Password must contain the following:</h3> : ()=>{ document.getElementById('submitBtn').disable=true;}}
-           <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br>
+            { this.state.password ? <h3>Password must contain the following:</h3> : null}
+        
+            {(this.state.password && this.state.password.match(/[a-z]/g))?<p id="letter" className="valid">A <b>lowercase</b> letter</p>:null}
+            {(this.state.password && !this.state.password.match(/[a-z]/g))?<p id="letter" className="invalid">A <b>lowercase</b> letter</p>:null}
+
+            {(this.state.password && this.state.password.match(/[A-Z]/g))?<p id="capital" class="valid">A <b>capital (uppercase)</b> letter</p>:null}
+            {(this.state.password && !this.state.password.match(/[A-Z]/g))?<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>:null}
+
+            {(this.state.password && this.state.password.match(/[0-9]/g))? <p id="number" class="valid">A <b>number</b></p>:null}
+            {(this.state.password && !this.state.password.match(/[0-9]/g))?<p id="number" class="invalid">A <b>number</b></p>:null}
+
+            {(this.state.password && this.state.password.length>=8)? <p id="length" class="valid">Minimum <b>8 characters</b></p>:null}
+            {(this.state.password && this.state.password.length<8)?<p id="length" class="invalid">Minimum <b>8 characters</b></p>:null}
+
+           {/* <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br> */}
             <input id='submitBtn' className = 'submitBtn' type= 'submit' value= 'Sign Up' 
-            disabled={!this.state.firstName||!this.state.lastName||!this.state.companyName||!this.state.email||!this.state.mobile||!this.state.postalCode||!this.state.userName||!this.state.password|| this.state.password!==this.state.confirmPassword}/><br></br>
+            // disabled={!this.state.firstName||!this.state.lastName||!this.state.companyName||!this.state.email||!this.state.mobile||!this.state.postalCode||!this.state.userName||!this.state.password|| this.state.password!==this.state.confirmPassword}
+            /><br></br>
             </form>
         <p1>Already have an account?</p1>
         <Link to="/signin">   
             <u id="signInTxt"> Sign In</u>
         </Link>
-        {/* <div id="message" className='message'>
-  <h3>Password must contain the following:</h3>
-  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-  <p id="number" class="invalid">A <b>number</b></p>
-  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-</div> */}
             </div>
             </div>
             </div>
