@@ -37,7 +37,6 @@ export class signUpClient extends Component {
         // const pw = test.toString(CryptoJS.enc.Utf8);
         const pw = tempPw.toString();
 
-
         const clients = {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
@@ -45,7 +44,7 @@ export class signUpClient extends Component {
           mobile: this.state.mobile,
           userName: this.state.userName,
           password: pw,
-          confirmPassword: this.state.confirmPassword,
+        //   confirmPassword: this.state.confirmPassword,
         }
         clientsRef.push(clients);
         this.setState({
