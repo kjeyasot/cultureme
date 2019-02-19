@@ -16,6 +16,7 @@ import "../../node_modules/slick-carousel/slick/slick-theme.css"
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import * as testimonials from './testimonials';
+import firebase, { auth, provider } from '../firebase.js';
 
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
   
@@ -25,6 +26,54 @@ var y = Math.floor(num * Math.random());
 
  
 export class mainPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    }
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.readData = this.readData.bind(this);
+    this.login = this.login.bind(this); 
+    this.logout = this.logout.bind(this); 
+  }
+
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   this.props.history.push('/')
+  // }
+
+  logout() {
+    auth.signOut()
+    .then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  }
+
+  login() {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        this.setState({
+          user
+        });
+      });
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } 
+    });
+  }
+  readData() {
+    this.state.serviceProviders.map((sevProv) => {
+          //  testusername.push(sevProv.userName); 
+          //  testemail.push(sevProv.email);
+   })
+ }
 
     render(){
         const properties = {
@@ -67,13 +116,20 @@ export class mainPage extends Component {
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
        </Link>
        </div>
-       
+       {this.state.user ?
+       <div className='user-profile'>
+        <img src={this.state.user.photoURL} />
+        <button className="signInBtn" onClick={this.logout}>Logout</button>
+      </div>:
+      <div>
         <Link to="/signin">
         <button className="signInBtn">Sign In</button>
         </Link>
         <Link to="/signup">
         <button className="signUpBtn">Sign Up</button>
         </Link>
+        </div>
+        }
         {/* Sana's stuff should come here */}
         <popServ.popServ/>
         <testimonials.testimonials/>

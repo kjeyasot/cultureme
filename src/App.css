@@ -967,3 +967,9 @@ border: 0px solid #000000;
   left: -35px;
   content: "✖";
 }
+
+.pwWarning {
+  position: relative;
+  color: black
+  /* left: -35px; */
+}
