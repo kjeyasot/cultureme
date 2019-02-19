@@ -4,6 +4,7 @@ import * as script from '../scripts';
 import { Link } from 'react-router-dom';
 import firebase, { auth, provider } from '../firebase.js';
 import CryptoJS from "crypto-js";
+import { error } from 'util';
 
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 const emailReg = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/i;
@@ -29,6 +30,8 @@ export class signUpSP extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.readData = this.readData.bind(this);
+        this.signup = this.signup.bind(this);
+
 
 
       }
@@ -67,6 +70,7 @@ export class signUpSP extends Component {
           password: '',
           confirmPassword: ''
         });
+        this.signup();
         // this should be changed to service provider page
         this.props.history.push('/')
       }
@@ -90,6 +94,12 @@ export class signUpSP extends Component {
           });
       }
 
+      signup(){
+        // e.preventDefault();
+        auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+        }).catch((error)=>{console.log(error);
+      });
+      }
       componentDidMount() {
         const serviceProvidersRef = firebase.database().ref('serviceProviders');
         serviceProvidersRef.on('value', (snapshot) => {
@@ -126,6 +136,7 @@ export class signUpSP extends Component {
                 testemail.push(sevProv.email);
         })
       }
+    
 
   render() {
       

@@ -118,7 +118,8 @@ export class mainPage extends Component {
        </div>
        {this.state.user ?
        <div className='user-profile'>
-        <img src={this.state.user.photoURL} />
+        {/* <img src={this.state.user.photoURL} /> */}
+        <h3>{this.state.user.email}</h3>
         <button className="signInBtn" onClick={this.logout}>Logout</button>
       </div>:
       <div>
