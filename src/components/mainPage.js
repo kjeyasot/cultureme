@@ -23,10 +23,8 @@ const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 let num = Object.keys(images).length-1;
 var y = Math.floor(num * Math.random());
-let dbdata=[];
-let rooms;
-let whatever ;
-    let knows;
+let dbdata;
+let dbkey;
  
 export class mainPage extends Component {
   constructor() {
@@ -34,19 +32,11 @@ export class mainPage extends Component {
     this.state = {
       user: null
     }
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    this.readData = this.readData.bind(this);
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
     this.readdbData = this.readdbData.bind(this); 
 
   }
-
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.history.push('/')
-  // }
 
   logout() {
     auth.signOut()
@@ -67,51 +57,30 @@ export class mainPage extends Component {
       });
   }
   componentDidMount() {
-    // const dbRef = firebase.database().ref().child('serviceProviders');
-    // dbRef.on('value', snap => {
-    //   // console.log(snap.val());
-    //   // console.log('firebaseHolyArray: ', Object.values(snap.val()));
-    //    rooms = Object.values(snap.val()).map(function(obj) {
-    //     dbdata.push(obj)
-    //     return obj;
-    //   });
-    //   dbdata.push(Object.values(snap.val()))
-    //   // return rooms;
-    //   console.log(rooms);
-    // });
-
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
       } 
     });
   }
-  readData() {
-    this.state.serviceProviders.map((sevProv) => {
-          //  testusername.push(sevProv.userName); 
-          //  testemail.push(sevProv.email);
-   })
- }
+
  readdbData(email) {
   var user = firebase.auth().currentUser;
   firebase.database().ref().child('serviceProviders').orderByChild('email').equalTo(email).on("value", function(snapshot) {
-     whatever = snapshot.val();
-    // console.log(whatever.firstName);
+     dbdata = snapshot.val();
     snapshot.forEach(function(data) {
-        knows = data.key;
-        // console.log(data.key);
+        dbkey = data.key;
     });
-    if(knows){
-    rooms = whatever[knows].firstName;
-    var rooms1 = whatever[knows].lastName;
-    // return rooms;
+    if(dbkey){
+    var fname = dbdata[dbkey].firstName;
+    var lname = dbdata[dbkey].lastName;
     
     user.updateProfile({
-      displayName: rooms + " " + rooms1,
+      displayName: fname + " " + lname,
     })
   }
     
-});return rooms;
+});
 }
 
     render(){
@@ -126,7 +95,6 @@ export class mainPage extends Component {
             initialSlide:y,
               
             };
-            // console.log(this.readdbData("kno@kno.ca"))
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
@@ -137,8 +105,6 @@ export class mainPage extends Component {
         <img className="slide" alt="wed3" src={images['wed3.png']}/>
         <img className="slide" alt="wed4" src={images['wed4.png']}/>
         <img className="slide" alt="wed5" src={images['wed5.png']}/>
-
-
       </Slider>
       <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
       
@@ -161,9 +127,8 @@ export class mainPage extends Component {
        
        {this.readdbData(this.state.user.email)}
         {/* <img src={this.state.user.photoURL} /> */}
-        <h3>{this.state.user.email}</h3>
-        <div>{ this.state.user.displayName }</div>
-        <h3>i dont know</h3>
+        {this.state.user.email} <br></br>
+        { this.state.user.displayName }
         <button className="signInBtn" onClick={this.logout}>Logout</button>
       </div>:
       <div>
@@ -175,7 +140,6 @@ export class mainPage extends Component {
         </Link>
         </div>
         }
-        {/* Sana's stuff should come here */}
         <popServ.popServ/>
         <testimonials.testimonials/>
         <br>

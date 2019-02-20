@@ -15,10 +15,10 @@ export class signUpClient extends Component {
           firstName: '',
           lastName: '',
           email: '',
-          mobile: '',
-          userName: '',
+          // mobile: '',
+          // userName: '',
           password: '',
-          confirmPassword: '',
+          // confirmPassword: '',
           clients: []
         }
         this.handleChange = this.handleChange.bind(this);
@@ -41,8 +41,8 @@ export class signUpClient extends Component {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           email: this.state.email,
-          mobile: this.state.mobile,
-          userName: this.state.userName,
+          // mobile: this.state.mobile,
+          // userName: this.state.userName,
           password: pw,
         //   confirmPassword: this.state.confirmPassword,
         }
@@ -51,10 +51,10 @@ export class signUpClient extends Component {
           firstName: '',
           lastName: '',
           email: '',
-          mobile: '',
-          userName: '',
+          // mobile: '',
+          // userName: '',
           password: '',
-          confirmPassword: ''
+          // confirmPassword: ''
         });
       }
       componentDidMount() {
@@ -68,10 +68,10 @@ export class signUpClient extends Component {
             firstName: clients[client].firstName,
             lastName: clients[client].lastName,
             email: clients[client].email,
-            mobile: clients[client].mobile,
-            userName: clients[client].userName,
+            // mobile: clients[client].mobile,
+            // userName: clients[client].userName,
             password: clients[client].password,
-            confirmPassword: clients[client].confirmPassword,
+            // confirmPassword: clients[client].confirmPassword,
             });
           }
           this.setState({
@@ -99,10 +99,10 @@ export class signUpClient extends Component {
             <input className='field' id = 'first'type = 'text' name='firstName' placeholder = 'First Name' onChange={this.handleChange} value={this.state.firstName}/><br></br>
             <input className='field' id = 'last'type = 'text' name='lastName' placeholder = 'Last Name' onChange={this.handleChange} value={this.state.lastName}/><br></br>
             <input className='field' id = 'email'type = 'text' name='email' placeholder = 'E-mail' onChange={this.handleChange} value={this.state.email}/><br></br>
-            <input className='field' id = 'mobile'type = 'text' name='mobile' placeholder = 'Contact' onChange={this.handleChange} value={this.state.mobile}/><br></br>
-            <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onChange={this.handleChange} value={this.state.userName}/><br></br>
+            {/* <input className='field' id = 'mobile'type = 'text' name='mobile' placeholder = 'Contact' onChange={this.handleChange} value={this.state.mobile}/><br></br> */}
+            {/* <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onChange={this.handleChange} value={this.state.userName}/><br></br> */}
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
-            <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br>
+            {/* <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br> */}
             <input className = 'submitBtn' type= 'submit' value= 'Sign Up'/><br></br>
             </form>
           <p1>Already have an account?</p1>

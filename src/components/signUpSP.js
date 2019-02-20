@@ -9,9 +9,13 @@ import { error } from 'util';
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 const emailReg = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/i;
 const postReg = /^[ABCEGHJ-NPRSTVXY][0-9][ABCEGHJ-NPRSTV-Z] [0-9][ABCEGHJ-NPRSTV-Z][0-9]$/i;
-const phoneReg = /^[0-9]{3} [0-9]{3} [0-9]{4}$/i;
+const phoneReg = /^[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/i;
 let testusername = [];
 let testemail = [];
+let testCompany = [];
+let testPhone = [];
+
+
 export class signUpSP extends Component {
     constructor() {
         super();
@@ -22,9 +26,9 @@ export class signUpSP extends Component {
           email: '',
           mobile: '',
           postalCode: '',
-          userName: '',
+          // userName: '',
           password: '',
-          confirmPassword: '',
+          // confirmPassword: '',
           serviceProviders: []
         }
         this.handleChange = this.handleChange.bind(this);
@@ -54,7 +58,7 @@ export class signUpSP extends Component {
           email: this.state.email,
           mobile: this.state.mobile,
           postalCode: this.state.postalCode,
-          userName: this.state.userName,
+          // userName: this.state.userName,
           password: pw,
         //   confirmPassword: this.state.confirmPassword,
         }
@@ -66,9 +70,9 @@ export class signUpSP extends Component {
           email: '',
           mobile: '',
           postalCode: '',
-          userName: '',
+          // userName: '',
           password: '',
-          confirmPassword: ''
+          // confirmPassword: ''
         });
         this.signup();
         // this should be changed to service provider page
@@ -114,9 +118,9 @@ export class signUpSP extends Component {
             email: serviceProviders[sevProv].email,
             mobile: serviceProviders[sevProv].mobile,
             postalCode: serviceProviders[sevProv].postalCode,
-            userName: serviceProviders[sevProv].userName,
+            // userName: serviceProviders[sevProv].userName,
             password: serviceProviders[sevProv].password,
-            confirmPassword: serviceProviders[sevProv].confirmPassword,
+            // confirmPassword: serviceProviders[sevProv].confirmPassword,
             });
           }
           this.setState({
@@ -134,6 +138,9 @@ export class signUpSP extends Component {
          this.state.serviceProviders.map((sevProv) => {
                 testusername.push(sevProv.userName); 
                 testemail.push(sevProv.email);
+                testCompany.push(sevProv.companyName);
+                testPhone.push(sevProv.mobile);
+
         })
       }
     
@@ -152,20 +159,25 @@ export class signUpSP extends Component {
         <form onSubmit={this.handleSubmit}> 
             <input className='field' id = 'first'type = 'text' name='firstName' placeholder = 'First Name' onChange={this.handleChange} value={this.state.firstName}/><br></br>
             <input className='field' id = 'last'type = 'text' name='lastName' placeholder = 'Last Name' onChange={this.handleChange} value={this.state.lastName}/><br></br>
-            <input className='field' id = 'companyName'type = 'text' name='companyName' placeholder = 'Company Name' onChange={this.handleChange} value={this.state.companyName}/><br></br>
             
+            <input className='field' id = 'companyName'type = 'text' name='companyName' placeholder = 'Company Name' onChange={this.handleChange} value={this.state.companyName}/><br></br>
+            {(this.state.companyName && testCompany.indexOf(this.state.companyName)>-1)? <p id="letter" className="invalid">Company Name Already Exists</p> : null}
+
+
             <input className='field' id = 'email'type = 'email' name='email' placeholder = 'E-mail' onClick={this.readData} onChange={this.handleChange} value={this.state.email}/><br></br>
             {(this.state.email && !this.state.email.match(emailReg))? <p id="letter" className="invalid">Invalid <b>E-mail</b> Address (ex: abc@abc.com)</p>:null}
             {(this.state.email && testemail.indexOf(this.state.email)>-1)? <p id="letter" className="invalid">E-mail Address Already Exists</p> : null}
 
             <input className='field' id = 'mobile'type = 'text' name='mobile' placeholder = 'Contact' onChange={this.handleChange} value={this.state.mobile}/><br></br>
             {(this.state.mobile && !this.state.mobile.match(phoneReg))? <p id="letter" className="invalid">Invalid <b>Phone</b> Number (ex: 111 111 1111)</p>:null}
+            {(this.state.mobile && testPhone.indexOf(this.state.mobile)>-1)? <p id="letter" className="invalid">Contact Number Already Exists</p> : null}
+
 
             <input className='field' id = 'postalCode' type = 'text' name='postalCode' placeholder = 'Postal Code' onChange={this.handleChange} value={this.state.postalCode}/><br></br>
             {(this.state.postalCode && !this.state.postalCode.match(postReg))? <p id="letter" className="invalid">Invalid <b>Postal Code</b> (ex: M1B 3B6)</p>:null}
            
-            <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onClick={this.readData} onChange={this.handleChange} value={this.state.userName}/><br></br>
-           {(this.state.userName && testusername.indexOf(this.state.userName)>-1)? <p id="letter" className="invalid">Username Already Exists</p> : null}
+            {/* <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onClick={this.readData} onChange={this.handleChange} value={this.state.userName}/><br></br> */}
+           {/* {(this.state.userName && testusername.indexOf(this.state.userName)>-1)? <p id="letter" className="invalid">Username Already Exists</p> : null} */}
            
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
             { this.state.password ? <p className="pwWarning">Password must contain the following:</p> : null}
@@ -185,7 +197,8 @@ export class signUpSP extends Component {
            {/* <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br> */}
             
             <input id='submitBtn' className = 'submitBtn' type= 'submit' value= 'Sign Up' 
-            disabled={!this.state.firstName||!this.state.lastName||!this.state.companyName||!this.state.email.match(emailReg)||testemail.indexOf(this.state.email)>-1||!this.state.mobile.match(phoneReg)||!this.state.postalCode.match(postReg)||!this.state.userName||testusername.indexOf(this.state.userName)>-1||!this.state.password}
+            disabled={!this.state.firstName||!this.state.lastName||!this.state.companyName||testCompany.indexOf(this.state.companyName)>-1||!this.state.email.match(emailReg)||
+            testemail.indexOf(this.state.email)>-1||!this.state.mobile.match(phoneReg)||testPhone.indexOf(this.state.mobile)>-1||!this.state.postalCode.match(postReg)||!this.state.password}
             /><br></br>
             </form>
         

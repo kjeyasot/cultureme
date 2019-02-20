@@ -925,6 +925,11 @@ border: 0px solid #000000;
   margin: 8vmin auto;
   padding: 4vmax;
   width: 40vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
 }
 .signUpPageFields {
   border-radius: 5px;
