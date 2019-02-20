@@ -7,9 +7,10 @@ import CryptoJS from "crypto-js";
 import { error } from 'util';
 
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
-const emailReg = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/i;
+const emailReg = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
 const postReg = /^[ABCEGHJ-NPRSTVXY][0-9][ABCEGHJ-NPRSTV-Z] [0-9][ABCEGHJ-NPRSTV-Z][0-9]$/i;
 const phoneReg = /^[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/i;
+const letters = /^[A-Za-z]+$/;
 let testusername = [];
 let testemail = [];
 let testCompany = [];
@@ -31,9 +32,9 @@ export class signUpSP extends Component {
           // confirmPassword: '',
           serviceProviders: []
         }
+        this.readData = this.readData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.readData = this.readData.bind(this);
         this.signup = this.signup.bind(this);
 
 
@@ -43,6 +44,7 @@ export class signUpSP extends Component {
         this.setState({
           [e.target.name]: e.target.value
         });
+        this.readData();
       }
       handleSubmit(e) {
         e.preventDefault();
@@ -51,12 +53,13 @@ export class signUpSP extends Component {
         // const test = CryptoJS.AES.decrypt(tempPw.toString(), 'secret key 123');
         // const pw = test.toString(CryptoJS.enc.Utf8);
         const pw = tempPw.toString();
+        const phone = this.state.mobile.split(" ").join("");
         const serviceProviders = {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           companyName: this.state.companyName,
           email: this.state.email,
-          mobile: this.state.mobile,
+          mobile: phone,
           postalCode: this.state.postalCode,
           // userName: this.state.userName,
           password: pw,
@@ -158,25 +161,28 @@ export class signUpSP extends Component {
         <p2> Sign Up</p2><br></br>
         <form onSubmit={this.handleSubmit}> 
             <input className='field' id = 'first'type = 'text' name='firstName' placeholder = 'First Name' onChange={this.handleChange} value={this.state.firstName}/><br></br>
-            <input className='field' id = 'last'type = 'text' name='lastName' placeholder = 'Last Name' onChange={this.handleChange} value={this.state.lastName}/><br></br>
+            {(this.state.firstName && !this.state.firstName.match(letters))? <p id="letter" className="invalid">Invalid First Name</p>:null}
             
+            <input className='field' id = 'last'type = 'text' name='lastName' placeholder = 'Last Name' onChange={this.handleChange} value={this.state.lastName}/><br></br>
+            {(this.state.lastName && !this.state.lastName.match(letters))? <p id="letter" className="invalid">Invalid Last Name</p>:null}
+
             <input className='field' id = 'companyName'type = 'text' name='companyName' placeholder = 'Company Name' onChange={this.handleChange} value={this.state.companyName}/><br></br>
             {(this.state.companyName && testCompany.indexOf(this.state.companyName)>-1)? <p id="letter" className="invalid">Company Name Already Exists</p> : null}
 
 
-            <input className='field' id = 'email'type = 'email' name='email' placeholder = 'E-mail' onClick={this.readData} onChange={this.handleChange} value={this.state.email}/><br></br>
+            <input className='field' id = 'email'type = 'email' name='email' placeholder = 'E-mail'  onChange={this.handleChange} value={this.state.email}/><br></br>
             {(this.state.email && !this.state.email.match(emailReg))? <p id="letter" className="invalid">Invalid <b>E-mail</b> Address (ex: abc@abc.com)</p>:null}
             {(this.state.email && testemail.indexOf(this.state.email)>-1)? <p id="letter" className="invalid">E-mail Address Already Exists</p> : null}
 
             <input className='field' id = 'mobile'type = 'text' name='mobile' placeholder = 'Contact' onChange={this.handleChange} value={this.state.mobile}/><br></br>
             {(this.state.mobile && !this.state.mobile.match(phoneReg))? <p id="letter" className="invalid">Invalid <b>Phone</b> Number (ex: 111 111 1111)</p>:null}
-            {(this.state.mobile && testPhone.indexOf(this.state.mobile)>-1)? <p id="letter" className="invalid">Contact Number Already Exists</p> : null}
+            {(this.state.mobile && ((testPhone.indexOf(this.state.mobile)>-1)||(testPhone.indexOf(this.state.mobile.split(" ").join(""))>-1)))? <p id="letter" className="invalid">Contact Number Already Exists</p> : null}
 
 
             <input className='field' id = 'postalCode' type = 'text' name='postalCode' placeholder = 'Postal Code' onChange={this.handleChange} value={this.state.postalCode}/><br></br>
             {(this.state.postalCode && !this.state.postalCode.match(postReg))? <p id="letter" className="invalid">Invalid <b>Postal Code</b> (ex: M1B 3B6)</p>:null}
            
-            {/* <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username' onClick={this.readData} onChange={this.handleChange} value={this.state.userName}/><br></br> */}
+            {/* <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username'  onChange={this.handleChange} value={this.state.userName}/><br></br> */}
            {/* {(this.state.userName && testusername.indexOf(this.state.userName)>-1)? <p id="letter" className="invalid">Username Already Exists</p> : null} */}
            
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
@@ -197,8 +203,9 @@ export class signUpSP extends Component {
            {/* <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br> */}
             
             <input id='submitBtn' className = 'submitBtn' type= 'submit' value= 'Sign Up' 
-            disabled={!this.state.firstName||!this.state.lastName||!this.state.companyName||testCompany.indexOf(this.state.companyName)>-1||!this.state.email.match(emailReg)||
-            testemail.indexOf(this.state.email)>-1||!this.state.mobile.match(phoneReg)||testPhone.indexOf(this.state.mobile)>-1||!this.state.postalCode.match(postReg)||!this.state.password}
+            disabled={!this.state.firstName||!this.state.firstName.match(letters)||!this.state.lastName||!this.state.lastName.match(letters)||!this.state.companyName||testCompany.indexOf(this.state.companyName)>-1||!this.state.email.match(emailReg)||
+            testemail.indexOf(this.state.email)>-1||!this.state.mobile.match(phoneReg)||testPhone.indexOf(this.state.mobile)>-1||testPhone.indexOf(this.state.mobile.split(" ").join(""))>-1||!this.state.postalCode.match(postReg)||!this.state.password
+          ||!this.state.password.match(/[a-z]/g)||!this.state.password.match(/[A-Z]/g)||!this.state.password.match(/[0-9]/g)|| this.state.password.length<8}
             /><br></br>
             </form>
         
