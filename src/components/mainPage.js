@@ -83,14 +83,6 @@ export class mainPage extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
-        user.updateProfile({
-          displayName: rooms,
-          // photoURL: "https://example.com/jane-q-user/profile.jpg"
-        }).then(function() {
-          // Update successful.
-        }).catch(function(error) {
-          // An error happened.
-        });
       } 
     });
   }
