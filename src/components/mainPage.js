@@ -23,7 +23,10 @@ const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 let num = Object.keys(images).length-1;
 var y = Math.floor(num * Math.random());
-
+let dbdata=[];
+let rooms;
+let whatever ;
+    let knows;
  
 export class mainPage extends Component {
   constructor() {
@@ -36,6 +39,8 @@ export class mainPage extends Component {
     this.readData = this.readData.bind(this);
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
+    this.readdbData = this.readdbData.bind(this); 
+
   }
 
   // handleSubmit(e) {
@@ -62,9 +67,30 @@ export class mainPage extends Component {
       });
   }
   componentDidMount() {
+    // const dbRef = firebase.database().ref().child('serviceProviders');
+    // dbRef.on('value', snap => {
+    //   // console.log(snap.val());
+    //   // console.log('firebaseHolyArray: ', Object.values(snap.val()));
+    //    rooms = Object.values(snap.val()).map(function(obj) {
+    //     dbdata.push(obj)
+    //     return obj;
+    //   });
+    //   dbdata.push(Object.values(snap.val()))
+    //   // return rooms;
+    //   console.log(rooms);
+    // });
+
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+        user.updateProfile({
+          displayName: rooms,
+          // photoURL: "https://example.com/jane-q-user/profile.jpg"
+        }).then(function() {
+          // Update successful.
+        }).catch(function(error) {
+          // An error happened.
+        });
       } 
     });
   }
@@ -74,6 +100,21 @@ export class mainPage extends Component {
           //  testemail.push(sevProv.email);
    })
  }
+ readdbData(email) {
+  firebase.database().ref().child('serviceProviders').orderByChild('email').equalTo(email).on("value", function(snapshot) {
+     whatever = snapshot.val();
+    // console.log(whatever.firstName);
+    snapshot.forEach(function(data) {
+        knows = data.key;
+        // console.log(data.key);
+    });
+
+    rooms = whatever[knows].firstName;
+    console.log(rooms)
+
+    return rooms;
+});
+}
 
     render(){
         const properties = {
@@ -87,6 +128,7 @@ export class mainPage extends Component {
             initialSlide:y,
               
             };
+            // console.log(dbdata)
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
@@ -118,8 +160,11 @@ export class mainPage extends Component {
        </div>
        {this.state.user ?
        <div className='user-profile'>
+       {this.readdbData(this.state.user.email)}
         {/* <img src={this.state.user.photoURL} /> */}
         <h3>{this.state.user.email}</h3>
+        <div>{ this.state.user.displayName }</div>
+        <h3>i dont know</h3>
         <button className="signInBtn" onClick={this.logout}>Logout</button>
       </div>:
       <div>
