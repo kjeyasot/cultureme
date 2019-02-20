@@ -93,6 +93,7 @@ export class mainPage extends Component {
    })
  }
  readdbData(email) {
+  var user = firebase.auth().currentUser;
   firebase.database().ref().child('serviceProviders').orderByChild('email').equalTo(email).on("value", function(snapshot) {
      whatever = snapshot.val();
     // console.log(whatever.firstName);
@@ -100,12 +101,17 @@ export class mainPage extends Component {
         knows = data.key;
         // console.log(data.key);
     });
-
+    if(knows){
     rooms = whatever[knows].firstName;
-    console.log(rooms)
-
-    return rooms;
-});
+    var rooms1 = whatever[knows].lastName;
+    // return rooms;
+    
+    user.updateProfile({
+      displayName: rooms + " " + rooms1,
+    })
+  }
+    
+});return rooms;
 }
 
     render(){
@@ -120,7 +126,7 @@ export class mainPage extends Component {
             initialSlide:y,
               
             };
-            // console.log(dbdata)
+            // console.log(this.readdbData("kno@kno.ca"))
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
@@ -152,6 +158,7 @@ export class mainPage extends Component {
        </div>
        {this.state.user ?
        <div className='user-profile'>
+       
        {this.readdbData(this.state.user.email)}
         {/* <img src={this.state.user.photoURL} /> */}
         <h3>{this.state.user.email}</h3>
