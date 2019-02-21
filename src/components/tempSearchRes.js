@@ -13,10 +13,20 @@ const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|
   
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 export class searchRes extends Component {
-
+  myFunction() {
+    var x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  
     render() {
      
+     
         return (
+          
           <div class="nav">
           <div class="nav-header">
             <div class="nav-title">
@@ -34,9 +44,7 @@ export class searchRes extends Component {
      
       
        <button className = "searchButtonN"type="submit"><i className="fa fa-search"></i></button>
-      
-
-
+     
 
             </div> 
           </div>
@@ -51,8 +59,22 @@ export class searchRes extends Component {
           <input type="checkbox" id="nav-check" />
           <div class="nav-links">
            
-            <a href="/signin" >Log In</a>
-            <a href="/signup" >Sign Up</a>
+
+          {/*  */}
+ 
+    <input id="check01" type="checkbox" name="menu"/>
+    <label for="check01">
+  <a href="#" className="nav-item" onclick={this.myFunction} ><i class="fa fa-user"></i>        Profile      <i class="fa fa-caret-down"></i></a>
+  </label> 
+    <ul class="submenu">
+      <li><a href="#">Sotto menu 1</a></li>
+      <li><a href="#">Sotto menu 2</a></li>
+    </ul>
+ 
+
+ 
+            {/* <a href="/signin" >Sign In</a>
+            <a href="/signup" >Sign Up</a> */}
           </div>
              </div>
         );
