@@ -247,6 +247,46 @@ p1{
   outline: 0;
 
 }
+
+
+
+/*Provide a Service button on main page*/
+
+.containerM .PSBtn {
+  float: right;
+  transform: translate(-5vw, -72vh);
+  /* -ms-transform: translate(-80%, -1400%); */
+  background-color: Transparent;
+  color: white;
+  font-size: 1.5vmax;
+  font-weight: bold;
+  padding: 1vmin 1.5vmin;
+  border: none;
+  cursor: pointer;
+  /* border-radius: 5px; */
+  margin-right: 0.5vw;
+  -webkit-appearance: none;
+}
+
+.containerM .PSBtn:hover {
+  background-color:Transparent;
+  -webkit-appearance: none;
+  /* text-decoration: underline;
+  text-underline-position: under */
+  border-bottom: 0.4vmin solid currentColor
+
+}
+
+.containerM .PSBtn:focus {
+  outline: 0;
+
+}
+
+
+
+
+
+
 /* .container .logo1 {
   position: absolute;
   top: 25vh;

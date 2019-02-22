@@ -14,6 +14,7 @@ import { searchRes } from './components/tempSearchRes';
 import { signUpPage } from './components/signUpMain';
 import { signIn } from './components/signIn';
 import { forgotpassword } from './components/forgotPw';
+import { signInSP } from './components/signInSP';
 
 class App extends Component {
   
@@ -26,7 +27,7 @@ class App extends Component {
             <Switch>
             <Route exact={true} path="/" component={mainPage} />
             <Route path="/searchresults" component={searchRes} /> 
-            <Route path="/signup" component={signUpPage} />
+            {/* <Route path="/signup" component={signUpPage} /> */}
             <Route path="/signup-serviceprovider" component={signUpSP} />
             <Route path="/signup-client" component={signUpClient} />
             <Route path="/signin" component={signIn} />
@@ -35,6 +36,7 @@ class App extends Component {
 
             <Route path="/forgotpassword" component={forgotpassword} />
             <Route path="/serviceProvider" component={serviceProvider.serviceProvider} />
+            <Route path="/signInSP" component={signInSP}/>
 
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />

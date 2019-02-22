@@ -210,7 +210,7 @@ export class signUpSP extends Component {
             </form>
         
         <p1>Already have an account?</p1>
-        <Link to="/signin">   
+        <Link to="/signInSP">   
             <u id="signInTxt"> Sign In</u>
         </Link>
             </div>
