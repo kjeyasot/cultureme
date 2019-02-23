@@ -1,5 +1,7 @@
 // src/firebase.js
 import firebase from 'firebase'
+import 'firebase/storage'
+
 const config = {
   apiKey: "AIzaSyB7eKAbwSPuPB6tkuwlunu-K-1fVpggQrc",
   authDomain: "cultureme-867cc.firebaseapp.com",
@@ -11,4 +13,9 @@ const config = {
 firebase.initializeApp(config);
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const auth = firebase.auth();
-export default firebase;
+//export default firebase;
+
+const storage = firebase.storage();
+export {
+  storage, firebase as default
+};
