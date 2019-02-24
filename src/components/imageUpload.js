@@ -65,7 +65,7 @@ export class imageUpload extends Component {
         <br></br>
         <br></br>
 
-        <input type="file" onChange={this.handleChange}/>
+        <input type="file" onChange={this.handleChange} multiple/>
         <button onClick={this.handleUpload}>Upload</button>
         <br></br>
         <br></br>
