@@ -2,18 +2,23 @@ import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 
 export class Upload extends React.Component {
-    constructor(props){
-      super(props)
+    constructor(){
+      super()
       this.state = {
-        user: this.props.user,
+        user: null,
+        // user: firebase.auth().currentUser.uid,
+        // user: null,
         file: null,
-        url: null,
+        url: [],
         images: []
       }
+
       this.handleChange = this.handleChange.bind(this)
       this.storePhoto = this.storePhoto.bind(this)
       this.deletePhoto = this.deletePhoto.bind(this)
     }
+
+    
     handleChange(e) {
       this.setState({
         file: e.target.files[0],
@@ -21,11 +26,21 @@ export class Upload extends React.Component {
       })
     }
     storePhoto() {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+              this.setState({ user });
       const key = database.ref().child(this.state.user.uid).push().key
       const img = storage.ref().child(this.state.user.uid).child(key)
-      img.put(this.state.file).then((snap) => {
+    //   img.put(this.state.file).then((snap) => {
+    //         storage.ref(img).child(img.name).getDownloadURL().then(url => {
+        
+    //     console.log(url);
+    //     console.log(img)
+    //     this.setState({url});
+    img.put(this.state.file).then((snap) => {
+        console.log('test'+ snap.metadata.downloadURLs)
         database.ref().child(this.state.user.uid).child(key).set({
-          "url" : snap.metadata.downloadURLs[0]
+          "url" : 'lets see'
         })
       })
       
@@ -34,6 +49,10 @@ export class Upload extends React.Component {
         url: null,
       })
     }
+})
+}
+
+
     deletePhoto(event) {
       let uid = this.state.user.uid
       let img = event.target.name
@@ -41,7 +60,12 @@ export class Upload extends React.Component {
       database.ref().child(uid).child(img).remove()
     }
     componentDidMount() {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+              this.setState({ user });
+            
       const ref = database.ref().child(this.state.user.uid)
+    // const ref = this.state.user.uid;
       ref.on('child_added', (child) => {
         let images = this.state.images.slice()
         images.push({
@@ -56,6 +80,8 @@ export class Upload extends React.Component {
         })
         this.setState({images})
       })
+    } 
+});
     }
     render() {
       const previewStyle = {
@@ -68,7 +94,14 @@ export class Upload extends React.Component {
       }
       return (
         <div>
-          <input id="input" type="file" onChange={this.handleChange}/>
+            <div>
+            <h1>i dont know</h1>
+            {this.state.user ?
+            <div>
+            {this.state.user.uid}</div>: null
+        }
+            </div>
+          <input id="input" type="file" multiple onChange={this.handleChange}/>
           <img src={this.state.url} style={previewStyle}/>
           <button onClick={this.storePhoto}>upload</button>
           {this.state.images.map((image) =>
