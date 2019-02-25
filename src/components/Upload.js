@@ -40,7 +40,7 @@ export class Upload extends React.Component {
     img.put(this.state.file).then((snap) => {
         console.log('test'+ snap.metadata.downloadURLs)
         database.ref().child(this.state.user.uid).child(key).set({
-          "url" : 'lets see'
+          "url" : 'letssee'
         })
       })
       
