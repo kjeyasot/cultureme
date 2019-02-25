@@ -135,9 +135,14 @@ export class mainPage extends Component {
         <Link to="/signin">
         <button className="signInBtn">Sign In</button>
         </Link>
-        <Link to="/signup">
+        <Link to="/signup-client">
         <button className="signUpBtn">Sign Up</button>
         </Link>
+
+         <Link to="/signInSP">
+        <button className="PSBtn">Provide a Service</button>
+        </Link>
+
         </div>
         }
         <popServ.popServ/>
