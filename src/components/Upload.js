@@ -95,7 +95,8 @@ export class Upload extends React.Component {
       return (
         <div>
             <div>
-            <h1>i dont know</h1>
+            <h1>Step 2</h1>
+            <h2>Upload Photos of Recent Work</h2>
             {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
@@ -106,8 +107,9 @@ export class Upload extends React.Component {
           <button onClick={this.storePhoto}>upload</button>
           {this.state.images.map((image) =>
             <div key={image.key}>
+            <h1>{image.file}</h1>
             <progress value={this.state.progress} max="100"/>
-              <img src={image.url} style={imgStyle}/>
+              {/* <img src={this.state.url} style={imgStyle}/> */}
               <button onClick={this.deletePhoto} 
                  name={image.key}>remove</button>
             </div>
