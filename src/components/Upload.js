@@ -39,20 +39,22 @@ export class Upload extends React.Component {
     //     this.setState({url});
     
     // WORKING FOR DB
-    //img.put(this.state.file).then((snap) => {
-    //     console.log('test'+ snap.metadata.downloadURLs)
-    //     database.ref().child(this.state.user.uid).child(key).set({
-    //       "url" : 'letssee'
-    //     })
-    //   })
-
-      img.put(this.state.file).then((snap) => {
-          storage.ref(img).child(img.name).getDownloadURL().then(url => {
-            console.log(url);
-            console.log(img)
-            // this.setState({url});
+    img.put(this.state.file).then((snap) => {
+        // console.log('test'+ snap.metadata.downloadURLs)
+        storage.ref(this.state.user.uid).child(img.name).getDownloadURL().then(url => {
+        database.ref().child(this.state.user.uid).child(key).set({
+          "url" : url
         })
       })
+      })
+
+      // img.put(this.state.file).then((snap) => {
+      //     storage.ref(img).child(img.name).getDownloadURL().then(url => {
+      //       console.log(url);
+      //       console.log(img)
+      //       // this.setState({url});
+      //   })
+      // })
       
       this.setState({
         file: null,
@@ -119,7 +121,7 @@ export class Upload extends React.Component {
             <div key={image.key}>
             <h1>{image.file}</h1>
             <progress value={this.state.progress} max="100"/>
-              {/* <img src={this.state.url} style={imgStyle}/> */}
+              <img src={image.url} style={imgStyle}/>
               <button onClick={this.deletePhoto} 
                  name={image.key}>remove</button>
             </div>
