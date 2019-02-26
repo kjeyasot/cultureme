@@ -29,7 +29,7 @@ export class Upload extends React.Component {
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
-      const key = database.ref().child(this.state.user.uid).push().key
+      const key = database.ref().child('Photos').child(this.state.user.uid).push().key
       const img = storage.ref().child(this.state.user.uid).child(key)
     //   img.put(this.state.file).then((snap) => {
     //         storage.ref(img).child(img.name).getDownloadURL().then(url => {
@@ -42,7 +42,7 @@ export class Upload extends React.Component {
     img.put(this.state.file).then((snap) => {
         // console.log('test'+ snap.metadata.downloadURLs)
         storage.ref(this.state.user.uid).child(img.name).getDownloadURL().then(url => {
-        database.ref().child(this.state.user.uid).child(key).set({
+        database.ref().child('Photos').child(this.state.user.uid).child(key).set({
           "url" : url
         })
       })
@@ -76,7 +76,7 @@ export class Upload extends React.Component {
             if (user) {
               this.setState({ user });
             
-      const ref = database.ref().child(this.state.user.uid)
+      const ref = database.ref().child('Photos').child(this.state.user.uid)
     // const ref = this.state.user.uid;
       ref.on('child_added', (child) => {
         let images = this.state.images.slice()
