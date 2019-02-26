@@ -1,120 +1,26 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0px;
-    font-family: 'segoe ui';
-  }
-  
-  .nav {
-    height: 50px;
-    width: 100%;
-    background-color: black;
-    position: relative;
-  }
-  
-  .nav > .nav-header {
-    display: inline;
-  }
-  
-  .nav > .nav-header > .nav-title {
-    display: inline-block;
-    font-size: 22px;
-    color:black;
-    padding: 10px 10px 10px 10px;
-  }
- 
-  .nav > .nav-header > .nav-title > .N > .lnav{
-    display: block;
-    padding: 1px 1px 7px 1px;
+.lnav{
+    /* padding: 1px 1px 7px 1px; */
     height: 45px;
   width: 45px;
-  
+  /* position: relative; */
+  padding-left: 0px;
+  /* padding-top: 0px;
+  padding-bottom: 0px; */
+  left: 5px;
+  bottom: 3px;
   }
  
-  
-  .nav > .nav-btn {
-    display: none;
-  }
-  
-  .nav > .nav-links {
-    display: inline;
-    float: right;
-    font-size: 18px;
-  }
-  
-  .nav > .nav-links > a {
-    display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: #bebebe;
-  }
-  
-  .nav > .nav-links > a:hover {
-    color:white;
-  text-decoration: none;
-  cursor: pointer;
-  }
-  
-  .nav > #nav-check {
-    display: none;
-  }
-  
-  @media (max-width:600px) {
-    .nav > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 0px;
-      top: 0px;
-    }
-    .nav > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
-    }
-    .nav > .nav-btn > label:hover {
-      background-color: rgb(37, 37, 37)
-    }
-    .nav > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 2px solid #eee;
-    }
-    .nav > .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-color: #333;
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 50px;
-      left: 0px;
-    }
-    .nav > .nav-links > a {
-      display: block;
-      width: 100%;
-    }
-    .nav > #nav-check:not(:checked) + .nav-links {
-      height: 0px;
-    }
-    .nav > #nav-check:checked + .nav-links {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
-    }
+  .nav-link {
+    font-size: 20px;
   }
 
-
-
+  
 
 
 
   /* search bar and search button */
 .nearMeN {
-  width: 15.5vw;
+  width: 11vw;
   padding: 1vmin 1vmin;
   margin: 8px 0;
   display: inline-block;
@@ -125,9 +31,9 @@
   font-size: 1vmax;
   text-align: left;
   position: absolute;
-  top: 4px;
-  left:52.7vw;
-  height: 3.5vh;
+  top: 10px;
+  left:39.7vw;
+  height: 4.5vh;
   -webkit-appearance: none;
 
 }
@@ -139,7 +45,7 @@
 
 /* search bar and search button */
 .searchN {
-  width: 25vw;
+  width: 12vw;
   padding: 1vmin 1vmin;
   margin: 8px 0;
   display: inline-block;
@@ -150,9 +56,9 @@
   font-size: 1vmax;
   text-align: left;
   position: absolute;
-  top: 4px;
+  top: 10px;
   left:23vw;
-  height: 3.5vh;
+  height: 4.5vh;
  
   -webkit-appearance: none;
 }
@@ -180,9 +86,9 @@ input::-webkit-input-placeholder {
   
   text-align: center;
   position: absolute;
-  top: 4px;
+  top: 10px;
   left:18vw;
-  height: 3.5vh;
+  height: 4.5vh;
     -webkit-appearance: none;
   font-weight: bold;
 }
@@ -204,9 +110,9 @@ input::-webkit-input-placeholder {
   /* font-size-adjust: 0.58; */
   text-align: center;
   position: absolute;
-  top: 4px;
-  left: 48.2vw;
-  height: 3.5vh;
+  top: 10px;
+  left: 35.2vw;
+  height: 4.5vh;
     -webkit-appearance: none;
   font-weight: bold;
 }
@@ -216,10 +122,10 @@ input::-webkit-input-placeholder {
 }
 
 .searchButtonN {
-  top: 3.7px;
-  left: 68.3vw;
+  top: 9px;
+  left: 51vw;
   width:4vw;
-  height:3.6vh;
+  height:4.6vh;
   margin: 8px 0;
   /* left:20vw; */
   position: absolute;

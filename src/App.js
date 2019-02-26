@@ -16,6 +16,7 @@ import { signIn } from './components/signIn';
 import { forgotpassword } from './components/forgotPw';
 import { imageUpload } from './components/imageUpload';
 import { signInSP } from './components/signInSP';
+import { navstuff } from './components/nav-boots';
 
 class App extends Component {
   
@@ -37,6 +38,7 @@ class App extends Component {
             <Route path="/serviceProvider" component={serviceProvider.serviceProvider} />
             <Route path="/imageUpload" component={imageUpload} />
             <Route path="/signInSP" component={signInSP}/>
+            <Route path="/navstuff" component={navstuff}/>
 
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
