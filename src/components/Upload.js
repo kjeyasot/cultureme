@@ -39,20 +39,20 @@ export class Upload extends React.Component {
     //     this.setState({url});
     
     // WORKING FOR DB
-    //img.put(this.state.file).then((snap) => {
-    //     console.log('test'+ snap.metadata.downloadURLs)
-    //     database.ref().child(this.state.user.uid).child(key).set({
-    //       "url" : 'letssee'
-    //     })
-    //   })
-
-      img.put(this.state.file).then((snap) => {
-          storage.ref(img).child(img.name).getDownloadURL().then(url => {
-            console.log(url);
-            console.log(img)
-            // this.setState({url});
+    img.put(this.state.file).then((snap) => {
+        console.log('test'+ snap.metadata.downloadURLs)
+        database.ref().child(this.state.user.uid).child(key).set({
+          "url" : 'letssee'
         })
       })
+
+    //   img.put(this.state.file).then((snap) => {
+    //       storage.ref(img).child(img.name).getDownloadURL().then(url => {
+    //         console.log(url);
+    //         console.log(img)
+    //         // this.setState({url});
+    //     })
+    //   })
       
       this.setState({
         file: null,
