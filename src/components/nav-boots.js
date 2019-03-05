@@ -39,7 +39,7 @@ export class navstuff extends Component {
   render() {
     return (
       <div>
-        <Navbar color="dark"  className="navbar-dark navbar-expand-sm font-weight-bold" light expand="md">
+        <Navbar color="dark"  className="navbar-dark font-weight-bold" light expand="xl">
           <NavbarBrand  href="/"> <img className="lnav" alt="logo" src={images1['logoCM.png']} /></NavbarBrand>
          
           <div>
@@ -57,13 +57,11 @@ export class navstuff extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
+
             <Nav className="ml-auto" navbar >
             <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">Provide a Service</NavLink>
               </NavItem>
-
-
-
                 <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">Sign Up</NavLink>
               </NavItem>
@@ -92,6 +90,9 @@ export class navstuff extends Component {
           </Collapse>
         </Navbar>
       </div>
+
+
+
     );
   }
 }

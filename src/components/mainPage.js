@@ -17,6 +17,7 @@ import "../../node_modules/slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
 import * as testimonials from './testimonials';
 import firebase, { auth, provider } from '../firebase.js';
+import * as footer1 from './footer-nav';
 
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
   
@@ -147,11 +148,8 @@ export class mainPage extends Component {
         }
         <popServ.popServ/>
         <testimonials.testimonials/>
-        <br>
-        </br>
-        <br>
-        </br>
-        <footer.footer/>
+    
+        <footer1.footer1/>
       </div>
 
       

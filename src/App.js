@@ -17,6 +17,8 @@ import { forgotpassword } from './components/forgotPw';
 import { imageUpload } from './components/imageUpload';
 import { signInSP } from './components/signInSP';
 import { navstuff } from './components/nav-boots';
+import { footer1 } from './components/footer-nav';
+import { SPChooseService } from './components/SPChooServ';
 
 class App extends Component {
   
@@ -39,6 +41,7 @@ class App extends Component {
             <Route path="/imageUpload" component={imageUpload} />
             <Route path="/signInSP" component={signInSP}/>
             <Route path="/navstuff" component={navstuff}/>
+            <Route path="/choose-service" component={SPChooseService}/>
 
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
