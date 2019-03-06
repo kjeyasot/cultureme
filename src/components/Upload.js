@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
+
 export class Upload extends React.Component {
     constructor(){
       super()
@@ -96,15 +97,14 @@ export class Upload extends React.Component {
     }
     render() {
       const previewStyle = {
-        maxHeight: "150px",
-        maxWidth: "150px"
+        maxHeight: "100px",
+        maxWidth: "100px"
       }
       const imgStyle = {
-        maxHeight: "150px",
-        maxWidth: "150px",
-        paddingRight: "20px",
-        paddingBottom: "20px"
+        maxHeight: "250px",
+        maxWidth: "250px"
       }
+
 
       return (
         <div>
@@ -124,25 +124,21 @@ export class Upload extends React.Component {
         width = "250"
         alignItems = "middle"
         />
-
-       
-          </div>
-          <div class = "upload-btn-wrapper">
-          <input class = "btn" id="input" type="file" multiple onChange={this.handleChange}/>
-          </div>
+            </div>
+          <input id="input" type="file" multiple onChange={this.handleChange}/>
           <h3>Image Preview</h3>
-          <img src= {this.state.url || 'https://impacttheory.com/wp-content/uploads/2018/11/placeholder.png'} height="300" width="400"/>
-          <br></br>
-          <button class = "btn" onClick={this.storePhoto}>Upload</button>
-   
+          <img src={this.state.url} style={previewStyle}/>
+          <button onClick={this.storePhoto}>Upload</button>
           <br></br>
           <h2>Uploaded Images</h2>
           {this.state.images.map((image) =>
             <div key={image.key}>
             {/* <h1>{image.file}</h1> */}
               <img src={image.url} style={imgStyle}/>
-              <button class = "btn2" onClick={this.deletePhoto} 
-                 name={image.key}>Remove</button>
+              <progress value={this.state.progress} max="100"/>
+              <br></br>
+              <button onClick={this.deletePhoto} 
+                 name={image.key}>remove</button>
             </div>
           )}
         </div>
