@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
-import * as script from '../scripts';
-const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
-
 export class Upload extends React.Component {
     constructor(){
       super()
@@ -119,9 +116,7 @@ export class Upload extends React.Component {
             {this.state.user.uid}</div>: null
 
         }
-          </div>
 
-        <div>
         <img 
         src="https://cdn.pixabay.com/photo/2017/01/18/17/39/cloud-computing-1990405__340.png"
         alt="Cloud"
@@ -129,25 +124,20 @@ export class Upload extends React.Component {
         width = "250"
         alignItems = "middle"
         />
-      </div>
-        
-      <div>
-         <img alt="sideImage" src={images['cool.png']} style={{float:'right'}}/>
-      </div>
-          
-        <div class = "upload-btn-wrapper" >
+
+       
+          </div>
+          <div class = "upload-btn-wrapper">
           <input class = "btn" id="input" type="file" multiple onChange={this.handleChange}/>
-        </div>
-        <h3>Image Preview</h3>
-        <div>
-        <img src= {'https://impacttheory.com/wp-content/uploads/2018/11/placeholder.png'||this.state.url} height="300" width="400" />
-        </div>
-        <br></br>
-        <button class = "btn" onClick={this.storePhoto} >Upload</button>
+          </div>
+          <h3>Image Preview</h3>
+          <img src= {this.state.url || 'https://impacttheory.com/wp-content/uploads/2018/11/placeholder.png'} height="300" width="400"/>
+          <br></br>
+          <button class = "btn" onClick={this.storePhoto}>Upload</button>
    
-        <br></br>
-        <h2>Uploaded Images</h2>
-        {this.state.images.map((image) =>
+          <br></br>
+          <h2>Uploaded Images</h2>
+          {this.state.images.map((image) =>
             <div key={image.key}>
             {/* <h1>{image.file}</h1> */}
               <img src={image.url} style={imgStyle}/>
@@ -155,7 +145,7 @@ export class Upload extends React.Component {
                  name={image.key}>Remove</button>
             </div>
           )}
-           </div>
+        </div>
       );
     }
   }
