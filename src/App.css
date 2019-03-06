@@ -1023,38 +1023,73 @@ border: 0px solid #000000;
 Adjusting create and view service icons and text */
 
 .btn12 {
-  background-color: palevioletred;
+  background-color:  #fa7392;
   border: none;
   color: white;
   /* padding: 13vh 16vh; */
-  font-size: 16px;
+  font-size: 4vh;
   cursor: pointer;
-  height: 30vh;
-  width: 30vh;
-  margin: 5px;
+  height: 35vh;
+  width: 50vh;
+  margin: 3vh;
 }
+
+/* .threeicons .fa-plus{
+  top: 50vh;
+left: 10vh;
+  color: white;
+} */
 
 /* Darker background on mouse-over */
 .btn12:hover {
-  background-color: RoyalBlue;
+  background-color: rgba(240, 69, 111, 0.945);
 }
 
 /* 
 Coolgyal Image adjusting */
-.CoolGyal .CoolGyalImg{
+.CoolGyalImg{
     /* position: relative; */
-    height: 50vh;
-    width: 40vh;
-    -webkit-appearance: none;
-  
+    height: 50vw;
+    width: 25vw;
+    /* -webkit-appearance: none; */
+}
+.CoolGyal .CoolGyalImg{
+
+  top: 0vh;
+  left: 13vh;
+  margin-left: 0px;
+ 
+
 }
 
 .threeicons{
 
   display: inline-block;
   position: relative;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
+  top: 0vh;
+  left: 80vh;
   margin-left: -100px;
+}
+
+/* Footer Setting */
+
+.mainpagefooter{
+  flex: 1 0 auto;
+ -webkit-flex: 1 0 auto;
+ min-height: -100%;
+ /* margin-top: 28.5vh; */
+}
+
+.spfooter{
+  flex: 1 0 auto;
+ -webkit-flex: 1 0 auto;
+ min-height: -100%;
+ /* margin-top: 28.5vh; */
+
+}
+
+.icon-plus {
+  text-align: center;
+  padding-top: 1.5vh;
+  padding-bottom: 16px;
 }

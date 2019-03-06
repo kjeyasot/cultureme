@@ -9,7 +9,6 @@ import {
 import Modal from "react-responsive-modal";
 import * as modalComp from './modal';
 import * as popServ from './popularServices';
-import * as footer from './footer';
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css"
 // import "/users/ER/cultureme/node_modules/slick-carousel/slick/slick.css";
@@ -18,6 +17,7 @@ import Slider from "react-slick";
 import * as testimonials from './testimonials';
 import firebase, { auth, provider } from '../firebase.js';
 import * as footer1 from './footer-nav';
+// import '../App.css';
 
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
   
@@ -148,8 +148,9 @@ export class mainPage extends Component {
         }
         <popServ.popServ/>
         <testimonials.testimonials/>
-    
+    <div className="mainpagefooter">
         <footer1.footer1/>
+        </div>
       </div>
 
       
