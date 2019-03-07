@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 
+
 import * as script from '../scripts';
 const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 
@@ -120,14 +121,23 @@ export class Upload extends React.Component {
           <div class="upload-btn-wrapper">
           <button className = "btn" onClick={this.storePhoto}>Upload</button>
           </div>
+
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
+            <div class="row">
+                <div class="column">
               <img src={image.url} style={imgStyle}/>
               <button className = "removeButton" onClick={this.deletePhoto} 
                  name={image.key}>X</button>
+
+                             </div>
+              </div>
             </div>
           )}
+          <div>
+          <button className = "doneButton" style={{float:'center'}}>Done</button>
+          </div>
         </div>
     </div>
       );
