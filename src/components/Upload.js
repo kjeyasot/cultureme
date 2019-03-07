@@ -101,11 +101,9 @@ export class Upload extends React.Component {
         maxWidth: "100px"
       }
       const imgStyle = {
-        maxHeight: "250px",
-        maxWidth: "250px"
+        maxHeight: "400px",
+        maxWidth: "400px"
       }
-
-
       return (
         <div>
             <div>
@@ -114,29 +112,16 @@ export class Upload extends React.Component {
             {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
-
         }
-
-        <img 
-        src="https://cdn.pixabay.com/photo/2017/01/18/17/39/cloud-computing-1990405__340.png"
-        alt="Cloud"
-        height = "200"
-        width = "250"
-        alignItems = "middle"
-        />
             </div>
           <input id="input" type="file" multiple onChange={this.handleChange}/>
-          <h3>Image Preview</h3>
           <img src={this.state.url} style={previewStyle}/>
-          <button onClick={this.storePhoto}>Upload</button>
-          <br></br>
-          <h2>Uploaded Images</h2>
+          <button onClick={this.storePhoto}>upload</button>
           {this.state.images.map((image) =>
             <div key={image.key}>
-            {/* <h1>{image.file}</h1> */}
+            <h1>{image.file}</h1>
+            <progress value={this.state.progress} max="100"/>
               <img src={image.url} style={imgStyle}/>
-              <progress value={this.state.progress} max="100"/>
-              <br></br>
               <button onClick={this.deletePhoto} 
                  name={image.key}>remove</button>
             </div>
