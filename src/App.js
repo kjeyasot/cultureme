@@ -19,6 +19,7 @@ import { signInSP } from './components/signInSP';
 import { navstuff } from './components/nav-boots';
 import { footer1 } from './components/footer-nav';
 import { SPChooseService } from './components/SPChooServ';
+import { SPService } from './components/SPServices';
 
 class App extends Component {
   
@@ -42,7 +43,7 @@ class App extends Component {
             <Route path="/signInSP" component={signInSP}/>
             <Route path="/navstuff" component={navstuff}/>
             <Route path="/choose-service" component={SPChooseService}/>
-
+            <Route path="/your-services" component={SPService}/>
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
             <Route path="/forgotpassword1" component={searchRes.searchRes} /> */}
