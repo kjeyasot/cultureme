@@ -103,8 +103,9 @@ export class Upload extends React.Component {
         }
         </div>
         <div>
-          <img className="coolGirl" alt="coolGirl" src={images['cool.png']} />
-          </div>
+         <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '150px'}}/>
+      </div>
+
           <input id="input" type="file" multiple onChange={this.handleChange}/>
           <img src={this.state.url || 'http://via.placeholder.com/400x300'} style={previewStyle}/>
           <button onClick={this.storePhoto}>upload</button>
