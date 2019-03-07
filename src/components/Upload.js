@@ -92,26 +92,29 @@ export class Upload extends React.Component {
       const imgStyle = {
         maxHeight: "150px",
         maxWidth: "150px",
-        float:'middle'
+        float:'middle',
+        paddingRight: "15px"
       }
 
       return (
       <div class = "moveElements">
         <div>
             <div>
-            <h1 style={{float:'middle'}}>Step 2</h1>
-            <h2>Upload Photos of Recent Work</h2>
+            <h1 style={{float:'middle', fontFamily:"Arial"}}>Step 2</h1>
+            <h2 style={{float:'middle', fontFamily:"Arial"}}>Upload Photos of Recent Work</h2>
             {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
         }
         </div>
         <div>
-         <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '250px'}}/>
+         <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '350px', paddingBotton: '150px'}}/>
       </div>
           <input className = "btn" id="input" type="file" multiple onChange={this.handleChange}/>
+          <br></br>
           <div>
-          <img src={this.state.url || 'http://via.placeholder.com/400x300'} height="150px" width="250px" style={{float:'center', paddingRight: '150px'}}/>
+          <img src={this.state.url ||'http://via.placeholder.com/400x300'}height="350px" width="550px" style={{float:'center', paddingRight: '200px'}}/>
+
           </div>
           <br></br>
           <div class="upload-btn-wrapper">

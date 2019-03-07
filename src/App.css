@@ -1027,7 +1027,17 @@ border: 0px solid #000000;
 }
 
 
-
+.removeButton {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .upload-btn-wrapper {
   position: relative;
