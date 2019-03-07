@@ -29,8 +29,8 @@ export class Upload extends React.Component {
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
-      const key = database.ref().child(this.state.user.uid).push().key
-      const img = storage.ref().child(this.state.user.uid).child(key)
+      const key = database.ref().child('Photos').child(this.state.user.uid).push().key
+      const img = storage.ref().child('Images').child(this.state.user.uid).child(key)
     //   img.put(this.state.file).then((snap) => {
     //         storage.ref(img).child(img.name).getDownloadURL().then(url => {
         
@@ -41,8 +41,8 @@ export class Upload extends React.Component {
     // WORKING FOR DB
     img.put(this.state.file).then((snap) => {
         // console.log('test'+ snap.metadata.downloadURLs)
-        storage.ref(this.state.user.uid).child(img.name).getDownloadURL().then(url => {
-        database.ref().child(this.state.user.uid).child(key).set({
+        storage.ref().child('Images').child(this.state.user.uid).child(img.name).getDownloadURL().then(url => {
+        database.ref().child('Photos').child(this.state.user.uid).child(key).set({
           "url" : url
         })
       })
@@ -68,15 +68,17 @@ export class Upload extends React.Component {
     deletePhoto(event) {
       let uid = this.state.user.uid
       let img = event.target.name
-      storage.ref().child(uid).child(img).delete()
-      database.ref().child(uid).child(img).remove()
+      storage.ref().child('Images').child(uid).child(img).delete()
+      database.ref().child('Photos').child(this.state.user.uid).remove()
+
     }
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
-            
-      const ref = database.ref().child(this.state.user.uid)
+      
+      const ref = database.ref().child('Photos').child(this.state.user.uid)
+      // const ref = database.ref().child(this.state.user.uid)
     // const ref = this.state.user.uid;
       ref.on('child_added', (child) => {
         let images = this.state.images.slice()
@@ -120,7 +122,7 @@ export class Upload extends React.Component {
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
-            <progress value={this.state.progress} max="100"/>
+            {/* <progress value={this.state.progress} max="100"/> */}
               <img src={image.url} style={imgStyle}/>
               <button onClick={this.deletePhoto} 
                  name={image.key}>remove</button>
