@@ -114,12 +114,13 @@ export class Upload extends React.Component {
           <div>
           <img src={this.state.url || 'http://via.placeholder.com/400x300'} height="150px" width="250px" style={{float:'center', paddingRight: '150px'}}/>
           </div>
+          <br></br>
           <button className = "uploadButton" onClick={this.storePhoto}>Upload</button>
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
               <img src={image.url} style={imgStyle}/>
-              <button onClick={this.deletePhoto} 
+              <button className = "removeButton" onClick={this.deletePhoto} 
                  name={image.key}>remove</button>
             </div>
           )}
