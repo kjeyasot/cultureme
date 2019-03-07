@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 
 import * as script from '../scripts';
-const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
+const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
 
 
 export class Upload extends React.Component {
@@ -101,9 +101,12 @@ export class Upload extends React.Component {
             <div>
             {this.state.user.uid}</div>: null
         }
-            </div>
+        </div>
+        <div>
+          <img className="coolGirl" alt="coolGirl" src={images['cool.png']} />
+          </div>
           <input id="input" type="file" multiple onChange={this.handleChange}/>
-          <img src={this.state.url} style={previewStyle}/>
+          <img src={this.state.url || 'http://via.placeholder.com/400x300'} style={previewStyle}/>
           <button onClick={this.storePhoto}>upload</button>
           {this.state.images.map((image) =>
             <div key={image.key}>
