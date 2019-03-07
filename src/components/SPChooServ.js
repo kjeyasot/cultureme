@@ -59,24 +59,22 @@ export class SPChooseService extends Component {
       
       <div> 
       <navstuff.navstuff/>
-<a class="CoolGyal" href="" ><img class="CoolGyalImg" alt="logo" src={images1['cool.png']}  /></a>
-<div class="threeicons">
-<button class="btn12" type="submit">Add A Service</button>
-<button class="btn12" type="submit"> View My Services</button>
-<div class="icon-plus">
-<a href="#" class="fafaplus-icon"><i class="fa fa-plus fa-5x"></i></a>
-</div>
+     
+      
 
+{/* <div class="icon-plus"> */}
+{/* <a href="#" class="fafaplus-icon"><i class="fa fa-plus fa-5x"></i></a> */}
 
 {/* <i class="fa fa-car" style="font-size:48px;"></i> */}
-<i class="fa fa-eye"></i> 
-</div>
-
-
-<div className="spfooter">
+{/* <i class="fa fa-eye"></i>  */}
+{/* </div> */}
+    {/* <br></br>  <br></br>
+    <br></br>  */}
+ <div className="spfooter">
         <footer1.footer1/>
         </div>
-      </div>
+        </div>
+  
 
       
      );

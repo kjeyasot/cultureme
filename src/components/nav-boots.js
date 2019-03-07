@@ -60,14 +60,14 @@ export class navstuff extends Component {
 
             <Nav className="ml-auto" navbar >
             <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Provide a Service</NavLink>
+                <NavLink href="./searchresults">Find a Service</NavLink>
               </NavItem>
                 <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Sign Up</NavLink>
+                <NavLink href="./signup-serviceprovider">Sign Up</NavLink>
               </NavItem>
 
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Sign In</NavLink>
+                <NavLink href="/signInSP">Sign In</NavLink>
               </NavItem>
               {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

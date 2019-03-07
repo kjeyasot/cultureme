@@ -673,7 +673,8 @@ input::-webkit-input-placeholder {
   /* border-radius: 70%; */
 border: 0px solid #000000;
   box-sizing: border-box; 
- overflow: hidden; 
+ overflow: hidden;
+  
  
   /* padding: 1vmin 1vmin; */
 }
@@ -1022,35 +1023,14 @@ border: 0px solid #000000;
 /* 
 Adjusting create and view service icons and text */
 
-.btn12 {
-  background-color:  #fa7392;
-  border: none;
-  color: white;
-  /* padding: 13vh 16vh; */
-  font-size: 4vh;
-  cursor: pointer;
-  height: 35vh;
-  width: 50vh;
-  margin: 3vh;
-}
-
-/* .threeicons .fa-plus{
-  top: 50vh;
-left: 10vh;
-  color: white;
-} */
-
-/* Darker background on mouse-over */
-.btn12:hover {
-  background-color: rgba(240, 69, 111, 0.945);
-}
 
 /* 
 Coolgyal Image adjusting */
 .CoolGyalImg{
     /* position: relative; */
-    height: 50vw;
+    height: 30vw;
     width: 25vw;
+    /* margin:2vh */
     /* -webkit-appearance: none; */
 }
 .CoolGyal .CoolGyalImg{
@@ -1060,15 +1040,6 @@ Coolgyal Image adjusting */
   margin-left: 0px;
  
 
-}
-
-.threeicons{
-
-  display: inline-block;
-  position: relative;
-  top: 0vh;
-  left: 80vh;
-  margin-left: -100px;
 }
 
 /* Footer Setting */
@@ -1082,9 +1053,11 @@ Coolgyal Image adjusting */
 
 .spfooter{
   flex: 1 0 auto;
- -webkit-flex: 1 0 auto;
- min-height: -100%;
- /* margin-top: 28.5vh; */
+  -webkit-flex: 1 0 auto;
+  min-height: -100%;
+  margin-top: 28.4vh;
+  
+
 
 }
 
@@ -1092,4 +1065,46 @@ Coolgyal Image adjusting */
   text-align: center;
   padding-top: 1.5vh;
   padding-bottom: 16px;
+}
+
+.btnA {
+  background-color:  #fa7392;
+  border: none;
+  color: white;
+  box-shadow: 0 3px 2px rgba(0, 0, 0.3, 0.3); 
+  font-size: 3vh;
+  cursor: pointer;
+  height: 20vh;
+  width: 30vw;
+  margin: 1.5vh;
+
+  
+}
+
+
+
+/* Darker background on mouse-over */
+.btnA:hover {
+  background-color: rgba(240, 69, 111, 0.945);
+}
+
+
+.btnV {
+  background-color:  #fa7392;
+  border: none;
+  color: white;
+  box-shadow: 0 3px 2px rgba(0, 0, 0.3, 0.3); 
+  font-size: 3vh;
+  cursor: pointer;
+  height: 20vh;
+  width: 30vw;
+  margin: 1.5vh;
+
+}
+
+
+
+/* Darker background on mouse-over */
+.btnV:hover {
+  background-color: rgba(240, 69, 111, 0.945);
 }
