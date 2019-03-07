@@ -86,16 +86,19 @@ export class Upload extends React.Component {
     render() {
       const previewStyle = {
         maxHeight: "100px",
-        maxWidth: "100px"
+        maxWidth: "100px",
+        float:'right'
       }
       const imgStyle = {
-        maxHeight: "400px",
-        maxWidth: "400px"
+        maxHeight: "150px",
+        maxWidth: "150px",
+        float:'middle'
       }
       return (
+      <div class = "moveElements">
         <div>
             <div>
-            <h1>Step 2</h1>
+            <h1 style={{float:'middle'}}>Step 2</h1>
             <h2>Upload Photos of Recent Work</h2>
             {this.state.user ?
             <div>
@@ -107,8 +110,10 @@ export class Upload extends React.Component {
       </div>
 
           <input id="input" type="file" multiple onChange={this.handleChange}/>
-          <img src={this.state.url || 'http://via.placeholder.com/400x300'} style={previewStyle}/>
-          <button onClick={this.storePhoto}>upload</button>
+          <div>
+          <img src={this.state.url || 'http://via.placeholder.com/400x300'} height="150px" width="250px" style={{float:'center', paddingRight: '150px'}}/>
+          </div>
+          <button onClick={this.storePhoto}>Upload</button>
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
@@ -118,6 +123,7 @@ export class Upload extends React.Component {
             </div>
           )}
         </div>
+    </div>
       );
     }
   }
