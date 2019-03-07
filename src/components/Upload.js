@@ -120,7 +120,7 @@ export class Upload extends React.Component {
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
-            <progress value={this.state.progress} max="100"/>
+            {/* <progress value={this.state.progress} max="100"/> */}
               <img src={image.url} style={imgStyle}/>
               <button onClick={this.deletePhoto} 
                  name={image.key}>remove</button>
