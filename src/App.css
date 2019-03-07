@@ -1055,8 +1055,9 @@ Coolgyal Image adjusting */
   flex: 1 0 auto;
   -webkit-flex: 1 0 auto;
   min-height: -100%;
-  margin-top: 28.4vh;
-  
+  margin-top: 30vh;
+  margin-left: 0px;
+  width: 100%;
 
 
 }
@@ -1081,6 +1082,12 @@ Coolgyal Image adjusting */
   
 }
 
+.footerSetting {
+  /* width: auto;
+  margin: 0;
+  padding: 0 */
+
+}
 
 
 /* Darker background on mouse-over */

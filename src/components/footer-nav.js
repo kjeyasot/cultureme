@@ -5,7 +5,7 @@ export class footer1 extends Component {
    
   render() {
       return (
-    <div>
+    <div className='footerSetting'>
    <MDBFooter color="elegant-color" className="font-small pt-0">
       <MDBContainer>
         <MDBRow className="pt-3 mb-3 text-center d-flex justify-content-center">

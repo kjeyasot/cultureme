@@ -82,7 +82,7 @@ export class SPChooseService extends Component {
       </div>
 </div>
 </div>
- 
+</div>
 
         
  <div className="spfooter">
@@ -93,7 +93,7 @@ export class SPChooseService extends Component {
         
         
         </div>
-        </div>
+        
   
 
       
