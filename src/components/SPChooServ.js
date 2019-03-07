@@ -59,19 +59,39 @@ export class SPChooseService extends Component {
       
       <div> 
       <navstuff.navstuff/>
-     
-      
+    
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
 
-{/* <div class="icon-plus"> */}
-{/* <a href="#" class="fafaplus-icon"><i class="fa fa-plus fa-5x"></i></a> */}
 
-{/* <i class="fa fa-car" style="font-size:48px;"></i> */}
-{/* <i class="fa fa-eye"></i>  */}
-{/* </div> */}
-    {/* <br></br>  <br></br>
-    <br></br>  */}
+<div class="container-fluid">
+	<div class="row">
+    <div class="col-md-3 col-sm-4">
+      <div class="wrimagecard wrimagecard-topimage">
+          <a href="#">
+          <div class="wrimagecard-topimage_header" styles="background-color: rgba(22, 160, 133, 0.1)">
+            <center><i class = "fa fa-plus" styles="color:#16A085"></i></center>
+          </div>
+          <div class="wrimagecard-topimage_title">
+            <center><span><h4>Add Service
+            <div class="pull-right badge" id="WrControls"></div></h4></span></center>
+          </div>
+        </a>
+      </div>
+</div>
+</div>
+ 
+
+        
  <div className="spfooter">
         <footer1.footer1/>
+        </div>
+        
+        
+        
+        
         </div>
         </div>
   
