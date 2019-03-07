@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 
+import * as script from '../scripts';
+const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
+
+
 export class Upload extends React.Component {
     constructor(){
       super()
