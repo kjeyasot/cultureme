@@ -94,6 +94,7 @@ export class Upload extends React.Component {
         maxWidth: "150px",
         float:'middle'
       }
+
       return (
       <div class = "moveElements">
         <div>
@@ -106,14 +107,14 @@ export class Upload extends React.Component {
         }
         </div>
         <div>
-         <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '150px'}}/>
+         <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '250px'}}/>
       </div>
 
           <input id="input" type="file" multiple onChange={this.handleChange}/>
           <div>
           <img src={this.state.url || 'http://via.placeholder.com/400x300'} height="150px" width="250px" style={{float:'center', paddingRight: '150px'}}/>
           </div>
-          <button onClick={this.storePhoto}>Upload</button>
+          <button className = "uploadButton" onClick={this.storePhoto}>Upload</button>
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
