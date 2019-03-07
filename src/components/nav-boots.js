@@ -20,17 +20,49 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-
+  import firebase, { auth, provider } from '../firebase.js';
   const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 export class navstuff extends Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.toggle = this.toggle.bind(this);
+  
     this.state = {
+      user: null,
       isOpen: false
-    };
+    }
+    this.login = this.login.bind(this); 
+    this.logout = this.logout.bind(this); 
+    
+
   }
+
+  logout() {
+    auth.signOut()
+    .then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  }
+
+  login() {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        this.setState({
+          user
+        });
+      });
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } 
+    });
+  }
+ 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -59,7 +91,10 @@ export class navstuff extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
 
             <Nav className="ml-auto" navbar >
-            <NavItem>
+         
+              {!this.state.user ?
+              <div>
+                 <NavItem>
                 <NavLink href="./searchresults">Find a Service</NavLink>
               </NavItem>
                 <NavItem>
@@ -69,23 +104,22 @@ export class navstuff extends Component {
               <NavItem>
                 <NavLink href="/signInSP">Sign In</NavLink>
               </NavItem>
-              {/* <UncontrolledDropdown nav inNavbar>
+              </div>
+              :
+              <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                <i class="fa fa-user"></i> Profile
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
+                  <DropdownItem >
+                    My Account
                   </DropdownItem>
-                  <DropdownItem>
-                    Option 2
+                  <DropdownItem onClick={this.logout}>
+                  Logout
                   </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
+                
                 </DropdownMenu>
-              </UncontrolledDropdown> */}
+              </UncontrolledDropdown>}
             </Nav>
           </Collapse>
         </Navbar>
