@@ -59,34 +59,22 @@ export class SPChooseService extends Component {
       
       <div> 
       <navstuff.navstuff/>
-<a class="CoolGyal" href="" ><img class="CoolGyalImg" alt="logo" src={images1['cool.png']}  /></a>
+     
+      
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
+{/* <div class="icon-plus"> */}
+{/* <a href="#" class="fafaplus-icon"><i class="fa fa-plus fa-5x"></i></a> */}
 
-
-<div className="spfooter">
+{/* <i class="fa fa-car" style="font-size:48px;"></i> */}
+{/* <i class="fa fa-eye"></i>  */}
+{/* </div> */}
+    {/* <br></br>  <br></br>
+    <br></br>  */}
+ <div className="spfooter">
         <footer1.footer1/>
         </div>
-      </div>
+        </div>
+  
 
       
      );
