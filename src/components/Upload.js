@@ -109,19 +109,20 @@ export class Upload extends React.Component {
         <div>
          <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '250px'}}/>
       </div>
-
-          <input id="input" type="file" multiple onChange={this.handleChange}/>
+          <input className = "btn" id="input" type="file" multiple onChange={this.handleChange}/>
           <div>
           <img src={this.state.url || 'http://via.placeholder.com/400x300'} height="150px" width="250px" style={{float:'center', paddingRight: '150px'}}/>
           </div>
           <br></br>
-          <button className = "uploadButton" onClick={this.storePhoto}>Upload</button>
+          <div class="upload-btn-wrapper">
+          <button className = "btn" onClick={this.storePhoto}>Upload</button>
+          </div>
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
               <img src={image.url} style={imgStyle}/>
               <button className = "removeButton" onClick={this.deletePhoto} 
-                 name={image.key}>remove</button>
+                 name={image.key}>X</button>
             </div>
           )}
         </div>
