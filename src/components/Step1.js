@@ -129,11 +129,11 @@ export class stepone extends Component {
     
     <div className="threetings">
     <label for="ServiceType">Service Type</label>
-    <input className='steponebutton' id = 'ServiceType'type = 'text' name='ServiceType' placeholder = 'Ex. Mehendi, Bridal Makeup' onChange={this.handleChange} value={this.state.email}/><br></br>
+    <input className='steponebutton' id = 'ServiceType'type = 'text' name='ServiceType' placeholder = 'Ex. Mehendi, Bridal Makeup'  /><br></br>
     <label for="Description">Description                .</label>
-    <input className='steponebutton' id = 'Description'type = 'text' name='Description' placeholder = 'Ex. I have 4 years of experience creating' onChange={this.handleChange} value={this.state.password}/><br></br>
+    <input className='steponebutton' id = 'Description'type = 'text' name='Description' placeholder = 'Ex. I have 4 years of experience creating'/><br></br>
     <label for="PrinceRange">Price Range</label>
-    <input className='steponebutton' id = 'PrinceRange'type = 'text' name='PrinceRange' placeholder = 'Ex. $25-$30' onChange={this.handleChange} value={this.state.password}/><br></br>
+    <input className='steponebutton' id = 'PrinceRange'type = 'text' name='PrinceRange' placeholder = 'Ex. $25-$30' /><br></br>
     <label for="countryId">Location</label>
     <input type="hidden" name="country" id="countryId" value="CA"/>
 <select name="state" class="states order-alpha" id="stateId">
