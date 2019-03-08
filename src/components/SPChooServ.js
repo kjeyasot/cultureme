@@ -4,6 +4,13 @@ import firebase, { auth, provider } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 import * as script from '../scripts';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
+
 
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
@@ -66,7 +73,7 @@ export class SPChooseService extends Component {
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
 
-
+<Link to="/Step1">
 <div class="container-fluid">
 	<div class="row">
     <div class="col-md-3 col-sm-4">
@@ -84,13 +91,13 @@ export class SPChooseService extends Component {
 </div>
 </div>
 </div>
-
+</Link>
         
  <div className="spfooter">
         <footer1.footer1/>
         </div>
         
-        
+       
         
         
         </div>

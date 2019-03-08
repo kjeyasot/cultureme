@@ -35,7 +35,7 @@ export class testimonials extends Component {
                   <div class="testimonial">
                   
                     <div class="avatar mx-auto">
-                      <img src={images1['sana.png']} className="img-circle"/>
+                      <img src={images1['sana.png']} className="img-circle z-depth-3"/>
                     </div>
                     
                     <h4 className="TestimonialName">Sana Irfan</h4>
@@ -59,7 +59,7 @@ export class testimonials extends Component {
                   <div class="testimonial">
                   
                     <div class="avatar mx-auto">
-                      <img src={images1['sana3.jpg']} class="img-circle z-depth-1 img-fluid"/>
+                      <img src={images1['sana3.jpg']} class="img-circle z-depth-3"/>
                     </div>
                     
                     <h4 class="TestimonialName">Sana Irfan</h4>
