@@ -1248,5 +1248,9 @@ top: 5vh;
   height:35vh;
   width:25vw;
   float:center;
+}
+
+.Heading {
+  margin-left: 1.5vw;
   margin-top: 1.5vh;
 }
