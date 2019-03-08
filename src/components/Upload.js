@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
+import * as footer1 from './footer-nav';
+import * as navstuff from './nav-boots';
 
 
 import * as script from '../scripts';
-const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
+const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 
 export class Upload extends React.Component {
@@ -94,32 +96,39 @@ export class Upload extends React.Component {
         maxHeight: "150px",
         maxWidth: "150px",
         float:'middle',
-        paddingRight: "15px"
+        paddingRight: "15px",
+        paddingBottom:"20px",
       }
 
       return (
+        <div>
+
+          <navstuff.navstuff/>
+      
       <div class = "moveElements">
         <div>
             <div>
             <h1 style={{float:'middle', fontFamily:"Arial"}}>Step 2</h1>
             <h2 style={{float:'middle', fontFamily:"Arial"}}>Upload Photos of Recent Work</h2>
-            {this.state.user ?
+            {/* {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
-        }
+        } */}
         </div>
         <div>
-         <img alt="sideImage" src={images['cool.png']} style={{float:'right', paddingRight: '350px', paddingBotton: '150px'}}/>
+         <img className = "CoolGyalUpload" alt="sideImage" src={images['cool.png']}/>
       </div>
-          <input className = "btn" id="input" type="file" multiple onChange={this.handleChange}/>
+
+    
+          <input className = "btnupload" id="input" type="file" onChange={this.handleChange}/>
           <br></br>
           <div>
-          <img src={this.state.url ||'http://via.placeholder.com/400x300'}height="350px" width="550px" style={{float:'center', paddingRight: '200px'}}/>
+          <img className="imageUploadSize" src={this.state.url ||'http://via.placeholder.com/400x300'}/>
 
           </div>
           <br></br>
           <div class="upload-btn-wrapper">
-          <button className = "btn" onClick={this.storePhoto}>Upload</button>
+          <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
           </div>
 
           {this.state.images.map((image) =>
@@ -139,6 +148,10 @@ export class Upload extends React.Component {
           <button className = "doneButton" style={{float:'center'}}>Done</button>
           </div>
         </div>
+    </div>
+    {/* <div className="spfooter"> */}
+        <footer1.footer1/>
+        {/* </div> */}
     </div>
       );
     }

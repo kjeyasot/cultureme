@@ -995,8 +995,6 @@ border: 0px solid #000000;
 /* signup signin validations */
 .valid {
   color: green;
-  font-size: 1.5vh;
-
 }
 
 .valid:before {
@@ -1008,7 +1006,6 @@ border: 0px solid #000000;
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
   color: red;
-  font-size: 1.5vh;
 }
 
 .invalid:before {
@@ -1019,9 +1016,7 @@ border: 0px solid #000000;
 
 .pwWarning {
   position: relative;
-  color: black;
-  font-size: 2vh;
-
+  color: black
   /* left: -35px; */
 }
 
@@ -1168,6 +1163,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 .container-fluid{
   margin-top: 2vh;
   left: 40px;
+}
   
 .moveElements{
  
@@ -1194,7 +1190,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   display: inline-block;
 }
 
-.btn {
+.btnupload {
   border: 2px solid gray;
   color: gray;
   background-color: white;
@@ -1224,7 +1220,33 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   text-decoration: none;
   font-size: 25px;
   font-family: Arial, Helvetica, sans-serif;
-  position:absolute;
-  bottom: -250px;
-    right:500px;
+  /* position:absolute; */
+  /* bottom: -250px;
+    right:500px; */
+    margin-bottom: 2vh;
+    
+    
+}
+
+.CoolGyalUpload{
+  position: absolute;
+  height: 90vh;
+    width: 35vw;
+    /* float:right; */
+    padding-right: 5vw;
+right: 3vw;
+top: 15vh;
+  /* height:600px;
+  width:600px ;
+  
+  padding-right: 10vw;
+   padding-top:20px; */
+}
+
+.imageUploadSize{
+
+  height:35vh;
+  width:25vw;
+  float:center;
+  margin-top: 1.5vh;
 }
