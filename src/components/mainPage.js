@@ -119,17 +119,17 @@ export class mainPage extends Component {
       <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/>
       <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
      
-       <Link to="/searchresults">
+       {/* <Link to="/searchresults"> */}
        <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
-       </Link>
+       {/* </Link> */}
        </div>
        {this.state.user ?
        <div className='user-profile'>
        
        {this.readdbData(this.state.user.email)}
         {/* <img src={this.state.user.photoURL} /> */}
-        {this.state.user.email} <br></br>
-        { this.state.user.displayName }
+        {/* {this.state.user.email} <br></br> */}
+        {/* { this.state.user.displayName } */}
         <button className="signInBtn" onClick={this.logout}>Logout</button>
       </div>:
       <div>

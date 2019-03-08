@@ -94,18 +94,19 @@ export class navstuff extends Component {
             <Nav className="ml-auto" navbar >
             
               {!this.state.user ?
-              <Fragment> 
-                 <NavItem>
-                <NavLink href="./searchresults">Find a Service</NavLink>
-              </NavItem>
-                <NavItem>
-                <NavLink href="./signup-serviceprovider">Sign Up</NavLink>
-              </NavItem>
+              // <Fragment> 
+              //    <NavItem>
+              //   <NavLink href="./searchresults">Find a Service</NavLink>
+              // </NavItem>
+              //   <NavItem>
+              //   <NavLink href="./signup-serviceprovider">Sign Up</NavLink>
+              // </NavItem>
 
-              <NavItem>
-                <NavLink href="/signInSP">Sign In</NavLink>
-              </NavItem>
-              </Fragment>
+              // <NavItem>
+              //   <NavLink href="/signInSP">Sign In</NavLink>
+              // </NavItem>
+              // </Fragment>
+              null
               :
 
               
@@ -117,10 +118,11 @@ export class navstuff extends Component {
                   <DropdownItem >
                     My Account
                   </DropdownItem>
+                  <Link to="/">
                   <DropdownItem onClick={this.logout}>
                   Logout
                   </DropdownItem>
-                
+                  </Link>
                 </DropdownMenu>
               </UncontrolledDropdown>} 
             </Nav>
