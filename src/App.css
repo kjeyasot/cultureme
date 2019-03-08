@@ -1164,4 +1164,62 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   margin-top: 2vh;
   left: 40px;
   
+.moveElements{
+ 
+  padding-top: 5vw;
+  padding-left: 20vw;
+
+}
+
+.removeButton {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  float: right;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+.doneButton {
+  background-color: palevioletred; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  position:absolute;
+  bottom: -250px;
+    right:500px;
 }
