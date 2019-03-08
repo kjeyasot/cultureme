@@ -995,6 +995,8 @@ border: 0px solid #000000;
 /* signup signin validations */
 .valid {
   color: green;
+  font-size: 1.5vh;
+
 }
 
 .valid:before {
@@ -1006,6 +1008,7 @@ border: 0px solid #000000;
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
   color: red;
+  font-size: 1.5vh;
 }
 
 .invalid:before {
@@ -1016,7 +1019,9 @@ border: 0px solid #000000;
 
 .pwWarning {
   position: relative;
-  color: black
+  color: black;
+  font-size: 2vh;
+
   /* left: -35px; */
 }
 
