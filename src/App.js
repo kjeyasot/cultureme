@@ -21,6 +21,7 @@ import { navstuff } from './components/nav-boots';
 import { footer1 } from './components/footer-nav';
 import { SPChooseService } from './components/SPChooServ';
 import { stepone } from './components/Step1';
+import { myAccount } from './components/myAccount';
 
 class App extends Component {
   
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path="/navstuff" component={navstuff}/>
             <Route path="/choose-service" component={SPChooseService}/>
             <Route path="/step1" component={stepone}/>
+            <Route path="/myAccount" component={myAccount}/>
 
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
