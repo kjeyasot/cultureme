@@ -34,13 +34,13 @@ export class myAccount extends React.Component {
               <h6>
                 First Name:
                 &nbsp;&nbsp;
-               <input className = 'noEdit' type="text" name="firstName" disabled="disabled"/>
+               <input className = 'noEdit' type="text" value = "Anna" name="firstName" disabled="disabled"/>
               </h6>
               <br></br>
               <h6>
                 Last Name:
                 &nbsp;&nbsp;
-               <input  className = 'noEdit' type="text" name="lastName" disabled="disabled"/>
+               <input  className = 'noEdit' type="text" value = "Smith" name="lastName" disabled="disabled"/>
               </h6>
               <h6>
               <br></br>
@@ -49,7 +49,7 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-               <input  className = 'noEdit' type="text" name="email" disabled="disabled"/>
+               <input  className = 'noEdit' type="text" name="email" value = "annasmith@gmail.com" disabled="disabled"/>
               </h6>
               <br></br>
               <div>
