@@ -1357,7 +1357,14 @@ margin-right: 2vw;
 
 /* CSS for myAccount page  */
 
-.noEdit {
-  padding-right: 5vw;
-  margin-right: 2vw;
+.editButtons{
+  position: relative;
+    width: 50vw;
+    float:right;
+    padding-right: 20vw;
+
+right: -0vw;
+top: -2vh;
+
+
 }

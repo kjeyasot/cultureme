@@ -54,8 +54,10 @@ export class myAccount extends React.Component {
               <br></br>
               <div>
               <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
-               <button style={{float:'right'}} className = "fa fa-edit" onClick={this.storePhoto}></button>
-               <button style={{float:'right'}} className = "fa fa-check" onClick={this.storePhoto}></button>
+              <div className = 'editButtons'>
+               <button  className = "fa fa-edit" onClick={this.storePhoto}></button>
+               <button className = "fa fa-check" onClick={this.storePhoto}></button>
+               </div>
                </div>
               <br></br>
               <h6>
@@ -100,7 +102,9 @@ export class myAccount extends React.Component {
                {/* <i class="fa fa-edit" ></i> */}
                <br></br>
                <br></br>
-               <button style={{float:'right'}} className = "fa fa-save" onClick={this.storePhoto}></button>
+               <div className = 'editButtons'>
+               <button className = "fa fa-save" onClick={this.storePhoto}></button>
+               </div>
                
               </h6>
 
