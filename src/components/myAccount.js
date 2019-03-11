@@ -56,6 +56,7 @@ export class myAccount extends React.Component {
               <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
               <div className = 'editButtons'>
                <button  className = "fa fa-edit" onClick={this.storePhoto}></button>
+               &nbsp;&nbsp;
                <button className = "fa fa-check" onClick={this.storePhoto}></button>
                </div>
                </div>
