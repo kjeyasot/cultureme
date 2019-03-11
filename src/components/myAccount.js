@@ -52,12 +52,17 @@ export class myAccount extends React.Component {
                <input  className = 'noEdit' type="text" name="email" disabled="disabled"/>
               </h6>
               <br></br>
+              <div>
               <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
+               <button style={{float:'right'}} className = "fa fa-edit" onClick={this.storePhoto}></button>
+               <button style={{float:'right'}} className = "fa fa-check" onClick={this.storePhoto}></button>
+               </div>
               <br></br>
               <h6>
                 Company Name:
                 &nbsp;&nbsp;
                <input type="text" name="companyName" />
+              
               </h6>
               <br></br>
 
@@ -92,8 +97,11 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                <input type="text" name="password" />
                &nbsp;&nbsp;
-               &nbsp;&nbsp;
-               <i class="fa fa-address-book-o" aria-hidden="true"></i>
+               {/* <i class="fa fa-edit" ></i> */}
+               <br></br>
+               <br></br>
+               <button style={{float:'right'}} className = "fa fa-save" onClick={this.storePhoto}></button>
+               
               </h6>
 
             </form>
