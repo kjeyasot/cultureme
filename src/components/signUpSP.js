@@ -79,7 +79,7 @@ export class signUpSP extends Component {
         });
         this.signup();
         // this should be changed to service provider page
-        this.props.history.push('/')
+        this.props.history.push('/choose-service')
       }
 
       logout() {

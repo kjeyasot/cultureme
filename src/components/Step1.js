@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
 
 
 import * as script from '../scripts';
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 
-export class Upload extends React.Component {
+export class stepone extends Component {
     constructor(){
       super()
       this.state = {
@@ -108,51 +114,48 @@ export class Upload extends React.Component {
       <div class = "moveElements">
         <div>
             <div>
-            <h5 style={{float:'middle', fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
+            <h3 style={{float:'middle', fontFamily:"Arial"}}>Let's get started with creating a service</h3>
+           <br></br>
+            <h5 style={{float:'middle', fontFamily:"Arial"}}>Step 1: What type of service do you want to provide</h5>
             {/* {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
         } */}
-        <br></br>
         </div>
         <div>
-         <img className = "CoolGyalUpload" alt="sideImage" src={images['cool.png']}/>
+         <img className = "CoolGyalstep1" alt="sideImage" src={images['cool.png']}/>
       </div>
-
+ 
     
-          <input className = "btnupload" id="input" type="file" onChange={this.handleChange}/>
-          <br></br>
-          <br></br>
-          <div>
-          <img className="imageUploadSize" src={this.state.url ||'http://via.placeholder.com/400x300'}/>
+    <div className="threetings">
+    <label for="ServiceType">Service Type</label>
+    <input className='steponebutton' id = 'ServiceType'type = 'text' name='ServiceType' placeholder = 'Ex. Mehendi, Bridal Makeup'  /><br></br>
+    <label for="Description">Description                .</label>
+    <input className='steponebutton' id = 'Description'type = 'text' name='Description' placeholder = 'Ex. I have 4 years of experience creating'/><br></br>
+    <label for="PrinceRange">Price Range</label>
+    <input className='steponebutton' id = 'PrinceRange'type = 'text' name='PrinceRange' placeholder = 'Ex. $25-$30' /><br></br>
+    <label for="countryId">Location</label>
+    <input type="hidden" name="country" id="countryId" value="CA"/>
+<select name="state" class="states order-alpha" id="stateId">
+    <option value="">Select Province</option>
+</select>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<select name="city" class="cities order-alpha" id="cityId">
+    <option value="">Select City</option>
+</select>
 
-          </div>
-          <br></br>
-          <div class="upload-btn-wrapper">
-          <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
-          </div>
+    <br></br>
 
-          {this.state.images.map((image) =>
-            <div key={image.key}>
-            <h1>{image.file}</h1>
-            <div class="row">
-                <div class="column">
-              <img src={image.url} style={imgStyle}/>
-              <button className = "removeButton" onClick={this.deletePhoto} 
-                 name={image.key}>X</button>
-
-                             </div>
-              </div>
-            </div>
-          )}
-          <div>
-          <button className = "doneButton" style={{float:'center'}}>Done</button>
-          </div>
+ <Link to="/Upload">
+    <input className = 'step1cnt' type= 'submit' value= 'Continue'/> </Link><br></br>  
+  </div>
         </div>
+
     </div>
-    {/* <div className="spfooter"> */}
+    <div className="spfooter1"> 
         <footer1.footer1/>
-        {/* </div> */}
+         </div>
     </div>
       );
     }

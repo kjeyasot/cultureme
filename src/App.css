@@ -673,7 +673,8 @@ input::-webkit-input-placeholder {
   /* border-radius: 70%; */
 border: 0px solid #000000;
   box-sizing: border-box; 
- overflow: hidden; 
+ overflow: hidden;
+  
  
   /* padding: 1vmin 1vmin; */
 }
@@ -994,6 +995,8 @@ border: 0px solid #000000;
 /* signup signin validations */
 .valid {
   color: green;
+  font-size: 1.5vh;
+  margin-bottom: 0px;
 }
 
 .valid:before {
@@ -1005,6 +1008,9 @@ border: 0px solid #000000;
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
   color: red;
+  font-size: 1.5vh;
+  margin-bottom: 0px;
+  
 }
 
 .invalid:before {
@@ -1015,6 +1021,336 @@ border: 0px solid #000000;
 
 .pwWarning {
   position: relative;
-  color: black
+  color: black;
+  font-size: 2vh;
   /* left: -35px; */
+}
+
+/* 
+Adjusting create and view service icons and text */
+
+
+/* 
+Coolgyal Image adjusting */
+.CoolGyalImg{
+    /* position: relative; */
+    height: 30vw;
+    width: 25vw;
+    /* margin:2vh */
+    /* -webkit-appearance: none; */
+}
+.CoolGyal .CoolGyalImg{
+
+  top: 0vh;
+  left: 13vh;
+  margin-left: 0px;
+ 
+
+}
+
+/* Footer Setting */
+
+.mainpagefooter{
+  flex: 1 0 auto;
+ -webkit-flex: 1 0 auto;
+ min-height: -100%;
+ /* margin-top: 28.5vh; */
+}
+
+.spfooter{
+  flex: 1 0 auto;
+  -webkit-flex: 1 0 auto;
+  min-height: -100%;
+  margin-top: 30vh;
+  margin-left: 0px;
+  width: 100%;
+
+
+}
+
+.icon-plus {
+  text-align: center;
+  padding-top: 1.5vh;
+  padding-bottom: 16px;
+}
+
+.btnA {
+  background-color:  #fa7392;
+  border: none;
+  color: white;
+  box-shadow: 0 3px 2px rgba(0, 0, 0.3, 0.3); 
+  font-size: 3vh;
+  cursor: pointer;
+  height: 20vh;
+  width: 30vw;
+  margin: 1.5vh;
+
+  
+}
+
+.footerSetting {
+  /* width: auto;
+  margin: 0;
+  padding: 0 */
+
+}
+
+
+/* Darker background on mouse-over */
+.btnA:hover {
+  background-color: rgba(240, 69, 111, 0.945);
+}
+
+
+.btnV {
+  background-color:  #fa7392;
+  border: none;
+  color: white;
+  box-shadow: 0 3px 2px rgba(0, 0, 0.3, 0.3); 
+  font-size: 3vh;
+  cursor: pointer;
+  height: 20vh;
+  width: 30vw;
+  margin: 1.5vh;
+
+}
+
+
+
+/* Darker background on mouse-over */
+.btnV:hover {
+  background-color: rgba(240, 69, 111, 0.945);
+}
+
+
+
+.wrimagecard{	
+	margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    position: relative;
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background:  rgba(216, 197, 231, 0.15);
+}
+.wrimagecard .fa{
+	position: relative;
+  font-size: 15vh;
+  
+  /* color: pink; */
+}
+.wrimagecard-topimage_header{
+padding: 20px;
+}
+a.wrimagecard:hover, .wrimagecard-topimage:hover {
+    box-shadow: 2px 4px 8px 0px rgba(181, 201, 218, 0.2);
+}
+
+.wrimagecard-topimage a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.wrimagecard-topimage_title {
+    padding: 20px 24px;
+    height: 80px;
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+.wrimagecard-topimage a {
+    border-bottom: none;
+    text-decoration: none;
+    color:#00838f ;
+    transition: color red 0.3s ease;
+}
+
+.container-fluid{
+  margin-top: 2vh;
+  left: 40px;
+}
+  
+.moveElements{
+ 
+  padding-top: 5vw;
+  padding-left: 20vw;
+
+}
+
+.removeButton {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btnupload {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  float: right;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+.doneButton {
+  background-color: palevioletred; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* position:absolute; */
+  /* bottom: -250px;
+    right:500px; */
+    margin-bottom: 2vh;
+    
+    
+}
+
+.CoolGyalUpload{
+  position: absolute;
+  height: 90vh;
+    width: 35vw;
+    /* float:right; */
+    padding-right: 5vw;
+right: 3vw;
+top: 5vh;
+  /* height:600px;
+  width:600px ;
+  
+  padding-right: 10vw;
+   padding-top:20px; */
+}
+
+.imageUploadSize{
+
+  height:35vh;
+  width:25vw;
+  float:center;
+}
+
+.Heading {
+  margin-left: 1.5vw;
+  margin-top: 1.5vh;
+}
+
+/* step1 page */
+
+.steponebutton{
+  width: 30vw;
+  height:5vh;
+  padding: 1vmin 1vmin;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  font-size: 1vmax;
+  text-align: center;
+}
+
+.steponebuttontext{
+
+  width: 30vw;
+  height:5vh;
+  padding: 1vmin 1vmin;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  font-size: 1vmax;
+  text-align: center;
+  
+}
+
+.step1cnt{
+  background-color:rgba(240, 69, 111, 0.945);
+  /* background-color: #dd4068; */
+  /* background-color: #555; */
+  color: white;
+  font-size: 2vmax;
+  padding: 1vmin 1.5vmin;
+  font-family: Arial;
+  text-align: center;
+  /* width: 100vw; */
+  /* max-width: 150px; */
+  margin: 30px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: middle;
+  -webkit-appearance: none;
+  /* float: right;
+  transform: translate(-5vw, -72vh);
+  background-color: #555;
+  color: white;
+  font-size: 1.2vw;
+  padding: 1vh 1vw;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 0.5vw; */
+
+}
+
+.CoolGyalstep1{
+  position: relative;
+  height: 80vh;
+    width: 35vw;
+    float:right;
+    padding-right: 5vw;
+right: -0vw;
+top: -25vh;
+  /* height:600px;
+  width:600px ;
+  
+  padding-right: 10vw;
+   padding-top:20px; */
+
+}
+
+label{
+  color: black;
+  font-size: 1.5vmax;
+}
+
+.states order-alpha{
+margin-right: 2vw;
+}
+
+.spfooter1{
+
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+  
 }

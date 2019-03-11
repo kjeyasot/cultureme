@@ -87,7 +87,7 @@ export class signInSP extends Component {
             <input className='field' id = 'email'type = 'text' name='email' placeholder = 'E-mail' onChange={this.handleChange} value={this.state.email}/><br></br>
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
             <input onClick={this.loginWEmail} className = 'submitBtn' type= 'submit' value= 'Sign In'/><br></br>  
-          {this.state.user ?this.props.history.push('/'):null}
+          {this.state.user ?this.props.history.push('/choose-service'):null}
             <Link to="/forgotpassword">
             <u> Forgot Password?</u><br></br>
             </Link>
