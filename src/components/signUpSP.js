@@ -11,11 +11,9 @@ const emailReg = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
 const postReg = /^[ABCEGHJ-NPRSTVXY][0-9][ABCEGHJ-NPRSTV-Z] [0-9][ABCEGHJ-NPRSTV-Z][0-9]$/i;
 const phoneReg = /^[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/i;
 const letters = /^[A-Za-z]+$/;
-let testusername = [];
 let testemail = [];
 let testCompany = [];
 let testPhone = [];
-
 
 export class signUpSP extends Component {
     constructor() {
@@ -27,27 +25,25 @@ export class signUpSP extends Component {
           email: '',
           mobile: '',
           postalCode: '',
-          // userName: '',
           password: '',
-          // confirmPassword: '',
-          serviceProviders: []
+          serviceProviders: [],
         }
-        this.readData = this.readData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.signup = this.signup.bind(this);
-
-
-
       }
       handleChange(e) {
         this.setState({
           [e.target.name]: e.target.value
         });
-        this.readData();
       }
       handleSubmit(e) {
         e.preventDefault();
+        this.signup();
+        this.props.history.push('/choose-service')
+      }
+    
+      signup(){
         const serviceProvidersRef = firebase.database().ref('serviceProviders');
         const tempPw = CryptoJS.AES.encrypt(this.state.password, 'secret key 123');
         // const test = CryptoJS.AES.decrypt(tempPw.toString(), 'secret key 123');
@@ -61,73 +57,44 @@ export class signUpSP extends Component {
           email: this.state.email,
           mobile: phone,
           postalCode: this.state.postalCode,
-          // userName: this.state.userName,
           password: pw,
-        //   confirmPassword: this.state.confirmPassword,
         }
-        serviceProvidersRef.push(serviceProviders);
-        this.setState({
-          firstName: '',
-          lastName: '',
-          companyName: '',
-          email: '',
-          mobile: '',
-          postalCode: '',
-          // userName: '',
-          password: '',
-          // confirmPassword: ''
-        });
-        this.signup();
-        // this should be changed to service provider page
-        this.props.history.push('/choose-service')
-      }
-
-      logout() {
-        auth.signOut()
-        .then(() => {
-          this.setState({
-            user: null
-          });
-        });
-      }
-    
-      login() {
-        auth.signInWithPopup(provider) 
-          .then((result) => {
-            const user = result.user;
-            this.setState({
-              user
-            });
-          });
-      }
-
-      signup(){
-        // e.preventDefault();
         auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-        }).catch((error)=>{console.log(error);
-      });
+          if(u.user){
+            let userUID = u.user.uid
+            let servpro = serviceProvidersRef.child(userUID).child('PersonalInformation');
+            servpro.push(serviceProviders)  
+            u.user.updateProfile({
+            displayName: this.state.firstName + this.state.lastName
+          })
+          }
+     
+      })
+      
+      
       }
       componentDidMount() {
+    
         const serviceProvidersRef = firebase.database().ref('serviceProviders');
-        serviceProvidersRef.on('value', (snapshot) => {
-          let serviceProviders = snapshot.val();
-          let newState = [];
-          for (let sevProv in serviceProviders) {
-            newState.push({
-            id: sevProv,
-            firstName: serviceProviders[sevProv].firstName,
-            lastName: serviceProviders[sevProv].lastName,
-            companyName: serviceProviders[sevProv].companyName,
-            email: serviceProviders[sevProv].email,
-            mobile: serviceProviders[sevProv].mobile,
-            postalCode: serviceProviders[sevProv].postalCode,
-            // userName: serviceProviders[sevProv].userName,
-            password: serviceProviders[sevProv].password,
-            // confirmPassword: serviceProviders[sevProv].confirmPassword,
+        const clientRef = firebase.database().ref('clients');
+
+        serviceProvidersRef.once('value', (snapshot) => {
+          snapshot.forEach((eventSnapshot) => {
+            eventSnapshot.child('PersonalInformation').forEach((personalInfo) => {
+              let persInfo = personalInfo.val();
+              testemail.push(persInfo.email);
+              testCompany.push(persInfo.companyName);
+              testPhone.push(persInfo.mobile); 
             });
-          }
-          this.setState({
-            serviceProviders: newState
+          });
+        });
+
+        clientRef.once('value', (snapshot) => {
+          snapshot.forEach((eventSnapshot) => {
+            eventSnapshot.child('PersonalInformation').forEach((personalInfo) => {
+              let persInfo = personalInfo.val();
+              testemail.push(persInfo.email);
+            });
           });
         });
         
@@ -136,17 +103,6 @@ export class signUpSP extends Component {
         const serviceProvidersRef = firebase.database().ref(`/serviceProviders/${sevProvId}`);
         serviceProvidersRef.remove();
       }
-      
-      readData() {
-         this.state.serviceProviders.map((sevProv) => {
-                testusername.push(sevProv.userName); 
-                testemail.push(sevProv.email);
-                testCompany.push(sevProv.companyName);
-                testPhone.push(sevProv.mobile);
-
-        })
-      }
-    
 
   render() {
       
@@ -181,10 +137,7 @@ export class signUpSP extends Component {
 
             <input className='field' id = 'postalCode' type = 'text' name='postalCode' placeholder = 'Postal Code' onChange={this.handleChange} value={this.state.postalCode}/><br></br>
             {(this.state.postalCode && !this.state.postalCode.match(postReg))? <p id="letter" className="invalid">Invalid <b>Postal Code</b> (ex: M1B 3B6)</p>:null}
-           
-            {/* <input className='field' id = 'userName'type = 'text' name='userName' placeholder = 'Username'  onChange={this.handleChange} value={this.state.userName}/><br></br> */}
-           {/* {(this.state.userName && testusername.indexOf(this.state.userName)>-1)? <p id="letter" className="invalid">Username Already Exists</p> : null} */}
-           
+                      
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
             { this.state.password ? <p className="pwWarning">Password must contain the following:</p> : null}
         
@@ -199,9 +152,7 @@ export class signUpSP extends Component {
 
             {(this.state.password && this.state.password.length>=8)? <p id="length" class="valid">Minimum <b>8 characters</b></p>:null}
             {(this.state.password && this.state.password.length<8)?<p id="length" class="invalid">Minimum <b>8 characters</b></p>:null}
-            
-           {/* <input className='field' id = 'confirmPassword'type = 'password' name='confirmPassword' placeholder = 'Confirm Password' onChange={this.handleChange} value={this.state.confirmPassword}/><br></br> */}
-            
+                        
             <input id='submitBtn' className = 'submitBtn' type= 'submit' value= 'Sign Up' 
             disabled={!this.state.firstName||!this.state.firstName.match(letters)||!this.state.lastName||!this.state.lastName.match(letters)||!this.state.companyName||testCompany.indexOf(this.state.companyName)>-1||!this.state.email.match(emailReg)||
             testemail.indexOf(this.state.email)>-1||!this.state.mobile.match(phoneReg)||testPhone.indexOf(this.state.mobile)>-1||testPhone.indexOf(this.state.mobile.split(" ").join(""))>-1||!this.state.postalCode.match(postReg)||!this.state.password
