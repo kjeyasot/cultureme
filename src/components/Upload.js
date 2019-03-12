@@ -63,6 +63,7 @@ export class Upload extends React.Component {
       database.ref().child('Photos').child(this.state.user.uid).child(img).remove()
 
     }
+
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -100,6 +101,16 @@ export class Upload extends React.Component {
         paddingBottom:"20px",
       }
 
+      const isImage = this.state.file;
+      let imagePreview;
+
+      if (isImage) {
+        // imagePreview = <LogoutButton onClick={this.handleLogoutClick} />;
+        imagePreview = <img className="imageUploadSize" src={this.state.url }/>;
+      } else {
+        imagePreview = <img className="imageUploadSize" src={'http://via.placeholder.com/400x300'}/>
+      }
+
       return (
         <div>
 
@@ -124,8 +135,8 @@ export class Upload extends React.Component {
           <br></br>
           <br></br>
           <div>
-          <img className="imageUploadSize" src={this.state.url ||'http://via.placeholder.com/400x300'}/>
-
+            {imagePreview}
+          {/* <img className="imageUploadSize" src={'http://via.placeholder.com/400x300' || this.state.url }/> */}
           </div>
           <br></br>
           <div class="upload-btn-wrapper">

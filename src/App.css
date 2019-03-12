@@ -1354,3 +1354,17 @@ margin-right: 2vw;
    width: 100%;
   
 }
+
+/* CSS for myAccount page  */
+
+.editButtons{
+  position: relative;
+    width: 50vw;
+    float:right;
+    padding-right: 20vw;
+
+right: -0vw;
+top: -2vh;
+
+
+}
