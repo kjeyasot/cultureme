@@ -40,7 +40,7 @@ export class signUpSP extends Component {
       handleSubmit(e) {
         e.preventDefault();
         this.signup();
-        this.props.history.push('/choose-service')
+        // this.props.history.push('/choose-service')
       }
     
       signup(){
@@ -96,6 +96,11 @@ export class signUpSP extends Component {
               testemail.push(persInfo.email);
             });
           });
+        });
+        firebase.auth().onAuthStateChanged(user => {
+          if(user) {
+            window.location = '/choose-service'; //After successful login, user will be redirected to home.html
+          }
         });
         
       }
