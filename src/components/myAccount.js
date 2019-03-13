@@ -118,7 +118,7 @@ export class myAccount extends React.Component {
               <div className = 'editButtons'>
                <button  className = "fa fa-edit" onClick={this.storePhoto}></button>
                &nbsp;&nbsp;
-               <button className = "fa fa-check" onClick={this.storePhoto}></button>
+               <button className = "fa fa-times" onClick={this.storePhoto}></button>
                </div>
                </div>
               <br></br>
