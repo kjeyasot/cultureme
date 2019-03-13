@@ -54,15 +54,18 @@ export class ratings extends React.Component {
       return (
         
       <div className = "moveElements">
+
+      <div>
       <h2>Rating from state: {rating}</h2>
         <StarRatingComponent 
           name="rate2" 
           editing={false}
           starCount={5}
-          value={3}
+
+          // will come frfom db
+          value={1}
         />
-
-
+      </div>
 
         <div>
         <h2>Rating from state: {rating}</h2>
