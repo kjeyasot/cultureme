@@ -135,7 +135,7 @@ export class myAccount extends React.Component {
                 Company Name:
                 &nbsp;&nbsp;
 
-              {this.state.answer === "yes" && <input type="text" name="companyName" defaultValue={this.state.companyName}/> || <input type="text" name="companyName" defaultValue={this.state.companyName} disabled="disabled"/>}
+              {this.state.answer === "yes" && <input className = "editAccount" type="text" name="companyName" defaultValue={this.state.companyName}/> || <input type="text" name="companyName" defaultValue={this.state.companyName} disabled="disabled"/>}
               
               </h6>
               <br></br>
@@ -149,7 +149,7 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                
-               {this.state.answer === "yes" && <input type="text" name="contact" defaultValue={this.state.mobile}/> || <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/>}
+               {this.state.answer === "yes" && <input className = "editAccount" type="text" name="contact" defaultValue={this.state.mobile}/> || <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/>}
                {/* <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/> */}
               </h6>
               <br></br>
@@ -161,7 +161,7 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-                {this.state.answer === "yes" && <input type="text" name="location"  defaultValue={this.state.postalCode}/>|| <input type="text" name="location"  defaultValue={this.state.postalCode} disabled="disabled"/>}
+                {this.state.answer === "yes" && <input className = "editAccount" type="text" name="location"  defaultValue={this.state.postalCode}/>|| <input type="text" name="location"  defaultValue={this.state.postalCode} disabled="disabled"/>}
                
                
               </h6>
@@ -174,7 +174,7 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
 
-                 {this.state.answer === "yes" && <input type="password" name="password" defaultValue={this.state.password}/>|| <input type="password" name="password" defaultValue={this.state.password} disabled="disabled"/>}
+                 {this.state.answer === "yes" && <input className = "editAccount" type="password" name="password" defaultValue={this.state.password}/>|| <input type="password" name="password" defaultValue={this.state.password} disabled="disabled"/>}
                
                &nbsp;&nbsp;
                {/* <i class="fa fa-edit" ></i> */}
