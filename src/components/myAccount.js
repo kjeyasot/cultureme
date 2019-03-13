@@ -37,7 +37,9 @@ export class myAccount extends React.Component {
     }
     handleSubmit = (event) => {
       this.setState({ answer: event.target.name });
+      event.preventDefault();
       }
+
     componentDidMount() {
       auth.onAuthStateChanged((user) => {
         if (user) {
