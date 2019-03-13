@@ -31,10 +31,13 @@ export class myAccount extends React.Component {
         mobile: '',
         postalCode: '',
         password: '',
+        answer: ''
       }
       this.userDetails = this.userDetails.bind(this);
     }
-
+    handleSubmit = (event) => {
+      this.setState({ answer: event.target.name });
+      }
     componentDidMount() {
       auth.onAuthStateChanged((user) => {
         if (user) {
@@ -116,9 +119,11 @@ export class myAccount extends React.Component {
               <div>
               <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
               <div className = 'editButtons'>
-               <button  className = "fa fa-edit" onClick={this.storePhoto}></button>
+              
+               <button  name = "yes" className = "fa fa-edit" onClick={this.handleSubmit}></button>
                &nbsp;&nbsp;
-               <button className = "fa fa-times" onClick={this.storePhoto}></button>
+               {this.state.answer === "yes" && <button className = "fa fa-times"></button>}
+               {/* <button className = "fa fa-times" onClick={this.storePhoto}></button> */}
                </div>
                </div>
               <br></br>
@@ -165,7 +170,8 @@ export class myAccount extends React.Component {
                <br></br>
                <br></br>
                <div className = 'editButtons'>
-               <button className = "fa fa-save" onClick={this.storePhoto}></button>
+               {this.state.answer === "yes" && <button className = "fa fa-save"></button>}
+               {/* <button className = "fa fa-save" onClick={this.storePhoto}></button> */}
                </div>
                
               </h6>
