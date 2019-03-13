@@ -14,6 +14,7 @@ let companyName;
 let mobile;
 let postalCode;
 let password;
+let disabled;
 
 
 export class myAccount extends React.Component {
@@ -31,9 +32,15 @@ export class myAccount extends React.Component {
         mobile: '',
         postalCode: '',
         password: '',
+        answer: '', 
+        disabled: ""
       }
       this.userDetails = this.userDetails.bind(this);
     }
+    handleSubmit = (event) => {
+      this.setState({ answer: event.target.name });
+      event.preventDefault();
+      }
 
     componentDidMount() {
       auth.onAuthStateChanged((user) => {
@@ -116,16 +123,19 @@ export class myAccount extends React.Component {
               <div>
               <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
               <div className = 'editButtons'>
-               <button  className = "fa fa-edit" onClick={this.storePhoto}></button>
+              
+               <button  name = "yes" className = "fa fa-edit" onClick={this.handleSubmit}></button>
                &nbsp;&nbsp;
-               <button className = "fa fa-check" onClick={this.storePhoto}></button>
+               {this.state.answer === "yes" && <button className = "fa fa-times"></button>}
+               {/* <button className = "fa fa-times" onClick={this.storePhoto}></button> */}
                </div>
                </div>
               <br></br>
               <h6>
                 Company Name:
                 &nbsp;&nbsp;
-               <input type="text" name="companyName" defaultValue={this.state.companyName}/>
+
+              {this.state.answer === "yes" && <input className = "editAccount" type="text" name="companyName" defaultValue={this.state.companyName}/> || <input type="text" name="companyName" defaultValue={this.state.companyName} disabled="disabled"/>}
               
               </h6>
               <br></br>
@@ -138,7 +148,9 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-               <input type="text" name="contact" defaultValue={this.state.mobile} />
+               
+               {this.state.answer === "yes" && <input className = "editAccount" type="text" name="contact" defaultValue={this.state.mobile}/> || <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/>}
+               {/* <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/> */}
               </h6>
               <br></br>
 
@@ -149,7 +161,9 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-               <input type="text" name="location"  defaultValue={this.state.postalCode}/>
+                {this.state.answer === "yes" && <input className = "editAccount" type="text" name="location"  defaultValue={this.state.postalCode}/>|| <input type="text" name="location"  defaultValue={this.state.postalCode} disabled="disabled"/>}
+               
+               
               </h6>
               <br></br>
 
@@ -159,13 +173,16 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
-               <input type="password" name="password" defaultValue={this.state.password}/>
+
+                 {this.state.answer === "yes" && <input className = "editAccount" type="password" name="password" defaultValue={this.state.password}/>|| <input type="password" name="password" defaultValue={this.state.password} disabled="disabled"/>}
+               
                &nbsp;&nbsp;
                {/* <i class="fa fa-edit" ></i> */}
                <br></br>
                <br></br>
                <div className = 'editButtons'>
-               <button className = "fa fa-save" onClick={this.storePhoto}></button>
+               {this.state.answer === "yes" && <button className = "fa fa-save"></button>}
+               {/* <button className = "fa fa-save" onClick={this.storePhoto}></button> */}
                </div>
                
               </h6>
