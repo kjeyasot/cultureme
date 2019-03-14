@@ -14,7 +14,6 @@ let companyName;
 let mobile;
 let postalCode;
 let password;
-let disabled;
 
 
 export class myAccount extends React.Component {
@@ -33,15 +32,53 @@ export class myAccount extends React.Component {
         postalCode: '',
         password: '',
         answer: '', 
-        disabled: ""
+        isInEditMode: false
       }
-      this.userDetails = this.userDetails.bind(this);
+      this.userUpdate = this.userUpdate.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.keepOrgValue = this.keepOrgValue.bind(this);
+      this.userIntUpdate = this.userIntUpdate.bind(this);
+
+
+
     }
     handleSubmit = (event) => {
       this.setState({ answer: event.target.name });
       event.preventDefault();
+      // this.userUpdate();
       }
+      handleChange(e) {
+        this.setState({
+          [e.target.name]: e.target.value
+        });
+      }
+      async keepOrgValue() {
+        await auth.onAuthStateChanged((user) => {
+        if (user) {
+        const servPV = {
+          // firstName: this.state.firstName,
+          // lastName: this.state.lastName,
+          companyName: this.state.companyName,
+          // email: this.state.email,
+          // mobile: phone,
+          // postalCode: this.state.postalCode,
+          // password: pw,
+        }
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
 
+        serviceProvidersRef.once('value', (snapshot) => {
+            snapshot.child('PersonalInformation').forEach((personalInfo) => {
+              console.log(personalInfo)   
+              personalInfo.ref.update(servPV)  
+              window.location.reload(true);
+           
+
+            });
+        })
+      }
+    });
+    // window.location.reload();
+      }
     componentDidMount() {
       auth.onAuthStateChanged((user) => {
         if (user) {
@@ -82,9 +119,73 @@ export class myAccount extends React.Component {
     }
 
     
-    userDetails() {
+    userUpdate() {
 
-    }
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          const servPV = {
+            // firstName: this.state.firstName,
+            // lastName: this.state.lastName,
+            companyName: this.state.companyName1,
+            // email: this.state.email,
+            // mobile: phone,
+            // postalCode: this.state.postalCode,
+            // password: pw,
+          }
+          console.log(this.state.companyName1)
+          const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+
+          serviceProvidersRef.once('value', (snapshot) => {
+              snapshot.child('PersonalInformation').forEach((personalInfo) => {
+                console.log(personalInfo)   
+                personalInfo.ref.update(servPV)             
+               window.location.reload(true);
+
+              });
+          })
+              }
+      })
+            }
+      
+      userIntUpdate() {
+        auth.onAuthStateChanged((user) => {
+          if (user) {
+            this.setState({ user });
+            const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+  
+            serviceProvidersRef.once('value', (snapshot) => {
+                snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+                  let persInfo = personalInfo.val();
+                  const test = CryptoJS.AES.decrypt(persInfo.password.toString(), 'secret key 123');
+                  const pw = test.toString(CryptoJS.enc.Utf8);
+                  // testemail.push(persInfo.firstName);
+                  firstName = persInfo.firstName;
+                  lastName = persInfo.lastName;
+                  email = persInfo.email;
+                  companyName = persInfo.companyName;
+                  mobile = persInfo.mobile;
+                  postalCode = persInfo.postalCode;
+                  password = pw;
+  
+          
+  
+                });
+                this.setState({
+                  firstName: firstName,
+                  lastName: lastName,
+                  companyName: companyName,
+                  email: email,
+                  mobile: mobile,
+                  postalCode: postalCode,
+                  password: password,
+                })
+            });
+  
+          } 
+          
+        });
+
+              }
     render() {
       return (
         
@@ -120,22 +221,31 @@ export class myAccount extends React.Component {
                <input  className = 'noEdit' type="text" name="email" value = {this.state.user.email} disabled="disabled"/>
               </h6>
               <br></br>
+
+              {this.state.isInEditMode ?
+                this.renderEditview()  :
+                this.renderDefaultview()
+                }
+              {/* <form onSubmit={this.handleSubmit}>
               <div>
               <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
+              
               <div className = 'editButtons'>
               
-               <button  name = "yes" className = "fa fa-edit" onClick={this.handleSubmit}></button>
                &nbsp;&nbsp;
-               {this.state.answer === "yes" && <button className = "fa fa-times"></button>}
-               {/* <button className = "fa fa-times" onClick={this.storePhoto}></button> */}
+               {this.state.answer === "yes" ? <button className = "fa fa-times" onClick= {this.keepOrgValue} type = 'submit'></button> 
+               : <button  name = "yes" className = "fa fa-edit"  onClick={this.handleSubmit}></button>}
                </div>
                </div>
               <br></br>
+             
               <h6>
                 Company Name:
                 &nbsp;&nbsp;
 
-              {this.state.answer === "yes" && <input className = "editAccount" type="text" name="companyName" defaultValue={this.state.companyName}/> || <input type="text" name="companyName" defaultValue={this.state.companyName} disabled="disabled"/>}
+
+              {this.state.answer === "yes"? <input className = "editAccount" type="text" name="companyName1" onChange={this.handleChange} defaultValue ={this.state.companyName}value={this.state.companyName1}/> :
+               <input type="text" name="companyName" defaultValue={this.state.companyName} disabled="disabled"/>}
               
               </h6>
               <br></br>
@@ -149,8 +259,7 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                
-               {this.state.answer === "yes" && <input className = "editAccount" type="text" name="contact" defaultValue={this.state.mobile}/> || <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/>}
-               {/* <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/> */}
+               {this.state.answer === "yes" ? <input className = "editAccount" type="text" name="contact1" defaultValue={this.state.mobile}/> : <input type="text" name="contact" defaultValue={this.state.mobile} disabled="disabled"/>}
               </h6>
               <br></br>
 
@@ -177,15 +286,15 @@ export class myAccount extends React.Component {
                  {this.state.answer === "yes" && <input className = "editAccount" type="password" name="password" defaultValue={this.state.password}/>|| <input type="password" name="password" defaultValue={this.state.password} disabled="disabled"/>}
                
                &nbsp;&nbsp;
-               {/* <i class="fa fa-edit" ></i> */}
                <br></br>
                <br></br>
                <div className = 'editButtons'>
-               {this.state.answer === "yes" && <button className = "fa fa-save"></button>}
-               {/* <button className = "fa fa-save" onClick={this.storePhoto}></button> */}
+               {this.state.answer === "yes" && <button className = "fa fa-save" type= 'submit' onClick={this.userUpdate}></button>}
+
                </div>
                
               </h6>
+              </form> */}
 
             </form>
             
