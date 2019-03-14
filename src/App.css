@@ -1430,3 +1430,18 @@ margin-right: 2vw;
   color:green;
   font-size: 1.5vmax;
 }
+/* CSS for myAccount page  */
+
+.editButtons{
+  position: relative;
+    width: 50vw;
+    float:right;
+    padding-right: 20vw;
+
+right: -0vw;
+top: -2vh;
+}
+
+.editAccount{
+background-color: #FFEFD5;
+}

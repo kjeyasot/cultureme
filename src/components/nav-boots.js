@@ -115,9 +115,11 @@ export class navstuff extends Component {
                 <i class="fa fa-user"></i> Profile
                 </DropdownToggle>
                 <DropdownMenu right>
+                <Link to="/myAccount">
                   <DropdownItem >
                     My Account
                   </DropdownItem>
+                  </Link>
                   <Link to="/">
                   <DropdownItem onClick={this.logout}>
                   Logout
