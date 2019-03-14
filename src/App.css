@@ -1354,3 +1354,79 @@ margin-right: 2vw;
    width: 100%;
   
 }
+
+
+.HeadingVE {
+  margin-left: 1.5vw;
+  margin-top: 1.5vh;
+  color:rgba(240, 69, 111, 0.945);
+  font-size: 2.2vmax;
+ 
+}
+
+.checked {
+  color: orange;
+  font-size: 1.7vmax;
+ 
+}
+
+.symbols{
+  margin-left: 2vw;
+  margin-bottom:.5vh;
+ 
+}
+
+.contentVE{
+  margin-left: 2vw;
+  margin-bottom:.3vh;
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+
+.content{
+  margin-right: 70vw;
+}
+.fa-pen{
+  font-size: 1.5vmax;
+ margin-left: 10vw;
+/* padding-bottom: 20vh; */
+
+}
+
+
+
+.contentVES{
+  margin-left: 2vw;
+  margin-bottom:.3vh;
+  font-size: 1.5vmax;
+  word-wrap: break-word;
+  width:15vw;
+}
+
+.contentVES {
+  word-wrap: break-word;
+}
+
+/* .fa-times{
+  font-size: 1.5vmax;
+  margin-left: 15vw;
+  /* display: inline-block; */
+/* } */
+/* 
+.fa-check {
+  color:green;
+  font-size: 1.5vmax;
+  margin-left: 10vw;
+  /* display: inline-block; */
+/* } */ 
+
+
+.fa-times{
+  font-size: 1.5vmax;
+  color:red;
+}
+
+.fa-check {
+  color:green;
+  font-size: 1.5vmax;
+}
