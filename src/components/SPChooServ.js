@@ -30,9 +30,11 @@ export class SPChooseService extends Component {
     }
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
-  
+    this.refresh = this.refresh.bind(this); 
+
 
   }
+
 
   logout() {
     auth.signOut()
@@ -60,9 +62,13 @@ export class SPChooseService extends Component {
     });
   }
 
-
+refresh() {
+  window.location='/Step1'
+}
     render(){
+   
     return (
+      
       
       <div> 
       <navstuff.navstuff/>
@@ -73,13 +79,15 @@ export class SPChooseService extends Component {
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
 
-<Link to="/Step1">
+
 <div class="container-fluid">
 	<div class="row">
     <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
+    {/* <Link to="/Step1"> */}
+      <div class="wrimagecard wrimagecard-topimage" onClick={this.refresh}>
           <a href="#">
           <div class="wrimagecard-topimage_header" styles="background-color: rgba(22, 160, 133, 0.1)">
+        
             <center><i class = "fa fa-plus" styles="color:#16A085"></i></center>
           </div>
           <div class="wrimagecard-topimage_title">
@@ -88,11 +96,11 @@ export class SPChooseService extends Component {
           </div>
         </a>
       </div>
+      {/* </Link> */}
 </div>
 </div>
 </div>
-</Link>
-        
+
  <div className="spfooter">
         <footer1.footer1/>
         </div>
