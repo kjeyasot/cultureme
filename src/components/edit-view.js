@@ -9,7 +9,8 @@ import * as navstuff from './nav-boots';
 
 
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
-const level=5;
+
+let servicetype;
 export class editView extends Component {
   constructor() {
     super();
@@ -17,7 +18,7 @@ export class editView extends Component {
       email: '',
       password: '',
       user: null,
-      servicetype: "Service type",
+      servicetype: '',
       phoneNumber:'9819191919',
       description:"blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
 
@@ -83,7 +84,38 @@ export class editView extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+
+        serviceProvidersRef.once('value', (snapshot) => {
+            snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+              let persInfo = personalInfo.val();
+              // const test = CryptoJS.AES.decrypt(persInfo.password.toString(), 'secret key 123');
+              // const pw = test.toString(CryptoJS.enc.Utf8);
+              // testemail.push(persInfo.firstName);
+              servicetype = persInfo.firstName;
+              // lastName = persInfo.lastName;
+              // email = persInfo.email;
+              // companyName = persInfo.companyName;
+              // mobile = persInfo.mobile;
+              // postalCode = persInfo.postalCode;
+              // password = pw;
+
+      
+
+            });
+            this.setState({
+              servicetype: servicetype,
+              // lastName: lastName,
+              // companyName: companyName,
+              // email: email,
+              // mobile: mobile,
+              // postalCode: postalCode,
+              // password: password,
+            })
+        });
+
       } 
+      
     });
   }
   readData() {
@@ -99,12 +131,34 @@ export class editView extends Component {
    });
   }
    Updated(e) {
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+    
+        const servPV = {
+          firstName: this.state.servicetype,
+       
+        }
+        // console.log(this.state.servicetype)
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+
+        serviceProvidersRef.once('value', (snapshot) => {
+            snapshot.child('PersonalInformation').forEach((personalInfo) => {
+              console.log(personalInfo)   
+              personalInfo.ref.update(servPV)             
+            //  window.location.reload(true);
+
+            });
+        })
+            }
+    })
+  
 this.setState({
 isInEditMode: false
 //store to database
 
 
-})  ; 
+}) ; 
 
    }
    handleChanges(e) {
@@ -113,10 +167,35 @@ isInEditMode: false
       // phoneNumber:e.target.value
       
 
-    });  }
+    }); 
+  
+   
+  
+  }
 
     r(e){
-//set state here to read from database
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ user });
+          const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+  
+          serviceProvidersRef.once('value', (snapshot) => {
+              snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+                let persInfo = personalInfo.val();
+                
+                servicetype = persInfo.firstName;
+             
+              });
+              this.setState({
+                servicetype: servicetype,
+                isInEditMode: false
+               
+              })
+          });
+  
+        } 
+        
+      });
     }
     // onKeyPress(event) {
     //   return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122);
