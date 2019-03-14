@@ -1171,11 +1171,18 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   left: 40px;
 }
   
+.moveElements1{
+ 
+  padding-top: 5vw;
+  padding-left: 10vw;
+  
+}
+
 .moveElements{
  
   padding-top: 5vw;
-  padding-left: 20vw;
-
+  padding-left: 10vw;
+  
 }
 
 .removeButton {
@@ -1322,13 +1329,14 @@ top: 5vh;
 }
 
 .CoolGyalstep1{
-  position: relative;
-  height: 80vh;
-    width: 35vw;
+  position: inline-block;
+  height: auto;
+  width: auto;
+    max-width: 40vw;
     float:right;
     padding-right: 5vw;
-right: -0vw;
-top: -25vh;
+margin-right: 6vw;
+top: -10vh;
   /* height:600px;
   width:600px ;
   
@@ -1348,7 +1356,7 @@ margin-right: 2vw;
 
 .spfooter1{
 
-  position: fixed;
+  /* position: fixed; */
    left: 0;
    bottom: 0;
    width: 100%;

@@ -50,7 +50,7 @@ class App extends Component {
             <Route path="/step1" component={stepone}/>
             <Route path="/editView" component={editView}/>
             <Route path="/myAccount" component={myAccount}/>
-
+          
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
             <Route path="/forgotpassword1" component={searchRes.searchRes} /> */}
