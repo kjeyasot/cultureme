@@ -44,22 +44,19 @@ export class ratings extends React.Component {
       this.setState({rating: nextValue});
     }
 
-    onStarHover(nextValue, prevValue, name) {
-      this.setState({rating: nextValue});
-    }
-
     render() {
 
       const { rating } = this.state;
       return (
         
-      <div className = "moveElements">
+      <div className = "moveElements" style={{backgroundColor: "white"}}>
 
       <div>
-      <h2>Rating from state: {rating}</h2>
+      <h5>Rating from state: {rating}</h5>
         <StarRatingComponent 
-          name="rate2" 
-          editing={false}
+          name="rate1" 
+          className = "starEdit"
+          // editing={false}
           starCount={5}
 
           // will come frfom db
@@ -68,7 +65,7 @@ export class ratings extends React.Component {
       </div>
 
         <div>
-        <h2>Rating from state: {rating}</h2>
+        <h5>Rating from state: {rating}</h5>
         <StarRatingComponent 
           name="rate1" 
           starCount={5}
