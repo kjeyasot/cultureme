@@ -1201,6 +1201,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  
 }
 
 .btnupload {
@@ -1241,6 +1242,9 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   /* bottom: -250px;
     right:500px; */
     margin-bottom: 2vh;
+    height: auto;
+    width: auto;
+    max-width: 40vw;
     
     
 }
@@ -1251,11 +1255,12 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   width: auto;
     /* height-max: 90vh; */
     max-width: 40vw;
+    max-height: 40vw;
     /* width: 35vw; */
     /* float:right; */
     padding-right: 5vw;
 right: 3vw;
-top: 13vh;
+top: 19vh;
 
   /* height:600px;
   width:600px ;
@@ -1268,6 +1273,7 @@ top: 13vh;
 
   height:35vh;
   width:25vw;
+  
   float:center;
 }
 

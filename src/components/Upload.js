@@ -108,7 +108,7 @@ export class Upload extends React.Component {
       <div class = "moveElements">
         <div>
             <div>
-            <h5 style={{float:'middle', fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
+            <h5 style={{ fontSize: "2.5vmax",fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
             {/* {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
