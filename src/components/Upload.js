@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
 
 
 import * as script from '../scripts';
@@ -108,7 +109,7 @@ export class Upload extends React.Component {
       <div class = "moveElements">
         <div>
             <div>
-            <h5 style={{ fontSize: "2.5vmax",fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
+            <h5 style={{ fontSize: "2vmax",fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
             {/* {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
@@ -146,7 +147,15 @@ export class Upload extends React.Component {
             </div>
           )}
           <div>
-          <button className = "doneButton" style={{float:'center'}}>Done</button>
+          <br></br>
+          {/* <div className="text-right py-4 mt-3"> */}
+          <MDBBtn className="btn btn-pink" type="submit">
+                Done
+                <MDBIcon far icon="check" className="ml-2 fas fa-angle-right" />
+          </MDBBtn>
+          {/* </div> */}
+          <br></br>
+          <br></br>
           </div>
         </div>
     </div>
