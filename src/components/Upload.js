@@ -101,6 +101,10 @@ export class Upload extends React.Component {
         paddingBottom:"20px",
       }
 
+
+      const isImage = this.state.file;
+      let imagePreview;
+      
       if (isImage) {
         // imagePreview = <LogoutButton onClick={this.handleLogoutClick} />;
         imagePreview = <img className="imageUploadSize" src={this.state.url }/>;
