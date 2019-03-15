@@ -36,19 +36,28 @@ export class Upload extends React.Component {
             if (user) {
               this.setState({ user });
               var uid = user.uid;
-      const key = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).push().key
+      const key = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos').push().key
       const img = storage.ref().child('Images').child(uid).child(key)
     
     // WORKING FOR DB
     img.put(this.state.file).then((snap) => {
         // console.log('test'+ snap.metadata.downloadURLs)
         storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
-          database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child(key).set({
+          database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos').child(key).set({
           "url" : url
         })
       })
       })
-      
+      const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos')
+
+      ref.on('child_added', (child) => {
+        let images = this.state.images.slice()
+        images.push({
+          key: child.key,
+          url: child.val().url
+        })
+        this.setState({images})
+      })
       this.setState({
         file: null,
         url: null,
@@ -62,8 +71,15 @@ export class Upload extends React.Component {
       let uid = this.state.user.uid
       let img = event.target.name
       storage.ref().child('Images').child(uid).child(img).delete()
-      database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child(img).remove();
-      
+      database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos').child(img).remove();
+      const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos')
+
+      ref.on('child_removed', (child) => {
+        let images = this.state.images.filter((image) => {
+          return image.url != child.val().url
+        })
+        this.setState({images})
+      })
     }
 
     componentDidMount() {
@@ -80,22 +96,22 @@ export class Upload extends React.Component {
         
       
       // const ref = database.ref().child('Photos').child(this.state.user.uid)
-      const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast)
+      // const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos')
 
-      ref.on('child_added', (child) => {
-        let images = this.state.images.slice()
-        images.push({
-          key: child.key,
-          url: child.val().url
-        })
-        this.setState({images})
-      })
-      ref.on('child_removed', (child) => {
-        let images = this.state.images.filter((image) => {
-          return image.url != child.val().url
-        })
-        this.setState({images})
-      })
+      // ref.on('child_added', (child) => {
+      //   let images = this.state.images.slice()
+      //   images.push({
+      //     key: child.key,
+      //     url: child.val().url
+      //   })
+      //   this.setState({images})
+      // })
+      // ref.on('child_removed', (child) => {
+      //   let images = this.state.images.filter((image) => {
+      //     return image.url != child.val().url
+      //   })
+      //   this.setState({images})
+      // })
     } 
 });
     }
