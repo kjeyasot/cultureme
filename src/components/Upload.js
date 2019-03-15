@@ -101,6 +101,13 @@ export class Upload extends React.Component {
         paddingBottom:"20px",
       }
 
+      if (isImage) {
+        // imagePreview = <LogoutButton onClick={this.handleLogoutClick} />;
+        imagePreview = <img className="imageUploadSize" src={this.state.url }/>;
+      } else {
+        imagePreview = <img className="imageUploadSize" src={'http://via.placeholder.com/400x300'}/>
+      }
+
       return (
         <div>
 
@@ -125,6 +132,8 @@ export class Upload extends React.Component {
           <br></br>
           <br></br>
           {/* <div class="resizeImage"> */}
+
+          {imagePreview}
           <img className="imageUploadSize" src={this.state.url ||'http://via.placeholder.com/400x300'}/>
           {/* </div> */}
           <br></br>
