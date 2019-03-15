@@ -1243,12 +1243,16 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 
 .CoolGyalUpload{
   position: absolute;
-  height: 90vh;
-    width: 35vw;
+  height: auto;
+  width: auto;
+    /* height-max: 90vh; */
+    max-width: 40vw;
+    /* width: 35vw; */
     /* float:right; */
     padding-right: 5vw;
 right: 3vw;
-top: 5vh;
+top: 13vh;
+
   /* height:600px;
   width:600px ;
   
