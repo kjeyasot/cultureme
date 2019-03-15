@@ -62,12 +62,11 @@ export class stepone extends Component {
     <div>
       
       <navstuff.navstuff/>
-  
       <div class = "moveElements1">
       <h3 style={{ fontSize: "2.5vmax",fontFamily:"Arial"}}>Let's get started with creating a service</h3>
            <br></br>
             <h5 style={{ fontSize: "2vmax",fontFamily:"Arial"}}>Step 1: What type of service do you want to provide</h5>
-  </div>
+    </div>
   <br></br>
 
   <div>

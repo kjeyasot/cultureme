@@ -1217,7 +1217,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 
   height: auto;
   width: auto;
-    max-width: 40vw;
+  max-width: 40vw;
 }
 
 .upload-btn-wrapper input[type=file] {
@@ -1271,10 +1271,23 @@ top: 19vh;
 
 .imageUploadSize{
 
-  height:35vh;
+  /* height:35vh;
   width:25vw;
-  
+  max-width: 50vw;
   float:center;
+  resize: both;
+  /* width:50px;
+  height:25px; */ 
+
+
+  height: auto;
+  width: auto;
+  max-width: 40vw;
+  max-height: 40vw;
+  padding-right: 5vw;
+/* right: 3vw;
+top: 19vh; */
+ 
 }
 
 .Heading {

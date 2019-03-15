@@ -124,10 +124,10 @@ export class Upload extends React.Component {
           <input className = "btnupload" id="input" type="file" onChange={this.handleChange}/>
           <br></br>
           <br></br>
-          <div>
+          {/* <div class="resizeImage"> */}
           <img className="imageUploadSize" src={this.state.url ||'http://via.placeholder.com/400x300'}/>
-
-          </div>
+          {/* </div> */}
+          <br></br>
           <br></br>
           <div class="upload-btn-wrapper">
           <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
