@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
-import firebase, { auth, provider } from '../firebase.js';
+import firebase, { auth, provider, database } from '../firebase.js';
 import { Link } from 'react-router-dom';
 
 
@@ -11,49 +11,61 @@ import * as script from '../scripts';
 export class stepone extends Component {
   constructor() {
     super();
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
     this.state = {
-      user: null
+      user: null,
+      serviceType: '',
+      Description: '',
+      maxPrice: '',
+      minPrice:'',
+      province: '',
+      city:'',
+      services: []
     }
-    this.login = this.login.bind(this); 
-    this.logout = this.logout.bind(this); 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.createService = this.createService.bind(this);
 
-  }
-
-  forceUpdateHandler(){
-    this.forceUpdate();
-  };
-
-  logout() {
-    auth.signOut()
-    .then(() => {
-      this.setState({
-        user: null
-      });
-    });
-  }
-
-  login() {
-    auth.signInWithPopup(provider) 
-      .then((result) => {
-        const user = result.user;
-        this.setState({
-          user
-        });
-      });
-  }
-  componentWillMount() {
+  }  
+  componentDidMount() {
     
-
-  }
-  async componentDidMount() {
-    
-    await auth.onAuthStateChanged((user) => {
+  auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
       } 
     });
   }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    // this.props.history.push('/choose-service')
+  }
+
+  createService(){
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+      
+        const services = {
+          serviceType: this.state.serviceType,
+          Description: this.state.Description,
+          maxPrice: this.state.maxPrice,
+          minPrice: this.state.minPrice,
+          state: this.state.province,
+          city: this.state.city
+        }
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services');  
+        serviceProvidersRef.push(services)
+   
+        
+            }
+    })
+    
+  }
+
   render(){
     const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
  
@@ -75,7 +87,7 @@ export class stepone extends Component {
   <MDBContainer>
       <MDBRow>
         <MDBCol md="10" text-center>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <label
               htmlFor="defaultFormCardNameEx"
               className="black-text font-weight-light"
@@ -86,7 +98,9 @@ export class stepone extends Component {
               type="text"
               id="defaultFormCardNameEx"
               className="form-control"
-              onClick= {this.forceUpdateHandler}
+              name='serviceType' 
+              onChange={this.handleChange} 
+              value={this.state.serviceType}
             />
             <br />
             <label
@@ -99,6 +113,9 @@ export class stepone extends Component {
               type="email"
               id="defaultFormCardEmailEx"
               className="form-control"
+              name='Description' 
+              onChange={this.handleChange} 
+              value={this.state.Description}
             />
 <br></br>
 
@@ -122,7 +139,10 @@ export class stepone extends Component {
           <i className="fa fa-dollar"></i>
         </span>
       </div>
-      <input class="form-control form-control-md " md="20" type="text"  placeholder="Min Price" aria-describedby="basic-addon" />
+      <input class="form-control form-control-md " md="20" type="text"  placeholder="Min Price" aria-describedby="basic-addon" 
+      name='minPrice' 
+      onChange={this.handleChange} 
+      value={this.state.minPrice}/>
     </div>
     </div>
     <p>-</p>
@@ -133,7 +153,10 @@ export class stepone extends Component {
           <i className="fa fa-dollar"></i>
         </span>
       </div>
-      <input type="text" className="form-control  form-control-md" placeholder="Max Price" aria-label="Username" aria-describedby="basic-addon" />
+      <input type="text" className="form-control  form-control-md" placeholder="Max Price" aria-label="Username" aria-describedby="basic-addon" 
+      name='maxPrice' 
+      onChange={this.handleChange} 
+      value={this.state.maxPrice}/>
     </div>
     </div>
   </div>
@@ -148,11 +171,14 @@ export class stepone extends Component {
             <br />
            
             <div class="row">
-    
+           
             <div class="col">
       
-    <input type="hidden" name="country" id="countryId" value="CA"/>
-<select name="state" class="states order-alpha browser-default custom-select custom-select- mb-3"   id="stateId">
+    <input type="hidden" name="country" id="countryId" value="CA"
+    />
+<select name="province" class="states order-alpha browser-default custom-select custom-select- mb-3"   id="stateId"
+onChange={this.handleChange} 
+value={this.state.province}>
     <option value="">Select Province</option>
 </select>
 </div>
@@ -160,7 +186,9 @@ export class stepone extends Component {
 &nbsp;&nbsp;
 &nbsp;&nbsp;
 <div class="col">
-<select Async name="city" class="cities order-alpha browser-default custom-select custom-select-md mb-3" id="cityId">
+<select Async name="city" class="cities order-alpha browser-default custom-select custom-select-md mb-3" id="cityId"
+onChange={this.handleChange} 
+value={this.state.city}>
     <option value="">Select City</option>
 </select>
 </div>
@@ -169,7 +197,8 @@ export class stepone extends Component {
 
             <div className="text-right py-4 mt-3">
             <Link to= "/Upload">
-              <MDBBtn className="btn btn-pink" type="submit" >
+              <MDBBtn className="btn btn-pink" onClick={this.createService} >
+              
                 Continue
                 <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-angle-right" />
         

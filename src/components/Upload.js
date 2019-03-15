@@ -7,7 +7,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact
 
 import * as script from '../scripts';
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
-
+let keyLast;
 
 export class Upload extends React.Component {
     constructor(){
@@ -35,14 +35,15 @@ export class Upload extends React.Component {
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
-      const key = database.ref().child('Photos').child(this.state.user.uid).push().key
-      const img = storage.ref().child('Images').child(this.state.user.uid).child(key)
+              var uid = user.uid;
+      const key = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).push().key
+      const img = storage.ref().child('Images').child(uid).child(key)
     
     // WORKING FOR DB
     img.put(this.state.file).then((snap) => {
         // console.log('test'+ snap.metadata.downloadURLs)
-        storage.ref().child('Images').child(this.state.user.uid).child(img.name).getDownloadURL().then(url => {
-        database.ref().child('Photos').child(this.state.user.uid).child(key).set({
+        storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
+          database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child(key).set({
           "url" : url
         })
       })
@@ -61,16 +62,26 @@ export class Upload extends React.Component {
       let uid = this.state.user.uid
       let img = event.target.name
       storage.ref().child('Images').child(uid).child(img).delete()
-      database.ref().child('Photos').child(this.state.user.uid).child(img).remove()
-
+      database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child(img).remove();
+      
     }
 
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
+              let uid = this.state.user.uid
+              firebase.database().ref('serviceProviders').child(uid).limitToLast(1).on('child_added', function(childSnapshot) {
+                var snap = Object.keys(childSnapshot.val());
+                keyLast = snap[snap.length-1]
+                console.log(keyLast)
+           
+           });
+        
       
-      const ref = database.ref().child('Photos').child(this.state.user.uid)
+      // const ref = database.ref().child('Photos').child(this.state.user.uid)
+      const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast)
+
       ref.on('child_added', (child) => {
         let images = this.state.images.slice()
         images.push({
