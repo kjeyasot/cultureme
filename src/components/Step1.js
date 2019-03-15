@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 import firebase, { auth, provider } from '../firebase.js';
+import { Link } from 'react-router-dom';
 
 
 import * as script from '../scripts';
@@ -16,7 +17,6 @@ export class stepone extends Component {
     }
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
-  
 
   }
 
@@ -168,11 +168,13 @@ export class stepone extends Component {
 
 
             <div className="text-right py-4 mt-3">
-              <MDBBtn className="btn btn-pink" type="submit">
+            <Link to= "/Upload">
+              <MDBBtn className="btn btn-pink" type="submit" >
                 Continue
                 <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-angle-right" />
         
               </MDBBtn>
+              </Link>
             </div>
           </form>
         </MDBCol>
