@@ -1213,6 +1213,10 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   font-weight: bold;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
+
+  height: auto;
+  width: auto;
+    max-width: 40vw;
 }
 
 .upload-btn-wrapper input[type=file] {
