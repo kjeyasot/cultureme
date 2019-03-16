@@ -121,11 +121,14 @@ refresh() {
 <br></br>
 <br></br>
 <MDBCol>
-      <MDBCard style={{ width: "30vw" }}>
-      <div style={{ paddingLeft: "325vw" }}>
+
+     
+      <MDBCard style={{ width: "30vw"}}>
+      <div style={{ paddingLeft: "27vw" ,fontSize: "1.5vw"}}>
       <i class="fas fa-times-circle fa-2x" ></i>
       </div>
         <MDBCardBody>
+        
           <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}}>Company Name</MDBCardTitle>
           <label style={{fontSize: "1.5vw"}} for="form1">Service:</label>
           &nbsp;&nbsp; &nbsp;&nbsp;
