@@ -126,7 +126,7 @@ refresh() {
       <i class="fas fa-times-circle fa-2x" ></i>
       </div>
         <MDBCardBody>
-          <MDBCardTitle style={{ textAlign: "center"}}>Company Name</MDBCardTitle>
+          <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}}>Company Name</MDBCardTitle>
           <label for="form1">Service:</label>
           &nbsp;&nbsp; &nbsp;&nbsp;
           <label for="form1">exampleService</label>
