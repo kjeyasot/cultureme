@@ -10,8 +10,8 @@ import {
   Link,
   Switch
 } from 'react-router-dom';
-
-
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCardHeader, MDBCol } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBInput} from 'mdbreact';
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 // const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
@@ -100,6 +100,56 @@ refresh() {
 </div>
 </div>
 </div>
+
+<br></br>
+
+<MDBCol>
+<div class="hovereffect" onClick={this.refresh}>
+      <MDBCard class="img-responsive" style={{ width: "22rem"}}> 
+      <div class="overlay">
+        <MDBCardBody style={{ textAlign: "center"}}>
+        <i class="fas fa-plus fa-5x"></i>
+        <br></br>
+        <br></br>
+        <label for="form1">Add Service</label>
+          <br></br>
+        </MDBCardBody>
+        </div>
+      </MDBCard>
+      </div>
+</MDBCol>
+
+<br></br>
+<br></br>
+<MDBCol>
+      <MDBCard style={{ width: "22rem" }}>
+      <div style={{ paddingLeft: "325px" }}>
+      <i class="fas fa-times-circle fa-2x" ></i>
+      </div>
+        <MDBCardBody>
+          <MDBCardTitle style={{ textAlign: "center"}}>Company Name</MDBCardTitle>
+          <label for="form1">Service:</label>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <label for="form1">exampleService</label>
+          {/* When connecting with DB replace text with: 
+          <label> { this.props.label } </label> */}
+          <br></br>
+          <label for="form1">Location:</label>
+          &nbsp;&nbsp;
+          <label for="form1">exampleLocation</label>
+          <br></br>
+          <label  for="form1">Price:</label>
+          &nbsp;&nbsp;
+          &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;
+          <label for="form1">examplePrice</label>
+          <br></br>
+        </MDBCardBody>
+
+        <MDBBtn href="#">View</MDBBtn>
+      </MDBCard>
+</MDBCol>
+
+<br></br>
 
  <div className="spfooter">
         <footer1.footer1/>
