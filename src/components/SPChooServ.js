@@ -102,21 +102,21 @@ refresh() {
 
 <br></br>
 
-{/* <MDBCol>
-<div onClick={this.refresh}>
-      <MDBCard class = "vw-50" style={{ width: "22rem"}}> 
-      <div class = "hoverable">
+<MDBCol>
+  <div onClick={this.refresh}>
+  <MDBCard class = "vw-50" style={{ width: "22rem", width: "30vw"}}> 
+  <div class = "hoverable">
         <MDBCardBody class = "min-vw-50" style={{ textAlign: "center"}}>
-        <i class="fas fa-plus fa-5x"></i> 
-       <br></br>
-        <br></br> 
-        <label for="form1">Add Service</label>
+          <i style={{fontSize: "10vw"}}class="fas fa-plus fa-5x"></i> 
           <br></br>
-        </MDBCardBody>
-        </div>
-      </MDBCard>
-      </div>
-</MDBCol> */}
+          <br></br> 
+            <label for="form1">Add Service</label>
+          <br></br>
+      </MDBCardBody>
+  </div>
+  </MDBCard>
+  </div>
+</MDBCol>
 
 <br></br>
 <br></br>
