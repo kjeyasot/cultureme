@@ -103,9 +103,10 @@ refresh() {
 <br></br>
 
 <MDBCol>
-<div class="hovereffect" onClick={this.refresh}>
+<div onClick={this.refresh}>
       <MDBCard class="img-responsive" style={{ width: "22rem"}}> 
       <div class="overlay">
+      <div class = "hoverable">
         <MDBCardBody style={{ textAlign: "center"}}>
         <i class="fas fa-plus fa-5x"></i>
         <br></br>
@@ -113,6 +114,7 @@ refresh() {
         <label for="form1">Add Service</label>
           <br></br>
         </MDBCardBody>
+        </div>
         </div>
       </MDBCard>
       </div>
