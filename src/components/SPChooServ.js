@@ -102,29 +102,27 @@ refresh() {
 
 <br></br>
 
-<MDBCol>
+{/* <MDBCol>
 <div onClick={this.refresh}>
-      <MDBCard class="img-responsive" style={{ width: "22rem"}}> 
-      <div class="overlay">
+      <MDBCard class = "vw-50" style={{ width: "22rem"}}> 
       <div class = "hoverable">
-        <MDBCardBody style={{ textAlign: "center"}}>
-        <i class="fas fa-plus fa-5x"></i>
-        <br></br>
-        <br></br>
+        <MDBCardBody class = "min-vw-50" style={{ textAlign: "center"}}>
+        <i class="fas fa-plus fa-5x"></i> 
+       <br></br>
+        <br></br> 
         <label for="form1">Add Service</label>
           <br></br>
         </MDBCardBody>
         </div>
-        </div>
       </MDBCard>
       </div>
-</MDBCol>
+</MDBCol> */}
 
 <br></br>
 <br></br>
 <MDBCol>
-      <MDBCard style={{ width: "22rem" }}>
-      <div style={{ paddingLeft: "325px" }}>
+      <MDBCard style={{ width: "30vw" }}>
+      <div style={{ paddingLeft: "325vw" }}>
       <i class="fas fa-times-circle fa-2x" ></i>
       </div>
         <MDBCardBody>
