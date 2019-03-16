@@ -80,10 +80,10 @@ export class signInSP extends Component {
             <div className='signUpPageBg'>
             <div className="signUpPageFields">
             <p2> Sign In</p2> <br></br>
-            <button onClick={this.login}>
+            {/* <button onClick={this.login}>
              <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
              &nbsp;&nbsp;Login with Google
-            </button><br></br>
+            </button><br></br> */}
             <input className='field' id = 'email'type = 'text' name='email' placeholder = 'E-mail' onChange={this.handleChange} value={this.state.email}/><br></br>
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
             <input onClick={this.loginWEmail} className = 'submitBtn' type= 'submit' value= 'Sign In'/><br></br>  
