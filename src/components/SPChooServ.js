@@ -104,13 +104,12 @@ refresh() {
 
 <MDBCol>
   <div onClick={this.refresh}>
-  <MDBCard class = "vw-50" style={{ width: "22rem", width: "30vw"}}> 
+  <MDBCard class = "vw-50" style={{width: "30vw", height: "25%"}}> 
   <div class = "hoverable">
         <MDBCardBody class = "min-vw-50" style={{ textAlign: "center"}}>
           <i style={{fontSize: "10vw"}}class="fas fa-plus fa-5x"></i> 
           <br></br>
-          <br></br> 
-            <label for="form1">Add Service</label>
+            <label style={{fontSize: "1.5vw"}}for="form1">Add Service</label>
           <br></br>
       </MDBCardBody>
   </div>
