@@ -80,10 +80,9 @@ refresh() {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
 
 
-<div class="container-fluid">
+{/* <div class="container-fluid">
 	<div class="row">
     <div class="col-md-3 col-sm-4">
-    {/* <Link to="/Step1"> */}
       <div class="wrimagecard wrimagecard-topimage" onClick={this.refresh}>
           <a href="#">
           <div class="wrimagecard-topimage_header" styles="background-color: rgba(22, 160, 133, 0.1)">
@@ -96,10 +95,10 @@ refresh() {
           </div>
         </a>
       </div>
-      {/* </Link> */}
+    
 </div>
 </div>
-</div>
+</div> */}
 
 <br></br>
 
