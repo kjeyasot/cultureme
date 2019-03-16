@@ -103,44 +103,46 @@ refresh() {
 <br></br>
 
 <MDBCol>
-<div class="hovereffect" onClick={this.refresh}>
-      <MDBCard class="img-responsive" style={{ width: "22rem"}}> 
-      <div class="overlay">
-        <MDBCardBody style={{ textAlign: "center"}}>
-        <i class="fas fa-plus fa-5x"></i>
-        <br></br>
-        <br></br>
-        <label for="form1">Add Service</label>
+  <div onClick={this.refresh}>
+  <MDBCard class = "vw-50" style={{width: "30vw", height: "25%"}}> 
+  <div class = "hoverable">
+        <MDBCardBody class = "min-vw-50" style={{ textAlign: "center"}}>
+          <i style={{fontSize: "10vw"}}class="fas fa-plus fa-5x"></i> 
           <br></br>
-        </MDBCardBody>
-        </div>
-      </MDBCard>
-      </div>
+            <label style={{fontSize: "1.5vw", background: "none"}}for="form1">Add Service</label>
+          <br></br>
+      </MDBCardBody>
+  </div>
+  </MDBCard>
+  </div>
 </MDBCol>
 
 <br></br>
 <br></br>
 <MDBCol>
-      <MDBCard style={{ width: "22rem" }}>
-      <div style={{ paddingLeft: "325px" }}>
+
+     
+      <MDBCard style={{ width: "30vw"}}>
+      <div style={{ paddingLeft: "27vw" ,fontSize: "1.5vw"}}>
       <i class="fas fa-times-circle fa-2x" ></i>
       </div>
         <MDBCardBody>
-          <MDBCardTitle style={{ textAlign: "center"}}>Company Name</MDBCardTitle>
-          <label for="form1">Service:</label>
+        
+          <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}}>Company Name</MDBCardTitle>
+          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Service:</label>
           &nbsp;&nbsp; &nbsp;&nbsp;
-          <label for="form1">exampleService</label>
+          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">exampleService</label>
           {/* When connecting with DB replace text with: 
           <label> { this.props.label } </label> */}
           <br></br>
-          <label for="form1">Location:</label>
+          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Location:</label>
           &nbsp;&nbsp;
-          <label for="form1">exampleLocation</label>
+          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">exampleLocation</label>
           <br></br>
-          <label  for="form1">Price:</label>
+          <label  style={{fontSize: "1.5vw", background: "none"}} for="form1">Price:</label>
           &nbsp;&nbsp;
           &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;
-          <label for="form1">examplePrice</label>
+          <label style={{fontSize: "1.5vw", background: "none"}}for="form1">examplePrice</label>
           <br></br>
         </MDBCardBody>
 
