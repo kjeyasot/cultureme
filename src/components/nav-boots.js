@@ -73,8 +73,11 @@ export class navstuff extends Component {
     return (
       <div>
         <Navbar color="dark"  className="navbar-dark font-weight-bold" light expand="xl">
+
+        <Link to= "/choose-service">
           <NavbarBrand  href="/"> <img className="lnav" alt="logo" src={images1['logoCM.png']} /></NavbarBrand>
-         
+         </Link>
+
           <div>
           {/* <div className="BackSearchN"></div> */}
       <div className="SearchLabelCssN"></div>
