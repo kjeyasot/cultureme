@@ -127,20 +127,20 @@ refresh() {
       </div>
         <MDBCardBody>
           <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}}>Company Name</MDBCardTitle>
-          <label for="form1">Service:</label>
+          <label style={{fontSize: "1.5vw"}} for="form1">Service:</label>
           &nbsp;&nbsp; &nbsp;&nbsp;
-          <label for="form1">exampleService</label>
+          <label style={{fontSize: "1.5vw"}} for="form1">exampleService</label>
           {/* When connecting with DB replace text with: 
           <label> { this.props.label } </label> */}
           <br></br>
-          <label for="form1">Location:</label>
+          <label style={{fontSize: "1.5vw"}} for="form1">Location:</label>
           &nbsp;&nbsp;
-          <label for="form1">exampleLocation</label>
+          <label style={{fontSize: "1.5vw"}} for="form1">exampleLocation</label>
           <br></br>
-          <label  for="form1">Price:</label>
+          <label  style={{fontSize: "1.5vw"}} for="form1">Price:</label>
           &nbsp;&nbsp;
           &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;
-          <label for="form1">examplePrice</label>
+          <label style={{fontSize: "1.5vw"}}for="form1">examplePrice</label>
           <br></br>
         </MDBCardBody>
 
