@@ -74,6 +74,7 @@ export class signIn extends Component {
 
   render() {
       return (
+<<<<<<< HEAD
         <MDBView className="SignInSPView">
         <MDBContainer>
         <MDBRow>
@@ -143,6 +144,35 @@ export class signIn extends Component {
         </MDBRow>
       </MDBContainer>
       </MDBView>
+=======
+        <div>
+        <img className="backgroundImg" alt="img" src={images['wed2.png']} />
+        <div id = "myModal" className="signUpMainModal">
+            <div className='signUpPageBg'>
+            <div className="signUpPageFields">
+            <p2> Sign In</p2> <br></br>
+            {/* <button onClick={this.login}>
+             <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+             &nbsp;&nbsp;Login with Google
+            </button><br></br> */}
+            <input className='field' id = 'email'type = 'text' name='email' placeholder = 'E-mail' onChange={this.handleChange} value={this.state.email}/><br></br>
+            <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
+            <input onClick={this.loginWEmail} className = 'submitBtn' type= 'submit' value= 'Sign In'/><br></br>  
+          {this.state.user ?this.props.history.push('/'):null}
+            <Link to="/forgotpassword">
+            <u> Forgot Password?</u><br></br>
+            </Link>
+            <p1>Don't have an account?</p1>
+            <Link to="/signup">
+            <u id="signUpTxt"> Sign Up </u> 
+            </Link>  
+
+            </div>
+            </div>
+        </div>
+
+        </div>
+>>>>>>> n2
     );
   }
 }
