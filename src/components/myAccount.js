@@ -14,6 +14,8 @@ let companyName;
 let mobile;
 let postalCode;
 let password;
+let testCompany = [];
+let testPhone = [];
 
 export class myAccount extends React.Component {
     constructor(){
@@ -28,7 +30,7 @@ export class myAccount extends React.Component {
         companyName: '',
         email: '',
         mobile: '',
-        postalCode: '',
+        // postalCode: '',
         password: '',
         isInEditMode:false
       }
@@ -59,12 +61,7 @@ export class myAccount extends React.Component {
           this.setState({ companyName});
 
         }
-        // if(e.target.name==='password'){
-        //   this.setState({
-        //     [e.target.name]: e.target.value
-        //   });
-
-        // }
+     
       }
 
     componentDidMount() {
@@ -72,8 +69,18 @@ export class myAccount extends React.Component {
         if (user) {
           
           this.setState({ user });
+          const serviceProviderssRef = firebase.database().ref('serviceProviders');
+          serviceProviderssRef.once('value', (snapshot) => {
+            snapshot.forEach((eventSnapshot) => {
+              eventSnapshot.child('PersonalInformation').forEach((personalInfo) => {
+                let persInfo = personalInfo.val();
+               
+                testCompany.push(persInfo.companyName);
+                testPhone.push(persInfo.mobile); 
+              });
+            });
+          });
           const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
-
           serviceProvidersRef.once('value', (snapshot) => {
               snapshot.child('PersonalInformation').forEach((personalInfo) => {                
                 let persInfo = personalInfo.val();
@@ -84,7 +91,9 @@ export class myAccount extends React.Component {
                 email = persInfo.email;
                 companyName = persInfo.companyName;
                 mobile = persInfo.mobile;
-                postalCode = persInfo.postalCode;
+                // testCompany.push(persInfo.companyName);
+                // testPhone.push(persInfo.mobile); 
+                // postalCode = persInfo.postalCode;
                 password = pw;
 
         
@@ -96,7 +105,7 @@ export class myAccount extends React.Component {
                 companyName: companyName,
                 email: email,
                 mobile: mobile,
-                postalCode: postalCode,
+                // postalCode: postalCode,
                 password: password,
               })
           });
@@ -120,7 +129,7 @@ export class myAccount extends React.Component {
           const servPV = {
             companyName: this.state.companyName,
             mobile: phone,
-            postalCode: this.state.postalCode,
+            // postalCode: this.state.postalCode,
             password: pw,
           }
           // console.log(this.state.companyName1)
@@ -160,7 +169,7 @@ export class myAccount extends React.Component {
                   email = persInfo.email;
                   companyName = persInfo.companyName;
                   mobile = persInfo.mobile;
-                  postalCode = persInfo.postalCode;
+                  // postalCode = persInfo.postalCode;
                   password = pw;
   
           
@@ -172,7 +181,7 @@ export class myAccount extends React.Component {
                   companyName: companyName,
                   email: email,
                   mobile: mobile,
-                  postalCode: postalCode,
+                  // postalCode: postalCode,
                   password: password,
                   isInEditMode: false
                 })
@@ -250,14 +259,14 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
 
 
-              {this.state.isInEditMode? <input className = "editAccount" type="text" name="companyName" pattern ="[A-Za-z]*"onChange={this.handleChange} value ={this.state.companyName}/> :
+              {this.state.isInEditMode? <input className = "editAccount" type="text" name="companyName" maxlength="60" onChange={this.handleChange} value ={this.state.companyName}/> :
                <input type="text" name="companyName" value={this.state.companyName} disabled="disabled"/>}
               
               </h6>
               <br></br>
 
                <h6>
-                Contact:
+               Phone Number:
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
@@ -265,12 +274,12 @@ export class myAccount extends React.Component {
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
                
-               {this.state.isInEditMode ? <input className = "editAccount" type="text" name="mobile" pattern="[0-9]*" maxLength= "10" onChange={this.handleChange} value={this.state.mobile}/> :
+               {this.state.isInEditMode ? <input className = "editAccount" type="text" name="mobile" pattern="[0-9]*" maxLength= "10"  onChange={this.handleChange} value={this.state.mobile}/> :
                 <input type="text" name="mobile" value={this.state.mobile} disabled="disabled"/>}
               </h6>
               <br></br>
 
-                <h6>
+                {/* <h6>
                 Location:
                 &nbsp;&nbsp;
                 &nbsp;&nbsp;
@@ -281,7 +290,7 @@ export class myAccount extends React.Component {
                  <input type="text" name="location"  value={this.state.postalCode} disabled="disabled"/>}
                
                
-              </h6>
+              </h6> */}
               <br></br>
 
                 <h6>
@@ -295,11 +304,12 @@ export class myAccount extends React.Component {
                   <input type="password" name="password" value={this.state.password} disabled="disabled"/>} */}
 
                &nbsp;&nbsp;
-               <br></br>
-               <br></br>
-               <div className = 'editButtons'>
-               {this.state.isInEditMode?  <button className = "fa fa-save" type= 'submit' onClick={this.userUpdate}></button>: null}
-
+               {/* <br></br> */}
+               {/* <br></br> */}
+               <div className = 'editButtons' >
+               {this.state.isInEditMode?  <button className = "fa fa-save" type= 'submit' disabled={!this.state.companyName||!this.state.mobile||this.state.mobile.length<10||testCompany.indexOf(this.state.companyName)>-1||testPhone.indexOf(this.state.mobile)>-1}   onClick={this.userUpdate} ></button> : null}
+              
+              
                </div>
                
               </h6> 
