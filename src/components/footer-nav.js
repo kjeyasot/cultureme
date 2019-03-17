@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../footer-nav.css';
+import { Link } from 'react-router-dom';
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 export class footer1 extends Component {
+
    
   render() {
       return (
@@ -11,7 +13,9 @@ export class footer1 extends Component {
         <MDBRow className="pt-3 mb-3 text-center d-flex justify-content-center">
           <MDBCol md="2" className="b-3">
             <h6 className="title font-weight-bold">
+            <Link to= "/aboutUs"> 
               <a href="#!">About us</a>
+              </Link>
             </h6>
           </MDBCol>
         
@@ -41,7 +45,7 @@ export class footer1 extends Component {
             </a>
            
             <a className="li-ic">
-              <i className="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x">
+              <i className="fab fa-youtube fa-lg white-text mr-md-5 mr-3 fa-2x">
               </i>
             </a>
             <a className="ins-ic">
