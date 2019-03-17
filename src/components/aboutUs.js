@@ -102,6 +102,7 @@ with ease.
           </MDBRow>
         </MDBCardBody>
       </MDBCard>
+      <footer1.footer1/>
       </div>
     );
   }
