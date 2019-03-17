@@ -1438,6 +1438,5 @@ top: 5px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    height:vh;
-
+    height:100vh;
   }
