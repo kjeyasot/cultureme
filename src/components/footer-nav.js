@@ -44,7 +44,7 @@ export class footer1 extends Component {
             </a>
            
             <a className="li-ic">
-              <i className="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x">
+              <i className="fab fa-youtube fa-lg white-text mr-md-5 mr-3 fa-2x">
               </i>
             </a>
             <a className="ins-ic">
