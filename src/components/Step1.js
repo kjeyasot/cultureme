@@ -50,14 +50,15 @@ export class stepone extends Component {
       if (user) {
       
         const services = {
-          serviceType: this.state.serviceType,
+          // serviceType: this.state.serviceType,
           Description: this.state.Description,
           maxPrice: this.state.maxPrice,
           minPrice: this.state.minPrice,
           state: this.state.province,
           city: this.state.city
         }
-        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services');  
+        const sTYpe = this.state.serviceType;
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe);  
         serviceProvidersRef.push(services)
    
         
@@ -196,7 +197,7 @@ value={this.state.city}>
 
 
             <div className="text-right py-4 mt-3">
-            <Link to= "/Upload">
+            <Link to= {{pathname :"/Upload", data: this.state.serviceType }}>
               <MDBBtn className="btn btn-pink" onClick={this.createService} >
               
                 Continue

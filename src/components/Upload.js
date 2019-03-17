@@ -8,7 +8,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact
 import * as script from '../scripts';
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 let keyLast;
-
+let data = {};
 export class Upload extends React.Component {
     constructor(){
       super()
@@ -32,32 +32,24 @@ export class Upload extends React.Component {
       })
     }
     storePhoto() {
+      const {data} = this.props.location;
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
               var uid = user.uid;
-      const key = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos').push().key
+      const key = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').push().key
       const img = storage.ref().child('Images').child(uid).child(key)
     
     // WORKING FOR DB
     img.put(this.state.file).then((snap) => {
         // console.log('test'+ snap.metadata.downloadURLs)
         storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
-          database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos').child(key).set({
+          database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(key).set({
           "url" : url
         })
       })
       })
-      const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos')
 
-      ref.on('child_added', (child) => {
-        let images = this.state.images.slice()
-        images.push({
-          key: child.key,
-          url: child.val().url
-        })
-        this.setState({images})
-      })
       this.setState({
         file: null,
         url: null,
@@ -68,54 +60,41 @@ export class Upload extends React.Component {
 
 
     deletePhoto(event) {
+      const {data} = this.props.location;
       let uid = this.state.user.uid
       let img = event.target.name
       storage.ref().child('Images').child(uid).child(img).delete()
-      database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos').child(img).remove();
-      const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos')
+      database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(img).remove();
+    }
 
+    componentDidMount() {
+      const {data} = this.props.location;
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+              this.setState({ user });
+              let uid = this.state.user.uid
+              
+      const ref = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos')
+
+      ref.on('child_added', (child) => {
+        let images = this.state.images.slice()
+        images.push({
+          key: child.key,
+          url: child.val().url
+        })
+        this.setState({images})
+      })
       ref.on('child_removed', (child) => {
         let images = this.state.images.filter((image) => {
           return image.url != child.val().url
         })
         this.setState({images})
       })
-    }
-
-    componentDidMount() {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-              this.setState({ user });
-              let uid = this.state.user.uid
-              firebase.database().ref('serviceProviders').child(uid).limitToLast(1).on('child_added', function(childSnapshot) {
-                var snap = Object.keys(childSnapshot.val());
-                keyLast = snap[snap.length-1]
-                console.log(keyLast)
-           
-           });
-        
-      
-      // const ref = database.ref().child('Photos').child(this.state.user.uid)
-      // const ref = database.ref('serviceProviders').child(uid).child('Services').child(keyLast).child('photos')
-
-      // ref.on('child_added', (child) => {
-      //   let images = this.state.images.slice()
-      //   images.push({
-      //     key: child.key,
-      //     url: child.val().url
-      //   })
-      //   this.setState({images})
-      // })
-      // ref.on('child_removed', (child) => {
-      //   let images = this.state.images.filter((image) => {
-      //     return image.url != child.val().url
-      //   })
-      //   this.setState({images})
-      // })
     } 
 });
     }
     render() {
+      const {data} = this.props.location;
       const previewStyle = {
         maxHeight: "100px",
         maxWidth: "100px",
@@ -143,7 +122,6 @@ export class Upload extends React.Component {
         <div>
 
           <navstuff.navstuff/>
-      
       <div class = "moveElements">
         <div>
             <div>
