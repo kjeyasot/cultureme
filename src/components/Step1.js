@@ -35,9 +35,38 @@ export class stepone extends Component {
     });
   }
   handleChange(e) {
+    if(e.target.name==='serviceType'){
+   
+      const serviceType = (e.target.validity.valid) ? e.target.value : this.state.serviceType;
+      this.setState({ serviceType});
+    }
+    if(e.target.name==='maxPrice'){
+      
+      const maxPrice = (e.target.validity.valid) ? e.target.value : this.state.maxPrice;
+      this.setState({ maxPrice});
+
+    }
+    if(e.target.name==='minPrice'){
+      const minPrice = (e.target.validity.valid) ? e.target.value : this.state.minPrice;
+      this.setState({ minPrice});
+
+    }
+    if(e.target.name==='province'){
     this.setState({
-      [e.target.name]: e.target.value
+     province: e.target.value
     });
+  }
+  if(e.target.name==='city'){
+    this.setState({
+     city: e.target.value
+    });
+  }
+
+  if(e.target.name==='Description'){
+    this.setState({
+     Description: e.target.value
+    });
+  }
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -60,9 +89,10 @@ export class stepone extends Component {
         const sTYpe = this.state.serviceType;
         const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe).child('serviceDetails');  
         serviceProvidersRef.push(services)
-   
-        
+        // {{pathname :"/Upload", data: this.state.serviceType }}>
+        this.props.history.push({pathname :"/Upload", data: this.state.serviceType})
             }
+
     })
     
   }
@@ -99,10 +129,11 @@ export class stepone extends Component {
               type="text"
               id="defaultFormCardNameEx"
               className="form-control"
-              name='serviceType' 
+              name='serviceType' pattern ="[A-Za-z\s]*" maxlength="30"
               onChange={this.handleChange} 
               value={this.state.serviceType}
             />
+           
             <br />
             <label
               htmlFor="defaultFormCardEmailEx"
@@ -141,13 +172,14 @@ export class stepone extends Component {
         </span>
       </div>
       <input class="form-control form-control-md " md="20" type="text"  placeholder="Min Price" aria-describedby="basic-addon" 
-      name='minPrice' 
+      name='minPrice'  pattern="[0-9]*" maxlength="4"
       onChange={this.handleChange} 
       value={this.state.minPrice}/>
+     
     </div>
     </div>
-    <p>-</p>
-    <div class="col">
+    <h3>-</h3>
+       <div class="col">
     <div className="input-group">
       <div className="input-group-prepend">
         <span className="input-group-text" id="basic-addon">
@@ -155,13 +187,16 @@ export class stepone extends Component {
         </span>
       </div>
       <input type="text" className="form-control  form-control-md" placeholder="Max Price" aria-label="Username" aria-describedby="basic-addon" 
-      name='maxPrice' 
+      name='maxPrice'  pattern="[0-9]*"  maxlength="4"
       onChange={this.handleChange} 
       value={this.state.maxPrice}/>
-    </div>
-    </div>
+      
+        </div>
+        </div>
   </div>
-            
+  <br></br>   
+            {( this.state.minPrice && this.state.maxPrice && Number(this.state.minPrice)>= Number(this.state.maxPrice))? <p id="letter" className="invalid">Invalid Price Range</p>:null}
+      
 <br></br>
 <label
               htmlFor="defaultFormCardNameEx"
@@ -197,14 +232,14 @@ value={this.state.city}>
 
 
             <div className="text-right py-4 mt-3">
-            <Link to= {{pathname :"/Upload", data: this.state.serviceType }}>
-              <MDBBtn className="btn btn-pink" onClick={this.createService} >
-              
+            {/* <Link to= {{pathname :"/Upload", data: this.state.serviceType }}> */}
+              <MDBBtn className="btn btn-pink"  disabled={!this.state.serviceType||Number(this.state.minPrice)>= Number(this.state.maxPrice)||!this.state.city||!this.state.maxPrice||!this.state.minPrice||!this.state.province} onClick={this.createService} >     
+       
                 Continue
                 <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-angle-right" />
         
               </MDBBtn>
-              </Link>
+              {/* </Link> */}
             </div>
           </form>
         </MDBCol>
