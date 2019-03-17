@@ -22,7 +22,8 @@ export class footer1 extends Component {
           </MDBCol>
           <MDBCol md="2" className="b-3">
             <h6 className="title font-weight-bold">
-              <a href="#!">Contact</a>
+              <a href="mailto:cultureme2019@gmail.com" data-rel="external">Contact</a>
+              
             </h6>
           </MDBCol>
         </MDBRow>
