@@ -13,7 +13,7 @@ import {
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCardHeader, MDBCol } from 'mdbreact';
 import { MDBContainer, MDBRow, MDBInput} from 'mdbreact';
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
-
+let companyName;
 // const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
   
 // const images = script.importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
@@ -21,12 +21,15 @@ const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|
 // var y = Math.floor(num * Math.random());
 // let dbdata;
 // let dbkey;
- 
+ let newState = []
 export class SPChooseService extends Component {
   constructor() {
     super();
     this.state = {
-      user: null
+      user: null,
+      companyName:'',
+      services:[]
+
     }
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
@@ -58,9 +61,35 @@ export class SPChooseService extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+
+        serviceProvidersRef.once('value', (snapshot) => {
+            snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+              let persInfo = personalInfo.val();
+              companyName = persInfo.companyName;
+            });
+            snapshot.child('Services').forEach((serviceInfo) => {  
+              serviceInfo.child('serviceDetails').forEach((servDetails) => {  
+          
+              let serviceDetails = servDetails.val();
+              
+            newState.push(serviceDetails)
+            this.setState({
+              companyName: companyName,
+              services:newState
+            })
+            
+            });
+          });
+            
+
+          
+        });
+        
       } 
     });
   }
+
 
 refresh() {
   window.location='/Step1'
@@ -72,7 +101,6 @@ refresh() {
       
       <div> 
       <navstuff.navstuff/>
-      
     <h2 className="Heading">Your Services</h2>
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -119,37 +147,42 @@ refresh() {
 
 <br></br>
 <br></br>
+
+  {this.state.services.map((item) => {
+          return (
+
 <MDBCol>
 
      
-      <MDBCard style={{ width: "30vw"}}>
-      <div style={{ paddingLeft: "27vw" ,fontSize: "1.5vw"}}>
-      <i class="fas fa-times-circle fa-2x" ></i>
-      </div>
-        <MDBCardBody>
-        
-          <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}}>Company Name</MDBCardTitle>
-          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Service:</label>
-          &nbsp;&nbsp; &nbsp;&nbsp;
-          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">exampleService</label>
-          {/* When connecting with DB replace text with: 
-          <label> { this.props.label } </label> */}
-          <br></br>
-          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Location:</label>
-          &nbsp;&nbsp;
-          <label style={{fontSize: "1.5vw", background: "none"}} for="form1">exampleLocation</label>
-          <br></br>
-          <label  style={{fontSize: "1.5vw", background: "none"}} for="form1">Price:</label>
-          &nbsp;&nbsp;
-          &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;
-          <label style={{fontSize: "1.5vw", background: "none"}}for="form1">examplePrice</label>
-          <br></br>
-        </MDBCardBody>
+<MDBCard style={{ width: "30vw"}}>
+<div style={{ paddingLeft: "27vw" ,fontSize: "1.5vw"}}>
+<i class="fas fa-times-circle fa-2x" ></i>
+</div>
+  <MDBCardBody>
+  
+    <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}} >{this.state.companyName}</MDBCardTitle>
+    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Service:</label>
+    &nbsp;&nbsp; &nbsp;&nbsp;
+    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">{item.serviceType}</label>
+    {/* When connecting with DB replace text with: 
+    <label> { this.props.label } </label> */}
+    <br></br>
+    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Location:</label>
+    &nbsp;&nbsp;
+    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">{item.city}, {item.state}</label>
+    <br></br>
+    <label  style={{fontSize: "1.5vw", background: "none"}} for="form1">Price:</label>
+    &nbsp;&nbsp;
+    &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;
+    <label style={{fontSize: "1.5vw", background: "none"}}for="form1">${item.minPrice} - ${item.maxPrice}</label>
+    <br></br>
+  </MDBCardBody>
 
-        <MDBBtn href="#">View</MDBBtn>
-      </MDBCard>
+  <MDBBtn href="#">View</MDBBtn>
+</MDBCard>
 </MDBCol>
-
+          )
+        })} 
 <br></br>
 
  <div className="spfooter">

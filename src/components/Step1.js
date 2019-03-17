@@ -50,7 +50,7 @@ export class stepone extends Component {
       if (user) {
       
         const services = {
-          // serviceType: this.state.serviceType,
+          serviceType: this.state.serviceType,
           Description: this.state.Description,
           maxPrice: this.state.maxPrice,
           minPrice: this.state.minPrice,
@@ -58,7 +58,7 @@ export class stepone extends Component {
           city: this.state.city
         }
         const sTYpe = this.state.serviceType;
-        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe);  
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe).child('serviceDetails');  
         serviceProvidersRef.push(services)
    
         

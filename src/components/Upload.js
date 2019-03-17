@@ -3,6 +3,7 @@ import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 
 import * as script from '../scripts';
@@ -166,10 +167,12 @@ export class Upload extends React.Component {
           <div>
           <br></br>
           {/* <div className="text-right py-4 mt-3"> */}
+          <Link to="/choose-service">   
           <MDBBtn className="btn btn-pink" type="submit">
                 Done
                 <MDBIcon far icon="check" className="ml-2 fas fa-angle-right" />
           </MDBBtn>
+          </Link>
           {/* </div> */}
           <br></br>
           <br></br>
