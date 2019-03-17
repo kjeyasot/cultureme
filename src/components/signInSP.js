@@ -124,7 +124,7 @@ export class signInSP extends Component {
                 >
                   Sign In
                 </MDBBtn>
-                {this.state.user ?this.props.history.push('/'):null}
+                {this.state.user ?this.props.history.push('/choose-service'):null}
               </div>
          
               </MDBCardBody>
