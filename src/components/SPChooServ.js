@@ -80,15 +80,26 @@ export class SPChooseService extends Component {
             })
             
             });
-          });
-            
-
-          
+          }); 
         });
         
       } 
     });
   }
+
+  removeService(service) {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+        const itemRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(service)
+        itemRef.remove();
+        window.location.reload();
+      } 
+    });
+    
+  }
+
+
 
 
 refresh() {
@@ -156,7 +167,7 @@ refresh() {
      
 <MDBCard style={{ width: "30vw"}}>
 <div style={{ paddingLeft: "27vw" ,fontSize: "1.5vw"}}>
-<i class="fas fa-times-circle fa-2x" ></i>
+<i class="fas fa-times-circle fa-2x" onClick={() => this.removeService(item.serviceType)}></i>
 </div>
   <MDBCardBody>
   
