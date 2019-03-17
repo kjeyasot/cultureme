@@ -121,7 +121,7 @@ p1{
 .field {
   width: 15vw;
   padding: 1vmin 1vmin;
-  margin: 8px 0;
+  /* margin: 8px 0; */
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -1405,3 +1405,39 @@ top: -2vh;
 .editAccount{
 background-color: #FFEFD5;
 }
+
+
+.logosignup{
+width:6vh;
+height:5vh;
+position: absolute;
+left: 10px;
+top: 5px;
+
+  
+}
+
+.view {
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height:auto;
+  }
+  .SignInSPView{
+
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height:100vh;
+
+  }
+  .viewClient{
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height:vh;
+
+  }
