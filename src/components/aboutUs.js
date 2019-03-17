@@ -40,7 +40,7 @@ export class aboutUs extends Component {
         <navstuff.navstuff/>
 <MDBCard className="text-center">
         <MDBCardBody>
-          <h2 style={{color: 'black', fontFamily: 'Arial', fontWeight: 'bold', fontSize: '3.5vw'}}>About Us</h2>
+          <h2 style={{color: 'palevioletred', fontFamily: 'Arial', fontWeight: 'bold', fontSize: '3vw'}}>About Us</h2>
           <p style={{fontSize: "2vw", fontStyle: 'Arial'}} className="grey-text w-responsive mx-auto mb-1">
            CultureMe connects service providers to individuals seeking cultural services.
 The application allows service providers to showcase their portfolio and effectively outreach to potential
@@ -50,6 +50,7 @@ with ease.
 <br></br>
           <iframe width="50%" height="250vh" src="https://www.youtube.com/embed/IEAW8Bh5Gcg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           
+          <br></br>
           <br></br>
           <br></br>
 
@@ -101,6 +102,8 @@ with ease.
 
           </MDBRow>
         </MDBCardBody>
+        <br></br>
+        <br></br>
       </MDBCard>
       <footer1.footer1/>
       </div>
