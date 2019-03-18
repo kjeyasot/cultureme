@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import * as script from '../scripts';
 
-export class stepone extends Component {
+export class step2 extends Component {
   constructor() {
     super();
     this.state = {
