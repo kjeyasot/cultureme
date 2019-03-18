@@ -170,7 +170,7 @@ refresh() {
 
 
       <div class="wrimagecard-topimage_title" style={{ Color:"black"}}>
-            <center><span><h4>Add Service: {this.state.companyName}</h4></span></center>
+            <center><span><h4>{this.state.companyName}</h4></span></center>
           </div>
           <a href="#">
           <div class="wrimagecard-topimage_header" style={{ backgroundColor: "grey"}}>
