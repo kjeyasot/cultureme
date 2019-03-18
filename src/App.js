@@ -24,6 +24,7 @@ import { stepone } from './components/Step1';
 import { editView } from './components/edit-view';
 import { myAccount } from './components/myAccount';
 import { aboutUs } from './components/aboutUs';
+import { step2 } from './components/Step2';
 
 class App extends Component {
   
@@ -52,6 +53,7 @@ class App extends Component {
             <Route path="/editView" component={editView}/>
             <Route path="/myAccount" component={myAccount}/>
             <Route path="/aboutUs" component={aboutUs}/>
+            <Route path="/step2" component={step2}/>
 
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
