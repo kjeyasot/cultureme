@@ -1171,11 +1171,18 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   left: 40px;
 }
   
+.moveElements1{
+ 
+  padding-top: 5vw;
+  padding-left: 10vw;
+  
+}
+
 .moveElements{
  
   padding-top: 5vw;
-  padding-left: 20vw;
-
+  padding-left: 10vw;
+  
 }
 
 .removeButton {
@@ -1194,6 +1201,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  
 }
 
 .btnupload {
@@ -1206,6 +1214,10 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   font-weight: bold;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
+
+  height: auto;
+  width: auto;
+  max-width: 40vw;
 }
 
 .upload-btn-wrapper input[type=file] {
@@ -1230,18 +1242,26 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   /* bottom: -250px;
     right:500px; */
     margin-bottom: 2vh;
+    height: auto;
+    width: auto;
+    max-width: 40vw;
     
     
 }
 
 .CoolGyalUpload{
   position: absolute;
-  height: 90vh;
-    width: 35vw;
+  height: auto;
+  width: auto;
+    /* height-max: 90vh; */
+    max-width: 40vw;
+    max-height: 40vw;
+    /* width: 35vw; */
     /* float:right; */
     padding-right: 5vw;
 right: 3vw;
-top: 5vh;
+top: 19vh;
+
   /* height:600px;
   width:600px ;
   
@@ -1251,9 +1271,23 @@ top: 5vh;
 
 .imageUploadSize{
 
-  height:35vh;
+  /* height:35vh;
   width:25vw;
+  max-width: 50vw;
   float:center;
+  resize: both;
+  /* width:50px;
+  height:25px; */ 
+
+
+  height: auto;
+  width: auto;
+  max-width: 40vw;
+  max-height: 40vw;
+  padding-right: 5vw;
+/* right: 3vw;
+top: 19vh; */
+ 
 }
 
 .Heading {
@@ -1322,13 +1356,14 @@ top: 5vh;
 }
 
 .CoolGyalstep1{
-  position: relative;
-  height: 80vh;
-    width: 35vw;
+  position: inline-block;
+  height: auto;
+  width: auto;
+    max-width: 40vw;
     float:right;
     padding-right: 5vw;
-right: -0vw;
-top: -25vh;
+margin-right: 6vw;
+top: -10vh;
   /* height:600px;
   width:600px ;
   
@@ -1348,7 +1383,7 @@ margin-right: 2vw;
 
 .spfooter1{
 
-  position: fixed;
+  /* position: fixed; */
    left: 0;
    bottom: 0;
    width: 100%;

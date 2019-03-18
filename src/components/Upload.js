@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 
 import * as script from '../scripts';
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
-
-
+let keyLast;
+let data = {};
 export class Upload extends React.Component {
     constructor(){
       super()
@@ -31,22 +33,24 @@ export class Upload extends React.Component {
       })
     }
     storePhoto() {
+      const {data} = this.props.location;
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
-      const key = database.ref().child('Photos').child(this.state.user.uid).push().key
-      const img = storage.ref().child('Images').child(this.state.user.uid).child(key)
+              var uid = user.uid;
+      const key = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').push().key
+      const img = storage.ref().child('Images').child(uid).child(key)
     
     // WORKING FOR DB
     img.put(this.state.file).then((snap) => {
         // console.log('test'+ snap.metadata.downloadURLs)
-        storage.ref().child('Images').child(this.state.user.uid).child(img.name).getDownloadURL().then(url => {
-        database.ref().child('Photos').child(this.state.user.uid).child(key).set({
+        storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
+          database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(key).set({
           "url" : url
         })
       })
       })
-      
+
       this.setState({
         file: null,
         url: null,
@@ -57,19 +61,22 @@ export class Upload extends React.Component {
 
 
     deletePhoto(event) {
+      const {data} = this.props.location;
       let uid = this.state.user.uid
       let img = event.target.name
       storage.ref().child('Images').child(uid).child(img).delete()
-      database.ref().child('Photos').child(this.state.user.uid).child(img).remove()
-
+      database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(img).remove();
     }
 
     componentDidMount() {
+      const {data} = this.props.location;
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
-      
-      const ref = database.ref().child('Photos').child(this.state.user.uid)
+              let uid = this.state.user.uid
+              
+      const ref = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos')
+
       ref.on('child_added', (child) => {
         let images = this.state.images.slice()
         images.push({
@@ -88,6 +95,7 @@ export class Upload extends React.Component {
 });
     }
     render() {
+      const {data} = this.props.location;
       const previewStyle = {
         maxHeight: "100px",
         maxWidth: "100px",
@@ -115,11 +123,10 @@ export class Upload extends React.Component {
         <div>
 
           <navstuff.navstuff/>
-      
       <div class = "moveElements">
         <div>
             <div>
-            <h5 style={{float:'middle', fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
+            <h5 style={{ fontSize: "2vmax",fontFamily:"Arial"}}>Step 2: Upload Photos of Recent Work</h5>
             {/* {this.state.user ?
             <div>
             {this.state.user.uid}</div>: null
@@ -134,10 +141,11 @@ export class Upload extends React.Component {
           <input className = "btnupload" id="input" type="file" onChange={this.handleChange}/>
           <br></br>
           <br></br>
-          <div>
-            {imagePreview}
-          {/* <img className="imageUploadSize" src={'http://via.placeholder.com/400x300' || this.state.url }/> */}
-          </div>
+          {/* <div class="resizeImage"> */}
+
+          {imagePreview}
+          {/* </div> */}
+          <br></br>
           <br></br>
           <div class="upload-btn-wrapper">
           <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
@@ -157,7 +165,17 @@ export class Upload extends React.Component {
             </div>
           )}
           <div>
-          <button className = "doneButton" style={{float:'center'}}>Done</button>
+          <br></br>
+          {/* <div className="text-right py-4 mt-3"> */}
+          <Link to="/choose-service">   
+          <MDBBtn className="btn btn-pink" type="submit">
+                Done
+                <MDBIcon far icon="check" className="ml-2 fas fa-angle-right" />
+          </MDBBtn>
+          </Link>
+          {/* </div> */}
+          <br></br>
+          <br></br>
           </div>
         </div>
     </div>
