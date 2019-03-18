@@ -40,16 +40,25 @@ export class myAccount extends React.Component {
       this.Activate = this.Activate.bind(this);
     }
     Activate() {
+    
       this.setState ({
         isInEditMode: !this.state.isInEditMode
    
       });
+      // console.log(companyName)
+         
+      
+      // console.log(  testCompany.indexOf(companyName))
+      testCompany.splice(testCompany.indexOf(companyName),1);
+      testPhone.splice(testPhone.indexOf(mobile),1);
+    //  console.log(testCompany) 
      }
     handleSubmit = (event) => {
       event.preventDefault();
       }
       handleChange(e) {
         // console.log(e.target.name)
+       
         if(e.target.name==='mobile'){
           const mobile = (e.target.validity.valid) ? e.target.value : this.state.mobile;
           this.setState({ mobile});
@@ -76,10 +85,11 @@ export class myAccount extends React.Component {
                 let persInfo = personalInfo.val();
                
                 testCompany.push(persInfo.companyName);
+              
                 testPhone.push(persInfo.mobile); 
               });
             });
-          });
+          });  
           const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
           serviceProvidersRef.once('value', (snapshot) => {
               snapshot.child('PersonalInformation').forEach((personalInfo) => {                
@@ -96,7 +106,7 @@ export class myAccount extends React.Component {
                 // postalCode = persInfo.postalCode;
                 password = pw;
 
-        
+             
 
               });
               this.setState({
@@ -107,17 +117,21 @@ export class myAccount extends React.Component {
                 mobile: mobile,
                 // postalCode: postalCode,
                 password: password,
-              })
-          });
+              }
+              )
+           
+          });   
+       
 
         } 
         
       });
+      
     }
 
     
     userUpdate() {
-
+    
       auth.onAuthStateChanged((user) => {
         if (user) {
           const tempPw = CryptoJS.AES.encrypt(this.state.password, 'secret key 123');
@@ -139,7 +153,7 @@ export class myAccount extends React.Component {
               snapshot.child('PersonalInformation').forEach((personalInfo) => {
                 console.log(personalInfo)   
                 personalInfo.ref.update(servPV)             
-              //  window.location.reload(true);
+               window.location.reload(true);
 
               });
           })
@@ -200,6 +214,9 @@ export class myAccount extends React.Component {
         {this.state.user ?
         <div>
         <navstuff.navstuff/>
+       
+        
+        }
       <div class = "moveElements">
             <h4 style={{float:'middle', fontFamily:"Arial"}}>Account Settings</h4>
             <br></br>
@@ -276,37 +293,20 @@ export class myAccount extends React.Component {
                
                {this.state.isInEditMode ? <input className = "editAccount" type="text" name="mobile" pattern="[0-9]*" maxLength= "10"  onChange={this.handleChange} value={this.state.mobile}/> :
                 <input type="text" name="mobile" value={this.state.mobile} disabled="disabled"/>}
+
               </h6>
               <br></br>
 
-                {/* <h6>
-                Location:
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                {this.state.isInEditMode? <input className = "editAccount" type="text" name="postalCode" onChange={this.handleChange} defaultValue={this.state.postalCode}/>:
-                 <input type="text" name="location"  value={this.state.postalCode} disabled="disabled"/>}
-               
-               
-              </h6> */}
+         
               <br></br>
 
                 <h6>
-                {/* Password:
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-
-                 {this.state.isInEditMode? <input className = "editAccount" type="password" name="password" onChange={this.handleChange} value={this.state.password}/>:
-                  <input type="password" name="password" value={this.state.password} disabled="disabled"/>} */}
+                
 
                &nbsp;&nbsp;
                {/* <br></br> */}
                {/* <br></br> */}
-               <div className = 'editButtons' >
+             <div className = 'editButtons' >
                {this.state.isInEditMode?  <button className = "fa fa-save" type= 'submit' disabled={!this.state.companyName||!this.state.mobile||this.state.mobile.length<10||testCompany.indexOf(this.state.companyName)>-1||testPhone.indexOf(this.state.mobile)>-1}   onClick={this.userUpdate} ></button> : null}
               
               
