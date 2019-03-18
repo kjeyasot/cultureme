@@ -1061,7 +1061,7 @@ Coolgyal Image adjusting */
   flex: 1 0 auto;
   -webkit-flex: 1 0 auto;
   min-height: -100%;
-  margin-top: 30vh;
+  margin-top: 60vh;
   margin-left: 0px;
   width: 100%;
 
@@ -1293,6 +1293,7 @@ top: 19vh; */
 .Heading {
   margin-left: 1.5vw;
   margin-top: 1.5vh;
+  font-size: 4vh;
 }
 
 /* step1 page */
@@ -1440,3 +1441,14 @@ top: 5px;
     background-position: center center;
     height:100vh;
   }
+
+
+.para{
+  font-size: 3vh;
+color:white;
+font-weight: normal;
+}
+
+.fa-times-circle:hover {
+  color:blue;
+}

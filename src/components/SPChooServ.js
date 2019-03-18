@@ -11,7 +11,7 @@ import {
   Switch
 } from 'react-router-dom';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCardHeader, MDBCol } from 'mdbreact';
-import { MDBContainer, MDBRow, MDBInput} from 'mdbreact';
+import { MDBContainer, MDBRow, MDBInput, MDBIcon} from 'mdbreact';
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 let companyName;
 // const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
@@ -111,102 +111,101 @@ refresh() {
       
       
       <div> 
+
       <navstuff.navstuff/>
-    <h2 className="Heading">Your Services</h2>
+
+      <center><h6 className="Heading">Your Services</h6></center> 
+      <div onClick={this.refresh}>
+     
+      <MDBBtn className="btn btn" className="ml-1 float-right"size="lg" color="pink">     
+       
+       Add Service
+              <MDBIcon className="ml-2 fas fa-plus-circle" far icon="plus-circle"  />
+      
+            </MDBBtn>
+            </div>
+            <br></br>
+            <h6 className="Heading">.</h6>
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
 
 
-{/* <div class="container-fluid">
+
+<div class="container-fluid">
 	<div class="row">
-    <div class="col-md-3 col-sm-4">
+    {/* <div class="col-md-3 col-sm-4" >
       <div class="wrimagecard wrimagecard-topimage" onClick={this.refresh}>
           <a href="#">
-          <div class="wrimagecard-topimage_header" styles="background-color: rgba(22, 160, 133, 0.1)">
-        
-            <center><i class = "fa fa-plus" styles="color:#16A085"></i></center>
+          <div class="wrimagecard-topimage_header"  style={{ backgroundColor: "rgba(51, 105, 232, 0.1)"}}>
+    
+            <center><i class = "fa fa-plus" ></i></center>
           </div>
-          <div class="wrimagecard-topimage_title">
-            <center><span><h4>Add Service
+          <br></br>
+           
+          <div class="wrimagecard-topimage_title" style={{ Color: "black"}}>
+            <center><span><h4>Add Services
+       
+         
             <div class="pull-right badge" id="WrControls"></div></h4></span></center>
+      
           </div>
         </a>
       </div>
     
-</div>
-</div>
-</div> */}
+</div>  */}
 
-<br></br>
 
-<MDBCol>
-  <div onClick={this.refresh}>
-  <MDBCard class = "vw-50" style={{width: "30vw", height: "25%"}}> 
-  <div class = "hoverable">
-        <MDBCardBody class = "min-vw-50" style={{ textAlign: "center"}}>
-          <i style={{fontSize: "10vw"}}class="fas fa-plus fa-5x"></i> 
-          <br></br>
-            <label style={{fontSize: "1.5vw", background: "none"}}for="form1">Add Service</label>
-          <br></br>
-      </MDBCardBody>
-  </div>
-  </MDBCard>
-  </div>
-</MDBCol>
-
-<br></br>
-<br></br>
-
-  {this.state.services.map((item) => {
+ {this.state.services.map((item) => {
           return (
 
-<MDBCol>
 
+
+<div class="col-md-4 col-sm-3">
+
+      <div class="wrimagecard wrimagecard-topimage">
+      <i class="fas fa-times-circle fa-2x" onClick={() => this.removeService(item.serviceType)}></i>
+
+
+      <div class="wrimagecard-topimage_title" style={{ Color:"black"}}>
+            <center><span><h4>Add Service: {this.state.companyName}</h4></span></center>
+          </div>
+          <a href="#">
+          <div class="wrimagecard-topimage_header" style={{ backgroundColor: "grey"}}>
+ 
+            {/* <center><i class = "fa fa-cubes"  style={{color: "#16A085"}}></i></center> */}
+           
+           <h6 className="para">Type of Service:  &nbsp;&nbsp; {item.serviceType}</h6>
+           <h6 className="para">Location:  &nbsp;&nbsp; {item.city}, {item.state}</h6>
+           <h6 className="para">Price:   &nbsp;&nbsp;${item.minPrice} - ${item.maxPrice}</h6>
+          <MDBBtn className="btn btn-whit" size="sm">     
+       
+       Edit
+              <MDBIcon far icon="edit" className="ml-2 fas fa-edit" />
+      
+            </MDBBtn>
+            </div>
+    </a>
+    
+    </div>
+    </div>
+ 
      
-<MDBCard style={{ width: "30vw"}}>
-<div style={{ paddingLeft: "27vw" ,fontSize: "1.5vw"}}>
-<i class="fas fa-times-circle fa-2x" onClick={() => this.removeService(item.serviceType)}></i>
-</div>
-  <MDBCardBody>
+     )
+    })} 
+    </div>
+    </div>
   
-    <MDBCardTitle style={{ textAlign: "center", fontSize: "2vw"}} >{this.state.companyName}</MDBCardTitle>
-    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Service:</label>
-    &nbsp;&nbsp; &nbsp;&nbsp;
-    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">{item.serviceType}</label>
-    {/* When connecting with DB replace text with: 
-    <label> { this.props.label } </label> */}
-    <br></br>
-    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">Location:</label>
-    &nbsp;&nbsp;
-    <label style={{fontSize: "1.5vw", background: "none"}} for="form1">{item.city}, {item.state}</label>
-    <br></br>
-    <label  style={{fontSize: "1.5vw", background: "none"}} for="form1">Price:</label>
-    &nbsp;&nbsp;
-    &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;
-    <label style={{fontSize: "1.5vw", background: "none"}}for="form1">${item.minPrice} - ${item.maxPrice}</label>
-    <br></br>
-  </MDBCardBody>
-
-  <MDBBtn href="#">View</MDBBtn>
-</MDBCard>
-</MDBCol>
-          )
-        })} 
-<br></br>
-
  <div className="spfooter">
         <footer1.footer1/>
         </div>
         
-       
         
         
         </div>
-        
-  
-
+      
       
      );
         }
