@@ -192,6 +192,7 @@ export class stepone extends Component {
 
   <MDBCol>
   <i class="fas fa-location-arrow"></i>
+  <label>State/Province</label>
   </MDBCol>
   <MDBCol>
   <select name="province" class="states order-alpha browser-default custom-select md-6 mb-4"   id="stateId"
@@ -206,6 +207,7 @@ export class stepone extends Component {
 <MDBRow>
 <MDBCol>
   <i class="fas fa-location-arrow" ></i>
+  <label>City</label>
   </MDBCol>
   <MDBCol>
   <select Async name="city" class="cities order-alpha browser-default custom-select md-6 mb-4" id="cityId"
