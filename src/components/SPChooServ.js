@@ -170,13 +170,12 @@ refresh() {
 
 
       <div class="wrimagecard-topimage_title" style={{ Color:"black"}}>
-            <center><span><h4>{this.state.companyName}</h4></span></center>
+            <center><span><h4>Comapny: {this.state.companyName}</h4></span></center>
           </div>
           <a href="#">
           <div class="wrimagecard-topimage_header" style={{ backgroundColor: "grey"}}>
  
             {/* <center><i class = "fa fa-cubes"  style={{color: "#16A085"}}></i></center> */}
-           
            <h6 className="para">Type of Service:  &nbsp;&nbsp; {item.serviceType}</h6>
            <h6 className="para">Location:  &nbsp;&nbsp; {item.city}, {item.state}</h6>
            <h6 className="para">Price:   &nbsp;&nbsp;${item.minPrice} - ${item.maxPrice}</h6>
