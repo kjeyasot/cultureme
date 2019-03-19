@@ -24,6 +24,7 @@ import { stepone } from './components/Step1';
 import { myAccount } from './components/myAccount';
 import { aboutUs } from './components/aboutUs';
 import { editView } from './components/editView';
+import { ratings } from './components/ratings';
 // import { EditOrView } from './components/EditorView';
 class App extends Component {
   
@@ -52,6 +53,7 @@ class App extends Component {
             <Route path="/myAccount" component={myAccount}/>
             <Route path="/aboutUs" component={aboutUs}/>
             <Route path="/editView" component={editView}/>
+            <Route path="/ratings" component={ratings}/>
             {/* <Route path="/EditOrView" component={EditOrView}/> */}
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
