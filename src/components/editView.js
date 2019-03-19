@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 import * as script from '../scripts';
 
-export class step2 extends Component {
+export class editView extends Component {
   constructor() {
     super();
     this.state = {

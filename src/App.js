@@ -23,6 +23,7 @@ import { SPChooseService } from './components/SPChooServ';
 import { stepone } from './components/Step1';
 import { myAccount } from './components/myAccount';
 import { aboutUs } from './components/aboutUs';
+import { editView } from './components/editView';
 // import { EditOrView } from './components/EditorView';
 class App extends Component {
   
@@ -50,6 +51,7 @@ class App extends Component {
             <Route path="/step1" component={stepone}/>
             <Route path="/myAccount" component={myAccount}/>
             <Route path="/aboutUs" component={aboutUs}/>
+            <Route path="/editView" component={editView}/>
             {/* <Route path="/EditOrView" component={EditOrView}/> */}
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
