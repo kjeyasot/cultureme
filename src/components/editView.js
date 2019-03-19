@@ -4,6 +4,8 @@ import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 import firebase, { auth, provider, database } from '../firebase.js';
 import { Link } from 'react-router-dom';
+import StarRatingComponent from 'react-star-rating-component';
+
 
  
 
@@ -98,11 +100,18 @@ export class editView extends Component {
     
   }
 
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
+  }
+
+
   render(){
     const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
-      
+    const { rating } = this.state;
   return (
+    
     <div>
+      
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     
       <div className="container">
@@ -111,49 +120,24 @@ export class editView extends Component {
             {/* User profile */}
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h4 className="panel-title">User profile</h4>
+                <h4 className="panel-title">InsertCompanyName</h4>
               </div>
               <div className="panel-body">
                 {/* <div className="profile__avatar">
                   <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
                 </div> */}
                 <div className="profile__header">
-                  <h4>Richard Roe <small>Administrator</small></h4>
-                  <p className="text-muted">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non nostrum odio cum repellat veniam eligendi rem cumque magnam autem delectus qui.
+                  <h4>ServiceName</h4>
+                  <p style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}}>
+                    Blah blah blahhhhh description of the service.
                   </p>
                   <p>
-                    <a href="#">bootdey.com</a>
                   </p>
                 </div>
               </div>
             </div>
-            {/* User info */}
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h4 className="panel-title">User info</h4>
-              </div>
-              <div className="panel-body">
-                <table className="table profile__table">
-                  <tbody>
-                    <tr>
-                      <th><strong>Location</strong></th>
-                      <td>United States</td>
-                    </tr>
-                    <tr>
-                      <th><strong>Company name</strong></th>
-                      <td>Simpleqode.com</td>
-                    </tr>
-                    <tr>
-                      <th><strong>Position</strong></th>
-                      <td>Front-end developer</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
             {/* Community */}
-            <div className="panel panel-default">
+            {/* <div className="panel panel-default">
               <div className="panel-heading">
                 <h4 className="panel-title">Community</h4>
               </div>
@@ -161,6 +145,8 @@ export class editView extends Component {
                 <table className="table profile__table">
                   <tbody>
                     <tr>
+
+
                       <th><strong>Comments</strong></th>
                       <td>58584</td>
                     </tr>
@@ -175,7 +161,7 @@ export class editView extends Component {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div> */}
             {/* Latest posts */}
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -242,33 +228,48 @@ export class editView extends Component {
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
+
+
+<div>
+<h5>Overall Client Rating: {rating}</h5>
+  <StarRatingComponent 
+    name="rate1" 
+    className = "starEdit"
+    // editing={false}
+    starCount={5}
+
+    // will come frfom db
+    value={1}
+  />
+</div>
+
+
             {/* Contact user */}
             <p>
-              <a href="#" className="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
+              {/* <a href="#" className="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
                 Contact user
-              </a>
+              </a> */}
             </p>
             <hr className="profile__contact-hr" />
             {/* Contact info */}
             <div className="profile__contact-info">
               <div className="profile__contact-info-item">
                 <div className="profile__contact-info-icon">
-                  <i className="fa fa-phone" />
                 </div>
-                <div className="profile__contact-info-body">
-                  <h5 className="profile__contact-info-heading">Work number</h5>
-                  (000)987-65-43
-                </div>
+            
               </div>
+
+  
               <div className="profile__contact-info-item">
                 <div className="profile__contact-info-icon">
                   <i className="fa fa-phone" />
                 </div>
                 <div className="profile__contact-info-body">
-                  <h5 className="profile__contact-info-heading">Mobile number</h5>
+                  <h5 className="profile__contact-info-heading">Phone Number</h5>
                   (000)987-65-43
                 </div>
               </div>
+              <br></br>
               <div className="profile__contact-info-item">
                 <div className="profile__contact-info-icon">
                   <i className="fa fa-envelope-square" />
@@ -280,11 +281,18 @@ export class editView extends Component {
               </div>
               <div className="profile__contact-info-item">
                 <div className="profile__contact-info-icon">
+                
+                <br></br>
+                  <div className="profile__contact-info-body">
+                  <div className="profile__contact-info-icon">
                   <i className="fa fa-map-marker" />
+                  <h5 className="profile__contact-info-heading">Location</h5>
+                  Toronto, Ontario
                 </div>
-                <div className="profile__contact-info-body">
-                  <h5 className="profile__contact-info-heading">Work address</h5>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </div>
+
+
+                  
                 </div>
               </div>
             </div>
