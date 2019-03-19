@@ -90,7 +90,9 @@ export class stepone extends Component {
         const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe).child('serviceDetails');  
         serviceProvidersRef.push(services)
         // {{pathname :"/Upload", data: this.state.serviceType }}>
-        this.props.history.push({pathname :"/Upload", data: this.state.serviceType})
+        localStorage.setItem('serviceType', this.state.serviceType);
+
+        this.props.history.push("/Upload")
             }
 
     })
