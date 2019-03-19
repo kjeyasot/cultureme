@@ -34,11 +34,15 @@ export class SPChooseService extends Component {
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
     this.refresh = this.refresh.bind(this); 
-
+    this.moveToEditView = this.moveToEditView.bind(this);
 
   }
 
-
+  moveToEditView(service) {
+    localStorage.setItem('myData', service);
+    this.props.history.push("/editView")
+    
+  }
   logout() {
     auth.signOut()
     .then(() => {
@@ -188,8 +192,8 @@ refresh() {
     <label style={{fontSize: "1.5vw", background: "none"}}for="form1">${item.minPrice} - ${item.maxPrice}</label>
     <br></br>
   </MDBCardBody>
+  <MDBBtn href="#" onClick={() => this.moveToEditView(item.serviceType)}>View</MDBBtn>
 
-  <MDBBtn href="#">View</MDBBtn>
 </MDBCard>
 </MDBCol>
           )

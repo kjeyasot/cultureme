@@ -15,6 +15,7 @@ export class signInSP extends Component {
       email: '',
       password: '',
       user: null,
+      error: null,
     }
     this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,18 +52,28 @@ export class signInSP extends Component {
   loginWEmail(e) {
     auth.signInWithEmailAndPassword(this.state.email, this.state.password)
     .then((result) => {
-      const user = result.user;
+           const user = result.user;
       this.setState({
         user
-      });
-    });
+      }) 
+     
+    
+    }).catch((error) => {
+      var errorMessage = error.message;
+      // alert(errorMessage);
+      this.setState({ error: error});
       
+    });
+   
   } 
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
       } 
+    
+        
+      
     });
   }
   readData() {
@@ -75,6 +86,8 @@ export class signInSP extends Component {
   render() {
       return (
         <div>
+        
+          
         <img className="backgroundImg" alt="img" src={images['wed2.png']} />
         <div id = "myModal" className="signUpMainModal">
             <div className='signUpPageBg'>
@@ -86,8 +99,12 @@ export class signInSP extends Component {
             </button><br></br> */}
             <input className='field' id = 'email'type = 'text' name='email' placeholder = 'E-mail' onChange={this.handleChange} value={this.state.email}/><br></br>
             <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
+           
             <input onClick={this.loginWEmail} className = 'submitBtn' type= 'submit' value= 'Sign In'/><br></br>  
-          {this.state.user ?this.props.history.push('/choose-service'):null}
+          
+             {this.state.error ?  <p id="letter" className="invalid">{this.state.error.message}</p>:null}
+         
+          {this.state.user ?this.props.history.push('/choose-service'):null} 
             <Link to="/forgotpassword">
             <u> Forgot Password?</u><br></br>
             </Link>
@@ -95,7 +112,7 @@ export class signInSP extends Component {
             <Link to="/signup-serviceprovider">
             <u id="signUpTxt"> Sign Up </u> 
             </Link>  
-
+            
             </div>
             </div>
         </div>
