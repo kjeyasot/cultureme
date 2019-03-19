@@ -114,9 +114,9 @@ export class editView extends Component {
                 <h4 className="panel-title">User profile</h4>
               </div>
               <div className="panel-body">
-                <div className="profile__avatar">
+                {/* <div className="profile__avatar">
                   <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
-                </div>
+                </div> */}
                 <div className="profile__header">
                   <h4>Richard Roe <small>Administrator</small></h4>
                   <p className="text-muted">
@@ -179,7 +179,7 @@ export class editView extends Component {
             {/* Latest posts */}
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h4 className="panel-title">Latest posts</h4>
+                <h4 className="panel-title">Comments</h4>
               </div>
               <div className="panel-body">
                 <div className="profile__comments">
@@ -190,7 +190,7 @@ export class editView extends Component {
                       <a href="#"><i className="fa fa-trash-o" /></a>
                     </div>
                     <div className="profile-comments__avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." />
+                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." /> */}
                     </div>
                     <div className="profile-comments__body">
                       <h5 className="profile-comments__sender">
@@ -208,7 +208,7 @@ export class editView extends Component {
                       <a href="#"><i className="fa fa-trash-o" /></a>
                     </div>
                     <div className="profile-comments__avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." />
+                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." /> */}
                     </div>
                     <div className="profile-comments__body">
                       <h5 className="profile-comments__sender">
@@ -226,7 +226,7 @@ export class editView extends Component {
                       <a href="#"><i className="fa fa-trash-o" /></a>
                     </div>
                     <div className="profile-comments__avatar">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..." />
+                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..." /> */}
                     </div>
                     <div className="profile-comments__body">
                       <h5 className="profile-comments__sender">
