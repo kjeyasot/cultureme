@@ -109,11 +109,14 @@ export class editView extends Component {
     const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
     const { rating } = this.state;
   return (
+
+    
     
     <div>
+         
       
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-    
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+            <navstuff.navstuff/>
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-sm-9">
@@ -299,6 +302,9 @@ export class editView extends Component {
           </div>
         </div>
       </div>
+      <div className="spfooter">
+        <footer1.footer1/>
+        </div>
       </div>
   );
 };

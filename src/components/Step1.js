@@ -221,7 +221,7 @@ export class stepone extends Component {
  
  <div className="text-right py-4">
             {/* <Link to= {{pathname :"/Upload", data: this.state.serviceType }}> */}
-              <MDBBtn className="btn btn-pink"  disabled={!this.state.serviceType||Number(this.state.minPrice)>= Number(this.state.maxPrice)||!this.state.city||!this.state.maxPrice||!this.state.minPrice||!this.state.province} onClick={this.createService} >     
+              <MDBBtn className="btn btn-pink"  disabled={!this.state.serviceType||Number(this.state.minPrice)>= Number(this.state.maxPrice)||!this.state.city||!this.state.maxPrice||!this.state.minPrice||!this.state.province} onClick={this.createService}>     
        
                 Continue
                 <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-angle-right" />

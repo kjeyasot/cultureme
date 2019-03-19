@@ -114,7 +114,7 @@ refresh() {
 
       <navstuff.navstuff/>
 
-      <center><h6 className="Heading">Your Services</h6></center> 
+      <center><h6 className="Heading">{this.state.companyName}</h6></center> 
       <div onClick={this.refresh}>
      
       <MDBBtn className="btn btn" className="ml-1 float-right"size="lg" color="pink">     
@@ -163,32 +163,34 @@ refresh() {
 
 
 
-<div class="col-md-4 col-sm-3">
+<div class="col-md-3 col-sm-2">
 
       <div class="wrimagecard wrimagecard-topimage">
-      <i class="fas fa-times-circle fa-2x" onClick={() => this.removeService(item.serviceType)}></i>
-
+   
+      <i class="fas fa-times-circle fa-2x"  onClick={() => this.removeService(item.serviceType)}></i>
 
       <div class="wrimagecard-topimage_title" style={{ Color:"black"}}>
-            <center><span><h4>Comapny: {this.state.companyName}</h4></span></center>
+      
+     
+            <center><span><h4>{item.serviceType}</h4></span></center>
           </div>
           <a href="#">
           <div class="wrimagecard-topimage_header" style={{ backgroundColor: "grey"}}>
- 
+          
             {/* <center><i class = "fa fa-cubes"  style={{color: "#16A085"}}></i></center> */}
-           <h6 className="para">Type of Service:  &nbsp;&nbsp; {item.serviceType}</h6>
            <h6 className="para">Location:  &nbsp;&nbsp; {item.city}, {item.state}</h6>
-           <h6 className="para">Price:   &nbsp;&nbsp;${item.minPrice} - ${item.maxPrice}</h6>
-          <MDBBtn className="btn btn-whit" size="sm">     
+           <h6 className="para">Price:  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.minPrice} - ${item.maxPrice}</h6>
+           <MDBBtn className="btn btn-" size="sm">
        
-       Edit
-              <MDBIcon far icon="edit" className="ml-2 fas fa-edit" />
-      
-            </MDBBtn>
+       Edit/View
+       <MDBIcon far icon="edit" className="ml-2 edit"/>
+
+     </MDBBtn>
             </div>
     </a>
     
     </div>
+    
     </div>
  
      
