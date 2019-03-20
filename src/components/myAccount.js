@@ -3,6 +3,8 @@ import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 import CryptoJS from "crypto-js";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
+
 
 
 // import * as script from '../scripts';
@@ -18,65 +20,157 @@ let testCompany = [];
 let testPhone = [];
 
 export class myAccount extends React.Component {
-    constructor(){
-      super()
-      this.state = {
-        user: null,
-        file: null,
-        url: [],
-        images: [],
-        firstName: '',
-        lastName: '',
-        companyName: '',
-        email: '',
-        mobile: '',
-        // postalCode: '',
-        password: '',
-        isInEditMode:false
-      }
-      this.userUpdate = this.userUpdate.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-      this.userIntUpdate = this.userIntUpdate.bind(this);
-      this.Activate = this.Activate.bind(this);
+  constructor(){
+    super()
+    this.state = {
+      user: null,
+      file: null,
+      url: [],
+      images: [],
+      firstName: '',
+      lastName: '',
+      companyName: '',
+      email: '',
+      mobile: '',
+      // postalCode: '',
+      password: '',
+      isInEditMode:false
     }
-    Activate() {
-    
-      this.setState ({
-        isInEditMode: !this.state.isInEditMode
-   
-      });
-      // console.log(companyName)
-         
-      
-      // console.log(  testCompany.indexOf(companyName))
-      testCompany.splice(testCompany.indexOf(companyName),1);
-      testPhone.splice(testPhone.indexOf(mobile),1);
-    //  console.log(testCompany) 
-     }
-    handleSubmit = (event) => {
-      event.preventDefault();
-      }
-      handleChange(e) {
-        // console.log(e.target.name)
+    this.userUpdate = this.userUpdate.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.userIntUpdate = this.userIntUpdate.bind(this);
+    this.Activate = this.Activate.bind(this);
+  }
+  Activate() {
+  
+    this.setState ({
+      isInEditMode: !this.state.isInEditMode
+ 
+    });
+    // console.log(companyName)
        
-        if(e.target.name==='mobile'){
-          const mobile = (e.target.validity.valid) ? e.target.value : this.state.mobile;
-          this.setState({ mobile});
-
-        }
-
-        if(e.target.name==='companyName'){
-          const companyName = (e.target.validity.valid) ? e.target.value : this.state.companyName;
-          this.setState({ companyName});
-
-        }
+    
+    // console.log(  testCompany.indexOf(companyName))
+    testCompany.splice(testCompany.indexOf(companyName),1);
+    testPhone.splice(testPhone.indexOf(mobile),1);
+  //  console.log(testCompany) 
+   }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    }
+    handleChange(e) {
+      // console.log(e.target.name)
      
+      if(e.target.name==='mobile'){
+        const mobile = (e.target.validity.valid) ? e.target.value : this.state.mobile;
+        this.setState({ mobile});
+
       }
 
-    componentDidMount() {
+      if(e.target.name==='companyName'){
+        const companyName = (e.target.validity.valid) ? e.target.value : this.state.companyName;
+        this.setState({ companyName});
+
+      }
+   
+    }
+
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        
+        this.setState({ user });
+        const serviceProviderssRef = firebase.database().ref('serviceProviders');
+        serviceProviderssRef.once('value', (snapshot) => {
+          snapshot.forEach((eventSnapshot) => {
+            eventSnapshot.child('PersonalInformation').forEach((personalInfo) => {
+              let persInfo = personalInfo.val();
+             
+              testCompany.push(persInfo.companyName);
+            
+              testPhone.push(persInfo.mobile); 
+            });
+          });
+        });  
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+        serviceProvidersRef.once('value', (snapshot) => {
+            snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+              let persInfo = personalInfo.val();
+              const test = CryptoJS.AES.decrypt(persInfo.password.toString(), 'secret key 123');
+              const pw = test.toString(CryptoJS.enc.Utf8);
+              firstName = persInfo.firstName;
+              lastName = persInfo.lastName;
+              email = persInfo.email;
+              companyName = persInfo.companyName;
+              mobile = persInfo.mobile;
+              // testCompany.push(persInfo.companyName);
+              // testPhone.push(persInfo.mobile); 
+              // postalCode = persInfo.postalCode;
+              password = pw;
+
+           
+
+            });
+            this.setState({
+              firstName: firstName,
+              lastName: lastName,
+              companyName: companyName,
+              email: email,
+              mobile: mobile,
+              // postalCode: postalCode,
+              password: password,
+            }
+            )
+         
+        });   
+     
+
+      } 
+      
+    });
+    
+  }
+
+  
+  userUpdate() {
+  
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        const tempPw = CryptoJS.AES.encrypt(this.state.password, 'secret key 123');
+        // const test = CryptoJS.AES.decrypt(tempPw.toString(), 'secret key 123');
+        // const pw = test.toString(CryptoJS.enc.Utf8);
+        const pw = tempPw.toString();
+        const phone = this.state.mobile.split(" ").join("");
+
+        const servPV = {
+          companyName: this.state.companyName,
+          mobile: phone,
+          // postalCode: this.state.postalCode,
+          password: pw,
+        }
+        // console.log(this.state.companyName1)
+        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+
+        serviceProvidersRef.once('value', (snapshot) => {
+            snapshot.child('PersonalInformation').forEach((personalInfo) => {
+              console.log(personalInfo)   
+              personalInfo.ref.update(servPV)             
+             window.location.reload(true);
+
+            });
+        })
+        
+            }
+    })
+    this.setState ({
+      isInEditMode: false
+ 
+    });
+          }
+    
+    userIntUpdate() {
       auth.onAuthStateChanged((user) => {
         if (user) {
-          
           this.setState({ user });
           const serviceProviderssRef = firebase.database().ref('serviceProviders');
           serviceProviderssRef.once('value', (snapshot) => {
@@ -91,18 +185,18 @@ export class myAccount extends React.Component {
             });
           });  
           const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+
           serviceProvidersRef.once('value', (snapshot) => {
               snapshot.child('PersonalInformation').forEach((personalInfo) => {                
                 let persInfo = personalInfo.val();
                 const test = CryptoJS.AES.decrypt(persInfo.password.toString(), 'secret key 123');
                 const pw = test.toString(CryptoJS.enc.Utf8);
+                // testemail.push(persInfo.firstName);
                 firstName = persInfo.firstName;
                 lastName = persInfo.lastName;
                 email = persInfo.email;
                 companyName = persInfo.companyName;
                 mobile = persInfo.mobile;
-                // testCompany.push(persInfo.companyName);
-                // testPhone.push(persInfo.mobile); 
                 // postalCode = persInfo.postalCode;
                 password = pw;
 
@@ -117,13 +211,12 @@ export class myAccount extends React.Component {
                 mobile: mobile,
                 // postalCode: postalCode,
                 password: password,
-              }
-              )
-           
-          });   
-       
+                isInEditMode: false
+              })
+          });
 
         } 
+        
         
       });
       
@@ -165,48 +258,6 @@ export class myAccount extends React.Component {
    
       });
             }
-      
-      userIntUpdate() {
-        auth.onAuthStateChanged((user) => {
-          if (user) {
-            this.setState({ user });
-            const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
-  
-            serviceProvidersRef.once('value', (snapshot) => {
-                snapshot.child('PersonalInformation').forEach((personalInfo) => {                
-                  let persInfo = personalInfo.val();
-                  const test = CryptoJS.AES.decrypt(persInfo.password.toString(), 'secret key 123');
-                  const pw = test.toString(CryptoJS.enc.Utf8);
-                  // testemail.push(persInfo.firstName);
-                  firstName = persInfo.firstName;
-                  lastName = persInfo.lastName;
-                  email = persInfo.email;
-                  companyName = persInfo.companyName;
-                  mobile = persInfo.mobile;
-                  // postalCode = persInfo.postalCode;
-                  password = pw;
-  
-          
-  
-                });
-                this.setState({
-                  firstName: firstName,
-                  lastName: lastName,
-                  companyName: companyName,
-                  email: email,
-                  mobile: mobile,
-                  // postalCode: postalCode,
-                  password: password,
-                  isInEditMode: false
-                })
-            });
-  
-          } 
-          
-          
-        });
-       
-              }
     render() {
       return (
         
@@ -214,112 +265,126 @@ export class myAccount extends React.Component {
         {this.state.user ?
         <div>
         <navstuff.navstuff/>
-       
+        <div class = "moveElements">
+        <h2 style={{color: 'black', fontFamily: 'Arial'}}>Account Settings</h2>
+            </div>
+            <br></br>
+        <MDBContainer>
+       <MDBRow>
+        <MDBCol md="6" text-center>
         
-        }
-      <div class = "moveElements">
-            <h4 style={{float:'middle', fontFamily:"Arial"}}>Account Settings</h4>
-            <br></br>
-            
-            <form>
-            <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Personal Information</h5>
-            <br></br>
-              <h6>
-                First Name:
-                &nbsp;&nbsp;
-               <input className = 'noEdit' type="text" value = {this.state.firstName} name="firstName" disabled="disabled"/>
-              </h6>
-              <br></br>
-              <h6>
-                Last Name:
-                &nbsp;&nbsp;
-               <input  className = 'noEdit' type="text" value = {this.state.lastName} name="lastName" disabled="disabled"/>
-              </h6>
-              <h6>
-              <br></br>
-                Email:
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-               <input  className = 'noEdit' type="text" name="email" value = {this.state.user.email} disabled="disabled"/>
-              </h6>
-              <h6>
-              <br></br>
-                Password:
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
+        <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Personal Information</h5>
+  
+        <MDBInput 
+      label="First Name"
+      outline icon="user" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text "
+      name="firstName"
+      value={this.state.firstName}/>
 
-                <input className = "noEdit" type="password" name="password" value={this.state.password} disabled="disabled"/>
-                  
 
-               &nbsp;&nbsp;
-             
-               
-              </h6>
-              <br></br>
-              <form onSubmit={this.handleSubmit}>
-              <div>
-              <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
+      <MDBInput 
+      label="Last Name"
+      outline icon="user" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text "
+      name="lastName"
+      value={this.state.lastName}/>
+
+ <MDBInput 
+      label="Email"
+      outline icon="envelope" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text "
+      name="email"
+      value= {this.state.user.email}/>
+
+ <MDBInput 
+      label="Password"
+      outline icon="key" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text "
+      name="password"
+      type="password"
+      value= {this.state.password}/>
+
+      
+
+ <form onSubmit={this.handleSubmit}>
+ 
+ <h5 style={{float:'middle', fontFamily:"Arial", color:"palevioletred"}}>Service Information</h5>
+ {this.state.isInEditMode?
+ <button className = "fa fa-times" style={{float:'right'}}
+ onClick= {this.userIntUpdate} 
+ type = 'submit'></button> : 
+  <button  name = "yes"  style={{float:'right'}}
+  className = "fa fa-edit"  
+  onClick={this.Activate}>
+  </button> }
+  <br></br>
+ 
+              {this.state.isInEditMode? 
+              <MDBInput  
+              label="Company Name"
+              type="text" 
+              name="companyName" 
+              outline icon="building" 
+              style={{ paddingBottom: "3vh"}}
+              maxlength="60" 
+              className = "p-3 black-text "
+              onChange={this.handleChange} 
+              value ={this.state.companyName}/> :
+               <MDBInput 
+               type="text" 
+               label="Company Name"
+               name="companyName"
+               outline icon="building"
+               className = "p-3 black-text " 
+               value={this.state.companyName} 
+               disabled="disabled"/>}
+
+
+               {this.state.isInEditMode? 
+              <MDBInput
+              label="Phone Number"
+              type="text" 
+              name="mobile" 
+              outline icon="phone" 
               
-              <div className = 'editButtons'>
+              style={{ paddingBottom:"3vh"}}
+              pattern="[0-9]*" maxLength= "10"
+              className = "p-3 black-text "
+              onChange={this.handleChange} 
+              value ={this.state.mobile}/> :
+              <MDBInput 
+               type="text" 
+               label="Phone Number"
+               name="mobile"
+               className = "p-3 black-text "
+               outline icon="phone" 
+               value={this.state.mobile} 
+               disabled="disabled"/>}
+          
+
+
+               {this.state.isInEditMode?  <button 
+               style={{float:'right'}}
+               className = "fa fa-save" 
+               type= 'submit' 
+               disabled={!this.state.companyName||
+                !this.state.mobile||this.state.mobile.length<10||
+                testCompany.indexOf(this.state.companyName)>-1||
+                testPhone.indexOf(this.state.mobile)>-1}  
+                onClick={this.userUpdate} ></button> : null}
               
-               &nbsp;&nbsp;
-                {this.state.isInEditMode?<button className = "fa fa-times" onClick= {this.userIntUpdate} type = 'submit'></button> : 
-                <button  name = "yes" className = "fa fa-edit"  onClick={this.Activate}></button> }
-               </div>
-               </div>
-              <br></br>
-             
-              <h6>
-                Company Name:
-                &nbsp;&nbsp;
+ 
+ </form>
 
 
-              {this.state.isInEditMode? <input className = "editAccount" type="text" name="companyName" maxlength="60" onChange={this.handleChange} value ={this.state.companyName}/> :
-               <input type="text" name="companyName" value={this.state.companyName} disabled="disabled"/>}
-              
-              </h6>
-              <br></br>
-
-               <h6>
-               Phone Number:
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-                &nbsp;&nbsp;
-               
-               {this.state.isInEditMode ? <input className = "editAccount" type="text" name="mobile" pattern="[0-9]*" maxLength= "10"  onChange={this.handleChange} value={this.state.mobile}/> :
-                <input type="text" name="mobile" value={this.state.mobile} disabled="disabled"/>}
-
-              </h6>
-              <br></br>
-
-         
-              <br></br>
-
-                <h6>
-                
-
-               &nbsp;&nbsp;
-               {/* <br></br> */}
-               {/* <br></br> */}
-             <div className = 'editButtons' >
-               {this.state.isInEditMode?  <button className = "fa fa-save" type= 'submit' disabled={!this.state.companyName||!this.state.mobile||this.state.mobile.length<10||testCompany.indexOf(this.state.companyName)>-1||testPhone.indexOf(this.state.mobile)>-1}   onClick={this.userUpdate} ></button> : null}
-              
-              
-               </div>
-               
-              </h6> 
-              </form>
-
-            </form>
-            
-     
-      </div>
-
+</MDBCol>
+      </MDBRow>
+    </MDBContainer>
     <div className="spfooter">
         <footer1.footer1/>
         </div>

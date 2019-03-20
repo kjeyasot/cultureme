@@ -4,7 +4,7 @@ import * as script from '../scripts';
 import { Link } from 'react-router-dom';
 import firebase, { auth, provider } from '../firebase.js';
 import CryptoJS from "crypto-js";
-
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter,MDBView } from 'mdbreact';
 
 const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
@@ -74,33 +74,75 @@ export class signIn extends Component {
 
   render() {
       return (
-        <div>
-        <img className="backgroundImg" alt="img" src={images['wed2.png']} />
-        <div id = "myModal" className="signUpMainModal">
-            <div className='signUpPageBg'>
-            <div className="signUpPageFields">
-            <p2> Sign In</p2> <br></br>
-            {/* <button onClick={this.login}>
-             <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
-             &nbsp;&nbsp;Login with Google
-            </button><br></br> */}
-            <input className='field' id = 'email'type = 'text' name='email' placeholder = 'E-mail' onChange={this.handleChange} value={this.state.email}/><br></br>
-            <input className='field' id = 'password'type = 'password' name='password' placeholder = 'Password' onChange={this.handleChange} value={this.state.password}/><br></br>
-            <input onClick={this.loginWEmail} className = 'submitBtn' type= 'submit' value= 'Sign In'/><br></br>  
-          {this.state.user ?this.props.history.push('/'):null}
-            <Link to="/forgotpassword">
-            <u> Forgot Password?</u><br></br>
-            </Link>
-            <p1>Don't have an account?</p1>
-            <Link to="/signup">
-            <u id="signUpTxt"> Sign Up </u> 
-            </Link>  
-
-            </div>
-            </div>
-        </div>
-
-        </div>
+        <MDBView className="SignInSPView">
+        <MDBContainer>
+        <MDBRow>
+          <MDBCol md="5">
+            <MDBCard style={{ marginTop: "10vh"}}>
+              <MDBCardBody className="mx-3">
+                <div className="text-center">
+                <img className="logosignup" alt="img" src={images['blackLogo.png']} />
+                  <h3 className="dark-grey-text mb-5">
+                    <strong>Sign In</strong>
+                  </h3>
+                </div>
+                <MDBInput
+                  label="Email"
+                  
+                  name='email'
+                  group
+                  type="email"
+                  validate
+                  error="wrong"
+                  success="right"
+                  style={{ paddingBottom: "3vh"}}
+                  onChange={this.handleChange} 
+                  value={this.state.email}
+                  
+                />
+                <MDBInput
+                  label="Your password"
+                  id = 'password'
+                  name='password'
+                  group
+                  type="password"
+                  validate
+                  containerClass="mb-0"
+                  style={{ paddingBottom: "3vh"}}
+                  onChange={this.handleChange} 
+                  value={this.state.password}
+                />
+                
+                <div className="text-center mb-3">
+                <MDBBtn onClick={this.loginWEmail}
+                  type="submit"
+                  gradient="ripe-malinka"
+                  rounded
+                  className="btn-block z-depth-1a"
+                  id='submitBtn' 
+                >
+                  Sign In
+                </MDBBtn>
+                {this.state.user ?this.props.history.push('/'):null}
+              </div>
+         
+              </MDBCardBody>
+              <MDBModalFooter className="mx-5 pt-3 mb-1">
+                <p className="font-small grey-text d-flex justify-content-end">
+                  Not a member?
+                  <Link to="/signup-client">
+                  <a href="#!" className="blue-text ml-1">
+  
+                    Sign Up
+                  </a>
+                  </Link>
+                </p>
+              </MDBModalFooter>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+      </MDBView>
     );
   }
 }

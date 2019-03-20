@@ -60,14 +60,7 @@ export class popServ extends Component {
   </div>
 </div>
 </div>
-
-
-
-
 </div>
-
-
-
 
 
 

@@ -121,7 +121,7 @@ p1{
 .field {
   width: 15vw;
   padding: 1vmin 1vmin;
-  margin: 8px 0;
+  /* margin: 8px 0; */
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -681,7 +681,12 @@ border: 0px solid #000000;
 
 .overlayPop {
   width: 20vmax;
-  height: 20vmax;
+
+  display: inline-block;
+  /* height: 15vmax; */
+  height: 20vw;
+  /* display: block; */
+
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1061,7 +1066,7 @@ Coolgyal Image adjusting */
   flex: 1 0 auto;
   -webkit-flex: 1 0 auto;
   min-height: -100%;
-  margin-top: 30vh;
+  margin-top: 60vh;
   margin-left: 0px;
   width: 100%;
 
@@ -1154,8 +1159,8 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
     display: block;
 }
 .wrimagecard-topimage_title {
-    padding: 20px 24px;
-    height: 80px;
+    /* padding: 20px 24px; */
+    /* height: 80px; */
     padding-bottom: 0.75rem;
     position: relative;
 }
@@ -1293,6 +1298,7 @@ top: 19vh; */
 .Heading {
   margin-left: 1.5vw;
   margin-top: 1.5vh;
+  font-size: 4vh;
 }
 
 /* step1 page */
@@ -1480,3 +1486,53 @@ top: -2vh;
 .editAccount{
 background-color: #FFEFD5;
 }
+
+
+.logosignup{
+width:6vh;
+height:5vh;
+position: absolute;
+left: 10px;
+top: 5px;
+
+  
+}
+
+.view {
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height:auto;
+  }
+  .SignInSPView{
+
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    /* background-image: url('https://img.freepik.com/free-photo/bronzed-pearls-with-cosmetics-products-colored-background_23-2147899301.jpg?size=626&ext=jpg'); */
+    /* background-image: url('https://i.pinimg.com/originals/9a/8f/0a/9a8f0a34df3dd1029f4bd868ceddb519.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height:100vh;
+
+  }
+  .viewClient{
+    background-image: url('https://1aike31wshtt3k0e9u2nxtwz-wpengine.netdna-ssl.com/wp-content/uploads/2016/07/ian-fisher-cloud-paintings-1.jpg');
+    /* background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height:115vh;
+  }
+
+
+.para{
+  font-size: 3vh;
+color:white;
+font-weight: normal;
+}
+
+.fa-times-circle:hover {
+  color:blue;
+}
+
