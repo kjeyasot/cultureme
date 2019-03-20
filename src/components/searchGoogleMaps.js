@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../googlemaps.css';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
