@@ -25,6 +25,7 @@ import { myAccount } from './components/myAccount';
 import { aboutUs } from './components/aboutUs';
 import { editView } from './components/editView';
 import { ratings } from './components/ratings';
+import { searchGoogleMaps } from './components/searchGoogleMaps';
 // import { EditOrView } from './components/EditorView';
 class App extends Component {
   
@@ -54,6 +55,7 @@ class App extends Component {
             <Route path="/aboutUs" component={aboutUs}/>
             <Route path="/editView" component={editView}/>
             <Route path="/ratings" component={ratings}/>
+            <Route path="/GoogleMapsSearch" component={searchGoogleMaps}/>
             {/* <Route path="/EditOrView" component={EditOrView}/> */}
             {/* <Route path="/signin1" component={searchRes.searchRes} />
             <Route path="/signup1" component={searchRes.searchRes} />
