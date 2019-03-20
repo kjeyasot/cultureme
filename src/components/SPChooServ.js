@@ -42,7 +42,8 @@ export class SPChooseService extends Component {
 
   moveToEditView(service) {
     localStorage.setItem('myData', service);
-    this.props.history.push("/editView")
+    window.location = "/editView"
+    // this.props.history.push("/editView")
     
   }
   logout() {
@@ -186,7 +187,7 @@ refresh() {
           <div class="wrimagecard-topimage_header" style={{ backgroundColor: "grey"}}>
           
             {/* <center><i class = "fa fa-cubes"  style={{color: "#16A085"}}></i></center> */}
-           <h6 className="para">Location:  &nbsp;&nbsp; {item.city}, {item.state}</h6>
+           <h6 className="para">Location:  &nbsp;&nbsp; {item.address}</h6>
            <h6 className="para">Price:  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.minPrice} - ${item.maxPrice}</h6>
            <MDBBtn className="btn btn-" size="sm" onClick={() => this.moveToEditView(item.serviceType)}>
        

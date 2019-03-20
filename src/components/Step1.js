@@ -108,8 +108,8 @@ export class stepone extends Component {
         serviceProvidersRef.push(services)
         // {{pathname :"/Upload", data: this.state.serviceType }}>
         localStorage.setItem('sTYpe', this.state.serviceType);
-
-        this.props.history.push("/Upload")
+        window.location = "/Upload";
+        // this.props.history.push("/Upload")
             }
 
     })

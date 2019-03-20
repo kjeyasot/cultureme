@@ -137,7 +137,10 @@ export class signInSP extends Component {
                   Sign In
                 </MDBBtn>
                 {this.state.error ?  <p id="letter" className="invalid">{this.state.error.message}</p>:null}
-                {this.state.user ?this.props.history.push('/choose-service'):null}
+                {this.state.user ?  (window.location = '/choose-service')
+                  
+                  // this.props.history.push('/choose-service')
+                  :null}
               </div>
          
               </MDBCardBody>
