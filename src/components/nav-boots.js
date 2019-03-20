@@ -75,7 +75,7 @@ export class navstuff extends Component {
         <Navbar color="dark"  className="navbar-dark font-weight-bold" light expand="xl">
 
         <Link to= "/choose-service">
-          <NavbarBrand  href="/"> <img className="lnav" alt="logo" src={images1['logoCM.png']} /></NavbarBrand>
+          <NavbarBrand  onClick={() => window.location.reload(true)} > <img className="lnav" alt="logo" src={images1['logoCM.png']}  /></NavbarBrand>
          </Link>
 
           <div>
