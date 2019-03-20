@@ -681,7 +681,12 @@ border: 0px solid #000000;
 
 .overlayPop {
   width: 20vmax;
-  height: 20vmax;
+
+  display: inline-block;
+  /* height: 15vmax; */
+  height: 20vw;
+  /* display: block; */
+
   position: absolute;
   top: 0;
   bottom: 0;
