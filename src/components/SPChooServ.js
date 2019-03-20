@@ -25,10 +25,12 @@ let companyName;
 export class SPChooseService extends Component {
   constructor() {
     super();
+    
     this.state = {
       user: null,
       companyName:'',
-      services:[]
+      services:[], 
+      
 
     }
     this.login = this.login.bind(this); 
@@ -89,6 +91,8 @@ export class SPChooseService extends Component {
         
       } 
     });
+    // localStorage.setItem('myData', null)
+    // localStorage.removeItem('serviceType')
   }
 
   removeService(service) {
@@ -110,12 +114,13 @@ refresh() {
   window.location='/Step1'
 }
     render(){
-   
+    
     return (
       
       
       <div> 
       <navstuff.navstuff/>
+     
     <h2 className="Heading">Your Services</h2>
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -192,7 +197,7 @@ refresh() {
     <label style={{fontSize: "1.5vw", background: "none"}}for="form1">${item.minPrice} - ${item.maxPrice}</label>
     <br></br>
   </MDBCardBody>
-  <MDBBtn href="#" onClick={() => this.moveToEditView(item.serviceType)}>View</MDBBtn>
+  <MDBBtn  onClick={() => this.moveToEditView(item.serviceType)}>View</MDBBtn>
 
 </MDBCard>
 </MDBCol>

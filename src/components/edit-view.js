@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
 import * as script from '../scripts';
-import { Link } from 'react-router-dom';
+import { Link ,BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 
 
-const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
+// const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 let companyName;
 let mobile, Description,minPrice, maxPrice, city , province, serviceType ;
@@ -27,15 +27,18 @@ export class editView extends Component {
       minPrice : '',
       maxPrice: '',
       city: '',
+      file: null,
+      url: [],
       province: '',
       images: [],
       isInEditMode:false
     }
     this.handleChange = this.handleChange.bind(this);
-    // this.handleChanges = this.handleChanges.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChanges = this.handleChanges.bind(this);
+    this.storePhoto = this.storePhoto.bind(this)
+    // this.refresh = this.refresh.bind(this);
     this.Activate = this.Activate.bind(this); 
-    this.Updated = this.Updated.bind(this); 
+    this.userUpdate = this.userUpdate.bind(this); 
     this.userIntUpdate = this.userIntUpdate.bind(this); 
     this.deletePhoto = this.deletePhoto.bind(this)
 
@@ -61,6 +64,48 @@ export class editView extends Component {
       }
     }
   }
+
+  handleChanges(e) {
+    this.setState({
+      file: e.target.files[0],
+      url: URL.createObjectURL(e.target.files[0])
+    })
+  }
+
+  storePhoto() {
+    // this.hydrateStateWithLocalStorage();
+    const data = localStorage.getItem('myData')
+      auth.onAuthStateChanged((user) => {
+          if (user) {
+            this.setState({ user });
+            var uid = user.uid;
+    const key = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').push().key
+    const img = storage.ref().child('Images').child(uid).child(key)
+  
+  // WORKING FOR DB
+  img.put(this.state.file).then((snap) => {
+      // console.log('test'+ snap.metadata.downloadURLs)
+      storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
+        database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(key).set({
+        "url" : url
+      })
+    })
+    })
+
+    this.setState({
+      file: null,
+      url: null,
+    })
+  }
+ 
+})
+}
+
+// refresh() {
+//   // localStorage.setItem('myData', service);
+//   this.props.history.push("/choose-service")
+//   // localStorage.setItem('myData', null);
+// }
 
   componentDidMount() {
     this.hydrateStateWithLocalStorage();
@@ -116,11 +161,29 @@ export class editView extends Component {
       
       
     });
+    const ref = database.ref('serviceProviders').child(user.uid).child('Services').child(data).child('photos')
+
+    ref.on('child_added', (child) => {
+      let images = this.state.images.slice()
+      images.push({
+        key: child.key,
+        url: child.val().url
+      })
+      this.setState({images})
+    })
+    ref.on('child_removed', (child) => {
+      let images = this.state.images.filter((image) => {
+        return image.url != child.val().url
+      })
+      this.setState({images})
+    })
   }
   });
   
     
   }
+
+  
 
   userIntUpdate() {
     this.hydrateStateWithLocalStorage();
@@ -139,7 +202,7 @@ export class editView extends Component {
             this.setState({
               companyName: companyName,
               mobile: mobile,
-              serviceType: data,
+              // serviceType: data,
               isInEditMode: false
 
             })
@@ -157,12 +220,12 @@ export class editView extends Component {
             province= servInfo.state;
 
           });
-          snapshot.child('photos').forEach((servPhotos) => {   
-            newState.push({
-              key: servPhotos.key,
-              url: servPhotos.val().url
-            })  
-            });
+          // snapshot.child('photos').forEach((servPhotos) => {   
+          //   newState.push({
+          //     key: servPhotos.key,
+          //     url: servPhotos.val().url
+          //   })  
+          //   });
           
 
           this.setState({
@@ -172,7 +235,7 @@ export class editView extends Component {
             maxPrice: maxPrice,
             city: city,
             province: province,
-            images: newState
+            // images: newState
           })
      
       
@@ -190,50 +253,43 @@ export class editView extends Component {
      isInEditMode: true
 
    });
-  localStorage.setItem("isInEditMode", true)
-   window.location.reload()
-  localStorage.getItem("isInEditMode")
+  // localStorage.setItem("isInEditMode", false)
+
   
   }
-   Updated(e) {
+  userUpdate() {
+    this.hydrateStateWithLocalStorage();
+
+    const data = localStorage.getItem('myData')
 
     auth.onAuthStateChanged((user) => {
       if (user) {
-    
         const servPV = {
-          // companyName: this.state.companyName,
-          // companyName: this.state.companyName,
-       
+          Description: this.state.Description,
+          minPrice: this.state.minPrice,
+          maxPrice: this.state.maxPrice,
+          city: this.state.city,
+          province: this.state.province,
         }
-        // console.log(this.state.servicetype)
-        const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
+        const serviceDetails = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(data);
 
-        serviceProvidersRef.once('value', (snapshot) => {
-            snapshot.child('PersonalInformation').forEach((personalInfo) => {
-              // console.log(personalInfo)   
-              // personalInfo.ref.update(servPV)             
-            //  window.location.reload(true);
-
-            });
-        })
+        serviceDetails.once('value', (snapshot) => {
+          snapshot.child('serviceDetails').forEach((servDetails) => { 
+            servDetails.ref.update(servPV);
+          });      
+    });
+    this.setState ({
+      isInEditMode: false
+ 
+    });
+        
             }
     })
-  
-this.setState({
-isInEditMode: false
-//store to database
-
-
-}) ; 
-
-   }
+   
+          }
 
    handleChange(e) {
-    if(e.target.name==='serviceType'){
-   
-      const serviceType = (e.target.validity.valid) ? e.target.value : this.state.serviceType;
-      this.setState({ serviceType});
-    }
+ 
     if(e.target.name==='maxPrice'){
       
       const maxPrice = (e.target.validity.valid) ? e.target.value : this.state.maxPrice;
@@ -270,6 +326,7 @@ isInEditMode: false
     let img = event.target.name;
     storage.ref().child('Images').child(uid).child(img).delete();
     firebase.database().ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(img).remove();
+
   }
 
   render() {
@@ -286,12 +343,23 @@ isInEditMode: false
         
         <div>
         <navstuff.navstuff/>
+        <Link to="/choose-service">
+        <button className="btn btn-pink" onClick={() => window.location.reload()} >
+                Done
+             
+          </button>
+          </Link>
         <h3 className="HeadingVE" > {this.state.companyName}</h3>
      <h5  className="contentVE"  type="text" >{this.state.mobile}</h5>
+     <h5  className="contentVE"  type="text" >{this.state.serviceType}</h5>
+     {/* <h5 className="contentVE" name="serviceType" id="serviceType" pattern ="[A-Za-z\s]*" maxlength="30" type="text" value= /> */}
 
 
-
-
+     <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
+    
+    <div class="upload-btn-wrapper">
+         <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
+         </div>
   
    <div className="symbols">
    <i class="fa fa-star checked"></i>
@@ -305,11 +373,11 @@ isInEditMode: false
             
            
             <form>
-
+         
 
  {!this.state.isInEditMode? 
  <div>
-      <h5  className="contentVE"  type="text" >{this.state.serviceType} <span class="fas fa-pen" onClick={this.Activate} ></span></h5>
+      <span class="fas fa-pen" onClick={this.Activate} ></span>
       <h5 className="contentVES" type = 'text'> {this.state.Description}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.city}, {this.state.province}</h5> 
@@ -329,8 +397,8 @@ isInEditMode: false
 :
 <div>
       <div className="edit">
-     <input  className="contentVE" name="serviceType" id="serviceType" pattern ="[A-Za-z\s]*" maxlength="30" type="text" value={this.state.serviceType} onChange={this.handleChange}/>
-     &nbsp;&nbsp;<i class="fas fa-check" onClick={this.Updated}></i>  &nbsp;&nbsp;
+    
+     &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.city||!this.state.province|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
     <i class="fa fa-times" onClick={this.userIntUpdate}></i>
     </div>
     <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
@@ -369,26 +437,24 @@ value={this.state.city}>
   }
  
  
- {this.state.images.map((image) =>
-            <div key={image.key}>
-            <h1>{image.file}</h1>
-            <div class="row">
-                <div class="column">
-              <img src={image.url} style={imgStyle}/>
-              <button className = "removeButton" onClick={this.deletePhoto} 
-                 name={image.key}>X</button>
+  
+    {this.state.images.map((image) =>
+           <div key={image.key}>
+           <h1>{image.file}</h1>
+           <div class="row">
+               <div class="column">
+             <img src={image.url} style={imgStyle}/>
+             <button className = "removeButton" onClick={this.deletePhoto} 
+                name={image.key}>X</button>
 
-                             </div>
-              </div>
-            </div>
-          )}
-
-               &nbsp;&nbsp;
-               <div className = 'editButtons' >
-               {/* {this.state.isInEditMode?  <button className = "fa fa-save" type= 'submit' disabled={!this.state.companyName||!this.state.mobile||this.state.mobile.length<10||testCompany.indexOf(this.state.companyName)>-1||testPhone.indexOf(this.state.mobile)>-1}   onClick={this.userUpdate} ></button> : null} */}
-              
-              
-               </div>
+                            </div>
+             </div>
+           </div>
+         )} 
+         {/* <Link to="/choose-service">    */}
+         
+        
+          {/* </Link> */}
                
               </form>
 

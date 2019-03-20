@@ -24,25 +24,7 @@ export class Upload extends React.Component {
       this.storePhoto = this.storePhoto.bind(this)
       this.deletePhoto = this.deletePhoto.bind(this)
     }
-    hydrateStateWithLocalStorage() {
-      // for all items in state
-      for (let key in this.state) {
-        // if the key exists in localStorage
-        if (localStorage.hasOwnProperty(key)) {
-          // get the key's value from localStorage
-          let value = localStorage.getItem(key);
-  
-          // parse the localStorage string and setState
-          try {
-            value = JSON.parse(value);
-            this.setState({ [key]: value });
-          } catch (e) {
-            // handle empty string
-            this.setState({ [key]: value });
-          }
-        }
-      }
-    }
+
     
     handleChange(e) {
       this.setState({
@@ -51,7 +33,9 @@ export class Upload extends React.Component {
       })
     }
     storePhoto() {
-      const data = localStorage.getItem('serviceType')
+      // const {data} = this.props.location;
+      const data = localStorage.getItem('sTYpe')
+
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
@@ -79,7 +63,8 @@ export class Upload extends React.Component {
 
 
     deletePhoto(event) {
-      const data = localStorage.getItem('serviceType')
+      const data = localStorage.getItem('sTYpe')
+
       let uid = this.state.user.uid
       let img = event.target.name
       storage.ref().child('Images').child(uid).child(img).delete()
@@ -87,9 +72,7 @@ export class Upload extends React.Component {
     }
 
     componentDidMount() {
-      this.hydrateStateWithLocalStorage();
-      const data = localStorage.getItem('serviceType')
-  
+      const data = localStorage.getItem('sTYpe')
         auth.onAuthStateChanged((user) => {
             if (user) {
               this.setState({ user });
@@ -115,6 +98,7 @@ export class Upload extends React.Component {
 });
     }
     render() {
+      const data = localStorage.getItem('sTYpe')
       const previewStyle = {
         maxHeight: "100px",
         maxWidth: "100px",
