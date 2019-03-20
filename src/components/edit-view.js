@@ -7,11 +7,14 @@ import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 
-
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 // const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 let companyName;
-let mobile, Description,minPrice, maxPrice, city , province, serviceType ;
+let mobile, Description,minPrice, maxPrice, address, serviceType ;
 let newState = []
 export class editView extends Component {
   constructor() {
@@ -26,10 +29,10 @@ export class editView extends Component {
       Description: '',
       minPrice : '',
       maxPrice: '',
-      city: '',
+      address: '',
       file: null,
       url: [],
-      province: '',
+      // province: '',
       images: [],
       isInEditMode:false
     }
@@ -41,10 +44,13 @@ export class editView extends Component {
     this.userUpdate = this.userUpdate.bind(this); 
     this.userIntUpdate = this.userIntUpdate.bind(this); 
     this.deletePhoto = this.deletePhoto.bind(this)
-
+    this.handleChangess = this.handleChangess.bind(this);
 
     
   }
+  handleChangess = address => {
+    this.setState({ address });
+  };
   hydrateStateWithLocalStorage() {
     // for all items in state
     for (let key in this.state) {
@@ -136,9 +142,8 @@ export class editView extends Component {
             Description = servInfo.Description;
             minPrice = servInfo.minPrice;
             maxPrice= servInfo.maxPrice;
-            city= servInfo.city;
-            province= servInfo.state;
-
+            address= servInfo.address;
+          
           });
           snapshot.child('photos').forEach((servPhotos) => {   
             newState.push({
@@ -153,8 +158,8 @@ export class editView extends Component {
             Description: Description,
             minPrice: minPrice,
             maxPrice: maxPrice,
-            city: city,
-            province: province,
+            address: address,
+          
             images: newState
           })
      
@@ -216,8 +221,8 @@ export class editView extends Component {
             Description = servInfo.Description;
             minPrice = servInfo.minPrice;
             maxPrice= servInfo.maxPrice;
-            city= servInfo.city;
-            province= servInfo.state;
+            address= servInfo.address;
+            
 
           });
           // snapshot.child('photos').forEach((servPhotos) => {   
@@ -233,8 +238,8 @@ export class editView extends Component {
             Description: Description,
             minPrice: minPrice,
             maxPrice: maxPrice,
-            city: city,
-            province: province,
+            address: address,
+           
             // images: newState
           })
      
@@ -268,8 +273,8 @@ export class editView extends Component {
           Description: this.state.Description,
           minPrice: this.state.minPrice,
           maxPrice: this.state.maxPrice,
-          city: this.state.city,
-          province: this.state.province,
+          address: this.state.address,
+        
         }
         const serviceDetails = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(data);
 
@@ -301,16 +306,7 @@ export class editView extends Component {
       this.setState({ minPrice});
 
     }
-    if(e.target.name==='province'){
-    this.setState({
-     province: e.target.value
-    });
-  }
-  if(e.target.name==='city'){
-    this.setState({
-     city: e.target.value
-    });
-  }
+  
 
   if(e.target.name==='Description'){
     this.setState({
@@ -344,7 +340,7 @@ export class editView extends Component {
         <div>
         <navstuff.navstuff/>
         <Link to="/choose-service">
-        <button className="btn btn-pink" onClick={() => window.location.reload()} >
+        <button className="btn btn-pink" onClick={() => window.location.reload(true)} >
                 Done
              
           </button>
@@ -380,7 +376,7 @@ export class editView extends Component {
       <span class="fas fa-pen" onClick={this.Activate} ></span>
       <h5 className="contentVES" type = 'text'> {this.state.Description}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
-      <h5 className="contentVES" type = 'text'> {this.state.city}, {this.state.province}</h5> 
+      <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
 
 
 
@@ -398,7 +394,7 @@ export class editView extends Component {
 <div>
       <div className="edit">
     
-     &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.city||!this.state.province|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
+     &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
     <i class="fa fa-times" onClick={this.userIntUpdate}></i>
     </div>
     <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
@@ -409,29 +405,48 @@ export class editView extends Component {
     {/* <input  className="contentVE" id="city" type="text" value={this.state.city} onChange={this.handleChange}/> */}
     {/* <input  className="contentVE" id="state" type="text" value={this.state.state} onChange={this.handleChange}/> */}
 
-    <div class="row">
-           
-           <div class="col">
-     
-   <input type="hidden" name="country" id="countryId" value="CA"
-   />
-<select name="province" class="states order-alpha browser-default custom-select custom-select- mb-3"   id="stateId"
-onChange={this.handleChange}
-value={this.state.province}>
-   <option value="">Select Province</option>
-</select>
-</div>
+    
+  <PlacesAutocomplete
+        value={this.state.address}
+        onChange={this.handleChangess}
+        onSelect={this.handleSelect}
+        searchOptions={{types: ['(cities)'],
+        componentRestrictions: {country: "ca"}}}
+      >
+        {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
+          <div>
+            <input
+              {...getInputProps({
+                placeholder: 'Search Places ...',
+                className: 'location-search-input',
+              })}
+            />
+            <div className="autocomplete-dropdown-container">
+              {loading && <div>Loading...</div>}
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item--active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </PlacesAutocomplete>
 
-&nbsp;&nbsp;
-&nbsp;&nbsp;
-<div class="col">
-<select Async name="city" class="cities order-alpha browser-default custom-select custom-select-md mb-3" id="cityId"
-onChange={this.handleChange} 
-value={this.state.city}>
-   <option value="">Select City</option>
-</select>
-</div>
-</div>
 
 </div>
   }

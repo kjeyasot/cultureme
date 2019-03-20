@@ -2,9 +2,16 @@ import React, { Component,Fragment } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
+import * as searchGoogleMaps from './searchGoogleMaps';
 import firebase, { auth, provider, database } from '../firebase.js';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react'
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
+ 
+
 
 import * as script from '../scripts';
 
@@ -17,15 +24,21 @@ export class stepone extends Component {
       Description: '',
       maxPrice: '',
       minPrice:'',
-      province: '',
-      city:'',
+      
+      address:'',
       services: []
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleChanges = this.handleChanges.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createService = this.createService.bind(this);
-
+    this.handleSelect = this.handleSelect.bind(this);
+    
   }  
+
+  handleChanges = address => {
+    this.setState({ address });
+  };
   componentDidMount() {
     
   auth.onAuthStateChanged((user) => {
@@ -51,16 +64,12 @@ export class stepone extends Component {
       this.setState({ minPrice});
 
     }
-    if(e.target.name==='province'){
-    this.setState({
-     province: e.target.value
-    });
-  }
-  if(e.target.name==='city'){
-    this.setState({
-     city: e.target.value
-    });
-  }
+   
+  // if(e.target.name==='address'){
+  //   this.setState({
+  //    address: e.target.value
+  //   });
+  // }
 
   if(e.target.name==='Description'){
     this.setState({
@@ -68,6 +77,14 @@ export class stepone extends Component {
     });
   }
   }
+
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
+      this.setState({ address });
+  };
   handleSubmit(e) {
     e.preventDefault();
     // this.props.history.push('/choose-service')
@@ -83,8 +100,8 @@ export class stepone extends Component {
           Description: this.state.Description,
           maxPrice: this.state.maxPrice,
           minPrice: this.state.minPrice,
-          state: this.state.province,
-          city: this.state.city
+          // state: this.state.province,
+        address: this.state.address
         }
         const sTYpe = this.state.serviceType;
         const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe).child('serviceDetails');  
@@ -188,42 +205,73 @@ export class stepone extends Component {
 
 <br></br>
 
-<input type="hidden" name="country" id="countryId" value="CA"/>
-
-<MDBRow>
-
-  <MDBCol>
-  <i class="fas fa-location-arrow"></i>
-  <label>State/Province</label>
-  </MDBCol>
-  <MDBCol>
-  <select name="province" class="states order-alpha browser-default custom-select md-6 mb-4"   id="stateId"
-  onChange={this.handleChange} 
-  value={this.state.province}
-  >
-  <option value="">Select Province</option>
-  </select>
- </MDBCol>
- </MDBRow>
-
-<MDBRow>
 <MDBCol>
   <i class="fas fa-location-arrow" ></i>
-  <label>City</label>
-  </MDBCol>
-  <MDBCol>
-  <select Async name="city" class="cities order-alpha browser-default custom-select md-6 mb-4" id="cityId"
-  onChange={this.handleChange} 
-  value={this.state.city}>
-  <option value="">Select City</option>
-  </select>
+  <label>Address</label>
   </MDBCol>
 
-</MDBRow>
+
+
+  <PlacesAutocomplete
+        value={this.state.address}
+        onChange={this.handleChanges}
+        onSelect={this.handleSelect}
+        searchOptions={{types: ['(cities)'],
+        componentRestrictions: {country: "ca"}}}
+      >
+        {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
+          <div>
+            <input
+              {...getInputProps({
+                placeholder: 'Search Places ...',
+                className: 'location-search-input',
+              })}
+            />
+            <div className="autocomplete-dropdown-container">
+              {loading && <div>Loading...</div>}
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item--active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </PlacesAutocomplete>
+
+
+
+
+
+{/* 
+
+<div name='address' 
+  value={this.state.address}>
+<searchGoogleMaps.searchGoogleMaps  />
+  </div> */}
+  {/* onChange={this.handleChange} 
+  value={this.state.address}
+   */}
+
+
  
  <div className="text-right py-4">
             {/* <Link to= {{pathname :"/Upload", data: this.state.serviceType }}> */}
-              <MDBBtn className="btn btn-pink"  disabled={!this.state.serviceType||Number(this.state.minPrice)>= Number(this.state.maxPrice)||!this.state.city||!this.state.maxPrice||!this.state.minPrice||!this.state.province} onClick={this.createService}>     
+              <MDBBtn className="btn btn-pink"  disabled={!this.state.serviceType||Number(this.state.minPrice)>= Number(this.state.maxPrice)||!this.state.address||!this.state.maxPrice||!this.state.minPrice} onClick={this.createService}>     
        
                 Continue
                 <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-angle-right" />
