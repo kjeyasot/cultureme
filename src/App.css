@@ -1433,6 +1433,8 @@ top: 5px;
   .SignInSPView{
 
     background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    /* background-image: url('https://img.freepik.com/free-photo/bronzed-pearls-with-cosmetics-products-colored-background_23-2147899301.jpg?size=626&ext=jpg'); */
+    /* background-image: url('https://i.pinimg.com/originals/9a/8f/0a/9a8f0a34df3dd1029f4bd868ceddb519.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -1440,11 +1442,12 @@ top: 5px;
 
   }
   .viewClient{
-    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+    background-image: url('https://1aike31wshtt3k0e9u2nxtwz-wpengine.netdna-ssl.com/wp-content/uploads/2016/07/ian-fisher-cloud-paintings-1.jpg');
+    /* background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    height:100vh;
+    height:115vh;
   }
 
 

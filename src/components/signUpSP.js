@@ -122,8 +122,8 @@ export class signUpSP extends Component {
         <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
-          <MDBCard style={{ marginTop: "0.01vh"}}>
-            <MDBCardBody className="mx-1" >
+          <MDBCard style={{ marginTop: "5vh"}}>
+            <MDBCardBody className="mx-2" >
               <div className="text-center">
               <img className="logosignup" alt="img" src={images['blackLogo.png']} />
                 <h3 className="dark-grey-text mb-8">
@@ -249,7 +249,7 @@ export class signUpSP extends Component {
                 </MDBBtn>
               </div>
 
-               <p className="font-small grey-text d-flex justify-content-end pb-4">
+               <p className="font-small grey-text d-flex justify-content-end pb-2">
              <span>Already a member?</span> 
              <Link to="/signInSP">   
                 <a href="#!" className="blue-text ml-1">
@@ -261,6 +261,9 @@ export class signUpSP extends Component {
             </MDBCardBody>
           
           </MDBCard>
+
+          <br></br>
+          <br></br>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
