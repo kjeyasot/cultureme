@@ -125,7 +125,9 @@ export class signUpSP extends Component {
           <MDBCard style={{ marginTop: "5vh"}}>
             <MDBCardBody className="mx-2" >
               <div className="text-center">
+              {/* <Link to="/"> */}
               <img className="logosignup" alt="img" src={images['blackLogo.png']} />
+              {/* </Link> */}
                 <h3 className="dark-grey-text mb-8">
                   <strong>Sign Up</strong>
                 </h3>
@@ -234,8 +236,8 @@ export class signUpSP extends Component {
         {(this.state.password && this.state.password.length<8)?<p id="length" class="invalid">Minimum <b>8 characters</b></p>:null}
                 <br></br>    
              
-              <div className="text-center mb-3">
-                <MDBBtn onClick={this.signup}
+              <div className="text-center mb-3" onClick={this.signup}>
+                <MDBBtn 
                   type="submit"
                   gradient="ripe-malinka"
                   rounded

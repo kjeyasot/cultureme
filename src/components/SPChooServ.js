@@ -134,7 +134,7 @@ refresh() {
             </MDBBtn>
             </div>
             <br></br>
-            <h6 className="Heading">.</h6>
+            <h6 className="Heading"></h6>
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

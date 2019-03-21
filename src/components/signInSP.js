@@ -71,6 +71,7 @@ export class signInSP extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+        window.location = '/choose-service';
       } 
     
         
@@ -94,7 +95,8 @@ export class signInSP extends Component {
             <MDBCard style={{ marginTop: "10vh"}}>
               <MDBCardBody className="mx-3">
                 <div className="text-center">
-                <img className="logosignup" alt="img" src={images['blackLogo.png']} />
+                {/* <Link to="/"> */}
+               <img className="logosignup" alt="img" src={images['blackLogo.png']} /> 
                   <h3 className="dark-grey-text mb-5">
                     <strong>Sign In</strong>
                   </h3>
@@ -137,14 +139,15 @@ export class signInSP extends Component {
                   Sign In
                 </MDBBtn>
                 {this.state.error ?  <p id="letter" className="invalid">{this.state.error.message}</p>:null}
-                {this.state.user ?  (window.location = '/choose-service')
+                {/* {this.state.user ?  (window.location = '/choose-service') */}
                   
-                  // this.props.history.push('/choose-service')
-                  :null}
+                  {/* // this.props.history.push('/choose-service') */}
+                  {/* :null} */}
               </div>
          
               </MDBCardBody>
               <MDBModalFooter className="mx-5 pt-3 mb-1">
+                
                 <p className="font-small grey-text d-flex justify-content-end">
                   Not a member?
                   <Link to="/signup-serviceprovider">
