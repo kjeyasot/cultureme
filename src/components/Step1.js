@@ -101,7 +101,8 @@ export class stepone extends Component {
           maxPrice: this.state.maxPrice,
           minPrice: this.state.minPrice,
           // state: this.state.province,
-        address: this.state.address
+        address: this.state.address,
+        uuid: user.uid
         }
         const sTYpe = this.state.serviceType;
         const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid).child('Services').child(sTYpe).child('serviceDetails');  
