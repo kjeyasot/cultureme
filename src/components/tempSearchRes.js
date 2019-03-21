@@ -37,7 +37,7 @@ export class searchRes extends Component {
       value: '',
     }
     this.showServiceDetails = this.showServiceDetails.bind(this);
-    this.whatever = this.whatever.bind(this);
+    // this.whatever = this.whatever.bind(this);
 
     // this.handleChange = this.handleChange.bind(this);
     // this.userIntUpdate = this.userIntUpdate.bind(this);
@@ -69,14 +69,11 @@ export class searchRes extends Component {
     
   }
 
-  async showServiceDetails() {
-    // localStorage.setItem('valueServ', this.state.value);
-// localStorage.removeItem('valueServ')
+  showServiceDetails() {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
-const value = this.state.value;
-// const value = localStorage.getItem('valueServ')
-
-    await serviceProvidersRef.once('value', (snapshot) => {
+    const value = this.state.value;
+    if(value){
+    serviceProvidersRef.once('value', (snapshot) => {
       snapshot.forEach((eventSnapshot) => {
         eventSnapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {
           const x = (serviceInfo.val())
@@ -90,7 +87,6 @@ const value = this.state.value;
           companyName = persInfo.companyName;
         });
         snapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {  
-          // serviceInfo.child('serviceDetails').forEach((servDetails) => {  
       
           let serviceDetails = serviceInfo.val();
           serviceDetails.companyName = companyName
@@ -98,12 +94,10 @@ const value = this.state.value;
         newState.push(serviceDetails)
        
         this.setState({
-          // companyName: companyName,
-          servicesList:newState
+          servicesList:newState,
         })  
     
-        
-        // });
+       
       }); 
       
 
@@ -112,52 +106,51 @@ const value = this.state.value;
       });
       
       });  
-      console.log(newState)
-      this.setState({
-        // companyName: companyName,
-        servicesList:newState
-      })  
-  
-      
+      newState = [];
     });
-    // console.log(testUuid)
-
-
   }
 
-  whatever() {
-    const value = this.state.value;
-
-    testUuid.forEach((uuid)=>
-    {
-      // const uuid = 'ag4WaGEzDdYHe81yN7Q1sh2p1O72'
-      const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
+    else{
+      let value1 = 'Makeup'
+    serviceProvidersRef.once('value', (snapshot) => {
+      snapshot.forEach((eventSnapshot) => {
+        eventSnapshot.child('Services').child(value1).child('serviceDetails').forEach((serviceInfo) => {
+          const x = (serviceInfo.val())
+          var uuid = x.uuid;
+          testUuid.push(x.uuid)
+          const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
 
       serviceProvidersRefs.once('value', (snapshot) => {
-          snapshot.child('PersonalInformation').forEach((personalInfo) => {                
-            let persInfo = personalInfo.val();
-            companyName = persInfo.companyName;
-          });
-          snapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {  
-            // serviceInfo.child('serviceDetails').forEach((servDetails) => {  
-        
-            let serviceDetails = serviceInfo.val();
-            serviceDetails.companyName = companyName
-          newState.push({key: uuid, value: serviceDetails})
-         
-          this.setState({
-            servicesList:newState
-          })
-          
-          // });
-        }); 
-        
-      });
-     console.log(newState)
-    })
+        snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+          let persInfo = personalInfo.val();
+          companyName = persInfo.companyName;
+        });
+        snapshot.child('Services').child(value1).child('serviceDetails').forEach((serviceInfo) => {  
+      
+          let serviceDetails = serviceInfo.val();
+          serviceDetails.companyName = companyName
+
+        newState.push(serviceDetails)
+       
+        this.setState({
+          servicesList:newState,
+        })  
     
-     
+       
+      }); 
+      
+
+    });
+   
+      });
+      
+      });  
+      newState = [];
+    });
   }
+  }
+
+
     render() {
 
         return (
