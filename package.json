@@ -13,6 +13,7 @@
     "mdbreact": "^4.11.0",
     "prop-types": "latest",
     "react": "^16.8.4",
+    "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^0.32.4",
     "react-bootstrap-carousel": "^3.4.1",
     "react-dom": "^16.8.4",
