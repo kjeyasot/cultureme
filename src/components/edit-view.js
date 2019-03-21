@@ -325,151 +325,10 @@ export class editView extends Component {
         
         <div>
         <navstuff.navstuff/>
-        <Link to="/choose-service">
-        <button className="btn btn-pink" onClick={() => window.location.reload(true)} >
-                Done
-             
-          </button>
-          </Link>
-        <h3 className="HeadingVE" > {this.state.companyName}</h3>
-     <h5  className="contentVE"  type="text" >{this.state.mobile}</h5>
-     <h5  className="contentVE"  type="text" >{this.state.serviceType}</h5>
-     {/* <h5 className="contentVE" name="serviceType" id="serviceType" pattern ="[A-Za-z\s]*" maxlength="30" type="text" value= /> */}
-
-
-     <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
-    
-    <div class="upload-btn-wrapper">
-         <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
-         </div>
-  
-   <div className="symbols">
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   </div>
-
-      <div class = "moveElements">
-            
-           
-            <form>
-         
-            
- {!this.state.isInEditMode? 
- <div>
-   <h5>Service Info: </h5>
-      <span class="fas fa-pen" onClick={this.Activate} > <h5>Service Info:</h5></span>
-      <h5 className="contentVES" type = 'text'> {this.state.Description}</h5> 
-      <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
-      <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
-
-      </div>
-:
-<div>
-      <div className="edit">
-    
-     &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
-    <i class="fa fa-times" onClick={this.userIntUpdate}></i>
-    </div>
-    
-    <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
-    <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
-    <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br>
-    {( this.state.minPrice && this.state.maxPrice && Number(this.state.minPrice)>= Number(this.state.maxPrice))? <p id="letter" className="invalid">Invalid Price Range</p>:null}
-
-    {/* <input  className="contentVE" id="city" type="text" value={this.state.city} onChange={this.handleChange}/> */}
-    {/* <input  className="contentVE" id="state" type="text" value={this.state.state} onChange={this.handleChange}/> */}
-
-    
-  <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChangess}
-        onSelect={this.handleSelect}
-        searchOptions={{types: ['(cities)'],
-        componentRestrictions: {country: "ca"}}}
-      >
-        {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
-              })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
-
-
-</div>
-  }
- 
- 
-  
-    {this.state.images.map((image) =>
-           <div key={image.key}>
-           <h1>{image.file}</h1>
-           <div class="row">
-               <div class="column">
-             <img src={image.url} style={imgStyle}/>
-             <button className = "removeButton" onClick={this.deletePhoto} 
-                name={image.key}>X</button>
-
-                            </div>
-             </div>
-           </div>
-         )} 
-         {/* <Link to="/choose-service">    */}
-         
         
-          {/* </Link> */}
-               
-              </form>
-
-            
-     
-      </div>
-
-    <div className="spfooter">
-        <footer1.footer1/>
-        </div>
-        </div>
-       
-
-
-
-
-    
-    
-    <div>
-         
       
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-            <navstuff.navstuff/>
+            
             <br></br>
       <div className="container">
         <div className="row">
@@ -512,7 +371,7 @@ export class editView extends Component {
   
       <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Description: {this.state.Description}</h5> 
       <br></br>
-      <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Min Price - Max Price: ${this.state.minPrice} - ${this.state.maxPrice}</h5> 
+      <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Price Range: ${this.state.minPrice} - ${this.state.maxPrice}</h5> 
       <br></br>
       <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Location: {this.state.address}</h5> 
 
@@ -614,6 +473,7 @@ export class editView extends Component {
                 
       <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
       <br></br>
+      <br></br>
     <div class="upload-btn-wrapper">
          <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
          </div>
@@ -633,11 +493,17 @@ export class editView extends Component {
 )} 
 </div>
 
+<br></br>
+<Link to="/choose-service">
+        <button className="btn btn-pink" onClick={() => window.location.reload(true)} >
+                Done
+             
+          </button>
+          </Link>
             
           </div>
 
-          
-
+        
           
           <div className="col-xs-12 col-sm-3">
 
