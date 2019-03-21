@@ -69,14 +69,6 @@ export class searchRes extends Component {
     
   }
 
-  moveToEditView(serviceProvider, service) {
-    localStorage.setItem('clientSearchSP', serviceProvider);
-    localStorage.setItem('clientSearchSType', service);
-
-    window.location = "/editView"
-    // this.props.history.push("/editView")
-    
-  }
   showServiceDetails() {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
     const value = this.state.value;
@@ -241,7 +233,7 @@ export class searchRes extends Component {
 <i class="fa fa-star checked"></i>
 
 </span>
-    <button type="button" class="btn btn-primary" onClick={() => this.moveToView(item.uuid, item.serviceType)}>View</button>
+    <button type="button" class="btn btn-primary">View</button>
   </li>
 
 </ul>
