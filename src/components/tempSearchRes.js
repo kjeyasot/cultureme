@@ -17,7 +17,10 @@ let testServices1 = [];
 let testServices = [];
 
 let uniqueServices = []
-let newState=[]
+let testUuid = []
+let newState = []
+let companyName;
+
 export class searchRes extends Component {
   
   constructor(){
@@ -29,10 +32,13 @@ export class searchRes extends Component {
       // isInEditMode:false
       servType: '',
       services: [],
-      s:[],
+      servicesList: [],
+      companyName: '',
       value: '',
     }
     this.showServiceDetails = this.showServiceDetails.bind(this);
+    // this.whatever = this.whatever.bind(this);
+
     // this.handleChange = this.handleChange.bind(this);
     // this.userIntUpdate = this.userIntUpdate.bind(this);
     // this.Activate = this.Activate.bind(this);
@@ -63,50 +69,96 @@ export class searchRes extends Component {
     
   }
 
+  moveToEditView(serviceProvider, service) {
+    localStorage.setItem('clientSearchSP', serviceProvider);
+    localStorage.setItem('clientSearchSType', service);
+
+    window.location = "/editView"
+    // this.props.history.push("/editView")
+    
+  }
   showServiceDetails() {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
-const value = this.state.value;
+    const value = this.state.value;
+    if(value){
     serviceProvidersRef.once('value', (snapshot) => {
-       snapshot.forEach((eventSnapshot) => {
-        // console.log(eventSnapshot.child('Services').child(value).val())
-        const service1 = eventSnapshot.child('Services').child(value).val()
+      snapshot.forEach((eventSnapshot) => {
+        eventSnapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {
+          const x = (serviceInfo.val())
+          var uuid = x.uuid;
+          testUuid.push(x.uuid)
+          const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
 
-         var service2 = eventSnapshot.child('Services').child(value).child('serviceDetails').val();
-        // console.log(service2)
-        eventSnapshot.child('Services').child(value).child('serviceDetails').forEach((servDetails) => {  
-          
-          let serviceDetails = servDetails.val();
-          // console.log(serviceDetails)
+      serviceProvidersRefs.once('value', (snapshot) => {
+        snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+          let persInfo = personalInfo.val();
+          companyName = persInfo.companyName;
+        });
+        snapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {  
+      
+          let serviceDetails = serviceInfo.val();
+          serviceDetails.companyName = companyName
+
         newState.push(serviceDetails)
-        this.setState({
-          // companyName: companyName,
-          s:newState
-        })
-      })
-
-        // if(service2!==null){
-        //   // service1.forEach((whateevr) =>{
-        //     // console.log(service2)
-
-        
-      
-        // newState.push(service2)
        
-
-        // }
+        this.setState({
+          servicesList:newState,
+        })  
+    
+       
+      }); 
       
-     })
-    //  console.log(newState);
-    //  this.setState({
-    //   // companyName: companyName,
-    //   s:newState
-    // })
 
-    console.log(this.state.s);
     });
-
- 
+   
+      });
+      
+      });  
+      newState = [];
+    });
   }
+
+    else{
+      let value1 = 'Makeup'
+    serviceProvidersRef.once('value', (snapshot) => {
+      snapshot.forEach((eventSnapshot) => {
+        eventSnapshot.child('Services').child(value1).child('serviceDetails').forEach((serviceInfo) => {
+          const x = (serviceInfo.val())
+          var uuid = x.uuid;
+          testUuid.push(x.uuid)
+          const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
+
+      serviceProvidersRefs.once('value', (snapshot) => {
+        snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+          let persInfo = personalInfo.val();
+          companyName = persInfo.companyName;
+        });
+        snapshot.child('Services').child(value1).child('serviceDetails').forEach((serviceInfo) => {  
+      
+          let serviceDetails = serviceInfo.val();
+          serviceDetails.companyName = companyName
+
+        newState.push(serviceDetails)
+       
+        this.setState({
+          servicesList:newState,
+        })  
+    
+       
+      }); 
+      
+
+    });
+   
+      });
+      
+      });  
+      newState = [];
+    });
+  }
+  }
+
+
     render() {
 
         return (
@@ -156,19 +208,72 @@ const value = this.state.value;
 
 
       <button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
- {this.state.s.map((item) => {
-          return (
+<br>
+</br>
 
-           <div> 
-              {/* <h2 >Location: jjjj &nbsp;&nbsp; {item.Description}</h2> */}
-           
-           <h2 >Location: jjjj &nbsp;&nbsp; {item.uuid}</h2>
-           </div>
- 
-     
-            )
-           })} 
 
+
+<div className="searchElements">
+<div class="col-lg-11 col-md-5">
+<div className="card">
+<h3 style={{ background: "white"}} className="card-header light-pink lighten-1 black-text font-weight-bold text-center py-5"> Search Results...
+
+</h3>
+  {this.state.servicesList.map((item) =>
+
+/* <div className="searchElements">
+<div class="col-lg-11 col-md-5">
+<div className="card">
+<h3 style={{ background: "white"}} className="card-header light-pink lighten-1 black-text font-weight-bold text-center py-5"> Search Results...
+
+</h3> */
+<div className="card-body">
+<ul className="list-group">
+  <li className="list-group-item d-flex justify-content-between align-items-center">
+  {item.companyName}
+    <br></br> {item.Description}
+  <span>
+
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+
+</span>
+    <button type="button" class="btn btn-primary" onClick={() => this.moveToView(item.uuid, item.serviceType)}>View</button>
+  </li>
+
+</ul>
+{/* <h3 style={{ fontSize: "1vw", textAlign: "center"}} className="text-small text-muted mb-0 pt-3">New services added weekly!</h3> */}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+//           <div>
+//             <h1>{item.companyName}</h1>
+
+// <h1>{item.Description}</h1>
+// <h1>{item.uuid}</h1>
+// <p>****************************************************************</p>
+// </div>
+         )} 
+
+</div>
+</div>
+</div>
 </div>
 
 
