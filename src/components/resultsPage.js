@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
  import '../nav.css';
 import * as script from '../scripts';
+import * as footer1 from './footer-nav';
+import * as navstuff from './nav-boots';
 import {
   BrowserRouter as Router,
   Route,
@@ -24,59 +26,95 @@ export class resultsPage extends Component {
   
     render() {
      
-     
         return (
+
+          <div>
+
+            <navstuff.navstuff/>
+        <div className="searchElements">
+            <div class="col-lg-11 col-md-5">
+        <div className="card">
+          <h3 style={{ background: "white"}} className="card-header light-pink lighten-1 black-text font-weight-bold text-center py-5"> Search Results...
           
-          <div class="nav">
-          <div class="nav-header">
-            <div class="nav-title">
-            {/* <Link to = "/"> */}
+          </h3>
+          <div className="card-body">
+            <ul className="list-group">
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                Compnay Name 1
+                <br></br> Insert Description
+              <span>
+
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+
+      </span>
+                <button type="button" class="btn btn-primary">View</button>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+              Compnay Name 2 
+              <br></br> Insert Description
             
-              <a class="N" href="./" ><img class="lnav" alt="logo" src={images1['logoCM.png']}  /></a>
-           
-              <div className="BackSearchN"></div>
-      <div className="SearchLabelCssN"></div>
-      <input type="text" className = "searchlabelN" value="Search"  readonly="readonly"/>
-      
-      <input className = "searchN" type="text" placeholder="Henna, Bridal Makeup.." name="search"/>
-      <input className = "nearMeN" type="text" placeholder="City, Province" name="nearMe"/>
-      <input type="text" className = "nearMelabelN" value="Near"  readonly="readonly"/>
-     
-      
-       <button className = "searchButtonN"type="submit"><i className="fa fa-search"></i></button>
-     
+              <span>
 
-            </div> 
-          </div>
-        
-          <div class="nav-btn">
-            <label for="nav-check">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
-          </div>
-          <input type="checkbox" id="nav-check" />
-          <div class="nav-links">
-           
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
 
-          {/*  */}
- 
-    <input id="check01" type="checkbox" name="menu"/>
-    <label for="check01">
-  <a href="#" className="nav-item" onclick={this.myFunction} ><i class="fa fa-user"></i>        Profile      <i class="fa fa-caret-down"></i></a>
-  </label> 
-    <ul class="submenu">
-      <li><a href="#">Sotto menu 1</a></li>
-      <li><a href="#">Sotto menu 2</a></li>
-    </ul>
- 
+      </span>
+                <button type="button" class="btn btn-primary">View</button>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+              Compnay Name 3 
+              <br></br> Insert Description
+              <span>
 
- 
-            {/* <a href="/signin" >Sign In</a>
-            <a href="/signup" >Sign Up</a> */}
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+
+      </span>
+                <button type="button" class="btn btn-primary">View</button>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+              Compnay Name 4 
+              <br></br> 
+              Insert Description
+              <span>
+
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+
+      </span>
+                <button type="button" class="btn btn-primary">View</button>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+              Compnay Name 5 
+              <br></br> Insert Description
+
+                <span>
+
+          <i class="fa fa-star checked"></i>
+          <i class="fa fa-star checked"></i>
+            <i class="fa fa-star checked"></i>
+
+                </span>
+                <button type="button" class="btn btn-primary">View</button>
+              </li>
+            </ul>
+            <h3 style={{ fontSize: "1vw", textAlign: "center"}} className="text-small text-muted mb-0 pt-3">New services added weekly!</h3>
           </div>
-             </div>
+          </div>
+          </div>
+          </div>
+          </div>
+ 
         );
     
     }}

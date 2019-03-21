@@ -1190,6 +1190,14 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   
 }
 
+.searchElements{
+ 
+  padding-top: 5vw;
+  padding-left: 8vw;
+  
+}
+
+
 .removeButton {
   background-color: red; /* Green */
   border: none;
