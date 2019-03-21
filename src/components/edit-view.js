@@ -15,7 +15,7 @@ import PlacesAutocomplete, {
 // const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 let companyName;
-let mobile, Description,minPrice, maxPrice, address, serviceType ;
+let mobile, Description,minPrice, maxPrice, address, serviceType, email ;
 let newState = []
 export class editView extends Component {
   constructor() {
@@ -119,11 +119,13 @@ export class editView extends Component {
               let persInfo = personalInfo.val();
               companyName = persInfo.companyName;
               mobile = persInfo.mobile;
+              email = persInfo.email;
             });
             this.setState({
               companyName: companyName,
               mobile: mobile,
-              serviceType: data
+              serviceType: data, 
+              email: email
             })
         });
 
@@ -494,8 +496,8 @@ export class editView extends Component {
    <i class="fa fa-star checked"></i>
    </div>
                   <br></br>
-                  <h5>Service Info:</h5>
-                  <p style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}}>
+                 
+                  <p style={{ fontSize: "2.5vh", color: "black", textAlign:"left", fontStyle: "regular"}}>
                     {/* {this.state.Description} <br></br>
                     Min Price: {this.state.minPrice}
                     Max Price: {this.state.maxPrice} */}
@@ -503,33 +505,45 @@ export class editView extends Component {
 
 {/* add */}
 
+<span>
                     {!this.state.isInEditMode? 
- <div>
-      <span class="fas fa-pen" onClick={this.Activate} ></span>
+ <div >
+   <h5>Service Info: <span class="fas fa-pen" onClick={this.Activate} ></span> </h5>
+  
       <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Description: {this.state.Description}</h5> 
-      <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
-      <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
+      <br></br>
+      <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Min Price - Max Price: ${this.state.minPrice} - ${this.state.maxPrice}</h5> 
+      <br></br>
+      <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Location: {this.state.address}</h5> 
 
       </div>
 :
 <div>
       <div className="edit">
-    
-     &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
-    <i class="fa fa-times" onClick={this.userIntUpdate}></i>
+      <h5> Service Info: &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+    <button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
+    <i class="fa fa-times" onClick={this.userIntUpdate}></i> </h5>
     </div>
-    <label>Description</label>
-    
+    <label>Description:</label>
     <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
-    <div> <label>Min Price</label> <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/></div>
-    <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
-    <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br>
+    
+    <div> <label>Min Price:</label> <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/></div>
+
+    <div><label>Min Price:</label> <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/></div>
+ 
+    {/* <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
+    <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br> */}
     {( this.state.minPrice && this.state.maxPrice && Number(this.state.minPrice)>= Number(this.state.maxPrice))? <p id="letter" className="invalid">Invalid Price Range</p>:null}
 
     {/* <input  className="contentVE" id="city" type="text" value={this.state.city} onChange={this.handleChange}/> */}
     {/* <input  className="contentVE" id="state" type="text" value={this.state.state} onChange={this.handleChange}/> */}
 
+<MDBCol>
+  <i class="fas fa-location-arrow" ></i>
+  <label>Address:</label>
+  </MDBCol>
   <PlacesAutocomplete
+  
         value={this.state.address}
         onChange={this.handleChangess}
         onSelect={this.handleSelect}
@@ -573,7 +587,7 @@ export class editView extends Component {
 
 </div>
   }
-
+  </span>
 
 
   {/* add */}
@@ -589,7 +603,7 @@ export class editView extends Component {
               
               <br></br>
                   
-                <h4>Portfolio:</h4>
+                <h5>Portfolio:</h5>
                 
                 
       <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
@@ -604,15 +618,16 @@ export class editView extends Component {
   <h1>{image.file}</h1>
   <div class="row">
       <div class="column">
-    <img src={image.url} style={imgStyle}/>
-    <button className = "removeButton" onClick={this.deletePhoto} 
-       name={image.key}>X</button>
-
-                   </div>
-    </div>
+          <img src={image.url} style={imgStyle}/>
+          <button className = "removeButton" onClick={this.deletePhoto} 
+            name={image.key}>X</button>
+       </div>
+       </div>
   </div>
 )} 
-            </div>
+</div>
+
+            
           </div>
 
           
@@ -622,7 +637,7 @@ export class editView extends Component {
 
 
 <div>
-<h5>Contact Info: </h5>
+<h5>Contact Info </h5>
 </div>
 
 
@@ -658,9 +673,10 @@ export class editView extends Component {
                 <br></br>
                   <div className="profile__contact-info-body">
                   <div className="profile__contact-info-icon">
-                  <i className="fa fa-map-marker" />
-                  <h5 className="profile__contact-info-heading">Location</h5>
-                  {this.state.address}
+                  {/* <i className="fa fa-map-marker" /> */}
+                  <i className="fa fa-envelope" />
+                  <h5 className="profile__contact-info-heading">Email</h5>
+                  {this.state.email}
                 </div>
               </div>
 
