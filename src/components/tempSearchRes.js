@@ -202,31 +202,70 @@ export class searchRes extends Component {
       <button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
 <br>
 </br>
-      {/* <button className = "searchButtonN1"type="submit" onClick={this.whatever}><i className="fa fa-search"></i></button> */}
 
+
+
+<div className="searchElements">
+<div class="col-lg-11 col-md-5">
+<div className="card">
+<h3 style={{ background: "white"}} className="card-header light-pink lighten-1 black-text font-weight-bold text-center py-5"> Search Results...
+
+</h3>
   {this.state.servicesList.map((item) =>
 
-          //  <div key={item.value}>
-          <div>
-            <h1>{item.companyName}</h1>
+/* <div className="searchElements">
+<div class="col-lg-11 col-md-5">
+<div className="card">
+<h3 style={{ background: "white"}} className="card-header light-pink lighten-1 black-text font-weight-bold text-center py-5"> Search Results...
 
-<h1>{item.Description}</h1>
-<h1>{item.uuid}</h1>
-<p>****************************************************************</p>
+</h3> */
+<div className="card-body">
+<ul className="list-group">
+  <li className="list-group-item d-flex justify-content-between align-items-center">
+  {item.companyName}
+    <br></br> {item.Description}
+  <span>
+
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+<i class="fa fa-star checked"></i>
+
+</span>
+    <button type="button" class="btn btn-primary">View</button>
+  </li>
+
+</ul>
+{/* <h3 style={{ fontSize: "1vw", textAlign: "center"}} className="text-small text-muted mb-0 pt-3">New services added weekly!</h3> */}
 </div>
 
-           /* <h1>{image.file}</h1>
-           <div class="row">
-               <div class="column">
-             <img src={image.url} style={imgStyle}/>
-             <button className = "removeButton" onClick={this.deletePhoto} 
-                name={image.key}>X</button>
 
-                            </div>
-             </div> */
-          //  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+//           <div>
+//             <h1>{item.companyName}</h1>
+
+// <h1>{item.Description}</h1>
+// <h1>{item.uuid}</h1>
+// <p>****************************************************************</p>
+// </div>
          )} 
 
+</div>
+</div>
+</div>
 </div>
 
 

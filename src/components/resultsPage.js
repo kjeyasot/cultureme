@@ -53,60 +53,7 @@ export class resultsPage extends Component {
       </span>
                 <button type="button" class="btn btn-primary">View</button>
               </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
-              Compnay Name 2 
-              <br></br> Insert Description
-            
-              <span>
-
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-
-      </span>
-                <button type="button" class="btn btn-primary">View</button>
-              </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
-              Compnay Name 3 
-              <br></br> Insert Description
-              <span>
-
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-
-      </span>
-                <button type="button" class="btn btn-primary">View</button>
-              </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
-              Compnay Name 4 
-              <br></br> 
-              Insert Description
-              <span>
-
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-
-      </span>
-                <button type="button" class="btn btn-primary">View</button>
-              </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
-              Compnay Name 5 
-              <br></br> Insert Description
-
-                <span>
-
-          <i class="fa fa-star checked"></i>
-          <i class="fa fa-star checked"></i>
-            <i class="fa fa-star checked"></i>
-
-                </span>
-                <button type="button" class="btn btn-primary">View</button>
-              </li>
+       
             </ul>
             <h3 style={{ fontSize: "1vw", textAlign: "center"}} className="text-small text-muted mb-0 pt-3">New services added weekly!</h3>
           </div>
