@@ -79,7 +79,6 @@ export class editView extends Component {
   }
 
   storePhoto() {
-    // this.hydrateStateWithLocalStorage();
     const data = localStorage.getItem('myData')
       auth.onAuthStateChanged((user) => {
           if (user) {
@@ -88,9 +87,8 @@ export class editView extends Component {
     const key = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').push().key
     const img = storage.ref().child('Images').child(uid).child(key)
   
-  // WORKING FOR DB
+
   img.put(this.state.file).then((snap) => {
-      // console.log('test'+ snap.metadata.downloadURLs)
       storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
         database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(key).set({
         "url" : url
@@ -106,12 +104,6 @@ export class editView extends Component {
  
 })
 }
-
-// refresh() {
-//   // localStorage.setItem('myData', service);
-//   this.props.history.push("/choose-service")
-//   // localStorage.setItem('myData', null);
-// }
 
   componentDidMount() {
     this.hydrateStateWithLocalStorage();
@@ -188,7 +180,6 @@ export class editView extends Component {
     
   }
 
-  
 
   userIntUpdate() {
     this.hydrateStateWithLocalStorage();
@@ -207,7 +198,6 @@ export class editView extends Component {
             this.setState({
               companyName: companyName,
               mobile: mobile,
-              // serviceType: data,
               isInEditMode: false
 
             })
@@ -225,12 +215,6 @@ export class editView extends Component {
             
 
           });
-          // snapshot.child('photos').forEach((servPhotos) => {   
-          //   newState.push({
-          //     key: servPhotos.key,
-          //     url: servPhotos.val().url
-          //   })  
-          //   });
           
 
           this.setState({
@@ -239,8 +223,7 @@ export class editView extends Component {
             minPrice: minPrice,
             maxPrice: maxPrice,
             address: address,
-           
-            // images: newState
+          
           })
      
       
@@ -258,7 +241,6 @@ export class editView extends Component {
      isInEditMode: true
 
    });
-  // localStorage.setItem("isInEditMode", false)
 
   
   }
@@ -326,6 +308,8 @@ export class editView extends Component {
   }
 
   render() {
+
+    
     const imgStyle = {
       maxHeight: "150px",
       maxWidth: "150px",
@@ -334,40 +318,82 @@ export class editView extends Component {
       paddingBottom:"20px",
     }
       return (
-       
+          
         <div>
+          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
         
         <div>
         <navstuff.navstuff/>
+
+        <div className="container"></div>
+        <div className="row">
+          <div className="col-xs-12 col-sm-9">
         <Link to="/choose-service">
         <button className="btn btn-pink" onClick={() => window.location.reload(true)} >
                 Done
              
           </button>
           </Link>
-        <h3 className="HeadingVE" > {this.state.companyName}</h3>
-     <h5  className="contentVE"  type="text" >{this.state.mobile}</h5>
-     <h5  className="contentVE"  type="text" >{this.state.serviceType}</h5>
-     {/* <h5 className="contentVE" name="serviceType" id="serviceType" pattern ="[A-Za-z\s]*" maxlength="30" type="text" value= /> */}
+
+<div className="panel panel-default">
+              <div className="panel-heading">
+                <h4 className="panel-title">{this.state.companyName}</h4>
+              </div>
+              <div className="panel-body">
+                {/* <div className="profile__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
+                </div> */}
+                <div className="profile__header">
+                  <h4>{this.state.serviceType}</h4>
+
+              <div className="symbols">
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              <i class="fa fa-star checked"></i>
+              </div>
+                  <p style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}}>
+                  {this.state.Description}
+
+                  </p>
+                  <p>
+                  </p>
+                </div>
+              </div>
+            </div>
 
 
-     <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
-    
-    <div class="upload-btn-wrapper">
-         <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
-         </div>
+{/* Contact info */}
+<div className="container">
+<div className = "moveElements">
+ <hr className="profile__contact-hr" />
+            {/* Contact info */}
+            <div className="profile__contact-info">
+              <div className="profile__contact-info-item">
+                <div className="profile__contact-info-icon">
+                </div>
+            
+              </div>
+
   
-   <div className="symbols">
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   </div>
+              <div className="profile__contact-info-item">
+                <div className="profile__contact-info-icon">
+                  <i className="fa fa-phone" />
+                </div>
+                <div className="profile__contact-info-body">
+                  <h5 className="profile__contact-info-heading">Phone Number</h5>
+                  (000)987-65-43
+                </div>
+              </div>
+              
+            
+            </div>
+            </div>
 
       <div class = "moveElements">
             
-           
+      </div>
             <form>
          
 
@@ -377,17 +403,6 @@ export class editView extends Component {
       <h5 className="contentVES" type = 'text'> {this.state.Description}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
 :
@@ -480,11 +495,197 @@ export class editView extends Component {
     <div className="spfooter">
         <footer1.footer1/>
         </div>
+
         </div>
+        </div>
+        </div>
+
+
+
+
+
+    
+    
+    <div>
+         
+      
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+            <navstuff.navstuff/>
+            <br></br>
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12 col-sm-9">
+            {/* User profile */}
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h3 className="panel-title">Company: {this.state.companyName}</h3>
+              </div>
+              <div className="panel-body">
+                {/* <div className="profile__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
+                </div> */}
+                <div className="profile__header">
+                  <h4>Service: {this.state.serviceType}</h4>
+                  <br></br>
+                  <br></br>
+                  <p style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}}>
+                    Description: {this.state.Description}
+                  </p>
+                  <p>
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Latest posts */}
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h4 className="panel-title">Comments</h4>
+              </div>
+              <div className="panel-body">
+                <div className="profile__comments">
+                  <div className="profile-comments__item">
+    
+                  
+                    <div className="profile-comments__body">
+                      <h5 className="profile-comments__sender">
+                        Richard Roe <small>2 hours ago</small>
+                      </h5>
+                      <div className="profile-comments__content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, corporis. Voluptatibus odio perspiciatis non quisquam provident, quasi eaque officia.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="profile-comments__item">
+                    <div className="profile-comments__controls">
+                      <a href="#"><i className="fa fa-share-square-o" /></a>
+                      <a href="#"><i className="fa fa-edit" /></a>
+                      <a href="#"><i className="fa fa-trash-o" /></a>
+                    </div>
+                    <div className="profile-comments__avatar">
+                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." /> */}
+                    </div>
+                    <div className="profile-comments__body">
+                      <h5 className="profile-comments__sender">
+                        Richard Roe <small>5 hours ago</small>
+                      </h5>
+                      <div className="profile-comments__content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="profile-comments__item">
+                    <div className="profile-comments__controls">
+                      <a href="#"><i className="fa fa-share-square-o" /></a>
+                      <a href="#"><i className="fa fa-edit" /></a>
+                      <a href="#"><i className="fa fa-trash-o" /></a>
+                    </div>
+                    <div className="profile-comments__avatar">
+                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..." /> */}
+                    </div>
+                    <div className="profile-comments__body">
+                      <h5 className="profile-comments__sender">
+                        Richard Roe <small>1 day ago</small>
+                      </h5>
+                      <div className="profile-comments__content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-xs-12 col-sm-3">
+
+
+<div>
+<h5>Contact Info: </h5>
+</div>
+
+
+            {/* Contact user */}
+            <p>
+            </p>
+            <hr className="profile__contact-hr" />
+            {/* Contact info */}
+            <div className="profile__contact-info">
+              <div className="profile__contact-info-item">
+                <div className="profile__contact-info-icon">
+                </div>
+            
+              </div>
+
+  
+              <div className="profile__contact-info-item">
+                <div className="profile__contact-info-icon">
+                  <i className="fa fa-phone" />
+                </div>
+                <div className="profile__contact-info-body">
+                  <h5 className="profile__contact-info-heading">Phone Number</h5>
+                  {this.state.mobile}
+                </div>
+              </div>
+              <br></br>
+
+
+
+              <div className="profile__contact-info-item">
+                <div className="profile__contact-info-icon">
+                
+                <br></br>
+                  <div className="profile__contact-info-body">
+                  <div className="profile__contact-info-icon">
+                  <i className="fa fa-map-marker" />
+                  <h5 className="profile__contact-info-heading">Location</h5>
+                  {this.state.location}
+                </div>
+              </div>
+
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="spfooter">
+        <footer1.footer1/>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
        
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     );
-  }
+  };
 }
