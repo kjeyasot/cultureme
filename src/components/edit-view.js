@@ -3,6 +3,7 @@ import '../App.css';
 import * as script from '../scripts';
 import { Link ,BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
 
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
@@ -353,24 +354,14 @@ export class editView extends Component {
            
             <form>
          
-
+            
  {!this.state.isInEditMode? 
  <div>
-      <span class="fas fa-pen" onClick={this.Activate} ></span>
+   <h5>Service Info: </h5>
+      <span class="fas fa-pen" onClick={this.Activate} > <h5>Service Info:</h5></span>
       <h5 className="contentVES" type = 'text'> {this.state.Description}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
 :
@@ -380,6 +371,7 @@ export class editView extends Component {
      &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
     <i class="fa fa-times" onClick={this.userIntUpdate}></i>
     </div>
+    
     <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
     <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
     <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br>
@@ -483,7 +475,7 @@ export class editView extends Component {
             {/* User profile */}
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">Company: {this.state.companyName}</h3>
+                <h3 className="panel-title">{this.state.companyName}</h3>
               </div>
               <div className="panel-body">
                 {/* <div className="profile__avatar">
@@ -492,9 +484,99 @@ export class editView extends Component {
                 <div className="profile__header">
                   <h4>Service: {this.state.serviceType}</h4>
                   <br></br>
+
+                  <div className>
+                  <h5>Client Rating:</h5>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   </div>
                   <br></br>
+                  <h5>Service Info:</h5>
                   <p style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}}>
-                    Description: {this.state.Description}
+                    {/* {this.state.Description} <br></br>
+                    Min Price: {this.state.minPrice}
+                    Max Price: {this.state.maxPrice} */}
+
+
+{/* add */}
+
+                    {!this.state.isInEditMode? 
+ <div>
+      <span class="fas fa-pen" onClick={this.Activate} ></span>
+      <h5 style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}} className="contentVES" type = 'text'> Description: {this.state.Description}</h5> 
+      <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
+      <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
+
+      </div>
+:
+<div>
+      <div className="edit">
+    
+     &nbsp;&nbsp;<button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
+    <i class="fa fa-times" onClick={this.userIntUpdate}></i>
+    </div>
+    <label>Description</label>
+    
+    <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
+    <div> <label>Min Price</label> <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/></div>
+    <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
+    <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br>
+    {( this.state.minPrice && this.state.maxPrice && Number(this.state.minPrice)>= Number(this.state.maxPrice))? <p id="letter" className="invalid">Invalid Price Range</p>:null}
+
+    {/* <input  className="contentVE" id="city" type="text" value={this.state.city} onChange={this.handleChange}/> */}
+    {/* <input  className="contentVE" id="state" type="text" value={this.state.state} onChange={this.handleChange}/> */}
+
+  <PlacesAutocomplete
+        value={this.state.address}
+        onChange={this.handleChangess}
+        onSelect={this.handleSelect}
+        searchOptions={{types: ['(cities)'],
+        componentRestrictions: {country: "ca"}}}
+      >
+        {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
+          <div>
+            <input
+              {...getInputProps({
+                placeholder: 'Search Places ...',
+                className: 'location-search-input',
+              })}
+            />
+            <div className="autocomplete-dropdown-container">
+              {loading && <div>Loading...</div>}
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item--active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </PlacesAutocomplete>
+
+
+</div>
+  }
+
+
+
+  {/* add */}
                   </p>
                   <p>
                   </p>
@@ -503,63 +585,39 @@ export class editView extends Component {
             </div>
             {/* Latest posts */}
             <div className="panel panel-default">
-              <div className="panel-heading">
-                <h4 className="panel-title">Comments</h4>
-              </div>
-              <div className="panel-body">
-                <div className="profile__comments">
-                  <div className="profile-comments__item">
-    
+              
+              
+              <br></br>
                   
-                    <div className="profile-comments__body">
-                      <h5 className="profile-comments__sender">
-                        Richard Roe <small>2 hours ago</small>
-                      </h5>
-                      <div className="profile-comments__content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, corporis. Voluptatibus odio perspiciatis non quisquam provident, quasi eaque officia.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="profile-comments__item">
-                    <div className="profile-comments__controls">
-                      <a href="#"><i className="fa fa-share-square-o" /></a>
-                      <a href="#"><i className="fa fa-edit" /></a>
-                      <a href="#"><i className="fa fa-trash-o" /></a>
-                    </div>
-                    <div className="profile-comments__avatar">
-                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." /> */}
-                    </div>
-                    <div className="profile-comments__body">
-                      <h5 className="profile-comments__sender">
-                        Richard Roe <small>5 hours ago</small>
-                      </h5>
-                      <div className="profile-comments__content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="profile-comments__item">
-                    <div className="profile-comments__controls">
-                      <a href="#"><i className="fa fa-share-square-o" /></a>
-                      <a href="#"><i className="fa fa-edit" /></a>
-                      <a href="#"><i className="fa fa-trash-o" /></a>
-                    </div>
-                    <div className="profile-comments__avatar">
-                      {/* <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..." /> */}
-                    </div>
-                    <div className="profile-comments__body">
-                      <h5 className="profile-comments__sender">
-                        Richard Roe <small>1 day ago</small>
-                      </h5>
-                      <div className="profile-comments__content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <h4>Portfolio:</h4>
+                
+                
+      <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
+      <br></br>
+    <div class="upload-btn-wrapper">
+         <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
+         </div>
+
+
+{this.state.images.map((image) =>
+  <div key={image.key}>
+  <h1>{image.file}</h1>
+  <div class="row">
+      <div class="column">
+    <img src={image.url} style={imgStyle}/>
+    <button className = "removeButton" onClick={this.deletePhoto} 
+       name={image.key}>X</button>
+
+                   </div>
+    </div>
+  </div>
+)} 
             </div>
           </div>
+
+          
+
+          
           <div className="col-xs-12 col-sm-3">
 
 
@@ -602,7 +660,7 @@ export class editView extends Component {
                   <div className="profile__contact-info-icon">
                   <i className="fa fa-map-marker" />
                   <h5 className="profile__contact-info-heading">Location</h5>
-                  {this.state.location}
+                  {this.state.address}
                 </div>
               </div>
 

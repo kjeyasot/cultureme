@@ -1437,7 +1437,7 @@ margin-right: 2vw;
 
 
 .contentVES{
-  margin-left: 2vw;
+  /* margin-left: 1vw; */
   margin-bottom:.3vh;
   font-size: 1.5vmax;
   word-wrap: break-word;
