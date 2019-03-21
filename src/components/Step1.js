@@ -207,9 +207,12 @@ export class stepone extends Component {
 
 <MDBCol>
   <i class="fas fa-location-arrow" ></i>
-  <label>Address</label>
-  </MDBCol>
+  <label>Address  
 
+
+    
+  </label>
+  </MDBCol>
 
 
   <PlacesAutocomplete
