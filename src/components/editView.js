@@ -11,7 +11,7 @@ import StarRatingComponent from 'react-star-rating-component';
 
 import * as script from '../scripts';
 
-export class editView extends Component {
+export class editView2 extends Component {
   constructor() {
     super();
     this.state = {
@@ -139,32 +139,6 @@ export class editView extends Component {
                 </div>
               </div>
             </div>
-            {/* Community */}
-            {/* <div className="panel panel-default">
-              <div className="panel-heading">
-                <h4 className="panel-title">Community</h4>
-              </div>
-              <div className="panel-body">
-                <table className="table profile__table">
-                  <tbody>
-                    <tr>
-
-
-                      <th><strong>Comments</strong></th>
-                      <td>58584</td>
-                    </tr>
-                    <tr>
-                      <th><strong>Member since</strong></th>
-                      <td>Jan 01, 2016</td>
-                    </tr>
-                    <tr>
-                      <th><strong>Last login</strong></th>
-                      <td>1 day ago</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div> */}
             {/* Latest posts */}
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -249,9 +223,6 @@ export class editView extends Component {
 
             {/* Contact user */}
             <p>
-              {/* <a href="#" className="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
-                Contact user
-              </a> */}
             </p>
             <hr className="profile__contact-hr" />
             {/* Contact info */}

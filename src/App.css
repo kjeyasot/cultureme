@@ -1190,6 +1190,14 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   
 }
 
+.searchElements{
+ 
+  padding-top: 5vw;
+  padding-left: 8vw;
+  
+}
+
+
 .removeButton {
   background-color: red; /* Green */
   border: none;
@@ -1369,7 +1377,7 @@ top: 19vh; */
     float:right;
     padding-right: 5vw;
 margin-right: 6vw;
-top: -10vh;
+margin-top: -20vh;
   /* height:600px;
   width:600px ;
   
@@ -1420,8 +1428,8 @@ margin-right: 2vw;
 .contentVE{
   margin-left: 2vw;
   margin-bottom:.3vh;
-  font-size: 1.5vmax;
-  font-weight: bold;
+  /* font-size: 1.5vmax; */
+  /* font-weight: bold; */
 }
 
 .content{
@@ -1429,7 +1437,7 @@ margin-right: 2vw;
 }
 .fa-pen{
   font-size: 1.5vmax;
- margin-left: 10vw;
+ margin-left: 5vw;
 /* padding-bottom: 20vh; */
 
 }
@@ -1437,11 +1445,11 @@ margin-right: 2vw;
 
 
 .contentVES{
-  margin-left: 2vw;
+  /* margin-left: 1vw; */
   margin-bottom:.3vh;
   font-size: 1.5vmax;
   word-wrap: break-word;
-  width:15vw;
+  width:45vw;
 }
 
 .contentVES {
