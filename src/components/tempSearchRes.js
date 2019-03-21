@@ -272,3 +272,4 @@ export class searchRes extends Component {
         )
     }
   }
+    

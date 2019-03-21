@@ -3,7 +3,7 @@ import './App.css';
 // import * as modalComp from './components/modal';
 // import * as mainPage from './components/mainPage';
 // import * as searchRes from './components/tempSearchRes';
-import * as serviceProvider from './components/serviceProvider';
+// import * as serviceProvider from './components/serviceProvider';
 // import * as signup from './components/signUpMain';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -22,8 +22,10 @@ import { footer1 } from './components/footer-nav';
 import { SPChooseService } from './components/SPChooServ';
 import { stepone } from './components/Step1';
 import { editView } from './components/edit-view';
+import { editView2 } from './components/editView';
 import { myAccount } from './components/myAccount';
 import { aboutUs } from './components/aboutUs';
+import { resultsPage } from './components/resultsPage';
 // import { editView } from './components/editView';
 import { ratings } from './components/ratings';
 import { searchGoogleMaps } from './components/searchGoogleMaps';
@@ -45,7 +47,7 @@ class App extends Component {
             <Route path="/signin" component={signIn} />
 
             <Route path="/forgotpassword" component={forgotpassword} />
-            <Route path="/serviceProvider" component={serviceProvider.serviceProvider} />
+            {/* <Route path="/serviceProvider" component={serviceProvider.serviceProvider} /> */}
             <Route path="/imageUpload" component={imageUpload} />
             <Route path="/Upload" component={Upload} />
             <Route path="/signInSP" component={signInSP}/>
@@ -53,8 +55,10 @@ class App extends Component {
             <Route path="/choose-service" component={SPChooseService}/>
             <Route path="/step1" component={stepone}/>
             <Route path="/editView" component={editView}/>
+            <Route path="/editView2" component={editView2}/>
             <Route path="/myAccount" component={myAccount}/>
             <Route path="/aboutUs" component={aboutUs}/>
+            <Route path="/resultsPage" component={resultsPage}/>
             {/* <Route path="/editView" component={editView}/> */}
             <Route path="/ratings" component={ratings}/>
             <Route path="/GoogleMapsSearch" component={searchGoogleMaps}/>
