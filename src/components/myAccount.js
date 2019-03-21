@@ -222,42 +222,6 @@ export class myAccount extends React.Component {
       
     }
 
-    
-    userUpdate() {
-    
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          const tempPw = CryptoJS.AES.encrypt(this.state.password, 'secret key 123');
-          // const test = CryptoJS.AES.decrypt(tempPw.toString(), 'secret key 123');
-          // const pw = test.toString(CryptoJS.enc.Utf8);
-          const pw = tempPw.toString();
-          const phone = this.state.mobile.split(" ").join("");
-  
-          const servPV = {
-            companyName: this.state.companyName,
-            mobile: phone,
-            // postalCode: this.state.postalCode,
-            password: pw,
-          }
-          // console.log(this.state.companyName1)
-          const serviceProvidersRef = firebase.database().ref('serviceProviders').child(user.uid);
-
-          serviceProvidersRef.once('value', (snapshot) => {
-              snapshot.child('PersonalInformation').forEach((personalInfo) => {
-                console.log(personalInfo)   
-                personalInfo.ref.update(servPV)             
-               window.location.reload(true);
-
-              });
-          })
-          
-              }
-      })
-      this.setState ({
-        isInEditMode: false
-   
-      });
-            }
     render() {
       return (
         
