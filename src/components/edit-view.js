@@ -318,82 +318,39 @@ export class editView extends Component {
       paddingBottom:"20px",
     }
       return (
-          
         <div>
-          <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
         
         <div>
         <navstuff.navstuff/>
-
-        <div className="container"></div>
-        <div className="row">
-          <div className="col-xs-12 col-sm-9">
         <Link to="/choose-service">
         <button className="btn btn-pink" onClick={() => window.location.reload(true)} >
                 Done
              
           </button>
           </Link>
-
-<div className="panel panel-default">
-              <div className="panel-heading">
-                <h4 className="panel-title">{this.state.companyName}</h4>
-              </div>
-              <div className="panel-body">
-                {/* <div className="profile__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
-                </div> */}
-                <div className="profile__header">
-                  <h4>{this.state.serviceType}</h4>
-
-              <div className="symbols">
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star checked"></i>
-              <i class="fa fa-star checked"></i>
-              </div>
-                  <p style={{ fontSize: "2.5vh", color: "grey", textAlign:"left"}}>
-                  {this.state.Description}
-
-                  </p>
-                  <p>
-                  </p>
-                </div>
-              </div>
-            </div>
+        <h3 className="HeadingVE" > {this.state.companyName}</h3>
+     <h5  className="contentVE"  type="text" >{this.state.mobile}</h5>
+     <h5  className="contentVE"  type="text" >{this.state.serviceType}</h5>
+     {/* <h5 className="contentVE" name="serviceType" id="serviceType" pattern ="[A-Za-z\s]*" maxlength="30" type="text" value= /> */}
 
 
-{/* Contact info */}
-<div className="container">
-<div className = "moveElements">
- <hr className="profile__contact-hr" />
-            {/* Contact info */}
-            <div className="profile__contact-info">
-              <div className="profile__contact-info-item">
-                <div className="profile__contact-info-icon">
-                </div>
-            
-              </div>
-
+     <input className = "btnupload" id="input" type="file" onChange={this.handleChanges}/>
+    
+    <div class="upload-btn-wrapper">
+         <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
+         </div>
   
-              <div className="profile__contact-info-item">
-                <div className="profile__contact-info-icon">
-                  <i className="fa fa-phone" />
-                </div>
-                <div className="profile__contact-info-body">
-                  <h5 className="profile__contact-info-heading">Phone Number</h5>
-                  (000)987-65-43
-                </div>
-              </div>
-              
-            
-            </div>
-            </div>
+   <div className="symbols">
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   <i class="fa fa-star checked"></i>
+   </div>
 
       <div class = "moveElements">
             
-      </div>
+           
             <form>
          
 
@@ -403,6 +360,17 @@ export class editView extends Component {
       <h5 className="contentVES" type = 'text'> {this.state.Description}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.minPrice} - {this.state.maxPrice}</h5> 
       <h5 className="contentVES" type = 'text'> {this.state.address}</h5> 
+
+
+
+
+
+
+
+
+
+
+
 
       </div>
 :
@@ -495,11 +463,8 @@ export class editView extends Component {
     <div className="spfooter">
         <footer1.footer1/>
         </div>
-
         </div>
-        </div>
-        </div>
-
+       
 
 
 
