@@ -1420,8 +1420,8 @@ margin-right: 2vw;
 .contentVE{
   margin-left: 2vw;
   margin-bottom:.3vh;
-  font-size: 1.5vmax;
-  font-weight: bold;
+  /* font-size: 1.5vmax; */
+  /* font-weight: bold; */
 }
 
 .content{
@@ -1429,7 +1429,7 @@ margin-right: 2vw;
 }
 .fa-pen{
   font-size: 1.5vmax;
- margin-left: 10vw;
+ margin-left: 5vw;
 /* padding-bottom: 20vh; */
 
 }

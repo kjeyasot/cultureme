@@ -497,7 +497,7 @@ export class editView extends Component {
    </div>
                   <br></br>
                  
-                  <p style={{ fontSize: "2.5vh", color: "black", textAlign:"left", fontStyle: "regular"}}>
+                  <p style={{ fontSize: "2.5vh", color: "black", textAlign:"left", fontStyle: "normal"}}>
                     {/* {this.state.Description} <br></br>
                     Min Price: {this.state.minPrice}
                     Max Price: {this.state.maxPrice} */}
@@ -524,12 +524,13 @@ export class editView extends Component {
     <button class="fas fa-check"  onClick={this.userUpdate} disabled={!this.state.Description||!this.state.serviceType||!this.state.minPrice||!this.state.maxPrice||!this.state.address|| Number(this.state.minPrice)>= Number(this.state.maxPrice)}> </button>  &nbsp;&nbsp;
     <i class="fa fa-times" onClick={this.userIntUpdate}></i> </h5>
     </div>
-    <label>Description:</label>
-    <input  className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
-    
-    <div> <label>Min Price:</label> <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/></div>
+    <br></br>
+    <span><label>Description:</label>
+    <textarea  style={{ fontSize: "2vh", color: "black", fontStyle: "normal", width: "35vw"}} className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
+    </span>
+    <div> <label>Min Price:</label> <input  style={{ fontSize: "2vh", color: "black", fontStyle: "normal"}} className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/></div>
 
-    <div><label>Min Price:</label> <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/></div>
+    <div><label>Min Price:</label> <input  style={{ fontSize: "2vh", color: "black", fontStyle: "normal"}} className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/></div>
  
     {/* <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
     <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br> */}
@@ -537,11 +538,16 @@ export class editView extends Component {
 
     {/* <input  className="contentVE" id="city" type="text" value={this.state.city} onChange={this.handleChange}/> */}
     {/* <input  className="contentVE" id="state" type="text" value={this.state.state} onChange={this.handleChange}/> */}
+  
+  <div>
+  <i 
+  class="fas fa-location-arrow" >
+  
+  </i>
+  <label>Address</label>
 
-<MDBCol>
-  <i class="fas fa-location-arrow" ></i>
-  <label>Address:</label>
-  </MDBCol>
+</div>
+
   <PlacesAutocomplete
   
         value={this.state.address}
