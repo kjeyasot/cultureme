@@ -114,7 +114,6 @@ export class mainPage extends Component {
         <img className="slide" alt="s4" src={images['s4.jpg']}/>
         <img className="slide" alt="saree3" src={images['saree3.png']}/>
         <img className="slide" alt="holi" src={images['holi.jpg']}/>
-        <img className="slide" alt="h0" src={images['h0.jpeg']}/>
       
       </Slider>
       <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
