@@ -204,16 +204,6 @@ export class stepone extends Component {
 {( this.state.minPrice && this.state.maxPrice && Number(this.state.minPrice)>= Number(this.state.maxPrice))? <p id="letter" className="invalid">Invalid Price Range</p>:null}
 
 
-<br></br>
-
-<MDBCol>
-  <i class="fas fa-location-arrow" ></i>
-  <label>Address  
-
-
-    
-  </label>
-  </MDBCol>
 
 
   <PlacesAutocomplete
@@ -225,10 +215,13 @@ export class stepone extends Component {
       >
         {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
           <div>
-            <input
+            <MDBInput
+            label="Location" 
+            style={{ paddingBottom: "3vh"}}
+            outline icon="location-arrow"
               {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                placeholder: 'Location',
+                className: 'location-search-input p-3 black-text',
               })}
             />
             <div className="autocomplete-dropdown-container">
@@ -256,10 +249,6 @@ export class stepone extends Component {
           </div>
         )}
       </PlacesAutocomplete>
-
-
-
-
 
 {/* 
 

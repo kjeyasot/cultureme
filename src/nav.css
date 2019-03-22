@@ -17,6 +17,7 @@
 
 
 
+
   /* search bar and search button */
 .nearMeN {
   width: 12vw;
@@ -295,4 +296,11 @@ ul.submenu li a{
 
 ul.submenu li a:hover{
   background:rgba(0,0,0,.3);
+}
+
+
+.h1nav{
+  color:white;
+  font-size: 3vh;
+  /* font-weight: bold; */
 }

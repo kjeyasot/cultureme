@@ -75,20 +75,17 @@ export class navstuff extends Component {
         <Navbar color="dark"  className="navbar-dark font-weight-bold" light expand="xl">
 
         <Link to= "/choose-service">
-          <NavbarBrand  onClick={() => window.location.reload(true)} > <img className="lnav" alt="logo" src={images1['logoCM.png']}  /></NavbarBrand>
+          <NavbarBrand  onClick={() => window.location.reload(true)} > 
+          <img className="lnav" alt="logo" src={images1['logoCM.png']} />
+          </NavbarBrand>
          </Link>
+         <NavbarBrand> 
+          <h1 className="h1nav">Service Provider</h1>
+          </NavbarBrand>
 
           <div>
           {/* <div className="BackSearchN"></div> */}
-      <div className="SearchLabelCssN"></div>
-      <input type="text" className = "searchlabelN" value="Search"  readonly="readonly"/>
-      
-      <input className = "searchN" type="text" placeholder="Henna, Bridal Makeup.." name="search"/>
-      <input className = "nearMeN" type="text" placeholder="City, Province" name="nearMe"/>
-      <input type="text" className = "nearMelabelN" value="Near"  readonly="readonly"/>
-     
-      
-       <button className = "searchButtonN"type="submit"><i className="fa fa-search"></i></button>
+
      
           </div>
           <NavbarToggler onClick={this.toggle} />

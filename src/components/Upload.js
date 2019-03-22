@@ -154,19 +154,21 @@ export class Upload extends React.Component {
           <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
           </div>
 
+          <div class="row">
           {this.state.images.map((image) =>
             <div key={image.key}>
             <h1>{image.file}</h1>
-            <div class="row">
-                <div class="column">
+           
+                <div class="col">
               <img src={image.url} style={imgStyle}/>
               <button className = "removeButton" onClick={this.deletePhoto} 
                  name={image.key}>X</button>
 
                              </div>
-              </div>
+             
             </div>
           )}
+          </div>
           <div>
           <br></br>
           {/* <div className="text-right py-4 mt-3"> */}

@@ -319,6 +319,7 @@ export class editView extends Component {
       float:'middle',
       paddingRight: "15px",
       paddingBottom:"20px",
+      marginTop:"-20px"
     }
       return (
         <div>
@@ -384,12 +385,55 @@ export class editView extends Component {
     <i class="fa fa-times" onClick={this.userIntUpdate}></i> </h5>
     </div>
     <br></br>
-    <span><label>Description:</label>
-    <textarea  style={{ fontSize: "2vh", color: "black", fontStyle: "normal", width: "35vw"}} className="contentVE" name = "Description" id="Description" type="text" value={this.state.Description} onChange={this.handleChange}/><br></br>
-    </span>
-    <div> <label>Min Price:</label> <input  style={{ fontSize: "2vh", color: "black", fontStyle: "normal"}} className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/></div>
 
-    <div><label>Min Price:</label> <input  style={{ fontSize: "2vh", color: "black", fontStyle: "normal"}} className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/></div>
+ <MDBContainer>
+       <MDBRow>
+        <MDBCol md="" text-center>
+
+    <MDBInput 
+      label="Description" 
+      outline icon="pen-nib" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text"
+      name='Description' 
+      type="textarea"
+      onChange={this.handleChange} 
+      value={this.state.Description}
+      />
+    
+    <MDBRow>
+         <MDBCol md="6">
+      <MDBInput 
+      name='minPrice'  
+      label="Min Price" 
+      outline icon="comment-dollar" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text "
+      pattern="[0-9]*" 
+      maxlength="4"
+      onChange={this.handleChange} 
+      value={this.state.minPrice}
+      />
+     
+      </MDBCol>
+      
+      <MDBCol md="6">
+   
+      <MDBInput 
+      name='maxPrice'  
+      label="Max Price" 
+      outline icon="comment-dollar" 
+      style={{ paddingBottom: "3vh"}}
+      className = "p-3 black-text "
+      pattern="[0-9]*" 
+      maxlength="4"
+      onChange={this.handleChange} 
+      value={this.state.maxPrice}
+      />
+      </MDBCol>
+
+
+</MDBRow>
  
     {/* <input  className="contentVE" name="minPrice" id="minPrice" type="text" pattern="[0-9]*" maxlength="4"  onChange={this.handleChange} value={this.state.minPrice}/>
     <input  className="contentVE" name="maxPrice" id="maxPrice" type="text" pattern="[0-9]*" maxlength="4" value={this.state.maxPrice} onChange={this.handleChange}/><br></br> */}
@@ -397,15 +441,6 @@ export class editView extends Component {
 
     {/* <input  className="contentVE" id="city" type="text" value={this.state.city} onChange={this.handleChange}/> */}
     {/* <input  className="contentVE" id="state" type="text" value={this.state.state} onChange={this.handleChange}/> */}
-  
-  <div>
-  <i 
-  class="fas fa-location-arrow" >
-  
-  </i>
-  <label>Address</label>
-
-</div>
 
   <PlacesAutocomplete
   
@@ -417,10 +452,13 @@ export class editView extends Component {
       >
         {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
           <div>
-            <input
+            <MDBInput
+            label="Location" 
+            style={{ paddingBottom: "3vh"}}
+            outline icon="location-arrow"
               {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                placeholder: 'Location',
+                className: 'location-search-input p-3 black-text',
               })}
             />
             <div className="autocomplete-dropdown-container">
@@ -449,7 +487,9 @@ export class editView extends Component {
         )}
       </PlacesAutocomplete>
 
-
+</MDBCol>
+      </MDBRow>
+    </MDBContainer>
 </div>
   }
   </span>
@@ -478,29 +518,41 @@ export class editView extends Component {
          <button className = "btnupload" onClick={this.storePhoto}>Upload</button>
          </div>
 
-
+<MDBContainer className="mt-5">
+        <MDBRow>
 {this.state.images.map((image) =>
+  
+  
   <div key={image.key}>
   <h1>{image.file}</h1>
-  <div class="row">
-      <div class="column">
+  
+      <MDBCol lg="4" md="12" className="mb-4">
+      <MDBBtn className = "removeButton btn btn-red btn-rounded" onClick={this.deletePhoto} 
+            name={image.key}> X
+            </MDBBtn>
           <img src={image.url} style={imgStyle}/>
-          <button className = "removeButton" onClick={this.deletePhoto} 
-            name={image.key}>X</button>
-       </div>
-       </div>
+       
+
+        </MDBCol>
+    
   </div>
+  
 )} 
+ </MDBRow>
+      </MDBContainer>
+
+
 </div>
 
 <br></br>
+<div className="text-left py-4">
 <Link to="/choose-service">
-        <button className="btn btn-pink" onClick={() => window.location.reload(true)} >
+        <MDBBtn className="btn btn-pink" onClick={() => window.location.reload(true)} >
                 Done
-             
-          </button>
+                <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-check"/>
+          </MDBBtn>
           </Link>
-            
+         </div>   
           </div>
 
         

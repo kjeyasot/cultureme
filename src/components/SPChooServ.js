@@ -123,15 +123,16 @@ refresh() {
 
       <navstuff.navstuff/>
 
-      <center><h6 className="Heading">{this.state.companyName}</h6></center> 
-      <div onClick={this.refresh}>
      
+      <div onClick={this.refresh}>
+      <center><h6 className="Heading">{this.state.companyName}</h6></center> 
       <MDBBtn className="btn btn" className="ml-1 float-right"size="lg" color="pink">     
-       
+        
        Add Service
-              <MDBIcon className="ml-2 fas fa-plus-circle" far icon="plus-circle"  />
+              <MDBIcon className="ml-1 fas fa-plus-circle" far icon="plus-circle" />
       
             </MDBBtn>
+            <center><h6 className="Heading1">.</h6></center> 
             </div>
             <br></br>
             <h6 className="Heading"></h6>
