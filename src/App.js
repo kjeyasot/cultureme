@@ -58,7 +58,7 @@ class App extends Component {
             <Route path="/editView2" component={editView2}/>
             <Route path="/myAccount" component={myAccount}/>
             <Route path="/aboutUs" component={aboutUs}/>
-            <Route path="/resultsPage" component={resultsPage}/>
+            <Route path="/viewService" component={resultsPage}/>
             {/* <Route path="/editView" component={editView}/> */}
             <Route path="/ratings" component={ratings}/>
             <Route path="/GoogleMapsSearch" component={searchGoogleMaps}/>
