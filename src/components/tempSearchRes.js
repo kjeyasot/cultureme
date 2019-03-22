@@ -54,7 +54,7 @@ export class searchRes extends Component {
         eventSnapshot.child('Services').forEach((serviceInfo) => {
           serviceInfo.child('serviceDetails').forEach((servDetails) => {  
           let sInfo = servDetails.val();
-          testServices1.push(sInfo.serviceType);
+          testServices1.push(sInfo.serviceType.toLowerCase());
         });
         
     
@@ -84,46 +84,127 @@ export class searchRes extends Component {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
     const value = this.state.value;
     const address = this.state.address;
-    if(value){
-    serviceProvidersRef.once('value', (snapshot) => {
-      snapshot.forEach((eventSnapshot) => {
-        eventSnapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {
-          const x = (serviceInfo.val())
-          var uuid = x.uuid;
-          testUuid.push(x.uuid)
-          const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
-
-      serviceProvidersRefs.once('value', (snapshot) => {
-        snapshot.child('PersonalInformation').forEach((personalInfo) => {                
-          let persInfo = personalInfo.val();
-          companyName = persInfo.companyName;
-        });
-        snapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {  
-      // let address = "Toronto, ON, Canada";
-          let serviceDetails = serviceInfo.val();
-          serviceDetails.companyName = companyName
-          if(serviceDetails.address===address){
-          newState.push(serviceDetails)
-          this.setState({
-            servicesList:newState,
-          })  
-}   
-    
-       
-      }); 
+    if(value && address){
+      serviceProvidersRef.once('value', (snapshot) => {
+          snapshot.forEach((eventSnapshot) => {
+             eventSnapshot.child('Services').forEach((d) => {
+            d.child('serviceDetails').forEach((df) => {
+                 const x=df.child('serviceType').val().toLowerCase()
+             if(x===value.toLowerCase()){
+              console.log(df.val().uuid)
+              var uuid=df.val().uuid
+              const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
+  
+              serviceProvidersRefs.once('value', (snapshot) => {
+                snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+                  let persInfo = personalInfo.val();
+                  companyName = persInfo.companyName;
+                });
+                snapshot.child('Services').child(df.child('serviceType').val()).child('serviceDetails').forEach((serviceInfo) => {  
+                  let serviceDetails = serviceInfo.val();
+                  serviceDetails.companyName = companyName
+                  if(serviceDetails.address===address){
+                  newState.push(serviceDetails)
+                  this.setState({
+                    servicesList:newState,
+                  })  
+        }   
+            
+               
+              }); 
+              
+        
+            });
+  
+  
+  
+             }
       
-
-    });
-   
+          
+        
+          })
+        })
       });
-      
-      });  
-      newState = [];
-    });
+       newState =[];
+    
+               })
   }
 
-    else{
-      let value1 = 'Makeup'
+  if(!value && address){
+    serviceProvidersRef.once('value', (snapshot) => {
+        snapshot.forEach((eventSnapshot) => {
+           eventSnapshot.child('Services').forEach((d) => {
+          d.child('serviceDetails').forEach((df) => {
+               const x=df.child('serviceType').val().toLowerCase()
+            console.log(df.val().uuid)
+            var uuid=df.val().uuid
+            const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
+
+            serviceProvidersRefs.once('value', (snapshot) => {
+              snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+                let persInfo = personalInfo.val();
+                companyName = persInfo.companyName;
+              });
+              snapshot.child('Services').child(df.child('serviceType').val()).child('serviceDetails').forEach((serviceInfo) => {  
+                let serviceDetails = serviceInfo.val();
+                serviceDetails.companyName = companyName
+                if(serviceDetails.address===address){
+                newState.push(serviceDetails)
+                this.setState({
+                  servicesList:newState,
+                })  
+      }   
+          
+             
+            }); 
+            
+      
+          });
+      
+        })
+      })
+    });
+     newState =[];
+  
+             })
+}
+  if(value && !address){
+    serviceProvidersRef.once('value', (snapshot) => {
+        snapshot.forEach((eventSnapshot) => {
+           eventSnapshot.child('Services').forEach((d) => {
+          d.child('serviceDetails').forEach((df) => {
+               const x=df.child('serviceType').val().toLowerCase()
+           if(x===value.toLowerCase()){
+            console.log(df.val().uuid)
+            var uuid=df.val().uuid
+            const serviceProvidersRefs = firebase.database().ref('serviceProviders').child(uuid);
+
+            serviceProvidersRefs.once('value', (snapshot) => {
+              snapshot.child('PersonalInformation').forEach((personalInfo) => {                
+                let persInfo = personalInfo.val();
+                companyName = persInfo.companyName;
+              });
+              snapshot.child('Services').child(df.child('serviceType').val()).child('serviceDetails').forEach((serviceInfo) => {  
+                let serviceDetails = serviceInfo.val();
+                serviceDetails.companyName = companyName
+                newState.push(serviceDetails)
+                this.setState({
+                  servicesList:newState,
+                })  
+            }); 
+          });
+           }
+        })
+      })
+    });
+     newState =[];
+  
+             })
+}
+
+
+if(!value && !address){
+  let value1 = 'Makeup'
     serviceProvidersRef.once('value', (snapshot) => {
       snapshot.forEach((eventSnapshot) => {
         eventSnapshot.child('Services').child(value1).child('serviceDetails').forEach((serviceInfo) => {
@@ -174,8 +255,8 @@ export class searchRes extends Component {
   <div className="SearchLabelCssN"></div>
       {/* <input type="text" className = "searchlabelN" value="Search"  readonly="readonly"/> */}
       
-      <input className = "searchN1" type="text" placeholder="Henna, Bridal Makeup.." onChange={this.handleChange} value={this.state.servType} name="servType"/>
-      <input className = "nearMeN1" type="text" placeholder="City, Province" name="nearMe"/>
+      {/* <input className = "searchN1" type="text" placeholder="Henna, Bridal Makeup.." onChange={this.handleChange} value={this.state.servType} name="servType"/> */}
+      {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="nearMe"/> */}
       {/* <input type="text" className = "nearMelabelN" value="Near"  readonly="readonly"/> */}
       {/* <h1> {uniqueServices.indexOf('henna')}</h1> */}
 
@@ -236,11 +317,12 @@ export class searchRes extends Component {
 <div className="card-body">
 <ul className="list-group">
   <li className="list-group-item d-flex justify-content-between align-items-center">
-  {item.companyName}
-    {/* <br></br> {item.Description} */}
+  <div>
+  <b>{item.companyName}</b>
+    <br></br> {item.serviceType}
     <br></br> ${item.minPrice} - ${item.maxPrice}
     <br></br> {item.address}
-
+    </div>
   <span>
 
 <i class="fa fa-star checked"></i>
@@ -254,30 +336,8 @@ export class searchRes extends Component {
   </li>
 
 </ul>
-{/* <h3 style={{ fontSize: "1vw", textAlign: "center"}} className="text-small text-muted mb-0 pt-3">New services added weekly!</h3> */}
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-//           <div>
-//             <h1>{item.companyName}</h1>
-
-// <h1>{item.Description}</h1>
-// <h1>{item.uuid}</h1>
-// <p>****************************************************************</p>
-// </div>
          )} 
 
 </div>
