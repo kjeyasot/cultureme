@@ -35,6 +35,7 @@ export class searchRes extends Component {
       servicesList: [],
       companyName: '',
       value: '',
+      address:''
     }
     this.showServiceDetails = this.showServiceDetails.bind(this);
     this.moveToView = this.moveToView.bind(this);
@@ -82,6 +83,7 @@ export class searchRes extends Component {
   showServiceDetails() {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
     const value = this.state.value;
+    const address = this.state.address;
     if(value){
     serviceProvidersRef.once('value', (snapshot) => {
       snapshot.forEach((eventSnapshot) => {
@@ -97,15 +99,15 @@ export class searchRes extends Component {
           companyName = persInfo.companyName;
         });
         snapshot.child('Services').child(value).child('serviceDetails').forEach((serviceInfo) => {  
-      
+      // let address = "Toronto, ON, Canada";
           let serviceDetails = serviceInfo.val();
           serviceDetails.companyName = companyName
-
-        newState.push(serviceDetails)
-       
-        this.setState({
-          servicesList:newState,
-        })  
+          if(serviceDetails.address===address){
+          newState.push(serviceDetails)
+          this.setState({
+            servicesList:newState,
+          })  
+}   
     
        
       }); 
@@ -206,6 +208,8 @@ export class searchRes extends Component {
         onChange={e => this.setState({ value: e.target.value })}
         onSelect={value => this.setState({ value })}
       />
+            <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} />
+
       </div>
 
 
@@ -233,7 +237,10 @@ export class searchRes extends Component {
 <ul className="list-group">
   <li className="list-group-item d-flex justify-content-between align-items-center">
   {item.companyName}
-    <br></br> {item.Description}
+    {/* <br></br> {item.Description} */}
+    <br></br> ${item.minPrice} - ${item.maxPrice}
+    <br></br> {item.address}
+
   <span>
 
 <i class="fa fa-star checked"></i>
