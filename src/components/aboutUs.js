@@ -61,7 +61,7 @@ with ease.
               <p style={{color: 'palevioletred', fontStyle: 'arial', fontSize: '1.5vw'}}>Product Manager</p>
               <ul className="list-unstyled mb-0">
                 <a href="#!" className="p-2 fa-lg">
-                  <MDBIcon fab icon="linkedin" className="black-text" />
+                  {/* <MDBIcon fab icon="linkedin" className="black-text" /> */}
                 </a>
               </ul>
             </MDBCol>
@@ -72,7 +72,7 @@ with ease.
               <p style={{color: 'palevioletred', fontStyle: 'arial', fontSize: '1.5vw'}}>Backend Devloper</p>
               <ul className="list-unstyled mb-0">
                 <a href="#!" className="p-2 fa-lg">
-                  <MDBIcon fab icon="linkedin" className="black-text" />
+                  {/* <MDBIcon fab icon="linkedin" className="black-text" /> */}
                 </a>
               </ul>
             </MDBCol>
@@ -84,7 +84,7 @@ with ease.
               <p style={{color: 'palevioletred', fontStyle: 'arial', fontSize: '1.5vw'}}>Backend Developer</p>
               <ul className="list-unstyled mb-0">
                 <a href="#!" className="p-2 fa-lg">
-                  <MDBIcon fab icon="linkedin" className="black-text" />
+                  {/* <MDBIcon fab icon="linkedin" className="black-text" /> */}
                 </a>
               </ul>
             </MDBCol>
@@ -95,7 +95,7 @@ with ease.
               <p style={{color: 'palevioletred', fontStyle: 'arial', fontSize: '1.5vw'}}>Frontend Developer</p>
               <ul className="list-unstyled mb-0">
                 <a href="#!" className="p-2 fa-lg">
-                  <MDBIcon fab icon="linkedin" className="black-text" />
+                  {/* <MDBIcon fab icon="linkedin" className="black-text" /> */}
                 </a>
               </ul>
             </MDBCol>
