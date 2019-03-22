@@ -17,6 +17,8 @@ import Slider from "react-slick";
 import * as testimonials from './testimonials';
 import firebase, { auth, provider } from '../firebase.js';
 import * as footer1 from './footer-nav';
+import * as searchGoogleMaps from './searchGoogleMaps';
+import * as servicesList from './Servicelist';
 // import '../App.css';
 
 const images1 = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
@@ -114,13 +116,13 @@ export class mainPage extends Component {
       <div className="BackSearch"></div>
       <div className="SearchLabelCss"></div>
       <input type="text" className = "searchlabel" value="Search"  readonly="readonly"/>
-      
-      <input className = "search" type="text" placeholder="Henna, Bridal Makeup.." name="search"/>
+        &nbsp;&nbsp;  <servicesList.servicesList/>
+      {/* <input className = "search" type="text" placeholder="Henna, Bridal Makeup.." name="search"/> */}
       <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/>
-      <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
-     
+      {/* <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/> */}
+      <searchGoogleMaps.searchGoogleMaps/>
        <Link to="/searchresults">
-       <button className = "searchButton"type="submit"><i className="fa fa-search"></i></button>
+       <button className = "searchButton"type="submit" onClick={() => window.location.reload(true)}><i className="fa fa-search"></i></button>
        </Link>
        </div>
        {this.state.user ?
@@ -146,6 +148,7 @@ export class mainPage extends Component {
 
         </div>
         }
+      
         <popServ.popServ/>
         <testimonials.testimonials/>
     <div className="mainpagefooter">
