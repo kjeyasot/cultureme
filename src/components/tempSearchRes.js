@@ -11,6 +11,7 @@ import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
 import Autocomplete from  'react-autocomplete';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
+import StarRatingComponent from 'react-star-rating-component';
 
 // import { Link } from 'react-router';
 let testServices1 = [];
@@ -325,11 +326,16 @@ if(!value && !address){
     </div>
   <span>
 
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
-<i class="fa fa-star checked"></i>
+              <div>
+                  <StarRatingComponent 
+          name="rate1" 
+          className = "starEdit"
+          // editing={false}
+          starCount={5}
+
+          // will come frfom db
+          value={item.ratingAvg}
+        /></div>
 
 </span>
     <button type="button" class="btn btn-primary" onClick={() => this.moveToView(item.uuid, item.serviceType)}>View</button>
