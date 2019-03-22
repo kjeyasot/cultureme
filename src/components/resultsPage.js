@@ -209,17 +209,18 @@ export class resultsPage extends Component {
 
                   <div className>
                   <h5>Client Rating:</h5>
-                  
-                  <div>
-                  <StarRatingComponent 
-          name="rate1" 
-          className = "starEdit"
-          // editing={false}
-          starCount={5}
-
-          // will come frfom db
-          value={this.state.ratingAvg}
-        /></div>
+                  {this.state.ratingAvg?
+                   <div>
+                   <StarRatingComponent 
+           name="rate1" 
+           className = "starEdit"
+           // editing={false}
+           starCount={5}
+ 
+           // will come frfom db
+           value={this.state.ratingAvg}
+         /></div>:null}
+                 
    </div>
                  
                   <p style={{ fontSize: "2.5vh", color: "black", textAlign:"left", fontStyle: "normal"}}>

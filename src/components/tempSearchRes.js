@@ -375,17 +375,19 @@ if(!value && !address){
     <br></br> {item.address}
     </div>
   <span>
+    {item.ratingAvg?
+         <div>
+         <StarRatingComponent 
+ name="rate1" 
+ className = "starEdit"
+ // editing={false}
+ starCount={5}
 
-              <div>
-                  <StarRatingComponent 
-          name="rate1" 
-          className = "starEdit"
-          // editing={false}
-          starCount={5}
-
-          // will come frfom db
-          value={item.ratingAvg}
-        /></div>
+ // will come frfom db
+ value={item.ratingAvg}
+/></div>
+:null}
+         
 
 </span>
     <button type="button" class="btn btn-primary" onClick={() => this.moveToView(item.uuid, item.serviceType)}>View</button>
