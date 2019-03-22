@@ -22,7 +22,7 @@ export class popServ extends Component {
 {/* <figcaption>Mehendi</figcaption> */}
 </figure>
   <div className="overlayPop">
-    <div className="text1">Mehendi</div>
+    <div className="text1">Henna</div>
   </div>
 </div>
 
