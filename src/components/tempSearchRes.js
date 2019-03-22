@@ -12,6 +12,10 @@ import * as navstuff from './nav-boots';
 import Autocomplete from  'react-autocomplete';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 // import { Link } from 'react-router';
 let testServices1 = [];
 let testServices = [];
@@ -19,7 +23,8 @@ let testServices = [];
 let uniqueServices = []
 let testUuid = []
 let newState = []
-let companyName;
+let companyName,address;
+
 
 export class searchRes extends Component {
   
@@ -41,11 +46,23 @@ export class searchRes extends Component {
     this.moveToView = this.moveToView.bind(this);
 
     // this.whatever = this.whatever.bind(this);
-
-    // this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     // this.userIntUpdate = this.userIntUpdate.bind(this);
     // this.Activate = this.Activate.bind(this);
   }
+
+  handleChange = address => {
+    this.setState({ address });
+  };
+ 
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
+      this.setState({ address });
+  };
   componentDidMount() {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
 
@@ -249,31 +266,17 @@ if(!value && !address){
         return (
           
 <div> 
-  <navstuff.navstuff/>
+  {/* <navstuff.navstuff/> */}
   <br>
   </br>
   <div className="SearchLabelCssN"></div>
-      {/* <input type="text" className = "searchlabelN" value="Search"  readonly="readonly"/> */}
-      
-      {/* <input className = "searchN1" type="text" placeholder="Henna, Bridal Makeup.." onChange={this.handleChange} value={this.state.servType} name="servType"/> */}
-      {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="nearMe"/> */}
-      {/* <input type="text" className = "nearMelabelN" value="Near"  readonly="readonly"/> */}
-      {/* <h1> {uniqueServices.indexOf('henna')}</h1> */}
-
-
- 
-
-
+   
       <div>
      <script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
 <script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
 <script src="https://unpkg.com/react-autocomplete@1.5.10/dist/react-autocomplete.js"></script>
-<Autocomplete
-        // items={[
-        //   { id: 'foo', label: 'foo' },
-        //   { id: 'bar', label: 'bar' },
-        //   { id: 'baz', label: 'baz' },
-        // ]}
+&nbsp;&nbsp;<Autocomplete
+    
         items = {testServices}
         shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
         getItemValue={item => item.label}
@@ -289,12 +292,59 @@ if(!value && !address){
         onChange={e => this.setState({ value: e.target.value })}
         onSelect={value => this.setState({ value })}
       />
-            <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} />
-
+            &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;  
+            
+            
+            <PlacesAutocomplete
+  
+  value={this.state.address}
+  onChange={this.handleChange}
+  onSelect={this.handleSelect}
+  searchOptions={{types: ['(cities)'],
+  componentRestrictions: {country: "ca"}}}
+>
+  {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
+    <div>
+      <input
+        {...getInputProps({
+          placeholder: 'Search Places ...',
+          className: 'location-search-input',
+        })}
+      />
+      <div className="autocomplete-dropdown-container">
+        {loading && <div>Loading...</div>}
+        {suggestions.map(suggestion => {
+          const className = suggestion.active
+            ? 'suggestion-item--active'
+            : 'suggestion-item';
+          // inline style for demonstration purpose
+          const style = suggestion.active
+            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+            : { backgroundColor: '#ffffff', cursor: 'pointer' };
+          return (
+            <div
+              {...getSuggestionItemProps(suggestion, {
+                className,
+                style,
+              })}
+            >
+              <span>{suggestion.description}</span>
+            </div>
+          );
+        })}
       </div>
+    </div>
+  )}
+</PlacesAutocomplete>
+            
+            
+            
+            {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} /> */}
 
 
-      <button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
+<button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
+      </div>
+   
 <br>
 </br>
 
