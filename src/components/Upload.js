@@ -183,6 +183,10 @@ export class Upload extends React.Component {
         </div>
     </div>
     {/* <div className="spfooter"> */}
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
         <footer1.footer1/>
         {/* </div> */}
     </div>
