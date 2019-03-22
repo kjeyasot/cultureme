@@ -208,7 +208,7 @@ export class stepone extends Component {
 
 <MDBCol>
   <i class="fas fa-location-arrow" ></i>
-  <label>Address  
+  <label>Location  
 
 
     
