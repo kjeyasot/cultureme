@@ -309,18 +309,32 @@ export class resultsPage extends Component {
             
               </div>
 
-  
-              <div className="profile__contact-info-item">
-                <div className="profile__contact-info-icon">
+   {this.state.user?
+      <div className="profile__contact-info-item">
+      <div className="profile__contact-info-icon">
+        <i className="fa fa-phone" />
+      </div>
+      <div className="profile__contact-info-body">
+        <h5 className="profile__contact-info-heading">Phone Number</h5>
+       {this.state.mobile}
+      </div>
+    </div>
+                  
+                  :
+                  <div>
+                    <Link to='/signup-client'>
+                  <div className="profile__contact-info-icon">
                   <i className="fa fa-phone" />
                 </div>
+                </Link>
                 <div className="profile__contact-info-body">
                   <h5 className="profile__contact-info-heading">Phone Number</h5>
-                  {this.state.user?
-                  this.state.mobile
-                  :null}
                 </div>
-              </div>
+              </div>  
+                  
+                  
+                  }
+           
               <br></br>
 
 
@@ -332,11 +346,23 @@ export class resultsPage extends Component {
                   <div className="profile__contact-info-body">
                   <div className="profile__contact-info-icon">
                   {/* <i className="fa fa-map-marker" /> */}
+                  
+                  {this.state.user?
+                  <div>
                   <i className="fa fa-envelope" />
                   <h5 className="profile__contact-info-heading">Email</h5>
-                  {this.state.user?
-                 this.state.email
-                  :null}
+                {this.state.email}
+                </div>
+                  :
+                  <div>
+                    <Link to='/signup-client'>
+                  <i className="fa fa-envelope" />
+                  </Link>
+                  <h5 className="profile__contact-info-heading">Email</h5>
+                {/* {this.state.email} */}
+                </div>
+                  
+                  }
                   
                 </div>
               </div>
