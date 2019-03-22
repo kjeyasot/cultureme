@@ -37,7 +37,7 @@ export class signUpClient extends Component {
       handleSubmit(e) {
         e.preventDefault();
         this.signup();
-        this.props.history.push('/')
+        // this.props.history.push('/')
         }
 
       signup() {
@@ -88,6 +88,11 @@ export class signUpClient extends Component {
               testemail.push(persInfo.email);
             });
           });
+        });
+        firebase.auth().onAuthStateChanged(user => {
+          if(user) {
+            window.location = '/'; //After successful login, user will be redirected to home.html
+          }
         });
         
       }
