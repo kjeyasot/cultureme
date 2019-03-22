@@ -204,6 +204,19 @@ export class stepone extends Component {
 {( this.state.minPrice && this.state.maxPrice && Number(this.state.minPrice)>= Number(this.state.maxPrice))? <p id="letter" className="invalid">Invalid Price Range</p>:null}
 
 
+<<<<<<< HEAD
+=======
+<br></br>
+
+<MDBCol>
+  <i class="fas fa-location-arrow" ></i>
+  <label>Location  
+
+
+    
+  </label>
+  </MDBCol>
+>>>>>>> efinal
 
 
   <PlacesAutocomplete

@@ -35,10 +35,10 @@ export class testimonials extends Component {
                   <div class="testimonial">
                   
                     <div class="avatar mx-auto">
-                      <img src={images1['sana.png']} className="img-circle z-depth-3"/>
+                      <img src={images1['T1.jpg']} className="img-circle z-depth-3"/>
                     </div>
                     
-                    <h4 className="TestimonialName">Sana Irfan</h4>
+                    <h4 className="TestimonialName">Amina R.</h4>
                     <h6 className="TestimonialOccupation">Henna Artist</h6>
                     <h6 className="TestimonialCmt">
                       <i class="fa fa-quote-left"></i>CultureMe is great! It allows me to show my skills as a henna artist. I’ve gotten so many more client since using the app.<i class="fa fa-quote-right"></i></h6>
@@ -59,10 +59,10 @@ export class testimonials extends Component {
                   <div class="testimonial">
                   
                     <div class="avatar mx-auto">
-                      <img src={images1['sana3.jpg']} class="img-circle z-depth-3"/>
+                      <img src={images1['T2.jpg']} class="img-circle z-depth-3"/>
                     </div>
                     
-                    <h4 class="TestimonialName">Sana Irfan</h4>
+                    <h4 class="TestimonialName">Hina K.</h4>
                     <h6 class="TestimonialOccupation">Student</h6>
                     <p class="TestimonialCmt">
                       <i class="fa fa-quote-left"></i>I’ve saved so much time using this platform. I can easily find what I want when I want. <i class="fa fa-quote-right"></i></p>
@@ -83,14 +83,14 @@ export class testimonials extends Component {
                   <div class="testimonial">
                    
                     <div class="avatar mx-auto">
-                      <img src={images1['sana1.png']} class="img-circle z-depth-3"/>
+                      <img src={images1['T3.jpg']} class="img-circle z-depth-3"/>
                     
                     </div>
                    
-                    <h4 class="TestimonialName">Sana Irfan</h4>
+                    <h4 class="TestimonialName">Pooja J.</h4>
                     <h6 class="TestimonialOccupation">Student</h6>
                     <p class="TestimonialCmt">
-                      <i class="fa fa-quote-left"></i>It helped me find my perfect bridal look! I was able to trust the artist doing my makeup. I will definitely recommend CultureMe to my friends and family. <i class="fa fa-quote-right"></i></p>
+                      <i class="fa fa-quote-left"></i>It helped me find my perfect look! I was able to trust the artist doing my makeup. I will definitely recommend CultureMe! <i class="fa fa-quote-right"></i></p>
                
                   </div>
             

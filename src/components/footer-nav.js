@@ -14,7 +14,7 @@ export class footer1 extends Component {
           <MDBCol md="2" className="b-3">
             <h6 className="title font-weight-bold">
             <Link to= "/aboutUs"> 
-              <a href="#!">About us</a>
+              <a href="#!">About Us</a>
               </Link>
             </h6>
           </MDBCol>

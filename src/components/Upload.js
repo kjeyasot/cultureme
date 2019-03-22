@@ -175,7 +175,7 @@ export class Upload extends React.Component {
           <Link to="/choose-service">   
           <MDBBtn className="btn btn-pink" type="submit">
                 Done
-                <MDBIcon far icon="check" className="ml-2 fas fa-angle-right" />
+                <MDBIcon style={{ color: "white"}} far icon="check" className="ml-2 fas fa-angle-right" />
           </MDBBtn>
           </Link>
           {/* </div> */}
@@ -185,6 +185,10 @@ export class Upload extends React.Component {
         </div>
     </div>
     {/* <div className="spfooter"> */}
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
         <footer1.footer1/>
         {/* </div> */}
     </div>
