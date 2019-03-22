@@ -271,12 +271,28 @@ if(!value && !address){
         return (
           
 <div> 
-<searchGoogleMaps.searchGoogleMaps/>  &nbsp;&nbsp;  <servicesList.servicesList/>
+<div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '2vh',
+  left: '25vw' }}>
+&nbsp;&nbsp;  <servicesList.servicesList/>
+</div>
+  <div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '2vh',
+  right: '30vw' }}>
+  &nbsp; &nbsp;  <searchGoogleMaps.searchGoogleMaps/>  
+</div>
+<div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '7.5vh',
+  right: '25vw' }}>
+<button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
+
+</div>
+<br></br>
+<br></br>
+
+&nbsp;&nbsp;  
             
             {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} /> */}
 
 
-<button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
+{/* <button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button> */}
       
    
 <br>
