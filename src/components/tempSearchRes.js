@@ -8,7 +8,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import * as footer1 from './footer-nav';
-import * as navstuff from './nav-boots';
+import * as navstuffclient from './nav-client';
 import * as searchGoogleMaps from './searchGoogleMaps';
 import * as servicesList from './Servicelist';
 import Autocomplete from  'react-autocomplete';
@@ -271,7 +271,24 @@ if(!value && !address){
         return (
           
 <div> 
-<searchGoogleMaps.searchGoogleMaps/>  &nbsp;&nbsp;  <servicesList.servicesList/>
+
+<navstuffclient.navstuffclient/>
+<br>
+</br>
+
+
+{/* <div class="col"> */}
+<div className="sss">
+<servicesList.servicesList/>
+
+{/* </div> */}
+{/* </div> */}
+{/* <div className="sss1"> */}
+<searchGoogleMaps.searchGoogleMaps/>
+</div>
+
+ &nbsp;&nbsp; 
+
             
             {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} /> */}
 
@@ -334,6 +351,26 @@ if(!value && !address){
 </div>
 </div>
 </div>
+
+
+
+
+
+
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br>
+
+
+
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+<br></br><br></br><br></br><br></br>
+
+
+
+<div className="spfooter12"> 
+    <footer1.footer1/>
+     </div>
 </div>
 
 
