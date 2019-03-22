@@ -99,21 +99,22 @@ export class mainPage extends Component {
     return (
       <div> 
       <Slider autoplay="true"  {...properties}>
-        {/* <img className="slide" alt="pic12" src={images['pic12.jpg']}/>
+        <img className="slide" alt="pic12" src={images['pic12.jpg']}/>
         <img className="slide" alt="pic13" src={images['pic13.jpg']}/>
         <img className="slide" alt="pic13" src={images['pic14.png']}/>
         <img className="slide" alt="wed1" src={images['wed1.png']}/>
         <img className="slide" alt="wed3" src={images['wed3.png']}/>
         <img className="slide" alt="wed4" src={images['wed4.png']}/> 
-        <img className="slide" alt="wed5" src={images['wed5.png']}/> */}
+        <img className="slide" alt="wed5" src={images['wed5.png']}/>
+
+        {/* newly added  imags */}
         <img className="slide" alt="h25" src={images['h25.jpg']}/>
         <img className="slide" alt="m31" src={images['m31.jpg']}/>
         <img className="slide" alt="h1" src={images['h1.jpg']}/>
-        <img className="slide" alt="saree" src={images['saree.jpg']}/>
         <img className="slide" alt="s4" src={images['s4.jpg']}/>
         <img className="slide" alt="saree3" src={images['saree3.png']}/>
         <img className="slide" alt="holi" src={images['holi.jpg']}/>
-
+        <img className="slide" alt="h0" src={images['h0.jpeg']}/>
       
       </Slider>
       <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
