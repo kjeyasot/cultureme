@@ -104,9 +104,15 @@ export class mainPage extends Component {
         <img className="slide" alt="pic13" src={images['pic14.png']}/>
         <img className="slide" alt="wed1" src={images['wed1.png']}/>
         <img className="slide" alt="wed3" src={images['wed3.png']}/>
-        <img className="slide" alt="wed4" src={images['wed4.png']}/> */}
+        <img className="slide" alt="wed4" src={images['wed4.png']}/> 
         <img className="slide" alt="wed5" src={images['wed5.png']}/>
         <img className="slide" alt="h25" src={images['h25.jpg']}/>
+        <img className="slide" alt="m31" src={images['m31.jpg']}/>
+        <img className="slide" alt="h1" src={images['h1.jpg']}/> */}
+        <img className="slide" alt="saree" src={images['saree.jpg']}/>
+
+         {/* <img className="slide" alt="m4" src={images['m4.jpg']}/> */}
+      
       </Slider>
       <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
       
