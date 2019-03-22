@@ -83,7 +83,7 @@ export class testimonials extends Component {
                   <div class="testimonial">
                    
                     <div class="avatar mx-auto">
-                      <img src={images1['sana1.png']} class="img-circle z-depth-3"/>
+                      <img src={images1['T1.png']} class="img-circle z-depth-3"/>
                     
                     </div>
                    
