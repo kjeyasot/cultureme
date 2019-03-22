@@ -9,6 +9,8 @@ import {
 } from 'react-router-dom';
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
+import * as searchGoogleMaps from './searchGoogleMaps';
+import * as servicesList from './Servicelist';
 import Autocomplete from  'react-autocomplete';
 import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import StarRatingComponent from 'react-star-rating-component';
@@ -17,6 +19,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+
 // import { Link } from 'react-router';
 let testServices1 = [];
 let testServices = [];
@@ -65,6 +68,7 @@ export class searchRes extends Component {
       this.setState({ address });
   };
   componentDidMount() {
+    this.showServiceDetails();
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
 
     serviceProvidersRef.once('value', (snapshot) => {
@@ -100,8 +104,8 @@ export class searchRes extends Component {
   }
   showServiceDetails() {
     const serviceProvidersRef = firebase.database().ref('serviceProviders');
-    const value = this.state.value;
-    const address = this.state.address;
+    const value = localStorage.getItem('servicetypesss');
+    const address = localStorage.getItem('addresqs');
     if(value && address){
       serviceProvidersRef.once('value', (snapshot) => {
           snapshot.forEach((eventSnapshot) => {
@@ -267,84 +271,13 @@ if(!value && !address){
         return (
           
 <div> 
-  {/* <navstuff.navstuff/> */}
-  <br>
-  </br>
-  <div className="SearchLabelCssN"></div>
-   
-      <div>
-     <script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
-<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
-<script src="https://unpkg.com/react-autocomplete@1.5.10/dist/react-autocomplete.js"></script>
-&nbsp;&nbsp;<Autocomplete
-    
-        items = {testServices}
-        shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
-        getItemValue={item => item.label}
-        renderItem={(item, highlighted) =>
-          <div
-            key={item.id}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
-          >
-            {item.label}
-          </div>
-        }
-        value={this.state.value}
-        onChange={e => this.setState({ value: e.target.value })}
-        onSelect={value => this.setState({ value })}
-      />
-            &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;  
-            
-            
-            <PlacesAutocomplete
-  
-  value={this.state.address}
-  onChange={this.handleChange}
-  onSelect={this.handleSelect}
-  searchOptions={{types: ['(cities)'],
-  componentRestrictions: {country: "ca"}}}
->
-  {({getInputProps, suggestions, getSuggestionItemProps,loading }) => (
-    <div>
-      <input
-        {...getInputProps({
-          placeholder: 'Search Places ...',
-          className: 'location-search-input',
-        })}
-      />
-      <div className="autocomplete-dropdown-container">
-        {loading && <div>Loading...</div>}
-        {suggestions.map(suggestion => {
-          const className = suggestion.active
-            ? 'suggestion-item--active'
-            : 'suggestion-item';
-          // inline style for demonstration purpose
-          const style = suggestion.active
-            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-            : { backgroundColor: '#ffffff', cursor: 'pointer' };
-          return (
-            <div
-              {...getSuggestionItemProps(suggestion, {
-                className,
-                style,
-              })}
-            >
-              <span>{suggestion.description}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  )}
-</PlacesAutocomplete>
-            
-            
+<searchGoogleMaps.searchGoogleMaps/>  &nbsp;&nbsp;  <servicesList.servicesList/>
             
             {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} /> */}
 
 
 <button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
-      </div>
+      
    
 <br>
 </br>
