@@ -6,7 +6,7 @@ import firebase, { auth, provider, storage, database  } from '../firebase.js';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact';
 
 import * as footer1 from './footer-nav';
-import * as navstuff from './nav-boots';
+import * as navstuffclient from './nav-client';
 import StarRatingComponent from 'react-star-rating-component';
 
 import PlacesAutocomplete, {
@@ -185,7 +185,7 @@ export class resultsPage extends Component {
         <div>
         
         <div>
-        <navstuff.navstuff/>
+        <navstuffclient.navstuffclient/>
         
       
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
