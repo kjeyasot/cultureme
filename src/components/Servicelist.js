@@ -109,7 +109,7 @@ export class servicesList extends Component {
             {item.label}
           </div>
         }
-        inputProps={{ placeholder: 'Search Services' }}
+        inputProps={{ placeholder: 'Henna, Bridal Makeup, hair,..........' }}
         value={this.state.value}
         onChange={e => this.setState({ value: e.target.value })}
         onSelect={this.handleSelect}

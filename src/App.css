@@ -542,7 +542,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   top: 40vh;
   left:24.5vw;
-  height: 4.5vh;
+  height: 5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */
@@ -570,7 +570,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   top: 40vh;
   left: 59vw;
-  height: 4.5vh;
+  height: 5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */

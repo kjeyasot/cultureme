@@ -121,15 +121,14 @@ export class mainPage extends Component {
       <img className="logoCM" alt="logo" src={images1['logoCM.png']} />
       
       <div>
-      
+
       <div className="BackSearch"></div>
       <div className="SearchLabelCss"></div>
       <input type="text" className = "searchlabel" value="Search"  readonly="readonly"/>
-        &nbsp;&nbsp;  <servicesList.servicesList/>
+      
       {/* <input className = "search" type="text" placeholder="Henna, Bridal Makeup.." name="search"/> */}
-      <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/>
-      {/* <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/> */}
-      <searchGoogleMaps.searchGoogleMaps/>
+      {/* <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/> */}
+      <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
        <Link to="/searchresults">
        <button className = "searchButton"type="submit" onClick={() => window.location.reload(true)}><i className="fa fa-search"></i></button>
        </Link>
@@ -157,6 +156,19 @@ export class mainPage extends Component {
 
         </div>
         }
+              <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '36.5vh',
+  left: '30.5vw', width:'40vw' }}>
+&nbsp;&nbsp;  <servicesList.servicesList/>
+</div>
+  <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '36.5vh',
+  right: '20vw' }}>
+  &nbsp; &nbsp;  <searchGoogleMaps.searchGoogleMaps/>  
+</div>
+{/* <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '7.5vh',
+  right: '25vw' }}>
+<button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
+
+</div> */}
       
         <popServ.popServ/>
         <testimonials.testimonials/>
