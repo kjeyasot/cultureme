@@ -13,9 +13,10 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 // const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
+import StarRatingComponent from 'react-star-rating-component';
 
 let companyName;
-let mobile, Description,minPrice, maxPrice, address, serviceType, email ;
+let mobile, Description,minPrice, maxPrice, address, serviceType, email, ratingAvg ;
 let newState = []
 export class editView extends Component {
   constructor() {
@@ -35,7 +36,8 @@ export class editView extends Component {
       url: [],
       // province: '',
       images: [],
-      isInEditMode:false
+      isInEditMode:false,
+      ratingAvg: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleChanges = this.handleChanges.bind(this);
@@ -138,6 +140,7 @@ export class editView extends Component {
             minPrice = servInfo.minPrice;
             maxPrice= servInfo.maxPrice;
             address= servInfo.address;
+            ratingAvg = servInfo.ratingAvg;
           
           });
           snapshot.child('photos').forEach((servPhotos) => {   
@@ -154,7 +157,7 @@ export class editView extends Component {
             minPrice: minPrice,
             maxPrice: maxPrice,
             address: address,
-          
+            ratingAvg:ratingAvg,
             images: newState
           })
      
@@ -349,11 +352,18 @@ export class editView extends Component {
 
                   <div className>
                   <h5>Client Rating:</h5>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
+                  {this.state.ratingAvg?
+                  <div>
+                   
+                   <StarRatingComponent 
+           name="rate1" 
+           className = "starEdit"
+           // editing={false}
+           starCount={5}
+ 
+           // will come frfom db
+           value={this.state.ratingAvg}
+         /></div>:null}
    </div>
                   <br></br>
                  
