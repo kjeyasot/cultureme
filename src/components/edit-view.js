@@ -403,7 +403,7 @@ export class editView extends Component {
   class="fas fa-location-arrow" >
   
   </i>
-  <label>Address</label>
+  <label>Location</label>
 
 </div>
 
