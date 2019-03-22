@@ -7,6 +7,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon,MDBInput } from 'mdbreact
 
 import * as footer1 from './footer-nav';
 import * as navstuff from './nav-boots';
+import StarRatingComponent from 'react-star-rating-component';
 
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -15,7 +16,7 @@ import PlacesAutocomplete, {
 // const images = script.importAll(require.context('../ImagesOld', false, /\.(png|jpe?g|svg)$/));
 
 let companyName;
-let mobile, Description,minPrice, maxPrice, address, serviceType, email ;
+let mobile, Description,minPrice, maxPrice, address, serviceType, email, ratingAvg ;
 let newState = []
 export class resultsPage extends Component {
   constructor() {
@@ -35,23 +36,22 @@ export class resultsPage extends Component {
       url: [],
       // province: '',
       images: [],
-      isInEditMode:false
-    }
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleChanges = this.handleChanges.bind(this);
-    // this.storePhoto = this.storePhoto.bind(this)
-    // this.refresh = this.refresh.bind(this);
-    // this.Activate = this.Activate.bind(this); 
-    // this.userUpdate = this.userUpdate.bind(this); 
-    // this.userIntUpdate = this.userIntUpdate.bind(this); 
-    // this.deletePhoto = this.deletePhoto.bind(this)
-    // this.handleChangess = this.handleChangess.bind(this);
+      isInEditMode:false,
+      rating: '',
+      ratingAvg: '',
+      ratingCount: ''
 
+    }
+       this.Activate = this.Activate.bind(this);
     
   }
-  // handleChangess = address => {
-  //   this.setState({ address });
-  // };
+  Activate(e) {
+    this.setState ({
+      isInEditMode: true
+ 
+    });
+  }
+
   hydrateStateWithLocalStorage() {
     // for all items in state
     for (let key in this.state) {
@@ -72,40 +72,7 @@ export class resultsPage extends Component {
     }
   }
 
-  // handleChanges(e) {
-  //   this.setState({
-  //     file: e.target.files[0],
-  //     url: URL.createObjectURL(e.target.files[0])
-  //   })
-  // }
-
-//   storePhoto() {
-//     const data = localStorage.getItem('myData')
-//       auth.onAuthStateChanged((user) => {
-//           if (user) {
-//             this.setState({ user });
-//             var uid = user.uid;
-//     const key = database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').push().key
-//     const img = storage.ref().child('Images').child(uid).child(key)
-  
-
-//   img.put(this.state.file).then((snap) => {
-//       storage.ref().child('Images').child(uid).child(img.name).getDownloadURL().then(url => {
-//         database.ref('serviceProviders').child(uid).child('Services').child(data).child('photos').child(key).set({
-//         "url" : url
-//       })
-//     })
-//     })
-
-//     this.setState({
-//       file: null,
-//       url: null,
-//     })
-//   }
  
-// })
-// }
-
   componentDidMount() {
     this.hydrateStateWithLocalStorage();
     const clientSearchSP = localStorage.getItem('clientSearchSP');
@@ -142,6 +109,7 @@ export class resultsPage extends Component {
             minPrice = servInfo.minPrice;
             maxPrice= servInfo.maxPrice;
             address= servInfo.address;
+            ratingAvg = servInfo.ratingAvg;
           
           });
           snapshot.child('photos').forEach((servPhotos) => {   
@@ -158,38 +126,53 @@ export class resultsPage extends Component {
             minPrice: minPrice,
             maxPrice: maxPrice,
             address: address,
-          
+            ratingAvg:ratingAvg,
             images: newState
-          })
-     
-      
-      
-    });
-    // const ref = database.ref('serviceProviders').child(user.uid).child('Services').child(data).child('photos')
-
-    // ref.on('child_added', (child) => {
-    //   let images = this.state.images.slice()
-    //   images.push({
-    //     key: child.key,
-    //     url: child.val().url
-    //   })
-    //   this.setState({images})
-    // })
-    // ref.on('child_removed', (child) => {
-    //   let images = this.state.images.filter((image) => {
-    //     return image.url != child.val().url
-    //   })
-    //   this.setState({images})
-    // })
-  
-  
-  
-    
+          }) 
+    }); 
   }
-  
+
+  updateRating(nextValue) {
+    this.hydrateStateWithLocalStorage();
+    const clientSearchSP = localStorage.getItem('clientSearchSP');
+    const clientSearchSType = localStorage.getItem('clientSearchSType')
+
+    const servPV = {
+      rating: nextValue
+    }
+    const serviceDetails = firebase.database().ref('serviceProviders').child(clientSearchSP).child('Services').child(clientSearchSType);
+    serviceDetails.once('value', (snapshot) => {
+      snapshot.child('serviceDetails').forEach((servDetails) => {
+        const rCount = servDetails.val().ratingCount;
+        const rating = servDetails.val().rating;
+        if(!rCount){
+          servDetails.ref.update({rating : servPV.rating});
+          servDetails.ref.update({ratingCount : 1});
+          servDetails.ref.update({ratingAvg : servPV.rating});
+        }
+        if(rCount){
+          servDetails.ref.update({ratingCount : rCount+ 1});
+          servDetails.ref.update({rating : rating+ servPV.rating});
+          var count = rCount +1;
+          var ratingg = rating+ servPV.rating;
+          servDetails.ref.update({ratingAvg : (ratingg/count).toFixed(0)});
+        }
+      });      
+});
+  }
+
+
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
+    this.updateRating(nextValue);
+    this.setState ({
+      isInEditMode: false
+ 
+    });
+  }
+
 
   render() {
-
     
     const imgStyle = {
       maxHeight: "150px",
@@ -226,21 +209,21 @@ export class resultsPage extends Component {
 
                   <div className>
                   <h5>Client Rating:</h5>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
-   <i class="fa fa-star checked"></i>
+                  {this.state.ratingAvg?
+                   <div>
+                   <StarRatingComponent 
+           name="rate1" 
+           className = "starEdit"
+           // editing={false}
+           starCount={5}
+ 
+           // will come frfom db
+           value={this.state.ratingAvg}
+         /></div>:null}
+                 
    </div>
-                  <br></br>
                  
                   <p style={{ fontSize: "2.5vh", color: "black", textAlign:"left", fontStyle: "normal"}}>
-                    {/* {this.state.Description} <br></br>
-                    Min Price: {this.state.minPrice}
-                    Max Price: {this.state.maxPrice} */}
-
-
-{/* add */}
 
 <span>
                
@@ -327,18 +310,32 @@ export class resultsPage extends Component {
             
               </div>
 
-  
-              <div className="profile__contact-info-item">
-                <div className="profile__contact-info-icon">
+   {this.state.user?
+      <div className="profile__contact-info-item">
+      <div className="profile__contact-info-icon">
+        <i className="fa fa-phone" />
+      </div>
+      <div className="profile__contact-info-body">
+        <h5 className="profile__contact-info-heading">Phone Number</h5>
+       {this.state.mobile}
+      </div>
+    </div>
+                  
+                  :
+                  <div>
+                    <Link to='/signup-client'>
+                  <div className="profile__contact-info-icon">
                   <i className="fa fa-phone" />
                 </div>
+                </Link>
                 <div className="profile__contact-info-body">
                   <h5 className="profile__contact-info-heading">Phone Number</h5>
-                  {this.state.user?
-                  this.state.mobile
-                  :null}
                 </div>
-              </div>
+              </div>  
+                  
+                  
+                  }
+           
               <br></br>
 
 
@@ -350,11 +347,23 @@ export class resultsPage extends Component {
                   <div className="profile__contact-info-body">
                   <div className="profile__contact-info-icon">
                   {/* <i className="fa fa-map-marker" /> */}
+                  
+                  {this.state.user?
+                  <div>
                   <i className="fa fa-envelope" />
                   <h5 className="profile__contact-info-heading">Email</h5>
-                  {this.state.user?
-                 this.state.email
-                  :null}
+                {this.state.email}
+                </div>
+                  :
+                  <div>
+                    <Link to='/signup-client'>
+                  <i className="fa fa-envelope" />
+                  </Link>
+                  <h5 className="profile__contact-info-heading">Email</h5>
+                {/* {this.state.email} */}
+                </div>
+                  
+                  }
                   
                 </div>
               </div>
@@ -363,6 +372,41 @@ export class resultsPage extends Component {
                   
                 </div>
               </div>
+              <br></br>
+               <div className="profile__contact-info-item">
+                <div className="profile__contact-info-icon">
+                  {/* <i className="fa fa-phone" /> */}
+                </div>
+                <div className="profile__contact-info-body">
+                  <h5 className="profile__contact-info-heading">Rate Service</h5>
+                 
+                  {this.state.user && this.state.isInEditMode ?
+                   <div>
+                   {/* <h5>Rating from state: {rating}</h5> */}
+                   <StarRatingComponent 
+                     name="rate1" 
+                     starCount={5}
+                     value={this.state.rating}
+                     onStarClick={this.onStarClick.bind(this)}
+                   />
+                   {/* <button OnClick={this.notActivate}>Submit rating</button> */}
+                 </div>
+                  :
+                  <div>
+                  <button onClick={this.Activate}>Rate </button>
+                  <StarRatingComponent 
+          name="rate1" 
+          className = "starEdit"
+          // editing={false}
+          starCount={5}
+
+          // will come frfom db
+          value={this.state.rating}
+        /></div>
+                  }
+                </div>
+              </div>
+              <br></br>
             </div>
           </div>
         </div>
@@ -371,38 +415,8 @@ export class resultsPage extends Component {
         <footer1.footer1/>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
+     
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     );
   };
