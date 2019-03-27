@@ -130,7 +130,7 @@ export class mainPage extends Component {
       {/* <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/> */}
       <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
        <Link to="/searchresults">
-       <button className = "searchButton"type="submit" onClick={() => window.location.reload(true)}><i className="fa fa-search"></i></button>
+       <button className = "searchButton"type="submit" ><i className="fa fa-search"></i></button>
        </Link>
        </div>
        {this.state.user ?
