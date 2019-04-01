@@ -272,19 +272,7 @@ if(!value && !address){
           
 <div> 
 <navstuffclient.navstuffclient/>
-<div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '-5vh',
-  left: '25vw' }}>
-&nbsp;&nbsp;  <servicesList.servicesList/>
-</div>
-  <div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '-5vh',
-  right: '30vw' }}>
-  &nbsp; &nbsp;  <searchGoogleMaps.searchGoogleMaps/>  
-</div>
-<div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '1vh',
-  right: '25vw' }}>
-<button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
 
-</div>
             
             {/* <input className = "nearMeN1" type="text" placeholder="City, Province" name="address"  onChange={e => this.setState({ address: e.target.value })} value={this.state.address} /> */}
 
@@ -343,6 +331,19 @@ if(!value && !address){
 
 </div>
 </div>
+</div>
+
+<div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '-5vh',
+  left: '25vw' }}>
+&nbsp;&nbsp;  <servicesList.servicesList/>
+</div>
+  <div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '-5vh',
+  right: '30vw' }}>
+  &nbsp; &nbsp;  <searchGoogleMaps.searchGoogleMaps/>  
+</div>
+<div style={{ fontSize: "2vmax",fontFamily:"Arial", position:"absolute", top: '1vh',
+  right: '25vw' }}>
+<button className = "searchButtonN1"type="submit" onClick={this.showServiceDetails}><i className="fa fa-search"></i></button>
 </div>
 
 
