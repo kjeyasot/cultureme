@@ -518,8 +518,8 @@ input::-webkit-input-placeholder {
 .BackSearch{
   background:  rgba(184, 172, 157, 0.932);
   top: 38.5vh;
-  height: 7.5vh;
-  width: 62vw;
+  height: 9vh;
+  width: 53vw;
   left: 23vw;
   position: absolute;
   margin: 8px 0;
@@ -542,7 +542,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   top: 40vh;
   left:24.5vw;
-  height: 5vh;
+  height: 5.5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */
@@ -556,7 +556,7 @@ input::-webkit-input-placeholder {
 }
 
 .nearMelabel{
-  width: 4.5vw;
+  width: 5vw;
   padding: 1vmin 1vmin;
   margin: 8px 0;
   display: inline-block;
@@ -569,8 +569,8 @@ input::-webkit-input-placeholder {
   text-align: center;
   position: absolute;
   top: 40vh;
-  left: 59vw;
-  height: 5vh;
+  left: 48vw;
+  height: 5.5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */
@@ -602,9 +602,9 @@ input::-webkit-input-placeholder {
 
 .searchButton {
   top: 40vh;
-  left: 80vw;
+  left: 70vw;
   width:4vw;
-  height:4.5vh;
+  height:5.5vh;
   margin: 8px 0;
   /* left:20vw; */
   position: absolute;

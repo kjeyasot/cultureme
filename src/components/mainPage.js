@@ -157,11 +157,11 @@ export class mainPage extends Component {
         </div>
         }
               <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '36.5vh',
-  left: '30.5vw', width:'40vw' }}>
+  left: '29vw', width:'40vw' }}>
 &nbsp;&nbsp;  <servicesList.servicesList/>
 </div>
   <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '36.5vh',
-  right: '20vw' }}>
+  right: '31vw' }}>
   &nbsp; &nbsp;  <searchGoogleMaps.searchGoogleMaps/>  
 </div>
 {/* <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '7.5vh',
