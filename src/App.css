@@ -518,7 +518,7 @@ input::-webkit-input-placeholder {
 .BackSearch{
   background:  rgba(184, 172, 157, 0.932);
   top: 38.5vh;
-  height: 9vh;
+  height: 7.5vh;
   width: 53vw;
   left: 23vw;
   position: absolute;
@@ -542,7 +542,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   top: 40vh;
   left:24.5vw;
-  height: 5.5vh;
+  height: 4.5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */
@@ -570,7 +570,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   top: 40vh;
   left: 48vw;
-  height: 5.5vh;
+  height: 4.5vh;
   /* right: 50vw; */
   /* left:50%; */
   /* transform: translate(-50%, -50%); */
@@ -604,7 +604,7 @@ input::-webkit-input-placeholder {
   top: 40vh;
   left: 70vw;
   width:4vw;
-  height:5.5vh;
+  height:4.5vh;
   margin: 8px 0;
   /* left:20vw; */
   position: absolute;

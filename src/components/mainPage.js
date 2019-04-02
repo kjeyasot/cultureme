@@ -161,12 +161,12 @@ goToSearchResPage() {
 
         </div>
         }
-              <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '36.5vh',
-  left: '29vw', width:'40vw' }}>
+              <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '37vh',
+  left: '30vw', width:'40vw' }}>
 &nbsp;&nbsp;  <servicesList.servicesList/>
 </div>
-  <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '36.5vh',
-  right: '31vw' }}>
+  <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '37vh',
+  left: '53vw' }}>
   &nbsp; &nbsp;  <searchGoogleMaps.searchGoogleMaps/>  
 </div>
 {/* <div style={{ fontSize: "1.5vmax",fontFamily:"Arial", position:"absolute", top: '7.5vh',

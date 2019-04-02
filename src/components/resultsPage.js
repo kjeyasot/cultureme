@@ -265,17 +265,26 @@ export class resultsPage extends Component {
          </div> */}
 
 
+<MDBContainer className="mt-5">
+        <MDBRow>
 {this.state.images.map((image) =>
+  
+  
   <div key={image.key}>
   <h1>{image.file}</h1>
-  <div class="row">
-      <div class="column">
+  
+      <MDBCol lg="4" md="12" className="mb-4">
           <img src={image.url} style={imgStyle}/>
-          
-       </div>
-       </div>
+       
+
+        </MDBCol>
+    
   </div>
+  
 )} 
+ </MDBRow>
+      </MDBContainer>
+
 </div>
 
 <br></br>
