@@ -62,6 +62,7 @@ export class signIn extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+        window.location = '/';
       } 
     });
   }
@@ -123,7 +124,7 @@ export class signIn extends Component {
                 >
                   Sign In
                 </MDBBtn>
-                {this.state.user ?this.props.history.push('/'):null}
+                {/* {this.state.user ?this.props.history.push('/'):null} */}
               </div>
          
               </MDBCardBody>
