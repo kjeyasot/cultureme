@@ -48,6 +48,7 @@ export class editView extends Component {
     this.userIntUpdate = this.userIntUpdate.bind(this); 
     this.deletePhoto = this.deletePhoto.bind(this)
     this.handleChangess = this.handleChangess.bind(this);
+    this.goToChooseServPage = this.goToChooseServPage.bind(this);
 
     
   }
@@ -313,6 +314,10 @@ export class editView extends Component {
 
   }
 
+  goToChooseServPage() {
+    window.location = "/choose-service";
+  }
+
   render() {
 
     
@@ -556,12 +561,12 @@ export class editView extends Component {
 
 <br></br>
 <div className="text-left py-4">
-<Link to="/choose-service">
-        <MDBBtn className="btn btn-pink" onClick={() => window.location.reload(true)} >
+{/* <Link to="/choose-service"> */}
+        <MDBBtn className="btn btn-pink" onClick={this.goToChooseServPage} >
                 Done
                 <MDBIcon far icon="angle-double-right" className="ml-2 fas fa-check"/>
           </MDBBtn>
-          </Link>
+          {/* </Link> */}
          </div>   
           </div>
 
