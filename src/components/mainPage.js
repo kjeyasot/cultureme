@@ -38,6 +38,7 @@ export class mainPage extends Component {
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
     this.readdbData = this.readdbData.bind(this); 
+    this.goToSearchResPage = this.goToSearchResPage.bind(this); 
 
   }
 
@@ -86,6 +87,10 @@ export class mainPage extends Component {
 });
 }
 
+goToSearchResPage() {
+  window.location = "/searchresults";
+}
+
     render(){
         const properties = {
             infinite: true,
@@ -129,9 +134,9 @@ export class mainPage extends Component {
       {/* <input className = "search" type="text" placeholder="Henna, Bridal Makeup.." name="search"/> */}
       {/* <input className = "nearMe" type="text" placeholder="City, Province" name="nearMe"/> */}
       <input type="text" className = "nearMelabel" value="Near"  readonly="readonly"/>
-       <Link to="/searchresults">
-       <button className = "searchButton"type="submit" ><i className="fa fa-search"></i></button>
-       </Link>
+       {/* <Link to="/searchresults"> */}
+       <button className = "searchButton"type="submit"  onClick = {this.goToSearchResPage}><i className="fa fa-search"></i></button>
+       {/* </Link> */}
        </div>
        {this.state.user ?
        <div className='user-profile'>
