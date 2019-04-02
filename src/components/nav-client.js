@@ -34,7 +34,8 @@ export class navstuffclient extends Component {
     }
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
-    
+    this.goToMainPage = this.goToMainPage.bind(this); 
+
 
   }
 
@@ -69,16 +70,20 @@ export class navstuffclient extends Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  goToMainPage() {
+    window.location = '/'
+  }
   render() {
     return (
       <div>
         <Navbar color="dark"  className="navbar-dark font-weight-bold" light expand="xl">
 
-        <Link to= "/">
-          <NavbarBrand  onClick={() => window.location.reload(true)}> 
-          <img className="lnav" alt="logo" src={images1['logoCM.png']}/>
+        {/* <Link to= "/"> */}
+          <NavbarBrand onClick={this.goToMainPage}> 
+          <img className="lnav" alt="logo" src={images1['logoCM.png']} />
           </NavbarBrand>
-         </Link>
+         {/* </Link> */}
      
 
           <div>
